@@ -32,7 +32,7 @@ public class GoodsDAO {
 	}
 	
 	//各種メソッド記載
-	
+	//
 	
 	//DBから全部持ってくるメソッド
 	public ArrayList<Goods> selectAll(){
@@ -51,6 +51,7 @@ public class GoodsDAO {
 				Goods goods = new Goods();
 				goods.setGoodsId(rs.getString("goods_id"));
 				goods.setSelluserId(rs.getString("selluser_id"));
+
 				goods.setImgPath(rs.getString("img_path"));
 				goods.setName(rs.getString("name"));
 				goods.setPrice(rs.getInt("price"));
@@ -61,6 +62,7 @@ public class GoodsDAO {
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
+
 			}
 			
 			}catch(Exception e) {
