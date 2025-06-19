@@ -54,8 +54,6 @@ public class DeleteServlet extends HttpServlet {
 			request.setAttribute("transition", "menu");	
 		}
 		
-		
-		
 	}
 
 }

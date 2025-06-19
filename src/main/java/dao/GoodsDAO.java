@@ -302,7 +302,6 @@ public class GoodsDAO {
 						  }
 					  }
 	}
-	
 	//他に必要な機能追加
 
 }
