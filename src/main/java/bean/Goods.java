@@ -5,7 +5,7 @@ import java.util.Date;
 public class Goods {
 
 	// グッズIDを格納する変数
-	private String goodsId;
+	private int goodsId;
 	// 出品者のIDを格納する変数
 	private String selluserId;
 	// 画像のパスを格納する変数
@@ -28,13 +28,15 @@ public class Goods {
 	private Date buyDate;
 	// 購入者のID
 	private String buyuserId;
+	// 出品地域
+	private String region;
 
 	// グッズID
-	public String getGoodsId() {
+	public int getGoodsId() {
 		return goodsId;
 	}
 
-	public void setGoodsId(String goodsId) {
+	public void setGoodsId(int goodsId) {
 		this.goodsId = goodsId;
 	}
 
@@ -135,5 +137,14 @@ public class Goods {
 
 	public void setBuyuserId(String buyuserId) {
 		this.buyuserId = buyuserId;
+	}
+
+	// グッズID
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
 	}
 }
