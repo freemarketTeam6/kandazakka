@@ -25,7 +25,7 @@
 	</tr>
 	<tr>
 		<th style="background-color: #00a7db; width: 100">価格</th>
-		<td style="text-align: center; color: #000000; font-size: 20px"><%=format.moneyFormat(goods.getPrice())%></td>
+		<td style="text-align: center; color: #000000; font-size: 20px"><%=format.yenFormat(goods.getPrice())%></td>
 		<td><input type="text"></td>
 	</tr>
 	<tr>
@@ -40,7 +40,7 @@
 	</tr>
 	<tr>
 		<th style="background-color: #00a7db; width: 100">地域</th>
-		<td style="text-align: center; color: #000000; font-size: 20px"><%= goods.getRegion %></td>
+		<td style="text-align: center; color: #000000; font-size: 20px"><%= format.RegionFormat(goods.getRegion) %></td>
 		<td><select name="area">
 				<option value="hokkaido">北海道</option>
 				<option value="tohoku">東北</option>
