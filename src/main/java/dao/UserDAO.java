@@ -43,21 +43,19 @@ public class UserDAO {
 			
 			ResultSet rs = smt.executeQuery(sql);
 
-			/*
 			// ユーザー情報をuserオブジェクトに格納
 			if (rs.next()) {
 				user.setUserid(rs.getString("user_id"));
 				user.setName(rs.getString("name"));
-				user.setNameKana(rs.getString("name_kana"));
+				user.setNamekana(rs.getString("name_kana"));
 				user.setNickname(rs.getString("nickname"));
 				user.setAddress(rs.getString("address"));
 				user.setEmail(rs.getString("email"));
 				user.setPassword(rs.getString("password"));
 				user.setTell(rs.getString("tell"));
-				user.setmemo(rs.getString("memo"));
+				user.setMemo(rs.getString("memo"));
 				user.setAuthority(rs.getString("authority"));
 			}
-			*/
 			
 		} catch (Exception e) {
 			throw new IllegalStateException(e);

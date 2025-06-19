@@ -32,9 +32,9 @@ public class GoodsDAO {
 	}
 	
 	//各種メソッド記載
+	//
 	
-	
-	//全部持ってくる　selectALL()
+	//DBから全部持ってくるメソッド
 	public ArrayList<Goods> selectAll(){
 		Connection con = null;
 		Statement smt = null;
@@ -47,21 +47,23 @@ public class GoodsDAO {
 		try {
 			ResultSet rs = smt.executeQuery(sql);
 			
-//			while (rs.next() ){
-//				Goods goods = new Goods();
-//				goods.setGoodsId(rs.getString("goods_id"));
-//				goods.setSelluserId(rs.getString("selluser_id"));
-//				goods.setImgpath_id(rs.getString("img_path"));
-//				goods.setName(rs.getString("name"));
-//				goods.setPrice(rs.getInt("price"));
-//				goods.setQuantity(rs.getInt("quantity"));
-//				goods.setCategory(rs.getString("category"));
-//				goods.setGoods_memo(rs.getString("goods_memo"));
-//				goods.setStatus(rs.getString("status"));
-//				goods.setExhibit_date(rs.getDate("exhibit_date"));
-//				goods.setbuy_date(rs.getString("exhibit_date"));
-//				goods.setBuyuser_id(rs.getString("exhibit_date"));
-//			}
+			while (rs.next() ){
+				Goods goods = new Goods();
+				goods.setGoodsId(rs.getString("goods_id"));
+				goods.setSelluserId(rs.getString("selluser_id"));
+
+				goods.setImgPath(rs.getString("img_path"));
+				goods.setName(rs.getString("name"));
+				goods.setPrice(rs.getInt("price"));
+				goods.setQuantity(rs.getInt("quantity"));
+				goods.setCategory(rs.getString("category"));
+				goods.setGoodsMemo(rs.getString("goods_memo"));
+				goods.setStatus(rs.getString("status"));
+				goods.setExhibitDate(rs.getDate("exhibit_date"));
+				goods.setBuyDate(rs.getDate("exhibit_date"));
+				goods.setBuyuserId(rs.getString("exhibit_date"));
+
+			}
 			
 			}catch(Exception e) {
 				throw new IllegalStateException(e);
@@ -74,12 +76,54 @@ public class GoodsDAO {
 				}
 			}
 			return goodsList;
-		
 
 	}
 	
 	
-	//マイページ表示用に、userID渡したらその人の商品を取得する　selectGoodsByUser
+	//マイページ表示用に、userID渡したらその人の商品を取得する
+	public ArrayList<Goods> selectGoodsByUser(String userid){
+		Connection con = null;
+		Statement smt = null;
+		
+		//戻り値用の配列宣言
+		ArrayList<Goods> goodsList = new ArrayList<Goods>();
+		
+		//SQL文定義
+		String sql = "SELECT * FROM goodsinfo WHERE selluser_id = '" + userid  + "'";
+		
+		try {
+			ResultSet rs = smt.executeQuery(sql);
+			
+			while (rs.next() ){
+				Goods goods = new Goods();
+				goods.setGoodsId(rs.getString("goods_id"));
+				goods.setSelluserId(rs.getString("selluser_id"));
+				goods.setImgPath(rs.getString("img_path"));
+				goods.setName(rs.getString("name"));
+				goods.setPrice(rs.getInt("price"));
+				goods.setQuantity(rs.getInt("quantity"));
+				goods.setCategory(rs.getString("category"));
+				goods.setGoodsMemo(rs.getString("goods_memo"));
+				goods.setStatus(rs.getString("status"));
+				goods.setExhibitDate(rs.getDate("exhibit_date"));
+				goods.setBuyDate(rs.getDate("exhibit_date"));
+				goods.setBuyuserId(rs.getString("exhibit_date"));
+			}
+			
+		}catch(Exception e) {
+				throw new IllegalStateException(e);
+			}finally {
+				if ( smt != null) {
+					try {smt.close();}catch(SQLException ignore) {}
+				}
+				if ( con != null ) {
+					try { con.close();}catch(SQLException ignore) {}
+				}
+			}
+			return goodsList;
+		}
+	
+
 	
 	//他に必要な機能追加
 

@@ -2,7 +2,7 @@ package bean;
 
 public class User {
 	private String userid; //ユーザーID
-	private String name; //名前
+	private String username; //名前
 	private String name_kana; //名前(カナ)
 	private String nick_name; //ニックネーム
 	private String address; //住所
@@ -15,7 +15,7 @@ public class User {
 	//初期化処理
 	public User() {	
 		this.userid=null;
-		this.name=null;
+		this.username=null;
 		this.name_kana=null;
 		this.nick_name=null;
 		this.address=null;
@@ -36,10 +36,10 @@ public class User {
 	}
 	
 	public String getName() {
-		return name;
+		return username;
 	}
 	public void setName(String name) {
-		this.name=name;
+		this.username=name;
 	}
 	
 	public String getNamekana() {
@@ -49,10 +49,10 @@ public class User {
 		this.name_kana=name_kana;
 	}	
 	
-	public String getNick_name() {
+	public String getNickname() {
 		return nick_name;
 	}
-	public void setNick_name(String nick_name) {
+	public void setNickname(String nick_name) {
 		this.nick_name=nick_name;
 	}
 	
