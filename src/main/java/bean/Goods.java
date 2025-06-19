@@ -5,11 +5,11 @@ import java.util.Date;
 public class Goods {
 
 	// グッズIDを格納する変数
-	private String goods_id;
+	private String goodsId;
 	// 出品者のIDを格納する変数
-	private String selluser_id;
+	private String selluserId;
 	// 画像のパスを格納する変数
-	private String img_path;
+	private String imgPath;
 	// グッズの名前
 	private String name;
 	// グッズの値段
@@ -19,45 +19,45 @@ public class Goods {
 	// グッズの種類
 	private String category;
 	// グッズの状態、商品説明
-	private String goods_memo;
+	private String goodsMemo;
 	// 出品のステータス
 	private String status;
 	// 出品日
-	private Date exhibit_date;
+	private Date exhibitDate;
 	// 購入日
-	private Date buy_date;
+	private Date buyDate;
 	// 購入者のID
-	private String buyuser_id;
+	private String buyuserId;
 
 	// グッズID
-	public String goods_id() {
-		return goods_id;
+	public String getGoodsId() {
+		return goodsId;
 	}
 
-	public void setGoods_id(String goods_id) {
-		this.goods_id = goods_id;
+	public void setGoodsId(String goodsId) {
+		this.goodsId = goodsId;
 	}
 
 	// 購入者ID
-	public String selluser_id() {
-		return selluser_id;
+	public String getSelluserId() {
+		return selluserId;
 	}
 
-	public void setSelluser_id(String selluser_id) {
-		this.selluser_id = selluser_id;
+	public void setSelluserId(String selluserId) {
+		this.selluserId = selluserId;
 	}
 
 	// 画像のパス
-	public String img_path() {
-		return img_path;
+	public String getImgPath() {
+		return imgPath;
 	}
 
-	public void setImgpath_id(String img_path) {
-		this.img_path = img_path;
+	public void setImgpath_id(String imgPath) {
+		this.imgPath = imgPath;
 	}
 
 	//グッズの名前
-	public String name() {
+	public String getName() {
 		return name;
 	}
 
@@ -66,7 +66,7 @@ public class Goods {
 	}
 	
 	//グッズの値段
-	public int price() {
+	public int getPrice() {
 		return price;
 	}
 
@@ -75,7 +75,7 @@ public class Goods {
 	}
 
 	//グッズの数量
-	public int quantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
@@ -84,7 +84,7 @@ public class Goods {
 	}
 	
 	//グッズの種類
-	public String category() {
+	public String getCategory() {
 		return category;
 	}
 
@@ -93,16 +93,16 @@ public class Goods {
 	}
 	
 	//グッズのメモ
-	public String goods_memo() {
-		return goods_memo;
+	public String getGoodsMemo() {
+		return goodsMemo;
 	}
 
-	public void setGoods_memo(String goods_memo) {
-		this.goods_memo = goods_memo;
+	public void setGoodsMemo(String goodsMemo) {
+		this.goodsMemo = goodsMemo;
 	}
 	
 	//グッズの状態
-	public String status() {
+	public String getStatus() {
 		return status;
 	}
 
@@ -111,29 +111,29 @@ public class Goods {
 	}
 	
 	//グッズの出品日
-	public Date exhibit_date() {
-		return exhibit_date;
+	public Date getExhibitDate() {
+		return exhibitDate;
 	}
 
-	public void setExhibit_date(Date exhibit_date) {
-		this.exhibit_date = exhibit_date;
+	public void setExhibitDate(Date exhibitDate) {
+		this.exhibitDate = exhibitDate;
 	}
 	
 	//グッズの購入日
-	public Date buy_date() {
-		return buy_date;
+	public Date getBuyDate() {
+		return buyDate;
 	}
 
-	public void buy_date(Date buy_date) {
-		this.buy_date = buy_date;
+	public void setBuyDate(Date buyDate) {
+		this.buyDate = buyDate;
 	}
 	
 	//購入者のID
-	public String buyuser_id() {
-		return buyuser_id;
+	public String getBuyuserId() {
+		return buyuserId;
 	}
 
-	public void buyuser_id(String buyuser_id) {
-		this.buyuser_id = buyuser_id;
+	public void setBuyuserId(String buyuserId) {
+		this.buyuserId = buyuserId;
 	}
 }
