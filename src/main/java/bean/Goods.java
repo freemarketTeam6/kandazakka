@@ -61,7 +61,7 @@ public class Goods {
 		return goodsName;
 	}
 
-	public void setName(String goodsName) {
+	public void setGoodsName(String goodsName) {
 		this.goodsName = goodsName;
 	}
 
