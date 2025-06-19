@@ -58,6 +58,6 @@ public class GoodsDAO {
 	
 	//マイページ表示用に、userID渡したらその人の商品を取得する　selectGoodsByUser
 	
-	//
+	//他に必要な機能追加
 
 }
