@@ -2,7 +2,7 @@ package bean;
 
 public class OrderedGoods {
 		//グッズID
-		private int goodsid;
+		private int goods_id;
 		//カテゴリー
 		private String category;
 		//個数
@@ -10,24 +10,24 @@ public class OrderedGoods {
 		//価格
 		private int price;
 		//購入日
-		private String buydate;
+		private String buy_date;
 		
 		//コンストラクタ
 		public OrderedGoods() {
-			this.goodsid = 0;
+			this.goods_id = 0;
 			this.category = null;
 			this.quantity = 0;
 			this.price = 0;
-			this.buydate = null;
+			this.buy_date = null;
 		}
 		
 		//グッズID
-		public void setUserid(int goodsid) {
-			this.goodsid = goodsid;
+		public void setGoodsId(int goods_id) {
+			this.goods_id = goods_id;
 		}
 		
 		public int getGoodsId() {
-			return goodsid;
+			return goods_id;
 		}
 		
 		//カテゴリー
@@ -58,11 +58,11 @@ public class OrderedGoods {
 		}
 		
 		//購入日
-		public void setBuydate(String buydate) {
-			this.buydate = buydate;
+		public void setBuyDate(String buy_date) {
+			this.buy_date = buy_date;
 		}
 		
-		public String getBuydate() {
-			return buydate;
+		public String getBuyDate() {
+			return buy_date;
 		}
 }
