@@ -49,10 +49,10 @@ public class User {
 		this.name_kana=name_kana;
 	}	
 	
-	public String getNick_name() {
+	public String getNickname() {
 		return nick_name;
 	}
-	public void setNick_name(String nick_name) {
+	public void setNickname(String nick_name) {
 		this.nick_name=nick_name;
 	}
 	
