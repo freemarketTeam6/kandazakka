@@ -11,7 +11,7 @@ public class Goods {
 	// 画像のパスを格納する変数
 	private String imgPath;
 	// グッズの名前
-	private String name;
+	private String goodsName;
 	// グッズの値段
 	private int price;
 	// グッズの個数
@@ -47,7 +47,7 @@ public class Goods {
 		this.selluserId = selluserId;
 	}
 
-	// 画像のパス
+	// 画像パス
 	public String getImgPath() {
 		return imgPath;
 	}
@@ -57,12 +57,12 @@ public class Goods {
 	}
 
 	// グッズの名前
-	public String getName() {
-		return name;
+	public String getGoodsName() {
+		return goodsName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String goodsName) {
+		this.goodsName = goodsName;
 	}
 
 	// グッズの値段
