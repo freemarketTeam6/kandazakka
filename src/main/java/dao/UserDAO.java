@@ -26,6 +26,7 @@ public class UserDAO {
 		}
 	}
 	
+	// ユーザー名とパスワードが一致したらユーザー情報を全取得
 	public User selectByUser(String userid, String password) {
 		
 		Connection con = null;
@@ -37,14 +38,17 @@ public class UserDAO {
 			con =getConnection();
 			smt = con.createStatement();
 			
+			// SQL文
 			String sql = "SELECT * FROM userinfo WHERE user ='"+userid+"' AND password='"+password+"'";
 			
 			ResultSet rs = smt.executeQuery(sql);
 
+			/*
+			// ユーザー情報をuserオブジェクトに格納
 			if (rs.next()) {
 				user.setUserid(rs.getString("user_id"));
 				user.setName(rs.getString("name"));
-				user.setName_Kana(rs.getString("name_kana"));
+				user.setNameKana(rs.getString("name_kana"));
 				user.setNickname(rs.getString("nickname"));
 				user.setAddress(rs.getString("address"));
 				user.setEmail(rs.getString("email"));
@@ -53,7 +57,7 @@ public class UserDAO {
 				user.setmemo(rs.getString("memo"));
 				user.setAuthority(rs.getString("authority"));
 			}
-
+			*/
 			
 		} catch (Exception e) {
 			throw new IllegalStateException(e);

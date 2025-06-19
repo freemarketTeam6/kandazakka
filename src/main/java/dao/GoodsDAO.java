@@ -3,8 +3,11 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import bean.Goods;
 
 //import bean.Goods;
 
@@ -32,28 +35,48 @@ public class GoodsDAO {
 	
 	
 	//全部持ってくる　selectALL()
-//	public ArrayList<Goods> selectAll(){
-//		Connection con = null;
-//		Statement smt = null;
+	public ArrayList<Goods> selectAll(){
+		Connection con = null;
+		Statement smt = null;
 		
 		//戻り値用の配列宣言
-//		ArrayList<Goods> goodsList = new ArrayList<Goods>();
-//		
-//		String sql = "SELECT * FROM goodsinfo";
-//		
-//		ResultSet rs = smt.executeQuery(sql);
-//		
-//		while (rs.next() ){
-//			Goods goods = new Goods();
-//			goods.setUserId(rs.getString("user_id"));
-//			goods.setName(rs.getString("name"));
-//			goods.setNameKana(rs.getString("name_kana"));
-//			goods.setNickName(rs.getString("nickname"));
-//			goods.setAddress(rs.getString("address"));
-//			goods.setEmail(rs.getString("user_id"));
-//			goods.setUserId(rs.getString("user_id"));
-//		}
-//	}
+		ArrayList<Goods> goodsList = new ArrayList<Goods>();
+		
+		String sql = "SELECT * FROM goodsinfo";
+		
+		try {
+			ResultSet rs = smt.executeQuery(sql);
+			
+//			while (rs.next() ){
+//				Goods goods = new Goods();
+//				goods.setGoodsId(rs.getString("goods_id"));
+//				goods.setSelluserId(rs.getString("selluser_id"));
+//				goods.setImgpath_id(rs.getString("img_path"));
+//				goods.setName(rs.getString("name"));
+//				goods.setPrice(rs.getInt("price"));
+//				goods.setQuantity(rs.getInt("quantity"));
+//				goods.setCategory(rs.getString("category"));
+//				goods.setGoods_memo(rs.getString("goods_memo"));
+//				goods.setStatus(rs.getString("status"));
+//				goods.setExhibit_date(rs.getDate("exhibit_date"));
+//				goods.setbuy_date(rs.getString("exhibit_date"));
+//				goods.setBuyuser_id(rs.getString("exhibit_date"));
+//			}
+			
+			}catch(Exception e) {
+				throw new IllegalStateException(e);
+			}finally {
+				if ( smt != null) {
+					try {smt.close();}catch(SQLException ignore) {}
+				}
+				if ( con != null ) {
+					try { con.close();}catch(SQLException ignore) {}
+				}
+			}
+			return goodsList;
+		
+
+	}
 	
 	
 	//マイページ表示用に、userID渡したらその人の商品を取得する　selectGoodsByUser
