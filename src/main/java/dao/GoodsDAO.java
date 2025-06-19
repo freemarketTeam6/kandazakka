@@ -53,7 +53,7 @@ public class GoodsDAO {
 			
 			while (rs.next() ){
 				Goods goods = new Goods();
-				goods.setGoodsId(rs.getString("goods_id"));
+				goods.setGoodsId(rs.getInt("goods_id"));
 				goods.setSelluserId(rs.getString("selluser_id"));
 
 				goods.setImgPath(rs.getString("img_path"));
@@ -104,7 +104,7 @@ public class GoodsDAO {
 			
 			while (rs.next() ){
 				Goods goods = new Goods();
-				goods.setGoodsId(rs.getString("goods_id"));
+				goods.setGoodsId(rs.getInt("goods_id"));
 				goods.setSelluserId(rs.getString("selluser_id"));
 				goods.setImgPath(rs.getString("img_path"));
 				goods.setGoodsName(rs.getString("name"));
@@ -132,7 +132,7 @@ public class GoodsDAO {
 		}
 	
 	//マイページ表示用に、userID渡したらその人の商品を取得する
-	public Goods selectGoodsByGoodsID(String goodsid){
+	public Goods selectGoodsByGoodsID(int goodsid){
 		Connection con = null;
 		Statement smt = null;
 		
@@ -150,7 +150,7 @@ public class GoodsDAO {
 			ResultSet rs = smt.executeQuery(sql);
 			
 			if( rs.next() ) {
-				goods.setGoodsId(rs.getString("goods_id"));
+				goods.setGoodsId(rs.getInt("goods_id"));
 				goods.setSelluserId(rs.getString("selluser_id"));
 				goods.setImgPath(rs.getString("img_path"));
 				goods.setGoodsName(rs.getString("name"));
@@ -196,7 +196,7 @@ public class GoodsDAO {
 			
 			while (rs.next() ){
 				Goods goods = new Goods();
-				goods.setGoodsId(rs.getString("goods_id"));
+				goods.setGoodsId(rs.getInt("goods_id"));
 				goods.setSelluserId(rs.getString("selluser_id"));
 				goods.setImgPath(rs.getString("img_path"));
 				goods.setGoodsName(rs.getString("name"));
@@ -276,6 +276,31 @@ public class GoodsDAO {
 	      try{con.close();}catch(SQLException ignore){}
 	    }
 	  }
+	}
+	
+	public void delete(int goodsID){
+		 
+		  Connection con = null;
+		  Statement smt = null;
+		  //SQL文
+		  String sql = "DELETE FROM goodsinfo WHERE goods_id = " + goodsID;
+
+		  try{
+		  
+			  con = getConnection();
+			  smt = con.createStatement();
+			  
+			  smt.executeUpdate(sql);
+			  
+			  }catch(Exception e){
+				  throw new IllegalStateException(e);
+				  }finally{
+					  if( smt != null ){
+						  try{smt.close();}catch(SQLException ignore){}}
+					  if( con != null ){
+						  try{con.close();}catch(SQLException ignore){}
+						  }
+					  }
 	}
 	
 	//他に必要な機能追加
