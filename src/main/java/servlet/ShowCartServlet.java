@@ -31,9 +31,9 @@ public class ShowCartServlet extends HttpServlet {
 				cmd = "logout";
 				return;
 			}
-
+			
 			// セッションからカートを取得
-			ArrayList<Order> orderList = (ArrayList<Order>) session.getAttribute("orderList");
+			ArrayList<Goods> orderList = (ArrayList<Goods>) session.getAttribute("orderList");
 			// もし削除対象のデータが送られていればカートから削除
 			if (delno != null) {
 				orderList.remove(Integer.parseInt(delno));
