@@ -139,7 +139,7 @@ public class Goods {
 		this.buyuserId = buyuserId;
 	}
 
-	// グッズID
+	// 出品地域
 	public String getRegion() {
 		return region;
 	}
