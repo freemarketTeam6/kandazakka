@@ -32,7 +32,7 @@ public class GoodsDAO {
 	}
 	
 	//各種メソッド記載
-	
+	//
 	
 	//全部持ってくる　selectALL()
 	public ArrayList<Goods> selectAll(){
