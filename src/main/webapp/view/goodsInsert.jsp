@@ -55,7 +55,7 @@
 
 
 
-	<form action="<%=request.getContextPath() %>/insertUser" name="insertUser">
+	<form action="<%=request.getContextPath() %>/goodsInsert" name="goodsInsert">
 		<table class="insert">
 
 
