@@ -1,9 +1,12 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+<%@page import="java.util.ArrayList,bean.Goods,util.MyFormat"%>
 
 <html>
 <head>
 <title>商品情報変更</title>
 </head>
+
+<!-- フォーマットと地域の値があっているか -->
 
 <h1>出品情報変更</h1>
 <hr>
@@ -17,27 +20,27 @@
 	<br>
 	<tr>
 		<th style="background-color: #00a7db; width: 100">商品名</th>
-		<td style="text-align: center; color: #000000; font-size: 20px">変更前データ</td>
+		<td style="text-align: center; color: #000000; font-size: 20px"><%= goods.getGoodsName() %></td>
 		<td><input type="text"></td>
 	</tr>
 	<tr>
 		<th style="background-color: #00a7db; width: 100">価格</th>
-		<td style="text-align: center; color: #000000; font-size: 20px">変更前データ</td>
+		<td style="text-align: center; color: #000000; font-size: 20px"><%=format.moneyFormat(goods.getPrice())%></td>
 		<td><input type="text"></td>
 	</tr>
 	<tr>
 		<th style="background-color: #00a7db; width: 100">個数</th>
-		<td style="text-align: center; color: #000000; font-size: 20px">変更前データ</td>
+		<td style="text-align: center; color: #000000; font-size: 20px"><%= goods.getQuantity %></td>
 		<td><input type="text"></td>
 	</tr>
 	<tr>
 		<th style="background-color: #00a7db; width: 100">種類</th>
-		<td style="text-align: center; color: #000000; font-size: 20px">変更前データ</td>
+		<td style="text-align: center; color: #000000; font-size: 20px"><%= goods.getCategory %></td>
 		<td><input type="text"></td>
 	</tr>
 	<tr>
 		<th style="background-color: #00a7db; width: 100">地域</th>
-		<td style="text-align: center; color: #000000; font-size: 20px">変更前データ</td>
+		<td style="text-align: center; color: #000000; font-size: 20px"><%= goods.getRegion %></td>
 		<td><select name="area">
 				<option value="hokkaido">北海道</option>
 				<option value="tohoku">東北</option>
@@ -51,7 +54,7 @@
 	</tr>
 	<tr>
 		<th style="background-color: #00a7db; width: 100">備考</th>
-		<td style="text-align: center; color: #000000; font-size: 20px">変更前データ</td>
+		<td style="text-align: center; color: #000000; font-size: 20px"><%= goods.getMemo %></td>
 		<td><input type="text"></td>
 	</tr>
 	<tr><td colspan="3"><input type="submit" value="更新"></td></tr>
