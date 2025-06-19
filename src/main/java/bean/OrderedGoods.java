@@ -1,7 +1,7 @@
 package bean;
 
 public class OrderedGoods {
-	//グッズID
+		//グッズID
 		private int goodsid;
 		//カテゴリー
 		private String category;
