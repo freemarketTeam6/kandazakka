@@ -4,7 +4,7 @@ public class Order {
 	private int goods_id;
 	private String selluser_id;
 	private String img_path;
-	private String name;
+	private String goods_name;
 	private int price;
 	private int quantity;
 	private String category;
@@ -19,7 +19,7 @@ public class Order {
 		goods_id = 0;
 		selluser_id = null;
 		img_path = null;
-		name = null;
+		goods_name = null;
 		price = 0;
 		quantity = 0;
 		category = null;
@@ -58,12 +58,12 @@ public class Order {
 	}
 
 	// グッズの名前
-	public String getName() {
-		return name;
+	public String getGoodsName() {
+		return goods_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setGoodsName(String goods_name) {
+		this.goods_name = goods_name;
 	}
 
 	// グッズの値段
