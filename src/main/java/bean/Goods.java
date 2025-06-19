@@ -47,7 +47,7 @@ public class Goods {
 		this.selluserId = selluserId;
 	}
 
-	// 画像のパス
+	// 画像パス
 	public String getImgPath() {
 		return imgPath;
 	}
