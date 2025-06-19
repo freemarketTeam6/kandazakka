@@ -11,7 +11,7 @@ public class Goods {
 	// 画像のパスを格納する変数
 	private String imgPath;
 	// グッズの名前
-	private String name;
+	private String goodsName;
 	// グッズの値段
 	private int price;
 	// グッズの個数
@@ -47,25 +47,25 @@ public class Goods {
 		this.selluserId = selluserId;
 	}
 
-	// 画像のパス
+	// 画像パス
 	public String getImgPath() {
 		return imgPath;
 	}
 
-	public void setImgpath_id(String imgPath) {
+	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
 
-	//グッズの名前
-	public String getName() {
-		return name;
+	// グッズの名前
+	public String getGoodsName() {
+		return goodsName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String goodsName) {
+		this.goodsName = goodsName;
 	}
-	
-	//グッズの値段
+
+	// グッズの値段
 	public int getPrice() {
 		return price;
 	}
@@ -74,7 +74,7 @@ public class Goods {
 		this.price = price;
 	}
 
-	//グッズの数量
+	// グッズの数量
 	public int getQuantity() {
 		return quantity;
 	}
@@ -82,8 +82,8 @@ public class Goods {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	//グッズの種類
+
+	// グッズの種類
 	public String getCategory() {
 		return category;
 	}
@@ -91,8 +91,8 @@ public class Goods {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
-	//グッズのメモ
+
+	// グッズのメモ
 	public String getGoodsMemo() {
 		return goodsMemo;
 	}
@@ -100,8 +100,8 @@ public class Goods {
 	public void setGoodsMemo(String goodsMemo) {
 		this.goodsMemo = goodsMemo;
 	}
-	
-	//グッズの状態
+
+	// グッズの状態
 	public String getStatus() {
 		return status;
 	}
@@ -109,8 +109,8 @@ public class Goods {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	//グッズの出品日
+
+	// グッズの出品日
 	public Date getExhibitDate() {
 		return exhibitDate;
 	}
@@ -118,8 +118,8 @@ public class Goods {
 	public void setExhibitDate(Date exhibitDate) {
 		this.exhibitDate = exhibitDate;
 	}
-	
-	//グッズの購入日
+
+	// グッズの購入日
 	public Date getBuyDate() {
 		return buyDate;
 	}
@@ -127,8 +127,8 @@ public class Goods {
 	public void setBuyDate(Date buyDate) {
 		this.buyDate = buyDate;
 	}
-	
-	//購入者のID
+
+	// 購入者のID
 	public String getBuyuserId() {
 		return buyuserId;
 	}

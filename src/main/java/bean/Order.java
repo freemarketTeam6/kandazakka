@@ -1,17 +1,19 @@
 package bean;
 
+import java.util.Date;
+
 public class Order {
 	private int goods_id;
 	private String selluser_id;
 	private String img_path;
-	private String name;
+	private String goods_name;
 	private int price;
 	private int quantity;
 	private String category;
 	private String goods_memo;
 	private String status;
-	private String exhibit_date;
-	private String buy_date;
+	private Date exhibit_date;
+	private Date buy_date;
 	private String buyuser_id;
 
 	// 変数初期化
@@ -19,7 +21,7 @@ public class Order {
 		goods_id = 0;
 		selluser_id = null;
 		img_path = null;
-		name = null;
+		goods_name = null;
 		price = 0;
 		quantity = 0;
 		category = null;
@@ -58,12 +60,12 @@ public class Order {
 	}
 
 	// グッズの名前
-	public String getName() {
-		return name;
+	public String getGoodsName() {
+		return goods_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setGoodsName(String goods_name) {
+		this.goods_name = goods_name;
 	}
 
 	// グッズの値段
@@ -112,20 +114,20 @@ public class Order {
 	}
 
 	// 出品日
-	public String getExhibitDate() {
+	public Date getExhibitDate() {
 		return exhibit_date;
 	}
 
-	public void setExhibitDate(String exhibit_date) {
+	public void setExhibitDate(Date exhibit_date) {
 		this.exhibit_date = exhibit_date;
 	}
 
 	// 購入日
-	public String getBuyDate() {
+	public Date getBuyDate() {
 		return buy_date;
 	}
 
-	public void setBuyDate(String buy_date) {
+	public void setBuyDate(Date buy_date) {
 		this.buy_date = buy_date;
 	}
 
