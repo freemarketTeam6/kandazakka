@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import bean.Inquiries;
 
 public class InquiriesDAO {
+	
 
 	//接続用の情報をフィールドに定数として定義
 	private static final String RDB_DRIVE = "org.mariadb.jdbc.Driver";

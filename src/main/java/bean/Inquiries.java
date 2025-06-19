@@ -8,6 +8,7 @@ public class Inquiries {
 	private String title; //お問い合わせタイトル
 	private String contents; //詳細メッセージ
 	private String file_path; //添付ファイルのpass
+	
 
 	//コンストラクタ
 	public Inquiries() {
