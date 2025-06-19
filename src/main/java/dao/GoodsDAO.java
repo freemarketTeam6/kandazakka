@@ -47,21 +47,21 @@ public class GoodsDAO {
 		try {
 			ResultSet rs = smt.executeQuery(sql);
 			
-//			while (rs.next() ){
-//				Goods goods = new Goods();
-//				goods.setGoodsId(rs.getString("goods_id"));
-//				goods.setSelluserId(rs.getString("selluser_id"));
-//				goods.setImgpath_id(rs.getString("img_path"));
-//				goods.setName(rs.getString("name"));
-//				goods.setPrice(rs.getInt("price"));
-//				goods.setQuantity(rs.getInt("quantity"));
-//				goods.setCategory(rs.getString("category"));
-//				goods.setGoods_memo(rs.getString("goods_memo"));
-//				goods.setStatus(rs.getString("status"));
-//				goods.setExhibit_date(rs.getDate("exhibit_date"));
-//				goods.setbuy_date(rs.getString("exhibit_date"));
-//				goods.setBuyuser_id(rs.getString("exhibit_date"));
-//			}
+			while (rs.next() ){
+				Goods goods = new Goods();
+				goods.setGoodsId(rs.getString("goods_id"));
+				goods.setSelluserId(rs.getString("selluser_id"));
+				goods.setImgpath_id(rs.getString("img_path"));
+				goods.setName(rs.getString("name"));
+				goods.setPrice(rs.getInt("price"));
+				goods.setQuantity(rs.getInt("quantity"));
+				goods.setCategory(rs.getString("category"));
+				goods.setGoods_memo(rs.getString("goods_memo"));
+				goods.setStatus(rs.getString("status"));
+				goods.setExhibit_date(rs.getDate("exhibit_date"));
+				goods.setbuy_date(rs.getString("exhibit_date"));
+			goods.setBuyuser_id(rs.getString("exhibit_date"));
+			}
 			
 			}catch(Exception e) {
 				throw new IllegalStateException(e);
