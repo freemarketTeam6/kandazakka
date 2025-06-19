@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import bean.Goods;
+//import bean.Goods;
 
 public class GoodsDAO {
 	
@@ -32,28 +32,28 @@ public class GoodsDAO {
 	
 	
 	//全部持ってくる　selectALL()
-	public ArrayList<Goods> selectAll(){
-		Connection con = null;
-		Statement smt = null;
+//	public ArrayList<Goods> selectAll(){
+//		Connection con = null;
+//		Statement smt = null;
 		
 		//戻り値用の配列宣言
-		ArrayList<Goods> goodsList = new ArrayList<Goods>();
-		
-		String sql = "SELECT * FROM goodsinfo";
-		
-		ResultSet rs = smt.executeQuery(sql);
-		
-		while (rs.next() ){
-			Goods goods = new Goods();
-			goods.setUserId(rs.getString("user_id"));
-			goods.setName(rs.getString("name"));
-			goods.setNameKana(rs.getString("name_kana"));
-			goods.setNickName(rs.getString("nickname"));
-			goods.setAddress(rs.getString("address"));
-			goods.setEmail(rs.getString("user_id"));
-			goods.setUserId(rs.getString("user_id"));
-		}
-	}
+//		ArrayList<Goods> goodsList = new ArrayList<Goods>();
+//		
+//		String sql = "SELECT * FROM goodsinfo";
+//		
+//		ResultSet rs = smt.executeQuery(sql);
+//		
+//		while (rs.next() ){
+//			Goods goods = new Goods();
+//			goods.setUserId(rs.getString("user_id"));
+//			goods.setName(rs.getString("name"));
+//			goods.setNameKana(rs.getString("name_kana"));
+//			goods.setNickName(rs.getString("nickname"));
+//			goods.setAddress(rs.getString("address"));
+//			goods.setEmail(rs.getString("user_id"));
+//			goods.setUserId(rs.getString("user_id"));
+//		}
+//	}
 	
 	
 	//マイページ表示用に、userID渡したらその人の商品を取得する　selectGoodsByUser
