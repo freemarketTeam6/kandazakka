@@ -98,13 +98,13 @@ public class MyFormat {
 			formatRegion = "北海道地方";
 			break;
 		case "1":
-			formatRegion = "北陸";
+			formatRegion = "東北";
 			break;
 		case "2":
 			formatRegion = "関東";
 			break;
 		case "3":
-			formatRegion = "東海";
+			formatRegion = "中部";
 			break;
 		case "4":
 			formatRegion = "近畿";
