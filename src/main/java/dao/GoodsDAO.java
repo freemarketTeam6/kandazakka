@@ -131,7 +131,7 @@ public class GoodsDAO {
 			return goodsList;
 		}
 	
-	//マイページ表示用に、userID渡したらその人の商品を取得する
+	//GoodsIDをもとに、商品情報を検索して戻す
 	public Goods selectGoodsByGoodsID(int goodsid){
 		Connection con = null;
 		Statement smt = null;
