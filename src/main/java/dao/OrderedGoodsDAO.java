@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import bean.Goods;
+
 public class OrderedGoodsDAO {
 
 // データベース接続情報
@@ -47,18 +49,21 @@ try {
 	while (rs.next()) {
 		Goods goods = new Goods();
 		
-		Goods.setGoodsId(rs.getString("goods_id"));
-		Goods.setSelluserId(rs.getString("selluser_id"));
-		Goods.setImgPath(rs.getString("img_path"));
-		Goods.setGoodsName(rs.getString("name"));
-		Goods.setPrice(rs.getString("price"));
-		Goods.setQuantity(rs.getString("quantity"));
-		Goods.setCategory(rs.getString("category"));
-		Goods.setGoodsMemo(rs.getString("goods_memo"));
-		Goods.setStatus(rs.getString("status"));
-		Goods.setExhibitDate(rs.getString("exhibit_date"));
-		Goods.setBuyDate(rs.getString("buy_date"));
-		Goods.setBuyuserId(rs.getString("buyuser_id"));
+		goods.setGoodsId(rs.getString("goods_id"));
+		goods.setSelluserId(rs.getString("selluser_id"));
+		goods.setImgPath(rs.getString("img_path"));
+		goods.setGoodsName(rs.getString("name"));
+		goods.setPrice(rs.getInt("price"));
+		goods.setQuantity(rs.getInt("quantity"));
+		goods.setCategory(rs.getString("category"));
+		goods.setGoodsMemo(rs.getString("goods_memo"));
+		goods.setStatus(rs.getString("status"));
+		goods.setExhibitDate(rs.getDate("exhibit_date"));
+		goods.setBuyDate(rs.getDate("buy_date"));
+		goods.setBuyuserId(rs.getString("buyuser_id"));
+		
+		orderedGoodsList.add(goods);
+	}
 
 } catch (Exception e) {
 	throw new IllegalStateException(e);
