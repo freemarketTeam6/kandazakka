@@ -91,16 +91,19 @@ User user = (User)session.getAttribute("user");
 	
 	<hr>
 	
-	<table border="2" class="item">
-	<tr>
+
+	<div>
 	<% for ( int i = 0; i < goodsList.size(); i++){ %>
-		<td>
+		<div style="display: inline-block;">
 		<!-- 画像のパスは今後変更予定 -->
 			<img src="<%= goodsList.get(i).getImgPath() %>" alt="写真" width="200" height="200">
 			<%=  goodsList.get(i).getPrice()%>円
-		</td>
-	</tr>
+		</div>		
+	<% if ( i % 5 == 0 ){%>
+			<br>
+		<% } %>
+		<% } %>
+	</div>
 
-	</table>
 </body>
 </html>
