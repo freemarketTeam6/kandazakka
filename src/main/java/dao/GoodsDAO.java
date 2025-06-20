@@ -62,7 +62,7 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getString("status"));
+				goods.setStatus(rs.getInt("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -112,7 +112,7 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getString("status"));
+				goods.setStatus(rs.getInt("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -158,7 +158,7 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getString("status"));
+				goods.setStatus(rs.getInt("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -204,7 +204,7 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getString("status"));
+				goods.setStatus(rs.getInt("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -278,6 +278,7 @@ public class GoodsDAO {
 	  }
 	}
 	
+	//商品削除
 	public void delete(int goodsID){
 		 
 		  Connection con = null;
@@ -302,6 +303,39 @@ public class GoodsDAO {
 						  }
 					  }
 	}
+	
+	//商品のステータス変更機能
+//	goodsのstatus
+//	0…出品中
+//	1…入金待ち（購入済み）
+//	2…発送待ち（入金済み）
+//　3…発送完了
+		public void updateStatus(int goodsID,int statusNum){
+			 
+			  Connection con = null;
+			  Statement smt = null;
+			  
+			  try{	
+				  String sql= "UPDATE goodsinfo SET status = '" + statusNum +"' WHERE = goods_id = "+goodsID+"'";
+			  
+				  con = getConnection();
+				  smt = con.createStatement();
+			  
+				  smt.executeUpdate(sql);
+		 	 
+		  }catch(Exception e){
+		    throw new IllegalStateException(e);
+		  }finally{
+		    if( smt != null ){
+		      try{smt.close();}catch(SQLException ignore){}
+		    }
+		    if( con != null ){
+		      try{con.close();}catch(SQLException ignore){}
+		    }
+		  }
+		}
+	
+	
 	//他に必要な機能追加
 
 }
