@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>入金</title>
+<title>入金完了</title>
 </head>
 
 <body>
@@ -11,7 +11,7 @@
 
 <div>
 
-<p>購入商品情報を確認し、入金してください。</p>
+<p>入金が完了しました</p>
 
 <%
 //リクエストスコープから商品のGoodsオブジェクトを取得
@@ -48,12 +48,10 @@ Goods goods = (Goods)request.getAttribute("goods");
 
 
 
-<form action="<%=request.getContextPath() %>/payment" method="POST">
-<input type="submit" value="入金する">
-</form>
+商品発送までしばらくお待ちください
 
 <form action="<%=request.getContextPath() %>/buyList" method="POST">
-<input type="submit"  value="キャンセル">
+<input type="submit"  value="購入一覧へ戻る">
 </form>
 
 

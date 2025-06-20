@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class PaymentServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		try {
 		//マイページの購入品一覧の「入金」ボタンから遷移
 		//商品IDの情報だけもらう
 		int goodsid = (int)request.getAttribute("goodsid");
@@ -19,11 +20,24 @@ public class PaymentServlet extends HttpServlet {
 		//GoodsDAOのオブジェクト化
 		GoodsDAO goodsDaoObj = new GoodsDAO();
 		
-		Goods goods = goodsDaoObj.selectGoodsByGoodsId(goodsid);
+		//商品のステータスを2(入金済み・発送待ち)に変更
+		goodsDaoObj.updateStatus(goodsid, 2);
 		
-		//商品のステータスを1(入金前)から2(入金済み)へ変更
-		goods.setStatus(2);
+		//paymentConfirm.jspに送る用Goodsオブジェクト
+		Goods goods = goodsDaoObj.selectGoodsByGoodsID(goodsid);
 		
+		//リクエストスコープでGoodsオブジェクトをpaymentConfirm.jspへ送る
+		request.setAttribute("goods", goods);
+		
+		//paymentConfirm.jspへ遷移
+		request.getRequestDispatcher("/view/paymentConfirm.jsp").forward(request, response);
+		
+		
+		}catch (IllegalStateException e) {
+			request.setAttribute("error", "DB接続エラーの為、購入できませんでした。");
+			request.setAttribute("cmd", "mypage");
+			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
+		}
 		
 	}
 }
