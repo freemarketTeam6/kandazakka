@@ -1,12 +1,19 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="java.util.ArrayList,bean.Goods,util.MyFormat"%>
 
+<%
+//リクエストスコープに登録した書籍情報を取得
+Goods goods= (Goods)request.getAttribute("goods");
+//MyFormatクラスのオブジェクトを生成
+MyFormat format = new MyFormat();
+%>
+
 <html>
 <head>
 <title>商品情報変更</title>
 </head>
 
-<!-- フォーマットと地域の値があっているか -->
+<!-- フォーマットと地域の値があっているかAttributeの名前 -->
 
 <h1>出品情報変更</h1>
 <hr>
