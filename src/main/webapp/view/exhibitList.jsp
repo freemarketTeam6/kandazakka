@@ -25,14 +25,7 @@ MyFormat myformat = new MyFormat();
 	<div style="margin-bottom: 250pxr">
 
 		<table style="text-align: center; margin: auto; width: 850px">
-			<!-- リクエストスコープからデータの取得 -->
-			<%
-			
-			//リストがnullじゃないとき繰り返し処理によってlistの値を取得
-			if (goodsList != null) {
-				for (int i = 0; i <goodsList.size(); i++) {
-					Goods goods = (Goods) goodsList.get(i);
-			%>
+
 			<tr>
 				<th style="background-color: #6666ff; width: 200px">グッズID</th>
 				<th style="background-color: #6666ff; width: 200px">出品ユーザーID</th>
@@ -40,6 +33,14 @@ MyFormat myformat = new MyFormat();
 				<th style="background-color: #6666ff; width: 200px">金額</th>
 				<th style="background-color: #6666ff; width: 300px" colspan="3">取引状況</th>
 			</tr>
+
+			<%
+			
+			//リストがnullじゃないとき繰り返し処理によってlistの値を取得
+			if (goodsList != null) {
+				for (int i = 0; i <goodsList.size(); i++) {
+					Goods goods = (Goods) goodsList.get(i);
+			%>
 
 			<tr>
 				<!-- DTOクラスを使用し一覧を表示 -->
