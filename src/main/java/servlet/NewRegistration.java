@@ -1,101 +1,121 @@
 package servlet;
 
-import java.io.File;
 import java.io.IOException;
 
-import bean.Goods;
-import dao.GoodsDAO;
+import bean.User;
+import dao.UserDAO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 
+@WebServlet("/newRegistration")
 public class NewRegistration extends HttpServlet {
 	public void doPost( HttpServletRequest request, HttpServletResponse response) 
 
 			throws IOException, ServletException{
 		
 		//Goods型オブジェクトの作成
-		Goods goods = new Goods();
+		User user = new User();
 		
 		//GoodsDAOのインスタンス化
-		GoodsDAO objGoodsDAO = new GoodsDAO();
+		UserDAO objUserDAO = new UserDAO();
 		
 		//エラー文を管理する変数宣言
 		String error = "";
-
+		
+		/*
+		 * 入力内容のエラー処理
+		 * エラーが発生したら or 最後まで処理が完了したらWhile文抜ける
+		 */
 		while ( true ) {
-				String goodsName = request.getParameter("goodsName");
-				if(goodsName.equals("")){
-					error = "商品名が未入力の為、登録処理は行えませんでした。";
+			
+				//パラメータを受け取って、ユーザー名の空欄処理
+				String name = request.getParameter("name");
+				
+				if(name.equals("")){
+					error = "名前が未入力の為、登録処理は行えませんでした。";
 					request.setAttribute("error", error);
 					break;
 				}else {
-					goods.setGoodsName(goodsName);
+					user.setName(name);
 				}
 				
-				//パラメータを受け取り、PRICEに関するエラー処理を行う				
-				String price = request.getParameter("price");
-				if(price.equals("")){
+				//パラメータを受け取って、ユーザー名（フリガナ）の空欄処理
+				String name_kana = request.getParameter("name_kana");
+				
+				if(name_kana.equals("")){
+					error = "名前（カナ）が未入力の為、登録処理は行えませんでした。";
+					request.setAttribute("error", error);
+					break;
+				}else {
+					user.setNamekana(name_kana);
+				}
+				
+				//パラメータを受け取って、ニックネームの空欄処理
+				String nickname = request.getParameter("nickname");
+				
+				if(nickname.equals("")){
+					error = "ニックネームが未入力の為、登録処理は行えませんでした。";
+					request.setAttribute("error", error);
+					break;
+				}else {
+					user.setNickname(nickname);
+				}	
+				
+				/*
+				 * パラメータを受け取って、ユーザーIDに関するエラー処理
+				 * 空欄判定と、重複判定
+				 */
+				String userID = request.getParameter("userID");
+				if(userID.equals("")){
 					error = "価格が未入力の為、登録処理は行えませんでした。";
 					request.setAttribute("error", error);
 					break;
 				}
 				
-				try {
-					goods.setPrice(Integer.parseInt(request.getParameter("price")));
-				}catch(NumberFormatException e) {
-					error = "価格の値が不正の為、登録処理は行えませんでした。";
+				if (objUserDAO.selectByUser(userID) != null ) {
+					error = "このユーザーIDはすでに使われています！";
 					request.setAttribute("error", error);
 					break;
-				}
-				
-				//パラメータを受け取り、個数に関するエラー処理を行う				
-				String quantity = request.getParameter("quantity");
-				if(quantity.equals("")){
-					error = "個数が未入力の為、処理は行えませんでした。";
-					request.setAttribute("error", error);
-					break;
-				}
-				
-				try {
-					goods.setQuantity(Integer.parseInt(request.getParameter("quantity")));
-				}catch(NumberFormatException e) {
-					error = "個数の値が不正の為、登録処理は行えませんでした。";
-					request.setAttribute("error", error);
-					break;
-				}
-				
-				//「カテゴリ」のパラメータを取得してエラー処理
-				//optionの未選択は .equals("")でいいの？
-				String category = request.getParameter("category");
-				if(category.equals("")){
-					error = "カテゴリがの為、登録処理は行えませんでした。";
-					request.setAttribute("error", error);
-					break;
-				}else {
-					goods.setCategory(category);
-				}
-				
-				//「地域」のパラメータを取得してエラー処理
-				//optionの未選択は .equals("")でいいの？
-				String region = request.getParameter("region");
-				if(region.equals("")){
-					error = "地域が未選択の為、登録処理は行えませんでした。";
-					request.setAttribute("error", error);
-					break;
-				}else {
-					goods.setCategory(category);
 				}
 				
 				/*
-				 * 画像の保存先を指定する
-				 */								
-			}
+				 * パラメータを受け取って、メールアドレスの空欄処理
+				 * 正規表現を追加予定 6/20
+				 */
+				String mail = request.getParameter("mail");
+				
+				if(mail.equals("")){
+					error = "ニックネームが未入力の為、登録処理は行えませんでした。";
+					request.setAttribute("error", error);
+					break;
+				}else {
+					user.setEmail(mail);
+				}	
+				
+				//パラメータを受け取って、パスワードの空欄処理
+				String password = request.getParameter("password");
+				String passwordConfirm = request.getParameter("passwordConfirm");
+				
+				if(password.equals("")){
+					error = "パスワードが未入力の為、登録処理は行えませんでした。";
+					request.setAttribute("error", error);
+					break;
+				}else if( passwordConfirm.equals("")) {
+					error = "パスワード（確認用）が未入力の為、登録処理は行えませんでした。";
+					request.setAttribute("error", error);	
+					break;
+				}else if( password.equals(passwordConfirm)) {
+					error = "パスワードとパスワード（確認用）が一致しないため、登録処理は行えませんでした。";
+					request.setAttribute("error", error);	
+					break;
+				}
 		
 		try {
 			//insertメソッド呼び出し
+			objUserDAO.insert(user);
 			
 		}catch( Exception e ) {
 			error = "DB接続エラーの為、一覧表示は行えませんでした。";
