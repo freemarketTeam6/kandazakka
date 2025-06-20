@@ -117,6 +117,7 @@ public class GoodsDAO {
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
+				goodsList.add(goods);
 			}
 			
 		}catch(Exception e) {
@@ -209,6 +210,7 @@ public class GoodsDAO {
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
+				goodsList.add(goods);
 			}
 			
 		}catch(Exception e) {
@@ -309,7 +311,49 @@ public class GoodsDAO {
 					  }
 	}
 	
-
+	//ステータスの番号を引数に、該当の商品をDBから参照してくる
+	public ArrayList<Goods> selectGoodsByStatus(int status){
+		  Connection con = null;
+		  Statement smt = null;
+		  
+		  //戻り値用のArrayListを宣言
+		  ArrayList<Goods> goodsList = new ArrayList<Goods>();
+		  
+		  //SQL文定義
+		  String sql = "SELECT * FROM goodsinfo WHERE status = '" + status + "'";
+		  
+		  try {
+			  
+			  con = getConnection();
+			  smt = con.createStatement();			  
+			  
+			  //SQL文実行
+			  ResultSet rs = smt.executeQuery(sql);
+			  
+			//saleslist.jspの表は、左から購入日、商品画像、商品名、購入者、販売者、金額、利益（金額の10％）
+			  
+			  while( rs.next() ) {
+				  Goods goods = new Goods();
+				  goods.setBuyDate(rs.getDate("buy_date"));
+				  goods.setImgPath(rs.getString("img_path"));
+				  goods.setGoodsName(rs.getString("name"));
+				  goods.setBuyuserId(rs.getString("buyuser_id"));
+				  goods.setSelluserId(rs.getString("selluser_id"));
+				  goods.setPrice(rs.getInt("price"));
+				  goodsList.add(goods);
+		  }
+	  
+		  }catch(Exception e){
+			  throw new IllegalStateException(e);
+		  }finally{
+			  if( smt != null ){
+				  try{smt.close();}catch(SQLException ignore){}}
+			  if( con != null ){
+				  try{con.close();}catch(SQLException ignore){}
+				  }
+			  }
+		  return goodsList;
+}
 	//他に必要な機能追加
 
 }
