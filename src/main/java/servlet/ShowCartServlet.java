@@ -44,7 +44,7 @@ public class ShowCartServlet extends HttpServlet {
 			if (goodsList != null) {
 				// goodsinfoからorderList(カートデータ)分だけグッズ情報を呼び出す。
 				for (int i = 0; i < orderList.size(); i++) {
-					Goods goods = GoodsDao.selectByGoods(orderList.get(i).getGoodsId());
+					Goods goods = GoodsDao.selectGoodsByGoodsID(orderList.get(i).getGoodsId());
 					// 取得したデータをgoodsListに追加
 					goodsList.add(goods);
 					total += goods.getPrice();
