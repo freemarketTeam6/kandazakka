@@ -40,7 +40,7 @@ public class Goods {
 		this.goodsId = goodsId;
 	}
 
-	// 購入者ID
+	// 出品者ID
 	public String getSelluserId() {
 		return selluserId;
 	}
