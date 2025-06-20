@@ -76,7 +76,7 @@ public class UserDAO {
 		return user;
 	}
 
-	//引数がユーザーID
+	// 引数がユーザーID
 	public User selecByUser(String userid) {
 		Connection con = null;
 		Statement smt = null;
@@ -123,12 +123,47 @@ public class UserDAO {
 		Connection con = null;
 		Statement smt = null;
 
-		String sql = "INSERT INTO userinfo (user_id, name, name_kana, nickname, address, email, password, tell, memo, authority) VALUES ('"
-				+ user.getUserid() + "', '" + user.getName() + "', '" + user.getNamekana() + "', '" + user.getNickname()
-				+ "', '" + user.getAddres() + "', '" + user.getEmail() + "', '" + user.getPassword() + "', '"
-				+ user.getTell() + "', '" + user.getMemo() + "','" + "u" + ");";
+		String sql = "INSERT INTO userinfo (name, name_kana, nickname, address, email, password, tell, memo, authority) VALUES ('"
+				+ user.getName() + "', '" + user.getNamekana() + "', '" + user.getNickname() + "', '" + user.getAddres()
+				+ "', '" + user.getEmail() + "', '" + user.getPassword() + "', '" + user.getTell() + "', '"
+				+ user.getMemo() + "','" + "u" + ");";
 
 		try {
+			con = getConnection();
+			smt = con.createStatement();
+
+			smt.executeUpdate(sql);
+
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
+			}
+		}
+	}
+
+	// ユーザー情報変更機能
+	public void update(User user) {
+
+		Connection con = null;
+		Statement smt = null;
+
+		try {
+			String sql = "UPDATE userinfo SET name = '" + user.getName() + ", name_kana = '" + user.getNamekana()
+					+ "', nickname = '" + user.getNickname() + "', address = '" + user.getAddres() + "', email = '"
+					+ user.getEmail() + "', password = '" + user.getPassword() + "', tell = '" + user.getTell()
+					+ "', memo = '" + user.getMemo() + "' WHERE user_id = '" + user.getUserid() + "';";
+
 			con = getConnection();
 			smt = con.createStatement();
 
