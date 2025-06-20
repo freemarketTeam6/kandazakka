@@ -35,8 +35,7 @@ String cmd = (String)request.getAttribute("cmd");
 	<%	}else if(cmd.equals("mypage")){	%>
 		[<a href="<%=request.getContextPath()%>/view/mypage.jsp">マイページに戻る</a>]
 	<% } %>
-<<<<<<
->>>>> master
+	
 </div>
 
 <%@include file = "/common/footer.jsp"%>
