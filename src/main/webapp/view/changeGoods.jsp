@@ -13,7 +13,7 @@ MyFormat format = new MyFormat();
 <title>商品情報変更</title>
 </head>
 
-<!-- フォーマットと地域の値があっているかAttributeの名前 -->
+<!-- フォーマットと地域の値があっているか、Attributeの名前 -->
 
 <h1>出品情報変更</h1>
 <hr>
