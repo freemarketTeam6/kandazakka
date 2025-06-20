@@ -38,27 +38,27 @@ public class ShowCartServlet extends HttpServlet {
 			if (delno != null) {
 				orderList.remove(Integer.parseInt(delno));
 			}
-			
-			Goods goods=new Goods();
+
+			Goods goods = new Goods();
 			GoodsDAO GoodsDao = new GoodsDAO();
 			if (orderList != null) {
 				total += goods.getPrice();
 			}
-		// リクエストスコープに登録
-		request.setAttribute("orderList", orderList);
-		request.setAttribute("total", total);
-	} catch (IllegalStateException e) {
-		error = "DB接続エラーの為、カート状況は確認できません。";
-		cmd = "logout";
-	} finally {
-		if (error.equals("")) {
-			request.getRequestDispatcher("/view/showCart.jsp").forward(request, response);
-		} else {
-			// エラーなら
-			request.setAttribute("cmd", cmd);
-			request.setAttribute("error", error);
-			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
+			// リクエストスコープに登録
+			session.setAttribute("orderList", orderList);
+			request.setAttribute("total", total);
+		} catch (IllegalStateException e) {
+			error = "DB接続エラーの為、カート状況は確認できません。";
+			cmd = "logout";
+		} finally {
+			if (error.equals("")) {
+				request.getRequestDispatcher("/view/showCart.jsp").forward(request, response);
+			} else {
+				// エラーなら
+				request.setAttribute("cmd", cmd);
+				request.setAttribute("error", error);
+				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
+			}
 		}
 	}
-}
 }
