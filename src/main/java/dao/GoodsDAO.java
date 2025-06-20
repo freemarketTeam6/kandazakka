@@ -480,6 +480,8 @@ public class GoodsDAO {
 			}
 			return count;
 		}
+		
+		
 	//他に必要な機能追加
 
 }

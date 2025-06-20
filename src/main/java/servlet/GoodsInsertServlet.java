@@ -157,6 +157,7 @@ public class GoodsInsertServlet extends HttpServlet {
 			if (!uploadDirectory.exists()) {
 				uploadDirectory.mkdirs();
 			}
+			
 
 			//アップロードした画像ファイルパス
 			filePath = uploadDir + "/" + fileName;
