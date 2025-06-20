@@ -53,7 +53,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 				error = "グッズのカテゴリーが未入力の為、商品情報変更できません。";
 				return;
 			}
-			if (region.equals("")) {
+			if (region.equals("選択")) {
 				error = "グッズの地域が未入力の為、商品情報変更できません。";
 				return;
 			}
