@@ -187,4 +187,44 @@ public class UserDAO {
 		}
 	}
 
+	// 出品者一覧の情報取得機能
+	public User selectBySelluser(String selluserId) {
+		Connection con = null;
+		Statement smt = null;
+		User user = new User();
+		try {
+			/*
+			 * 未完成 // SQL文 String sql = "SELECT * FROM userinfo WHERE selluser_id ='" +
+			 * selluserId + "'";
+			 * 
+			 * con = getConnection(); smt = con.createStatement();
+			 * 
+			 * ResultSet rs = smt.executeQuery(sql);
+			 * 
+			 * if (rs.next()) { user.setUserid(rs.getString("user_id"));
+			 * user.setName(rs.getString("name"));
+			 * user.setNamekana(rs.getString("name_kana"));
+			 * user.setNickname(rs.getString("nickname"));
+			 * user.setAddress(rs.getString("address"));
+			 * user.setEmail(rs.getString("email"));
+			 * user.setPassword(rs.getString("password"));
+			 * user.setTell(rs.getString("tell")); user.setMemo(rs.getString("memo"));
+			 * user.setAuthority(rs.getString("authority")); }
+			 */
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+			try {
+				if (smt != null) {
+					smt.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException ignore) {
+			}
+		}
+		return user;
+	}
+
 }
