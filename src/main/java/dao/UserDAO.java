@@ -77,7 +77,7 @@ public class UserDAO {
 	}
 
 	// 引数がユーザーID
-	public User selecByUser(String userid) {
+	public User selectByUser(String userid) {
 		Connection con = null;
 		Statement smt = null;
 		User user = new User();
