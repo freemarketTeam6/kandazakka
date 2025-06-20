@@ -40,7 +40,7 @@ int total = (int) request.getAttribute("total");
 			<td><%=orderList.get(i).getGoodsId()%></a></td>
 			<td><%=orderList.get(i).getSelluserId()%></td>
 			<td><%=orderList.get(i).getGoodsName()%></td>
-			<td><%=orderList.get(i).myFormat.moneyFormat(goods.getPrice())%></td>
+			<td><%=myFormat.moneyFormat.(orderList.get(i).goods.getPrice())%></td>
 			<td><%=orderList.get(i).getQuantity()%></td>
 			<td><a
 				href="<%=request.getContextPath()%>/showCart?delno=<%=i%>">削除</a></td>
