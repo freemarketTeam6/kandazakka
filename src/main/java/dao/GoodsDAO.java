@@ -85,8 +85,8 @@ public class GoodsDAO {
 	}
 	
 	
-	//マイページ表示用に、userID渡したらその人の商品を取得する
-	public ArrayList<Goods> selectGoodsByUser(String userid){
+	//マイページで販売商品表示用に、userID渡したらその人の商品を取得する
+	public ArrayList<Goods> selectSellingGoodsByUser(String userid){
 		Connection con = null;
 		Statement smt = null;
 		
