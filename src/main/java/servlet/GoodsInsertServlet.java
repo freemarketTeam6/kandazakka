@@ -146,7 +146,7 @@ public class GoodsInsertServlet extends HttpServlet {
 
 
 			//ファイル名を設定
-			fileName = "goods_"+userid+"_"+goodsDao/*.manySearch(userid)+1*/;
+			fileName = "goods_"+userid+"_"+goodsDao.userGoodsCount(userid)+1;
 			
 
 			// 保存先ディレクトリを設定
@@ -157,6 +157,7 @@ public class GoodsInsertServlet extends HttpServlet {
 			if (!uploadDirectory.exists()) {
 				uploadDirectory.mkdirs();
 			}
+			
 
 			//アップロードした画像ファイルパス
 			filePath = uploadDir + "/" + fileName;

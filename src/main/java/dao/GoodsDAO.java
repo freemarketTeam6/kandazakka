@@ -439,7 +439,49 @@ public class GoodsDAO {
 		  }
 		}
 
-	
+	//指定ユーザが出品登録した商品の数をカウント
+		public int userGoodsCount(String userid) {
+
+			// 変数宣言
+			Connection con = null; // DBコネクション
+			Statement smt = null; // SQLステートメント
+
+			int count = 0;
+
+			try {
+				//②SQL文を文字列として定義
+				String sql = "SELECT COUNT(*) FROM goodsinfo WHERE selluser_id ='" + userid + "'";
+
+				con = GoodsDAO.getConnection();
+				smt = con.createStatement();
+
+				// SQL文発行
+				ResultSet rs = smt.executeQuery(sql);
+
+				// 検索結果をArrayListに格納
+				rs.next();
+				count = rs.getInt(1);
+
+			} catch (Exception e) {
+				throw new IllegalStateException(e);
+			} finally {
+				if (smt != null) {
+					try {
+						smt.close();
+					} catch (SQLException ignore) {
+					}
+				}
+				if (con != null) {
+					try {
+						con.close();
+					} catch (SQLException ignore) {
+					}
+				}
+			}
+			return count;
+		}
+		
+		
 	//他に必要な機能追加
 
 }
