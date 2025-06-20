@@ -1,14 +1,17 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.*,bean.Goods"%>
+<%@page import="java.util.*,bean.Goods,MyFormat"%>
 
 <%
 //リクエストスコープに登録したグッズ情報を取得
 ArrayList<Goods> orderList = (ArrayList<Goods>) session.getAttribute("orderList");
 
+//価格表示用のフォーマット
+MyFormat myformat = new MyFormat();
+
 // 合計価格用の変数
 int total = (int) request.getAttribute("total");
 %>
-<%@include file="../common/header.jsp"%>
+<%@include file="/common/userHeader.jsp"%>
 
 <hr
 	style="text-align: center; height: 2px; background-color: black; width: 950px">
@@ -37,7 +40,7 @@ int total = (int) request.getAttribute("total");
 			<td><%=orderList.get(i).getGoodsId()%></a></td>
 			<td><%=orderList.get(i).getSelluserId()%></td>
 			<td><%=orderList.get(i).getGoodsName()%></td>
-			<td><%=orderList.get(i).getPrice()%></td>
+			<td><%=orderList.get(i).myFormat.moneyFormat(goods.getPrice())%></td>
 			<td><%=orderList.get(i).getQuantity()%></td>
 			<td><a
 				href="<%=request.getContextPath()%>/showCart?delno=<%=i%>">削除</a></td>
@@ -54,10 +57,10 @@ int total = (int) request.getAttribute("total");
 	</table>
 
 	<form class="showCart-form"
-		action="<%=request.getContextPath()%>/buyConfirm" method="get">
+		action="<%=request.getContextPath()%>/view/buyConfirm.jsp" method="get">
 		<input type="submit" value="購入">
 	</form>
 
-	<%@include file="../common/footer.jsp"%>
+	<%@include file="/common/userFooter.jsp"%>
 </body>
 		</html>
