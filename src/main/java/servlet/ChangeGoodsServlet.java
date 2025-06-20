@@ -23,6 +23,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 		try {
 			GoodsDAO goodsDao = new GoodsDAO();
 
+			// パラメータの取得
 			String imgpath = request.getParameter("imgpath");
 			String goodsname = request.getParameter("goodsname");
 			String price = request.getParameter("price");         //int
