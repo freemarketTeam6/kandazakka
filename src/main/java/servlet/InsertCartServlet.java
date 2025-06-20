@@ -18,7 +18,7 @@ public class InsertCartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String error = "";
-		String cmd = "logout";
+		String cmd = "";
 		User user = null;
 		try {
 			HttpSession session = request.getSession();
@@ -57,6 +57,7 @@ public class InsertCartServlet extends HttpServlet {
 			session.setAttribute("orderList", orderList);
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、カートに追加はできません。";
+			cmd="logout";
 		} finally {
 			if (error.equals("")) {
 				request.getRequestDispatcher("/showCart").forward(request, response);
