@@ -72,6 +72,7 @@
 
 		</form>
 	</div>
+	<!-- 正規表現JavaScriptで追加できたら -->
 	<script src="<%= request.getContextPath() %>/view/js/script.js"></script>
 </body>
 <%@include file="/common/footer.jsp"%>

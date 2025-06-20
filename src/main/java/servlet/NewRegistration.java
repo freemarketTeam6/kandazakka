@@ -141,7 +141,7 @@ public class NewRegistration extends HttpServlet {
 				}
 		
 		try {
-			//insertメソッド呼び出し
+			//insertメソッドを呼び出し
 			objUserDAO.insert(user);
 			
 		}catch( Exception e ) {
