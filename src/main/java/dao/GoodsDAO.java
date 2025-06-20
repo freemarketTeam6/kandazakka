@@ -85,8 +85,10 @@ public class GoodsDAO {
 	}
 	
 	
-	//マイページで販売商品表示用に、userID渡したらその人の商品を取得する
-	public ArrayList<Goods> selectSellingGoodsByUser(String userid){
+
+	//userID渡したらその人の出品商品リストを取得するメソッド
+	public ArrayList<Goods> selectGoodsBySelluser(String userid){
+
 		Connection con = null;
 		Statement smt = null;
 		
@@ -94,7 +96,7 @@ public class GoodsDAO {
 		ArrayList<Goods> goodsList = new ArrayList<Goods>();
 		
 		//SQL文定義
-		String sql = "SELECT * FROM goodsinfo WHERE selluser_id = '" + userid  + "'";
+		String sql = "SELECT * FROM goodsinfo WHERE selluser_id = '" + userid  + "' ORDER BY exhibit_date";
 		
 		try {
 			
@@ -132,6 +134,56 @@ public class GoodsDAO {
 			}
 			return goodsList;
 		}
+	
+	
+	//userID渡したらその人が購入した商品リストを取得するメソッド
+		public ArrayList<Goods> selectGoodsByByeUser(String userid){
+			Connection con = null;
+			Statement smt = null;
+			
+			//戻り値用の配列宣言
+			ArrayList<Goods> goodsList = new ArrayList<Goods>();
+			
+			//SQL文定義
+			String sql = "SELECT * FROM goodsinfo WHERE buyuser_id = '" + userid  + "' ORDER BY buy_date";
+			
+			try {
+				
+				con = getConnection();
+				smt = con.createStatement();
+				
+				ResultSet rs = smt.executeQuery(sql);
+				
+				while (rs.next() ){
+					Goods goods = new Goods();
+					goods.setGoodsId(rs.getInt("goods_id"));
+					goods.setSelluserId(rs.getString("selluser_id"));
+					goods.setImgPath(rs.getString("img_path"));
+					goods.setGoodsName(rs.getString("name"));
+					goods.setPrice(rs.getInt("price"));
+					goods.setQuantity(rs.getInt("quantity"));
+					goods.setCategory(rs.getString("category"));
+					goods.setGoodsMemo(rs.getString("goods_memo"));
+					goods.setStatus(rs.getInt("status"));
+					goods.setExhibitDate(rs.getDate("exhibit_date"));
+					goods.setBuyDate(rs.getDate("exhibit_date"));
+					goods.setBuyuserId(rs.getString("exhibit_date"));
+				}
+				
+			}catch(Exception e) {
+					throw new IllegalStateException(e);
+				}finally {
+					if ( smt != null) {
+						try {smt.close();}catch(SQLException ignore) {}
+					}
+					if ( con != null ) {
+						try { con.close();}catch(SQLException ignore) {}
+					}
+				}
+				return goodsList;
+			}
+	
+	
 	
 	//GoodsIDをもとに、商品情報を検索して戻す
 	public Goods selectGoodsByGoodsID(int goodsid){
@@ -311,6 +363,7 @@ public class GoodsDAO {
 					  }
 	}
 	
+
 	//ステータスの番号を引数に、該当の商品をDBから参照してくる
 	public ArrayList<Goods> selectGoodsByStatus(int status){
 		  Connection con = null;
@@ -354,6 +407,39 @@ public class GoodsDAO {
 			  }
 		  return goodsList;
 }
+
+	//商品のステータス変更機能
+//	goodsのstatus
+//	0…出品中
+//	1…入金待ち（購入済み）
+//	2…発送待ち（入金済み）
+//　3…発送完了
+		public void updateStatus(int goodsID,int statusNum){
+			 
+			  Connection con = null;
+			  Statement smt = null;
+			  
+			  try{	
+				  String sql= "UPDATE goodsinfo SET status = '" + statusNum +"' WHERE = goods_id = "+goodsID+"'";
+			  
+				  con = getConnection();
+				  smt = con.createStatement();
+			  
+				  smt.executeUpdate(sql);
+		 	 
+		  }catch(Exception e){
+		    throw new IllegalStateException(e);
+		  }finally{
+		    if( smt != null ){
+		      try{smt.close();}catch(SQLException ignore){}
+		    }
+		    if( con != null ){
+		      try{con.close();}catch(SQLException ignore){}
+		    }
+		  }
+		}
+
+	
 	//他に必要な機能追加
 
 }
