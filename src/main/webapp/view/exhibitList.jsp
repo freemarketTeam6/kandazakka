@@ -1,13 +1,19 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.*,bean.Goods"%>
+<%@page import="java.util.*,bean.Goods,util.MyFormat"%>
 
+<%
+
+ArrayList<Goods>  = (ArrayList<Goods>) request.getAttribute("goodsList");
+
+MyFormat myformat = new MyFormat();
+%>
 <html>
 <head>
 <title>出品情報一覧</title>
 </head>
 
 <body>
-	<%@include file="..common/header/jsp"%>
+	<%@include file="../common/adminHeader/jsp"%>
 
 	<hr
 		style="text-align: center; height: 2px; background-color: black; width: 950px">
@@ -21,7 +27,7 @@
 		<table style="text-align: center; margin: auto; width: 850px">
 			<!-- リクエストスコープからデータの取得 -->
 			<%
-			ArrayList<Goods>  = (ArrayList<Goods>) request.getAttribute("goodsList");
+			
 			//リストがnullじゃないとき繰り返し処理によってlistの値を取得
 			if (goodsList != null) {
 				for (int i = 0; i <goodsList.size(); i++) {
@@ -40,11 +46,14 @@
 				<td style="text-align: center; width: 200px"><%=goods.getGoodsId()%></td>
 				<td style="text-align: center; width: 200px"><%=goods.getSelluserId()%></td>
 				<td style="text-align: center; width: 200px"><%=goods.getGoodsName()%></td>
-				<td style="text-align: center; width: 200px"><%=goods.getPrice()%></td>
-				<td style="text-align: center; width: 200px"><%=goods.getStatus()%></td>
+				<td style="text-align: center; width: 200px"><%=myFormat.moneyFormat.(goods.getPrice())%></td>
+				<td style="text-align: center; width: 200px"><%=myFormat.statusFormat(goods.getStatus())%></td>
 			</tr>
+			<%
+			}
+			%>
 		</table>
 	</div>
-	<%@include file="/common/footer.jsp"%>
+	<%@include file="../common/adminFooter.jsp"%>
 </body>
 </html>
