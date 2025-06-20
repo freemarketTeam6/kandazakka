@@ -53,7 +53,7 @@ public class GoodsInsertServlet extends HttpServlet {
 			// グッズの状態、商品説明
 			String goodsMemo = request.getParameter("goods_memo");
 			// 出品のステータス
-			String status = "0";
+			int status = 0;
 			// 出品地域
 			String region = request.getParameter("region");
 			
