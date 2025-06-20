@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<%@include file="../common/header.jsp"%>
+	<%@include file="../common/adminHeader.jsp"%>
 
 	<hr
 		style="text-align: center; height: 2px; background-color: black; width: 950px">
@@ -51,6 +51,6 @@
 				</tr>
 			</table>
 
-			<%@include file="../common/footer.jsp"%>
+			<%@include file="../common/adminFooter.jsp"%>
 </body>
 </html>
