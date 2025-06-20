@@ -39,7 +39,7 @@ public class UserDAO {
 			smt = con.createStatement();
 
 			// SQL文
-			String sql = "SELECT * FROM userinfo WHERE user ='" + userid + "' AND password='" + password + "'";
+			String sql = "SELECT * FROM userinfo WHERE user_id ='" + userid + "' AND password='" + password + "'";
 
 			ResultSet rs = smt.executeQuery(sql);
 
@@ -77,7 +77,7 @@ public class UserDAO {
 	}
 
 	// 引数がユーザーID
-	public User selecByUser(String userid) {
+	public User selectByUser(String userid) {
 		Connection con = null;
 		Statement smt = null;
 		User user = new User();

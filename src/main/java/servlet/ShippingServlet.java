@@ -43,7 +43,7 @@ public class ShippingServlet extends HttpServlet {
 		}else if( cmd.equals("shipping")) {	//マイページ → 出品商品一覧 → shipping.jspで発送ボタンを押したときに遷移
 			
 			//商品のステータスを2(入金済み)から3（発送済み）へ変更
-			goods.setStatus("3");
+			goods.setStatus(3);
 			
 			//商品情報をリクエストスコープに登録
 			request.setAttribute("goods", goods);

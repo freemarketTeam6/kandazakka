@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+<%@ page import="bean.Goods"%>
 
 <html>
 
@@ -58,42 +59,50 @@ body {
 		<h1>出品</h1>
 	</header>
 
-
+	<%
+	Goods goods = (Goods)request.getAttribute("goods");
+	
+	String message = (String)request.getAttribute("empty");
+	if(message == null){
+		message = "";
+	}
+	%>
+		<h3><%=message%></h3>
 
 	<form action="<%=request.getContextPath() %>/goodsInsert"
-		name="goodsInsert">
+		name="goodsInsert" method="post">
 		<table class="insert">
 
 
 			<tr>
 				<th>写真</th>
-				<td><input type="file" name="file" required="required" multiple />
-				</td>
+				<td><input type="file" name="image" required="required"
+					accept="image/ping,image/jpeg" multiple /></td>
 			</tr>
 			<tr>
 				<th>商品名</th>
-				<td><input type="text" name="neme" required="required">
+				<td><input type="text" name="neme" required="required" value="<%=goods.getGoodsName()%>">
 				</td>
 			</tr>
 			<tr>
 				<th>価格</th>
-				<td><input type="text" name="price" required="required"
+				<td><input type="text" name="price" required="required" value="<%=goods.getPrice()%>"
 					oninput="this.value=this.value.replace(/[^0-9]/g,'')"></td>
 			</tr>
 			<tr>
 				<th>個数</th>
-				<td><input type="text" name=" quantity" required="required"
+				<td><input type="text" name=" quantity" required="required" value="<%=goods.getQuantity()%>"
 					oninput="this.value=this.value.replace(/[^0-9]/g,'')"></td>
 			</tr>
 			<tr>
 				<th>種類</th>
-				<td><input type="text" name="category" required="required"
+				<td><input type="text" name="category" required="required" value="<%=goods.getCategory()%>"
 					placeholder="食器、おもちゃ等"></input></td>
 			</tr>
 
 			<tr>
 				<th>状態・商品説明</th>
-				<td><input type="textarea" name="detile" name="goods_memo"></input></td>
+				<td><input type="textarea" name="goods_memo" value="<%=goods.getGoodsMemo()%>"></input></td>
 			</tr>
 			<tr>
 				<th>地域</th>
@@ -114,10 +123,8 @@ body {
 				<td style="text-align: center"><span id="error">&nbsp;</span></td>
 			</tr>
 			<tr>
-				<td colspan=2><br>
-				<br>
-				<input type="submit" value="出品する" id="btn" style="width: 40%;">
-				</td>
+				<td colspan=2><br> <br> <input type="submit"
+					value="出品する" id="btn" style="width: 40%;"></td>
 			</tr>
 		</table>
 	</form>
