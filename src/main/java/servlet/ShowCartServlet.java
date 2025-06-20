@@ -31,40 +31,34 @@ public class ShowCartServlet extends HttpServlet {
 				cmd = "logout";
 				return;
 			}
-			
+
 			// セッションからカートを取得
 			ArrayList<Goods> orderList = (ArrayList<Goods>) session.getAttribute("orderList");
 			// もし削除対象のデータが送られていればカートから削除
 			if (delno != null) {
 				orderList.remove(Integer.parseInt(delno));
 			}
-
+			
+			Goods goods=new Goods();
 			GoodsDAO GoodsDao = new GoodsDAO();
-			ArrayList<Goods> goodsList = new ArrayList<>();
-			if (goodsList != null) {
-				// goodsinfoからorderList(カートデータ)分だけグッズ情報を呼び出す。
-				for (int i = 0; i < orderList.size(); i++) {
-					Goods goods = GoodsDao.selectGoodsByGoodsID(orderList.get(i).getGoodsId());
-					// 取得したデータをgoodsListに追加
-					goodsList.add(goods);
-					total += goods.getPrice();
-				}
+			if (orderList != null) {
+				total += goods.getPrice();
 			}
-			// リクエストスコープに登録
-			request.setAttribute("goodsList", goodsList);
-			request.setAttribute("total", total);
-		} catch (IllegalStateException e) {
-			error = "DB接続エラーの為、カート状況は確認できません。";
-			cmd = "logout";
-		} finally {
-			if (error.equals("")) {
-				request.getRequestDispatcher("/view/showCart.jsp").forward(request, response);
-			} else {
-				// エラーなら
-				request.setAttribute("cmd", cmd);
-				request.setAttribute("error", error);
-				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
-			}
+		// リクエストスコープに登録
+		request.setAttribute("orderList", orderList);
+		request.setAttribute("total", total);
+	} catch (IllegalStateException e) {
+		error = "DB接続エラーの為、カート状況は確認できません。";
+		cmd = "logout";
+	} finally {
+		if (error.equals("")) {
+			request.getRequestDispatcher("/view/showCart.jsp").forward(request, response);
+		} else {
+			// エラーなら
+			request.setAttribute("cmd", cmd);
+			request.setAttribute("error", error);
+			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 		}
 	}
+}
 }
