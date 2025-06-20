@@ -17,25 +17,23 @@
 	<div class="insert">
 		<form action="<%=request.getContextPath()%>/newRegistration" method="post">
 
-			<table class="insertTable">
 				<tr>
 					<td id="leftCol">名前</td>
-					<td id="midCol"><input type="text" name="isbn" id="insertISBN"></td>
+					<td id="rightCol"><input type="text" name="name" id="name"></td>
+				</tr>
+				<tr>
+					<td id="leftCol">名前（カナ）</td>
+					<td id="rightCol"><input type="text" name="name_kana" id="name_kana"></td>
 					<td></td>
 				</tr>
 				<tr>
-					<td id="leftCol">TITLE</td>
-					<td id="midCol"><input type="text" name="title" id="insertTITLE"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td id="leftCol">PRICE</td>
-					<td id="midCol"><input type="text" name="price" id="insertPRICE"></td>
+					<td id="leftCol">ニックネーム</td>
+					<td id="rightCol"><input type="text" name="price" id="insertPRICE"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td id="leftCol">画像</td>
-					<td id="midCol">
+					<td id="rightCol">
 						<div class="over-text">
 							<span class="select-image" id="fileSelectMessage">Not Selected</span>
 						</div>
