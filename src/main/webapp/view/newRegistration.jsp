@@ -14,29 +14,42 @@
 
 	<div class="registration">
 		<form action="<%=request.getContextPath()%>/newRegistration" method="post">
-
+				
 				<tr>
 					<td id="leftCol">名前</td>
 					<td id="rightCol"><input type="text" name="name" id="name"></td>
 				</tr>
+				
 				<tr>
 					<td id="leftCol">名前（カナ）</td>
 					<td id="rightCol"><input type="text" name="name_kana" id="name_kana"></td>
-					<td></td>
 				</tr>
+				
 				<tr>
 					<td id="leftCol">ニックネーム</td>
 					<td id="rightCol"><input type="text" name="nickname" id="nickname"></td>
-					<td></td>
 				</tr>
+				
 				<tr>
-					<td id="leftCol">ユーザーID</td>
-					<td id="rightCol"><input type="text" name="userID" id="userID"></td>
+					<td id="leftCol">住所</td>
+					<td id="rightCol"><input type="text" name="address" id="address"></td>
 				</tr>
+				
+				<tr>
+					<td id="leftCol">電話番号</td>
+					<td id="rightCol"><input type="text" name="tell" id="tell"></td>
+				</tr>				
+								
 				<tr>
 					<td id="leftCol">メールアドレス</td>
 					<td id="rightCol"><input type="text" name="email" id="email"></td>
 				</tr>
+				
+				<tr>
+					<td id="leftCol">ユーザーID</td>
+					<td id="rightCol"><input type="text" name="userID" id="userID"></td>
+				</tr>				
+				
 				<tr>
 					<td id="leftCol">パスワード</td>
 					<td id="rightCol"><input type="password" name="password" id="password"></td>
@@ -44,7 +57,13 @@
 				<tr>
 					<td id="leftCol">パスワード（確認用）</td>
 					<td id="rightCol"><input type="password" name="passwordConfirm" id="passwordConfirm"></td>
-				</tr>												
+				</tr>
+				
+				<tr>
+					<td id="leftCol">プロフィール</td>
+					<td id="rightCol"><textarea name="memo" cols="30"></textarea></td>
+				</tr>	
+																				
 			</table>
 
 			<div class="submit">
