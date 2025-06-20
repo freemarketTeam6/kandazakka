@@ -1,5 +1,4 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.ArrayList, bean.Book, util.MyFormat"%>
 
 
 <html>
@@ -9,12 +8,11 @@
 </head>
 <body>
 	<%@include file="/common/header.jsp"%>
-	<a href="<%= request.getContextPath() %>/ListServlet">【書籍一覧】</a>
-	<a href="<%= request.getContextPath() %>/view/insert.jsp">【書籍登録】</a>
-	<h1 style="text-align: center;">書籍登録</h1>
+	<a href="<%= request.getContextPath() %>/top">トップ画面へ</a>
+	<h1 style="text-align: center;">ユーザー登録</h1>
 	<hr size=5px color="black">
 
-	<div class="insert">
+	<div class="registration">
 		<form action="<%=request.getContextPath()%>/newRegistration" method="post">
 
 				<tr>
@@ -28,17 +26,25 @@
 				</tr>
 				<tr>
 					<td id="leftCol">ニックネーム</td>
-					<td id="rightCol"><input type="text" name="price" id="insertPRICE"></td>
+					<td id="rightCol"><input type="text" name="nickname" id="nickname"></td>
 					<td></td>
 				</tr>
 				<tr>
-					<td id="leftCol">画像</td>
-					<td id="rightCol">
-						<div class="over-text">
-							<span class="select-image" id="fileSelectMessage">Not Selected</span>
-						</div>
-					</td>
+					<td id="leftCol">ユーザーID</td>
+					<td id="rightCol"><input type="text" name="userID" id="userID"></td>
 				</tr>
+				<tr>
+					<td id="leftCol">メールアドレス</td>
+					<td id="rightCol"><input type="text" name="email" id="email"></td>
+				</tr>
+				<tr>
+					<td id="leftCol">パスワード</td>
+					<td id="rightCol"><input type="password" name="password" id="password"></td>
+				</tr>
+				<tr>
+					<td id="leftCol">パスワード（確認用）</td>
+					<td id="rightCol"><input type="password" name="passwordConfirm" id="passwordConfirm"></td>
+				</tr>												
 			</table>
 
 			<div class="submit">
@@ -47,7 +53,6 @@
 
 		</form>
 	</div>
-	<script src="<%= request.getContextPath() %>/view/js/jquery-3.7.1.js"></script>
 	<script src="<%= request.getContextPath() %>/view/js/script.js"></script>
 </body>
 <%@include file="/common/footer.jsp"%>
