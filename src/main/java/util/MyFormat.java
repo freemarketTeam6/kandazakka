@@ -46,10 +46,10 @@ public class MyFormat {
 			formatStatus = "出品中";
 
 		} else if (status.equals("1")) {
-			formatStatus = "購入済み";
+			formatStatus = "入金待ち";
 
 		} else if (status.equals("2")) {
-			formatStatus = "入金待ち";
+			formatStatus = "発送待ち";
 
 		} else if (status.equals("3")) {
 			formatStatus = "発送完了";
