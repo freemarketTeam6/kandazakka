@@ -3,7 +3,7 @@
 
 <%
 
-ArrayList<Goods>  = (ArrayList<Goods>) request.getAttribute("goodsList");
+ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList");
 
 MyFormat myformat = new MyFormat();
 %>
