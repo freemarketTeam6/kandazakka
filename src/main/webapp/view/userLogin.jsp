@@ -60,7 +60,7 @@ if(message==null){
  					</tr>
  					<tr>	
  						<td style="text-align: center; width: 80px; font-size: 15px;"><a
-							href="<%=request.getContextPath() %>/view/menu.jsp">新規登録</a>	
+							href="<%=request.getContextPath() %>/view/newRegistration.jsp">新規登録</a>	
 						</td>
  					</tr>
  					</div>

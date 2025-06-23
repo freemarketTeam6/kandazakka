@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/view/css/style.css">
 </head>
 <body>
-	<%@include file="/common/header.jsp"%>
+	<%@include file="/common/userHeader.jsp"%>
 	<a href="<%= request.getContextPath() %>/ListServlet">【書籍一覧】</a>
 	<a href="<%= request.getContextPath() %>/view/insert.jsp">【書籍登録】</a>
 	<h1 style="text-align: center;">書籍登録</h1>
@@ -50,5 +50,5 @@
 	<script src="<%= request.getContextPath() %>/view/js/jquery-3.7.1.js"></script>
 	<script src="<%= request.getContextPath() %>/view/js/script.js"></script>
 </body>
-<%@include file="/common/footer.jsp"%>
+<%@include file="/common/userFooter.jsp"%>
 </html>
