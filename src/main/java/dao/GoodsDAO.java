@@ -16,7 +16,7 @@ public class GoodsDAO {
 	
 	//データベース接続情報
 	private static String RDB_DRIVE ="org.mariadb.jdbc.Driver";
-	private static String URL ="jdbc:mariadb://localhost/mybookdb";
+	private static String URL ="jdbc:mariadb://localhost/kandazakkadb";
 	private static String USER ="root";
 	private static String PASS ="root123";
 	
