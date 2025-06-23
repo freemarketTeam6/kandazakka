@@ -37,8 +37,7 @@ public class LoginServlet extends HttpServlet {
 		UserDAO objDao = new UserDAO();
 		user =objDao.selectByUser(userid,password);
 		
-		HttpSession session=request.getSession();
-		session.setAttribute("user",user);
+		
 		
 		if(user.getUserid()==null){
 			if(from.equals("admin")) {
@@ -50,6 +49,10 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("/view/userLogin.jsp").forward(request, response);
 			}
 		}else {
+			//ユーザー情報をSessionに登録
+			HttpSession session=request.getSession();
+			session.setAttribute("user",user);
+			
 			//ユーザー用クッキーの生成
  			Cookie useridCookie = new Cookie("userid", userid);
  			useridCookie.setMaxAge(60 * 60 * 24 * 5);

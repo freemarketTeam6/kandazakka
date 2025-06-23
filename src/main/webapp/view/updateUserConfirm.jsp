@@ -50,10 +50,9 @@ body {
 <body>
 	<div class="main">
 		<header>
-			<%@include file="/common/header.jsp"%>
+			<%@include file="/common/userHeader.jsp"%>
 		</header>
 
-		<%User user = (User)request.getAttribute("user"); %>
 
 		<h1>ユーザー情報変更</h1>
 
@@ -78,7 +77,7 @@ body {
 			</tr>
 			<tr>
 				<td class="thclass"><span>住所</span></td>
-				<td><span><%=user.getAddres()%></span></td>
+				<td><span><%=user.getAddress()%></span></td>
 			</tr>
 			<tr>
 				<td class="thclass"><span>電話番号</span></td>
@@ -98,10 +97,6 @@ body {
 				<td><span><%=user.getMemo()%></span></td>
 			</tr>
 
-			<tr>
-				<td class="thclass"><span>メモ</span></td>
-				<td><span><%=user.getMemo()%></span></td>
-			</tr>
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
@@ -141,7 +136,7 @@ body {
 		</script>
 
 		<footer>
-			<%@include file="/common/footer.jsp"%>
+			<%@include file="/common/userFooter.jsp"%>
 		</footer>
 
 	</div>

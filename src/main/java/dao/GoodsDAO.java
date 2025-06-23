@@ -63,7 +63,7 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getInt("status"));
+				goods.setStatus(rs.getString("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -114,7 +114,7 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getInt("status"));
+				goods.setStatus(rs.getString("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -163,7 +163,7 @@ public class GoodsDAO {
 					goods.setQuantity(rs.getInt("quantity"));
 					goods.setCategory(rs.getString("category"));
 					goods.setGoodsMemo(rs.getString("goods_memo"));
-					goods.setStatus(rs.getInt("status"));
+					goods.setStatus(rs.getString("status"));
 					goods.setExhibitDate(rs.getDate("exhibit_date"));
 					goods.setBuyDate(rs.getDate("exhibit_date"));
 					goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -211,7 +211,7 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getInt("status"));
+				goods.setStatus(rs.getString("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -257,7 +257,7 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getInt("status"));
+				goods.setStatus(rs.getString("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -364,7 +364,7 @@ public class GoodsDAO {
 	
 
 	//ステータスの番号を引数に、該当の商品をDBから参照してくる
-	public ArrayList<Goods> selectGoodsByStatus(int status){
+	public ArrayList<Goods> selectGoodsByStatus(String status){
 		  Connection con = null;
 		  Statement smt = null;
 		  
@@ -413,7 +413,7 @@ public class GoodsDAO {
 //	1…入金待ち（購入済み）
 //	2…発送待ち（入金済み）
 //　3…発送完了
-		public void updateStatus(int goodsID,int statusNum){
+		public void updateStatus(int goodsID,String statusNum){
 			 
 			  Connection con = null;
 			  Statement smt = null;
