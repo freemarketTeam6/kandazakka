@@ -4,9 +4,9 @@
 <header>	
 	<tr>
 		<div style="text-align:center">
-			<td style="text-align:center;"><img src="/pic/kandafm.png" alt="ロゴ"></td>
-		<form id="form1" action="自分のサイトURL">
-			<input id="sbox2" name="s" type="text" placeholder="キーワードを入力" />
+			<td style="text-align:center;"><a href="<%=request.getContextPath() %>/view/top.jsp"><img src="/pic/kandafm.png" alt="ロゴ"></a></td>
+		<form action="<%=request.getContextPath()%>/SearchServlet"style="display: inline;">
+			<input id="sbox2" name="keyword" type="text" placeholder="キーワードを入力" />
 			<input id="sbtn1" type="submit" value="検索" />
 		</form>
 		</div>
@@ -40,6 +40,7 @@
 				<a href="<%=request.getContextPath()%>/view/mypage.jsp"style="margin-right: 30px;">マイページ</a>
 				<a href="<%=request.getContextPath()%>/view/showCart.jsp"style="margin-right: 30px;">カート内容</a>
 				<a href="<%=request.getContextPath()%>/view/goodsInsert.jsp"style="margin-right: 30px;">出品</a>
+				<a href="<%=request.getContextPath()%>/view/top.jsp"style="margin-right: 30px;">トップメニューへ</a>
 			</ul>
 		</div>
 

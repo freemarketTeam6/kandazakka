@@ -36,11 +36,11 @@ String error = (String) request.getAttribute("error");
 			</tr>	
 			<tr>	
 				<th style="background-color: #00a7db; width: 100">名前(カナ)</th>
-				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getName_kana()%></td>
+				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getNamekana()%></td>
 			</tr>
 			<tr>	
 				<th style="background-color: #00a7db; width: 100">ニックネーム</th>
-				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getNick_name()%></td>
+				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getNickname()%></td>
 			</tr>
 			<tr>	
 				<th style="background-color: #00a7db; width: 100">住所</th>
