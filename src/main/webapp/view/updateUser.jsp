@@ -69,14 +69,16 @@ body {
 
 </head>
 <body>
+<%@include file="../common/userHeader.jsp"%>
 	<div class="main">
 
 
-
+		<!-- requestUserは、一度目の入力の際に未入力の項目があった場合、
+			再入力の手間を省けるよう、自動入力させるために必要	 -->
 
 		<%
-		User sessionuser = (User) session.getAttribute("user");
-		User requestuser = (User) request.getAttribute("user");
+		User sessionUser = (User) session.getAttribute("user");
+		User requestUser = (User) request.getAttribute("user");
 
 		String message = (String) request.getAttribute("message");
 		if (message == null) {
@@ -84,10 +86,14 @@ body {
 		}
 		%>
 
-
+		
 		<h1>ユーザー情報変更</h1>
+		
+		<!-- inputタグの中に value = requestUser.get●●()を記述していたが、
+				マイページからこのjspに飛んだ時にnullのためエラーが出る。
+				6/23 14時点では、いったんvalueを削除して進めることとする -->
 
-		<form action="<%=request.getContextPath()%>/updatesessionUser"
+		<form action="<%=request.getContextPath()%>/updateUser"
 			name="updatesessionUser" method="post">
 
 			<h3><%=message%></h3>
@@ -104,46 +110,45 @@ body {
 					<td class="thclass"><span>名前</span></td>
 					<td><span><%=sessionUser.getName()%></span></td>
 					<td><input type="text" name="name" id="name"
-						required="required"value="<%=requestUser.getName()%>"></input></td>
+						required="required"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>名前（カナ）</span></td>
 					<td><span><%=sessionUser.getNamekana()%></span></td>
 					<td><input type="text" name="name_kana" id="name_kana"
-						required="required" value="<%=requestUser.getNamekana()%>"></input></td>
+						required="required"></input></td>
 
 				</tr>
 				<tr>
 					<td class="thclass"><span>ニックネーム</span></td>
 					<td><span><%=sessionUser.getNickname()%></span></td>
 					<td><input type="text" name="nickname" id="nickname"
-						required="required" value="<%=requestUser.getNickname()%>"></input></td>
+						required="required"></input></td
 					<td></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>ユーザーID</span></td>
-					<td><span><%=sessionUser.getUserid()%></span></td>
-					<td><input type="text" name="userid" id="userid"
-						required="required" value="<%=requestUser.getUserid()%>"></input></td>
+					<td><span><%= sessionUser.getUserid() %></span></td>
+					<td><input type="text" name="userID" id="userid"
+						required="required"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>住所</span></td>
-					<td><span><%=sessionUser.getAddres()%></span></td>
+					<td><span><%= sessionUser.getAddress() %></span></td>
 					<td><input type="text" name="address" id="address"
-						required="required" value="<%=requestUser.getAddres()%>"></input></td>
+						required="required"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>電話番号</span></td>
-					<td><span><%=sessionUser.getTell()%></span></td>
+					<td><span><%= sessionUser.getTell() %></span></td>
 					<td><input type="tel" name="tell" id="tell"
 						oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-						required="required" value="<%=requestUser.getTell()%>"></input></td>
+						required="required"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>Eメール</span></td>
-					<td><span><%=sessionUser.getEmail()%></span></td>
-					<td><input type="email" name="email" required="required"
-						value="<%=requestUser.gerEmail()%>"></input></td>
+					<td><span><%= sessionUser.getEmail() %></span></td>
+					<td><input type="email" name="email" required="required"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>メモ</span></td>
@@ -159,14 +164,13 @@ body {
 				<tr>
 					<td class="thclass"><span>新規パスワード</span></td>
 					<td>&nbsp;</td>
-					<td><input type="password" id="pass" name="pass"
-						required="required"></input></td>
+					<td><input type="password" id="pass" name="pass" required="required"></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>新規パスワード（確認用）</span></td>
 					<td>&nbsp;</td>
 					<td><input type="password" id="checkpass" name="checkpass"
-						required="required"></input></td>
+						required="required" oninput="CheckPassword(this)"></input></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -180,58 +184,28 @@ body {
 				</tr>
 				<tr>
 					<td></td>
-					<td colspan=2 style="text-align: center;"><input type="submit"
-						value="変更する" id="btn" style="width: 40%;" disabled></td>
+					<td colspan=2 style="text-align: center;">
+						<input type="submit" value="変更する" id="btn" style="width: 40%;">
+					</td>
 				</tr>
 
 			</table>
 		</form>
 
 		<script type="text/javascript">
-			checkpass.oninput = function() {
-				var pass = document.updateUser.pass.value;
-				var checkpass = document.updateUser.checkpass.value;
-				var element = document.getElementById("btn");
-				var textbgColor = document.getElementById("checkpass");
 
-				if (pass == "") {
-					element.disabled = true;
-					textbgColor.style.backgroundColor = "#ffffff";
-					error.innerHTML = "";
-
-				} else if (pass != checkpass) {
-					element.disabled = true;
-					textbgColor.style.backgroundColor = "#ffb3b3";
-					error.innerHTML = "パスワードが一致していません";
-
-				} else if (pass == checkpass) {
-					element.disabled = false;
-					textbgColor.style.backgroundColor = "#ffffff";
-					error.innerHTML = "";
+		function CheckPassword(confirm){
+			//入力値の取得
+			const input1 = pass.value;
+			const input2 = checkpass.value;
+			if ( input1 != input2){
+				confirm.setCustomValidity("入力値が一致していません");
+			}else{
+				confirm.setCustomValidity("");
 				}
-
-			}
-
-			for (var n = 1; n <= 2; n++) {
-				var span = document.querySelectorAll(".update td:nth-child("
-						+ n + ") > span");
-				var maxw = 0;
-				for (var i = 0; i < span.length; i++) {
-					if (span[i].offsetWidth > maxw) {
-						maxw = span[i].offsetWidth
-					}
-				}
-				for (var i = 0; i < span.length; i++) {
-					span[i].style.width = maxw + "px";
-				}
-			}
+		}
 		</script>
-
-
-
 	</div>
-
-
-
+	<%@include file="../common/userFooter.jsp"%>
 </body>
 </html>

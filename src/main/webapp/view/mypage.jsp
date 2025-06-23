@@ -60,7 +60,7 @@ String error = (String) request.getAttribute("error");
 	
 	<br>
 	<div style="text-align: center">
-	<form>
+	<form action="<%=request.getContextPath() %>/view/updateUser.jsp">
 		<input type="submit" name="update" value="ユーザー情報変更"></input>
 	</form>
 	</div>
