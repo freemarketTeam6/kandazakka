@@ -52,10 +52,10 @@ public class UserListServlet extends HttpServlet {
 				user = (User) session.getAttribute("user");
 
 				// エラー処理
-				if (user == null) {
+				/*if (user == null) {
 					error = "セッション切れのため、ユーザー一覧画面は表示できませんでした。";
 					cmd = "logout";
-				}
+				}*/
 
 				// 取得したユーザー情報をリクエストスコープに登録
 				request.setAttribute("userList", userList);
