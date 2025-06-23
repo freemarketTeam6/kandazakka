@@ -31,10 +31,8 @@ if(message==null){
 	</head>
 	<body>
  		<%@include file= "../common/userHeader.jsp" %>
- 		<br>
 		<div style="margin-bottom:250px">
 		
-		<hr style="text-align:center; height:2px; background-color:black; width:950px">
 		<body style="background-color:#FFFFFF; text-align:center;">
 			<h1 style="color:#000000;">ログイン</h1>
 		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
