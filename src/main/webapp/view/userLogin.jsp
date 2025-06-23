@@ -54,6 +54,7 @@ if(message==null){
  					<tr>
  						<td colspan=2 style="text-align:center"><br>
  							<input type="submit" value="ログイン">
+ 							<input type="hidden" name="from" value="user">
  						</td>
  					</tr>
  					<tr>	
