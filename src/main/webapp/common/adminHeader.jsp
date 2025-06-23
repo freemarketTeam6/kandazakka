@@ -13,6 +13,7 @@
 	</tr>
 		
 		<div style="text-align:right">
+
 		<%
 		//ユーザー情報取得
 		User user=(User)session.getAttribute("user");
@@ -24,6 +25,7 @@
 		}else{
 		%>
 			<%= user.getNickname() %>
+
 			<form action="<%=request.getContextPath() %>/logout">
 			<input type="submit" value="ログアウト">
 			</form>
@@ -36,11 +38,11 @@
 
 		<div  style="text-align: center">
 			<ul>
-				<a href="<%=request.getContextPath()%>/view/exhibitList.jsp"style="margin-right: 30px;">出品商品</a>
-				<a href="<%=request.getContextPath()%>/view/sellerList.jsp"style="margin-right: 30px;">出品者</a>
-				<a href="<%=request.getContextPath()%>/view/userList.jsp"style="margin-right: 30px;">ユーザー</a>
-				<a href="<%=request.getContextPath()%>/view/salesList.jsp"style="margin-right: 30px;">売上</a>
-				<a href="<%=request.getContextPath()%>/view/listOfInquiry.jsp"style="margin-right: 30px;">問い合わせ</a>
+				<a href="<%=request.getContextPath()%>/exhibitList"style="margin-right: 30px;">出品商品</a>
+				<a href="<%=request.getContextPath()%>/sellerList"style="margin-right: 30px;">出品者</a>
+				<a href="<%=request.getContextPath()%>/userList"style="margin-right: 30px;">ユーザー</a>
+				<a href="<%=request.getContextPath()%>/salesList"style="margin-right: 30px;">売上</a>
+				<a href="<%=request.getContextPath()%>/listOfInquiries"style="margin-right: 30px;">問い合わせ</a>
 			</ul>
 		</div>
 
