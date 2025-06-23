@@ -13,7 +13,7 @@ ArrayList<Goods> salesGoodsList = (ArrayList<Goods>)request.getAttribute("salesG
 </head>
 
 <body>
-	<%@include file="/common/header.jsp"%>
+	<%@include file="/common/adminHeader.jsp"%>
 	
 	<a href="<%= request.getContextPath() %>/view/adminMenu.jsp">【管理者メニュー画面】</a>
 	<h1 style="text-align: center;">売上一覧</h1>
@@ -44,7 +44,7 @@ ArrayList<Goods> salesGoodsList = (ArrayList<Goods>)request.getAttribute("salesG
 		
 		<!-- 	表は左から購入日、商品画像、商品名、購入者、販売者、金額、利益（金額の10％） -->
 		
-		<% for ( int i = 0; i < salesGoodsList.szie(); i++){ %>
+		<% for ( int i = 0; i < salesGoodsList.size(); i++){ %>
 		<tr>
 			<td><%= salesGoodsList.get(i).getBuyDate() %></td>
 			<td><%= salesGoodsList.get(i).getImgPath() %></td>

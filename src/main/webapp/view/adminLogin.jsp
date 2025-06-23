@@ -39,7 +39,7 @@ if(message==null){
 		
 		<div style="margin-bottom:300px">
 		<br>	
- 			<form action="<%=request.getContextPath() %>/Login"method="post">
+ 			<form action="<%=request.getContextPath() %>/login"method="post">
  				<table style="margin:0 auto">
  					<tr>
  						<th style="background-color:#6666ff; width:120px">ユーザーID</th>
