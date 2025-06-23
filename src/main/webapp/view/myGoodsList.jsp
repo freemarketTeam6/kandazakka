@@ -54,7 +54,6 @@ MyFormat myformat = new MyFormat();
 		}
 		%>
 		</table>
-
 		<form action="<%=request.getContextPath()%>/view/mypage.jsp" method="POST">
 			<input type="submit" value="マイページへ戻る">
 		</form>

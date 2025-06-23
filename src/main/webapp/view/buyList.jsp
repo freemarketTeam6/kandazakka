@@ -12,7 +12,7 @@ MyFormat myFormat = new MyFormat();
 </head>
 <body>
 	<div style="text-align: center">
-		<%@ include file="/common/header.jsp"%>
+		<%@ include file="../common/userHeader.jsp"%>
 
 		<%
 		if (goodsList.isEmpty()) {
@@ -42,12 +42,12 @@ MyFormat myFormat = new MyFormat();
 			%>
 
 			<tr>
-				<td><img src="<%=goods.get(i).getImgPath()%>" alt="商品写真"></td>
-				<td><%=goods.get(i).getGoodsName()%></td>
-				<td><%=myFormat.moneyFormat(goods.get(i).getPrice())%></td>
-				<td><%=goods.get(i).getQuantity()%></td>
-				<td><%=goods.get(i).getCategory()%></td>
-				<td><%=goods.get(i).getBuyDate()%></td>
+				<td><img src="<%=goodsList.get(i).getImgPath()%>" alt="商品写真"></td>
+				<td><%=goodsList.get(i).getGoodsName()%></td>
+				<td><%=myFormat.moneyFormat(goodsList.get(i).getPrice())%></td>
+				<td><%=goodsList.get(i).getQuantity()%></td>
+				<td><%=goodsList.get(i).getCategory()%></td>
+				<td><%=goodsList.get(i).getBuyDate()%></td>
 				<td>
 					<form action="<%=request.getContextPath()%>/payment.jsp"
 						method="post">
@@ -62,8 +62,9 @@ MyFormat myFormat = new MyFormat();
 		%>
 
 		</table>
-		<br> <a href="<%=request.getContextPath()%>>mypage.jsp">マイページに戻る</a>
+		<br>
+		<a href="<%=request.getContextPath()%>/view/mypage.jsp" method="POST">マイページに戻る</a>
 	</div>
-	<%@include file="/common/footer.jsp"%>
+	<%@include file="../common/userFooter.jsp"%>
 </body>
 </html>
