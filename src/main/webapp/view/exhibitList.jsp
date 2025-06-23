@@ -13,7 +13,7 @@ MyFormat myformat = new MyFormat();
 </head>
 
 <body>
-	<%@include file="../common/adminHeader/jsp"%>
+	<%@include file="../common/adminHeader.jsp"%>
 
 	<hr
 		style="text-align: center; height: 2px; background-color: black; width: 950px">
