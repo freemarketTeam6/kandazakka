@@ -53,7 +53,7 @@ MyFormat myformat = new MyFormat();
 			<%
 				}
 			}
-			}
+			
 			%>
 		</table>
 	</div>
