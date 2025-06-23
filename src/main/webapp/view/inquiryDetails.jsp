@@ -78,7 +78,7 @@ input[type="submit"]:hover {
 	/* display:left; で管理者のメッセージを右寄せにしたい*/
     display: flex;
     flex-direction: column;
-    background-color: #dcf8c6;
+    background-color: #8fbc8f;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.15);
