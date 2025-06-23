@@ -46,21 +46,35 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
     .item td{
     	text-align:center;
     }
+    
+    .img{
+    	display: inline-block;
+    	position: relative;
+    }
+    
+    .priceOnImg{
+    	position:  absolute;
+    	bottom: 0;
+    	right: 0;
+    	padding-right: 5px;
+    	padding-left: 5px;
+    	background-color: black;
+    	color: white;
+    }
   </style>
 </head>
 <body>
 
 	<%@include file="../common/userHeader.jsp"%>
 	
-	<div>
+	<div style="display:flex">
 	<% 
 	 if (goodsList != null && !goodsList.isEmpty()) {
 		 for ( int i = 0; i < goodsList.size(); i++){ %>
-	 }
-		<div style="display: inline-block;">
+		<div  class="img">
 		<!-- 画像のパスは今後変更予定 -->
 			<img src="<%= goodsList.get(i).getImgPath() %>" alt="写真" width="200" height="200">
-			<%=  goodsList.get(i).getPrice()%>円
+			<strong class="priceOnImg"><%=  goodsList.get(i).getPrice()%>円</strong>
 		</div>		
 	<% if ( i % 5 == 0 ){%>
 			<br>
