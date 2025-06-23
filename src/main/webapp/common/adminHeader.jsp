@@ -5,7 +5,7 @@
 	<tr>
 		<div style="text-align:center">
 			<td style="text-align:center;">
-			<a href="/view/top.jsp" target="_blank" >  
+			<a href="<%=request.getContextPath()%>/view/top.jsp" target="_blank" >  
 			<img src="${pageContext.request.contextPath}/pic/kandafm.png" alt="ロゴ"border="0">
 			</a>
 			</td>

@@ -72,17 +72,17 @@ String error = (String) request.getAttribute("error");
 		</tr>
 		<tr>
 			<td style="text-align: center; width: 80px; font-size: 15px;">[<a
-				href="<%=request.getContextPath() %>/view/mygoodsList.jsp">出品一覧</a>]
+				href="<%=request.getContextPath() %>/mygoodsList">出品一覧</a>]
 			</td>
 		</tr>
 		<tr>
 			<td style="text-align: center; width: 80px; font-size: 15px;">[<a
-				href="<%=request.getContextPath() %>/view/buyList.jsp">購入一覧</a>]
+				href="<%=request.getContextPath() %>/buyList">購入一覧</a>]
 			</td>
 		</tr>
 		<tr>
 			<td style="text-align: center; width: 80px; font-size: 15px;">[<a
-				href="<%=request.getContextPath() %>/view/newInquiry.jsp">お問い合わせ</a>]
+				href="<%=request.getContextPath() %>/listOfInquiries">お問い合わせ</a>]
 			</td>
 		</tr>
 	</table>
