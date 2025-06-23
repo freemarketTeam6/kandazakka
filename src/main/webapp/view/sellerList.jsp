@@ -19,13 +19,13 @@ ArrayList<Goods> salesGoodsList = (ArrayList<Goods>)request.getAttribute("salesG
 
 	<table border="1">
 		<tr>
-			<th>購入日</th>
-			<th>商品画像</th>
+			<th>名前</th>
 			<th>商品名</th>
-			<th>購入者</th>
-			<th>販売者</th>
 			<th>価格</th>
-			<th>利益</th>
+			<th>メールアドレス</th>
+			<th>電話番号</th>
+			<th></th>
+			<th></th>
 		</tr>
 		
 		<tr>

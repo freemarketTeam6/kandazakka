@@ -50,6 +50,7 @@ MyFormat format = new MyFormat();
 			<th style="background-color: #00a7db; width: 100">地域</th>
 			<td style="text-align: center; color: #000000; font-size: 20px"><%=format.RegionFormat(goods.getRegion)%></td>
 			<td><select name="region">
+					<option value="select">選択</option>
 					<option value="hokkaido">北海道</option>
 					<option value="tohoku">東北</option>
 					<option value="kanto">関東</option>
