@@ -19,7 +19,7 @@ public class ListOfInquiriesServlet extends HttpServlet {
 		
 		try {
 			//DAOクラスのオブジェクト
-			InquiriesDAO inquiriesDao=new inquiriesDAO();
+			InquiriesDAO inquiriesDao=new InquiriesDAO();
 			
 			//一覧表示のメソッド
 			ArrayList<Inquiries>InquiriesList= inquiriesDao.selectAll();
