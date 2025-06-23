@@ -25,10 +25,13 @@ public class LoginServlet extends HttpServlet {
 		// DTOオブジェクト宣言
 		User user = new User();
 		
+		String from = null;
+		
 	try {	
 		// パラメータの取得
 		String userid = request.getParameter("userid");
 		String password = request.getParameter("password");
+		from = request.getParameter("from");
 		
 		// UserDAOをインスタンス化し、関連メソッドを呼び出す。
 		UserDAO objDao = new UserDAO();
@@ -56,8 +59,13 @@ public class LoginServlet extends HttpServlet {
 		error = "DB接続エラーの為、一覧表示を行えませんでした。";
 	}finally {
 		if (error.equals("")) {
-			// 登録された件数を持ってmenu.jspにフォワード
+			if(from.equals("admin")) {
+				//adminLoginからの遷移の場合は管理者メニューにフォワード
+				request.getRequestDispatcher("/view/adminMenu.jsp").forward(request, response);
+			}else {
+			// 一般ユーザーのログインの場合top.jspにフォワード
 			request.getRequestDispatcher("/view/top.jsp").forward(request, response);
+			}
 		}else {
 			request.setAttribute("cmd", cmd);
 			request.setAttribute("error", error);

@@ -39,7 +39,9 @@ if(message==null){
 		
 		<div style="margin-bottom:300px">
 		<br>	
- 			<form action="<%=request.getContextPath() %>/login"method="post">
+
+ 			<form action="<%=request.getContextPath() %>/login" method="post">
+
  				<table style="margin:0 auto">
  					<tr>
  						<th style="background-color:#6666ff; width:120px">ユーザーID</th>
@@ -47,12 +49,13 @@ if(message==null){
  					</tr>
  					<tr>
  						<th style="background-color:#6666ff; width:120px">パスワード</th>
- 						<td ><input type=text size="30" name="password" value="<%=password %>"></input></td>
+ 						<td ><input type=password size="30" name="password" value="<%=password %>"></input></td>
  					</tr>
  					
  					<tr>
  						<td colspan=2 style="text-align:center"><br>
  							<input type="submit" value="ログイン">
+ 							<input type="hidden" name="from" value="admin">
  						</td>
  					</tr>
  					
