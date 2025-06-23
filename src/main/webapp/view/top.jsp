@@ -72,9 +72,9 @@ User user = (User)session.getAttribute("user");
       </div>
     </form>
     
-    <form action="<%= request.getContextPath() %>/login">
+    <form action="<%= request.getContextPath() %>/view/userLogin.jsp">
     	<div class="login-btn">
-       		<input type="button" value="ログイン">
+       		<input type="submit" value="ログイン">
     	</div>
     </form>
     
@@ -91,9 +91,11 @@ User user = (User)session.getAttribute("user");
 	
 	<hr>
 	
-
 	<div>
-	<% for ( int i = 0; i < goodsList.size(); i++){ %>
+	<% 
+	 if (goodsList != null && !goodsList.isEmpty()) {
+		 for ( int i = 0; i < goodsList.size(); i++){ %>
+	 }
 		<div style="display: inline-block;">
 		<!-- 画像のパスは今後変更予定 -->
 			<img src="<%= goodsList.get(i).getImgPath() %>" alt="写真" width="200" height="200">
@@ -101,6 +103,7 @@ User user = (User)session.getAttribute("user");
 		</div>		
 	<% if ( i % 5 == 0 ){%>
 			<br>
+		<% } %>
 		<% } %>
 		<% } %>
 	</div>
