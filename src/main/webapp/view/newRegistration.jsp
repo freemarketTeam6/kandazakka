@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/view/css/style.css">
 </head>
 <body>
+	<%@include file= "/common/userHeader.jsp" %>
 	<a href="<%= request.getContextPath() %>/top">トップ画面へ</a>
 	<h1 style="text-align: center;">ユーザー登録</h1>
 	<hr size=5px color="black">
