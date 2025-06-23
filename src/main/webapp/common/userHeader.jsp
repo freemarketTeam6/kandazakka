@@ -26,7 +26,7 @@
 		<%
 		}else{
 		%>
-			<%= user.getNick_name() %>
+			<%= user.getNickname() %>
 			<form action="<%=request.getContextPath() %>/LogoutServlet">
 			<input type="submit" value="ログアウト">
 			</form>
