@@ -18,7 +18,7 @@ MyFormat myFormat = new MyFormat();
 		if (goodsList.isEmpty()) {
 		%>
 
-		<p style="font-size: 24px">
+		<p style="font-size: 24px; text-align: center">
 			<strong>商品未購入のため、購入履歴は表示できませんでした。</strong>
 		</p>
 
@@ -63,7 +63,9 @@ MyFormat myFormat = new MyFormat();
 
 		</table>
 		<br>
-		<a href="<%=request.getContextPath()%>/view/mypage.jsp" method="POST">マイページに戻る</a>
+		<p style="text-align: center">		
+			<a href="<%=request.getContextPath()%>/view/mypage.jsp" method="POST">マイページに戻る</a>
+		</p>
 	</div>
 	<%@include file="../common/userFooter.jsp"%>
 </body>
