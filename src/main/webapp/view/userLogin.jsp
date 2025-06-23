@@ -30,6 +30,7 @@ if(message==null){
 		<title>神田雑貨店フリマ</title>
 	</head>
 	<body>
+	<%@include file= "/common/userHeader.jsp" %>
  		<br>
 		<div style="margin-bottom:250px">
 		
