@@ -15,7 +15,7 @@
 		<div style="text-align:right">
 		<%User user=(User)session.getAttribute("user");%>
 			<%= user.getNickname() %>
-			<form action="<%=request.getContextPath() %>/LogoutServlet">
+			<form action="<%=request.getContextPath() %>/Logout">
 			<input type="submit" value="ログアウト">
 			</form>
 		
