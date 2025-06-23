@@ -55,6 +55,7 @@ public class UserListServlet extends HttpServlet {
 
 			// 取得したユーザー情報をリクエストスコープに登録
 			request.setAttribute("userList", userList);
+			System.out.print(userList);
 
 			// エラー処理
 		} catch (IllegalStateException e) {
