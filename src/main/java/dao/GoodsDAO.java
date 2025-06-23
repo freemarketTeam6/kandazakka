@@ -67,7 +67,7 @@ public class GoodsDAO {
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
-
+				goodsList.add(goods);
 			}
 			
 			}catch(Exception e) {
