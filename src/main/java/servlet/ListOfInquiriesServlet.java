@@ -17,7 +17,7 @@ public class ListOfInquiriesServlet extends HttpServlet {
 		String error = "";
 		String cmd = "";
 		
-		try {
+		//try {
 			//DAOクラスのオブジェクト
 			InquiriesDAO inquiriesDao=new InquiriesDAO();
 			
@@ -27,12 +27,12 @@ public class ListOfInquiriesServlet extends HttpServlet {
 			//お問い合わせの一覧(InqueriesList)を持って画面にフォワード
 			request.setAttribute("InquiriesList", InquiriesList);
 			request.getRequestDispatcher("/view/listOfInquiries.jsp").forward(request, response);
-		}catch(IllegalStateException e){
+		/*}catch(IllegalStateException e){
 			error="DB接続エラーの為、お問い合わせ一覧の表示は行えませんでした。";
 			cmd="adminMenu";
 			request.setAttribute("cmd", cmd);
 			request.setAttribute("error", error);
 			request.getRequestDispatcher("/view/adminError.jsp").forward(request,response);
-		}
+		}*/
 	}
 }
