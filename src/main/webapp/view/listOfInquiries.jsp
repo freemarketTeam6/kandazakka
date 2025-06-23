@@ -2,7 +2,7 @@
 <%@page import="java.util.*,bean.Inquiries"%>
 
 <%
-ArrayList<Inquiries> InquiriesList = (ArrayList<Inquiries>) request.getAttribute("InquiriesList");
+ArrayList<Inquiries> inquiriesList = (ArrayList<Inquiries>) request.getAttribute("InquiriesList");
 %>
 <html>
 <head>
@@ -25,7 +25,7 @@ ArrayList<Inquiries> InquiriesList = (ArrayList<Inquiries>) request.getAttribute
 		<!-- リクエストスコープからデータの取得 -->
 		<%
 		//リストがnullじゃないとき繰り返し処理によってlistの値を取得
-		if (inquiriesList != null) {
+		if (!(inquiriesList.isEmpty())) {
 			for (int i = 0; i < inquiriesList.size(); i++) {
 				Inquiries inquiries = (Inquiries) inquiriesList.get(i);
 		%>
