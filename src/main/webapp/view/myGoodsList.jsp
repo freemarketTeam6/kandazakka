@@ -30,10 +30,9 @@
 				<th>取引状況</th>
 			</tr>
 
-
 			<%
 		//リクエストスコープから出品一覧ArrayListを取得
-		ArrayList<Goods> myGoodsList = request.getAttribute("myGoodsList");
+		ArrayList<Goods> myGoodsList = (ArrayList<Goods>)request.getAttribute("myGoodsList");
 		
 		
 		if(myGoodsList!=null){
@@ -47,22 +46,10 @@
 				<td><%=goods.getPrice() %></td>
 				<td>
 					<%
-					//商品のステータスを変数に格納
-					String status = goods.getStatus;
-			
-					switch(status){
-					case 0:
-						%> 出品中 <%
-					case 1:
-					%> 入金待ち <%
-					case 2:
-						%>
 
-					<form action="<%=request.getContextPath()%>/shipping" method="POST">
-						<input type="submit" value="発送する">
-					</form> <%
-					case 3:
-					%> 発送済み }
+					
+					%>
+
 					
 
 				</td>
