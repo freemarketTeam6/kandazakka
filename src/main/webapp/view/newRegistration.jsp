@@ -15,48 +15,49 @@
 	<div class="registration">
 		<form action="<%=request.getContextPath()%>/newRegistration" method="post">
 				
+				<table>
 				<tr>
 					<td id="leftCol">名前</td>
-					<td id="rightCol"><input type="text" name="name" id="name"></td>
+					<td id="rightCol"><input type="text" name="name" id="name" required></td>
 				</tr>
 				
 				<tr>
 					<td id="leftCol">名前（カナ）</td>
-					<td id="rightCol"><input type="text" name="name_kana" id="name_kana"></td>
+					<td id="rightCol"><input type="text" name="name_kana" id="name_kana" required></td>
 				</tr>
 				
 				<tr>
 					<td id="leftCol">ニックネーム</td>
-					<td id="rightCol"><input type="text" name="nickname" id="nickname"></td>
+					<td id="rightCol"><input type="text" name="nickname" id="nickname" required></td>
 				</tr>
 				
 				<tr>
 					<td id="leftCol">住所</td>
-					<td id="rightCol"><input type="text" name="address" id="address"></td>
+					<td id="rightCol"><input type="text" name="address" id="address" required></td>
 				</tr>
 				
 				<tr>
 					<td id="leftCol">電話番号</td>
-					<td id="rightCol"><input type="text" name="tell" id="tell"></td>
+					<td id="rightCol"><input type="text" name="tell" id="tell" required></td>
 				</tr>				
 								
 				<tr>
 					<td id="leftCol">メールアドレス</td>
-					<td id="rightCol"><input type="text" name="email" id="email"></td>
+					<td id="rightCol"><input type="text" name="email" id="email" required></td>
 				</tr>
 				
 				<tr>
 					<td id="leftCol">ユーザーID</td>
-					<td id="rightCol"><input type="text" name="userID" id="userID"></td>
+					<td id="rightCol"><input type="text" name="userID" id="userID" required></td>
 				</tr>				
 				
 				<tr>
 					<td id="leftCol">パスワード</td>
-					<td id="rightCol"><input type="password" name="password" id="password"></td>
+					<td id="rightCol"><input type="password" name="password" id="password" required></td>
 				</tr>
 				<tr>
 					<td id="leftCol">パスワード（確認用）</td>
-					<td id="rightCol"><input type="password" name="passwordConfirm" id="passwordConfirm"></td>
+					<td id="rightCol"><input type="password" name="passwordConfirm" id="passwordConfirm" required></td>
 				</tr>
 				
 				<tr>

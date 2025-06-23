@@ -108,11 +108,13 @@ public class NewRegistration extends HttpServlet {
 				 * 空欄判定と、重複判定
 				 */
 				String userID = request.getParameter("userID");
+				User checkUser = objUserDAO.selectByUser(userID);
+				
 				if(userID.equals("")){
 					error = "ユーザーIDが未入力の為、登録処理は行えませんでした。";
 					request.setAttribute("error", error);
 					break;
-				}else if (objUserDAO.selectByUser(userID) != null ) {
+				}else if ( checkUser.getUserid() != null ) {
 					error = "このユーザーIDはすでに使われています！";
 					request.setAttribute("error", error);
 					break;
@@ -132,13 +134,14 @@ public class NewRegistration extends HttpServlet {
 					error = "パスワード（確認用）が未入力の為、登録処理は行えませんでした。";
 					request.setAttribute("error", error);	
 					break;
-				}else if( password.equals(passwordConfirm)) {
+				}else if( ! password.equals(passwordConfirm)) {
 					error = "パスワードとパスワード（確認用）が一致しないため、登録処理は行えませんでした。";
 					request.setAttribute("error", error);	
 					break;
 				}else {
 					user.setPassword(password);
 				}
+				user.setAuthority("u");
 		
 		try {
 			//insertメソッドを呼び出し
@@ -154,5 +157,5 @@ public class NewRegistration extends HttpServlet {
 	}
 		
 	}
-
+	
 }
