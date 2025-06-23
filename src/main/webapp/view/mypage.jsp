@@ -13,7 +13,7 @@ String error = (String) request.getAttribute("error");
 </head>
 
 <body>
-	<%@include file= "../common/header.jsp" %>
+	<%@include file= "../common/userHeader.jsp" %>
 
 <hr style="text-align: center; height: 2px; background-color: black; width: 950px">
 	<h1 style="text-align: center;color:#000000;">マイページ</h1>
@@ -88,6 +88,6 @@ String error = (String) request.getAttribute("error");
 		</tr>
 	</table>
 	
-	<%@include file= "../common/footer.jsp" %>
+	<%@include file= "../common/userFooter.jsp" %>
 </body>
 </html>
