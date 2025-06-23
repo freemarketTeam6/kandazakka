@@ -4,7 +4,7 @@
 <%
 Goods goods = (Goods) request.getAttribute("goods");
 
-MyFormat myformat = new MyFormat();
+MyFormat myFormat = new MyFormat();
 %>
 
 <html>
@@ -13,7 +13,7 @@ MyFormat myformat = new MyFormat();
 </head>
 <body>
 	<div style="text-align: center">
-		<%@ include file="/common/header.jsp"%>
+		<%@ include file="/common/userHeader.jsp"%>
 		<img src="<%=goods.getImgPath()%>" alt="商品写真"> <br> <br>
 		<p style="font-size: 24px">
 			<strong><%=goods.getGoodsName()%></strong>
@@ -41,7 +41,7 @@ MyFormat myformat = new MyFormat();
 			</tr>
 			<tr>
 				<th>出品地域：</th>
-				<td><%=getRegion()%></td>
+				<td><%=goods.getRegion()%></td>
 			</tr>
 			<tr>
 				<th>商品の説明：</th>
@@ -57,6 +57,6 @@ MyFormat myformat = new MyFormat();
 			<input type="submit" value="カートに入れる"></input>
 		</form>
 	</div>
-	<%@include file="/common/footer.jsp"%>
+	<%@include file="/common/userFooter.jsp"%>
 </body>
 </html>
