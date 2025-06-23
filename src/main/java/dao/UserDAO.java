@@ -242,8 +242,6 @@ public class UserDAO {
 		ArrayList<User> userList = new ArrayList<User>();
 
 		try {
-			// Userオブジェクトを生成
-			User user = new User();
 
 			// SQL文
 			String sql = "SELECT * FROM userinfo";
@@ -253,7 +251,9 @@ public class UserDAO {
 
 			ResultSet rs = smt.executeQuery(sql);
 
-			if (rs.next()) {
+			while (rs.next()) {
+				// Userオブジェクトを生成
+				User user = new User();
 				user.setUserid(rs.getString("user_id"));
 				user.setName(rs.getString("name"));
 				user.setNamekana(rs.getString("name_kana"));
@@ -264,6 +264,7 @@ public class UserDAO {
 				user.setTell(rs.getString("tell"));
 				user.setMemo(rs.getString("memo"));
 				user.setAuthority(rs.getString("authority"));
+				userList.add(user);
 			}
 
 		} catch (Exception e) {

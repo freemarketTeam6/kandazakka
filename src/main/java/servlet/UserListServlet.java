@@ -37,25 +37,30 @@ public class UserListServlet extends HttpServlet {
 			String user_id = request.getParameter("user_id");
 			// もしユーザーIDが送られていれば対象者のみを表示
 			if (user_id != null) {
+				
 				userList.add(userDao.selectByUser(user_id));
+				// 取得したユーザー情報をリクエストスコープに登録
+				request.setAttribute("userList", userList);
+				
+			}else {
+				
+				// ユーザー情報を取得
+				userList = userDao.selectUserAll();
+
+				// セッションからデータを受け取る
+				HttpSession session = request.getSession();
+				user = (User) session.getAttribute("user");
+
+				// エラー処理
+				if (user == null) {
+					error = "セッション切れのため、ユーザー一覧画面は表示できませんでした。";
+					cmd = "top";
+				}
+
+				// 取得したユーザー情報をリクエストスコープに登録
+				request.setAttribute("userList", userList);
+				
 			}
-
-			// ユーザー情報を取得
-			userList = userDao.selectUserAll();
-
-			// セッションからデータを受け取る
-			HttpSession session = request.getSession();
-			user = (User) session.getAttribute("user");
-
-			// エラー処理
-			if (user == null) {
-				error = "セッション切れのため、ユーザー一覧画面は表示できませんでした。";
-				cmd = "top";
-			}
-
-			// 取得したユーザー情報をリクエストスコープに登録
-			request.setAttribute("userList", userList);
-			System.out.print(userList);
 
 			// エラー処理
 		} catch (IllegalStateException e) {
