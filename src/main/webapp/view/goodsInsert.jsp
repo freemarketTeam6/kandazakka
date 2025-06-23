@@ -68,7 +68,7 @@ body {
 	%>
 		<h3><%=message%></h3>
 
-	<form action="<%=request.getContextPath() %>/goodsInsert"
+	<form action="<%=request.getContextPath()%>/goodsInsert"
 		name="goodsInsert" method="post">
 		<table class="insert">
 

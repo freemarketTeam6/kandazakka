@@ -52,6 +52,7 @@ MyFormat myformat = new MyFormat();
 			</tr>
 			<%
 			}
+			}
 			%>
 		</table>
 	</div>
