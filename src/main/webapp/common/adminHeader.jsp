@@ -13,7 +13,7 @@
 	</tr>
 		
 		<div style="text-align:right">
-		
+		<%User user=(User)session.getAttribute("user");%>
 			<%= user.getNickname() %>
 			<form action="<%=request.getContextPath() %>/LogoutServlet">
 			<input type="submit" value="ログアウト">
