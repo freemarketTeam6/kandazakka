@@ -19,14 +19,14 @@
 		//未ログインの場合
 		if (user == null) {	
 		%>
-			<form action="<%=request.getContextPath() %>/LoginServlet"method="post">
+			<form action="<%=request.getContextPath() %>/login"method="post">
 			<input type="submit" value="ログイン">
 			</form>
 		<%
 		}else{
 		%>
 			<%= user.getNickname() %>
-			<form action="<%=request.getContextPath() %>/LogoutServlet">
+			<form action="<%=request.getContextPath() %>/logout">
 			<input type="submit" value="ログアウト">
 			</form>
 		<%

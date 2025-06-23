@@ -4,7 +4,6 @@
 
 <%
 ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList");
-User user = (User)session.getAttribute("user");
 %>
 
 <html lang="ja">
