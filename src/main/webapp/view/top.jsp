@@ -84,8 +84,8 @@ User user = (User)session.getAttribute("user");
 	<tr>
 		<td><a href="<%= request.getContextPath() %>/view/mypage.jsp">マイページ</a></td>
 		<td><a href="<%= request.getContextPath() %>/showCart">カート内容</a></td>
-		<td><a href="<%= request.getContextPath() %>/goodsInsert">出品</a></td>
-		<td><a href="<%= request.getContextPath() %>/adminLogin">管理者ページ</a></td>
+		<td><a href="<%= request.getContextPath() %>/view/goodsInsert.jsp">出品</a></td>
+		<td><a href="<%= request.getContextPath() %>/view/adminLogin.jsp">管理者ページ</a></td>
 	</tr>
 	</table>
 	
