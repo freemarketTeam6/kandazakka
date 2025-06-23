@@ -15,13 +15,16 @@
 				<th>お問い合わせカテゴリ</t>
 				<td><select name="inquiry">
 					<option value="select">選択</option>
-					<option value="">北海道</option>
-					<option value="">東北</option>
-					<option value="">関東</option>
-					<option value="">中部</option>
-					<option value="">近畿</option>
-					<option value="">中国・四国</option>
-					<option value="">九州</option>
+					<option value="">取引に関する問題</option>
+					<option value="">出品に関する質問</option>
+					<option value="">商品に関する質問</option>
+					<option value="">購入に関する質問</option>
+					<option value="">配送に関する問題</option>
+					<option value="">アカウントに関する問題</option>
+					<option value="">支払い・返金について</option>
+					<option value="">違反報告・安全に関する問題</option>
+					<option value="">アプリの不具合・バグ報告</option>
+					<option value="">その他</option>
 			</select></td>
 			</tr>
 			<tr>

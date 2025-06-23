@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import bean.User;
 
@@ -188,29 +189,32 @@ public class UserDAO {
 	}
 
 	// 出品者一覧の情報取得機能
-	public User selectBySelluser(String selluserId) {
+	public ArrayList<User> selectBySelluser() {
 		Connection con = null;
 		Statement smt = null;
-		User user = new User();
+		ArrayList<User> sellerList = new ArrayList<>();
 		try {
-			/*
-			 * 未完成 // SQL文 String sql = "SELECT * FROM userinfo WHERE selluser_id ='" +
-			 * selluserId + "'";
-			 * 
-			 * con = getConnection(); smt = con.createStatement();
-			 * 
-			 * ResultSet rs = smt.executeQuery(sql);
-			 * 
-			 * if (rs.next()) { user.setUserid(rs.getString("user_id"));
-			 * user.setName(rs.getString("name"));
-			 * user.setNamekana(rs.getString("name_kana"));
-			 * user.setNickname(rs.getString("nickname"));
-			 * user.setAddress(rs.getString("address"));
-			 * user.setEmail(rs.getString("email"));
-			 * user.setPassword(rs.getString("password"));
-			 * user.setTell(rs.getString("tell")); user.setMemo(rs.getString("memo"));
-			 * user.setAuthority(rs.getString("authority")); }
-			 */
+			// SQL文 ミスありそう
+			String sql = "SELECT u.user_id,u.name,u.name_kana,u.address,u.email,u.tell" + " FROM userinfo u "
+					+ "INNER JOIN goodsinfo g ON u.user_id=g.selluser_id";
+
+			con = getConnection();
+			smt = con.createStatement();
+
+			ResultSet rs = smt.executeQuery(sql);
+
+			while (rs.next()) {
+				User user = new User();
+				user.setUserid(rs.getString("user_id"));
+				user.setName(rs.getString("name"));
+				user.setNamekana(rs.getString("name_kana"));
+				user.setAddress(rs.getString("address"));
+				user.setEmail(rs.getString("email"));
+				user.setTell(rs.getString("tell"));
+
+				sellerList.add(user);
+			}
+
 		} catch (Exception e) {
 			throw new IllegalStateException(e);
 		} finally {
@@ -224,7 +228,7 @@ public class UserDAO {
 			} catch (SQLException ignore) {
 			}
 		}
-		return user;
+		return sellerList;
 	}
 
 }

@@ -3,13 +3,14 @@
 
 
 <%
-ArrayList<Goods> salesGoodsList = (ArrayList<Goods>)request.getAttribute("salesGoodsList");
+ArrayList<User> sellerList = (ArrayList<User>)request.getAttribute("sellerList");
 %>
 
 <html>
 <head>
 <title>出品者一覧</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/view/css/style.css">
+<link rel="stylesheet"
+	href="<%= request.getContextPath() %>/css/style.css">
 </head>
 
 <body>
@@ -19,17 +20,30 @@ ArrayList<Goods> salesGoodsList = (ArrayList<Goods>)request.getAttribute("salesG
 
 	<table border="1">
 		<tr>
+			<th>ID</th>
 			<th>名前</th>
-			<th>商品名</th>
-			<th>価格</th>
+			<th>名前かな</th>
+			<th>住所</th>
 			<th>メールアドレス</th>
 			<th>電話番号</th>
-			<th></th>
-			<th></th>
 		</tr>
-		
+
+		<%
+		if (sellerList != null) {
+			for(int i= 0; i< sellerList.size().i++){
+		%>
 		<tr>
-		
+			<td><%= sellerList.get(i).getUserid() %></td>
+			<td><%= sellerList.get(i).getName() %></td>
+			<td><%= sellerList.get(i).getNamekana %></td>
+			<td><%= sellerList.get(i).getAddress() %></td>
+			<td><%= sellerList.get(i).getEmail() %></td>
+			<td><%= sellerList.get(i).getTell() %></td>
+		</tr>
+		<%
+		}
+		}
+		%>
 	</table>
 </body>
 
