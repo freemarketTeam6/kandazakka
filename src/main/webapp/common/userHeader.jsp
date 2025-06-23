@@ -4,14 +4,12 @@
 <header>	
 	<tr>
 		<div style="text-align:center">
-
 			<td style="text-align:center;">
-			<a href="/view/top.jsp" target="_blank" >  
+			<a href="<%=request.getContextPath()%>/view/top.jsp" target="_blank" >  
 			<img src="${pageContext.request.contextPath}/pic/kandafm.png" alt="ロゴ"border="0">
 			</a>
 			</td>
 			<br>
-
 		<form action="<%=request.getContextPath()%>/SearchServlet"style="display: inline;">
 			<input id="sbox2" name="keyword" type="text" placeholder="キーワードを入力" />
 			<input id="sbtn1" type="submit" value="検索" />
@@ -44,11 +42,9 @@
 
 		<div  style="text-align: center">
 			<ul>
-				<a href="<%=request.getContextPath()%>/view/maypage"style="margin-right: 30px;">マイページ</a>
-				<a href="<%=request.getContextPath()%>/showCart"style="margin-right: 30px;">カート内容</a>
-
-				<a href="<%=request.getContextPath()%>/view/goodsInsert.jsp" style="margin-right: 30px">出品</a>
-
+				<a href="<%=request.getContextPath()%>/view/mypage.jsp"style="margin-right: 30px;">マイページ</a>
+				<a href="<%=request.getContextPath()%>/showCart.jsp"style="margin-right: 30px;">カート内容</a>
+				<a href="<%=request.getContextPath()%>/goodsInsert.jsp"style="margin-right: 30px;">出品</a>
 				<a href="<%=request.getContextPath()%>/view/top.jsp"style="margin-right: 30px;">トップメニューへ</a>
 			</ul>
 		</div>
