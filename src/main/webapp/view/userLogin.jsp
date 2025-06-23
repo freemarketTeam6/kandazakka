@@ -30,7 +30,12 @@ if(message==null){
 		<title>神田雑貨店フリマ</title>
 	</head>
 	<body>
+<<<<<<< HEAD
  		<%@include file= "../common/userHeader.jsp" %>
+=======
+	<%@include file= "/common/userHeader.jsp" %>
+ 		<br>
+>>>>>>> branch 'master' of https://github.com/freemarketTeam6/kandazakka.git
 		<div style="margin-bottom:250px">
 		
 		<body style="background-color:#FFFFFF; text-align:center;">
@@ -44,32 +49,35 @@ if(message==null){
  				<table style="margin:0 auto">
  					<tr>
  						<th style="background-color:#6666ff; width:120px">ユーザーID</th>
- 						<td ><input type=text size="30" name="userid" value="<%=userid%>"></input></td>
+ 						<td ><input type=text size="30" name="userid" value=""></input></td>
  					</tr>
  					<tr>
  						<th style="background-color:#6666ff; width:120px">パスワード</th>
- 						<td ><input type=text size="30" name="password" value="<%=password %>"></input></td>
+ 						<td ><input type=text size="30" name="password" value=""></input></td>
  					</tr>
  					
+ 					<div style="text-align: center">
  					<tr>
  						<td colspan=2 style="text-align:center"><br>
  							<input type="submit" value="ログイン">
  						</td>
  					</tr>
- 					
  					<tr>	
  						<td style="text-align: center; width: 80px; font-size: 15px;"><a
-							href="<%=request.getContextPath() %>/view/menu.jsp">新規登録</a>
+							href="<%=request.getContextPath() %>/view/newRegistration.jsp">新規登録</a>
 							
+
 						</td>
  					</tr>
+ 					</div>
  				</table>
  			</form>
  			<p>
  			<%=message %>
  		<br>
  		</div>
- 		<%@include file= "../common/userFooter.jsp" %>
+ 		<%@include file= "/common/userFooter.jsp" %>
+
 		</table>	
  	</body>
  </html>

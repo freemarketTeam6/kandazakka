@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,7 +27,7 @@ public class MessageDAO {
 			throw new IllegalStateException(e);
 		}
 	}
-	
+
 	//問い合わせID(inquiryNo)をもとに、inquiry_messagesから問い合わせのメッセージ内容を取得するメソッド
 	public ArrayList<Message> selectMessageByInquiryNo(int inquiryNo){
 		

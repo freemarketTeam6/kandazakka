@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/view/css/style.css">
 </head>
 <body>
-	<%@include file="/common/header.jsp"%>
+	<%@include file= "/common/userHeader.jsp" %>
 	<a href="<%= request.getContextPath() %>/top">トップ画面へ</a>
 	<h1 style="text-align: center;">ユーザー登録</h1>
 	<hr size=5px color="black">
@@ -75,5 +75,5 @@
 	<!-- 正規表現JavaScriptで追加できたら -->
 	<script src="<%= request.getContextPath() %>/view/js/script.js"></script>
 </body>
-<%@include file="/common/footer.jsp"%>
+<%@include file="/common/userFooter.jsp"%>
 </html>

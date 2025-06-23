@@ -41,7 +41,7 @@ if(message==null){
 		
 		<div style="margin-bottom:300px">
 		<br>	
- 			<form action="<%=request.getContextPath() %>/LoginServlet"method="post">
+ 			<form action="<%=request.getContextPath() %>/Login"method="post">
  				<table style="margin:0 auto">
  					<tr>
  						<th style="background-color:#6666ff; width:120px">ユーザーID</th>
@@ -60,7 +60,7 @@ if(message==null){
  					
  					<tr>	
  						<td style="text-align: center; width: 80px; font-size: 15px;"><a
-							href="<%=request.getContextPath() %>/view/menu.jsp">新規登録</a>
+							href="<%=request.getContextPath() %>/view/newRegistration.jsp">新規登録</a>
 							
 						</td>
  					</tr>

@@ -31,10 +31,10 @@ ArrayList<Inquiries> InquiriesList = (ArrayList<Inquiries>) request.getAttribute
 		%>
 		<tr>
 			<!-- DTOクラスを使用し一覧を表示 -->
-			<td style="text-align: center; width: 200px"><%=inquiriesList.get(i).getInquiryno()%></td>
-			<td style="text-align: center; width: 200px"><%=inquiriesList.get(i).getCategory()%></td>
-			<td style="text-align: center; width: 200px"><%=inquiriesList.get(i).getTitle()%></td>
-			<td style="text-align: center; width: 200px"><%=inquiriesList.get(i).getUser_id()%></td>
+			<td style="text-align: center; width: 200px"><%=inquiries.getInquiryno()%></td>
+			<td style="text-align: center; width: 200px"><%=inquiries.getCategory()%></td>
+			<td style="text-align: center; width: 200px"><%=inquiries.getTitle()%></td>
+			<td style="text-align: center; width: 200px"><%=inquiries.getUser_id()%></td>
 
 			<td style="text-align: center; width: 125px">
 				<!-- PRIMARY KEYのgetInquirynoを参照してチャット機能へのリンク --> <a
