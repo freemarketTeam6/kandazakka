@@ -245,5 +245,55 @@ public class InquiriesDAO {
 		}
 		return last_inquiryno;
 	}
+	
+	public ArrayList<Inquiries> selectUser(String userid) {
+
+		// 変数宣言
+		Connection con = null; // DBコネクション
+		Statement smt = null; // SQLステートメント
+
+		//①検索したお問い合わせ情報を格納するArrayListオブジェクトを生成
+		ArrayList<Inquiries> InquiriesList = new ArrayList<Inquiries>();
+
+		try {
+			//②SQL文を文字列として定義
+			String sql = "SELECT * FROM inquiryinfo WHERE user_id = '" + userid + "' ORDER BY inquiryno";
+
+			con = InquiriesDAO.getConnection();
+			smt = con.createStatement();
+
+			// SQL文発行
+			ResultSet rs = smt.executeQuery(sql);
+
+			// 検索結果をArrayListに格納
+			while (rs.next()) {
+				Inquiries inquiriesDto = new Inquiries();
+				inquiriesDto.setInquiryno(rs.getInt("inquiryno"));
+				inquiriesDto.setUser_id(rs.getString("user_id"));
+				inquiriesDto.setCategory(rs.getString("category"));
+				inquiriesDto.setTitle(rs.getString("title"));
+				inquiriesDto.setContents(rs.getString("contents"));
+				inquiriesDto.setFile_path(rs.getString("file_path"));
+				InquiriesList.add(inquiriesDto);
+			}
+
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
+			}
+		}
+		return InquiriesList;
+	}
 
 }
