@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>requestuser</title>
+<title>updateuser</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 
