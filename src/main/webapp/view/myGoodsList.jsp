@@ -48,7 +48,7 @@
 				<td>
 					<%
 					//商品のステータスを変数に格納
-					int status = goods.getStatus;
+					String status = goods.getStatus;
 			
 					switch(status){
 					case 0:
