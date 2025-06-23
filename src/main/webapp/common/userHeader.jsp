@@ -5,8 +5,8 @@
 	<tr>
 		<div style="text-align:center">
 			<td style="text-align:center;"><img src="/pic/kandafm.png" alt="ロゴ"></td>
-		<form id="form1" action="自分のサイトURL">
-			<input id="sbox2" name="s" type="text" placeholder="キーワードを入力" />
+		<form action="<%=request.getContextPath()%>/SearchServlet"style="display: inline;">
+			<input id="sbox2" name="keyword" type="text" placeholder="キーワードを入力" />
 			<input id="sbtn1" type="submit" value="検索" />
 		</form>
 		</div>

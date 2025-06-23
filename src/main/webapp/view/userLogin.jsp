@@ -30,8 +30,12 @@ if(message==null){
 		<title>神田雑貨店フリマ</title>
 	</head>
 	<body>
+<<<<<<< HEAD
+ 		<%@include file= "../common/userHeader.jsp" %>
+=======
 	<%@include file= "/common/userHeader.jsp" %>
  		<br>
+>>>>>>> branch 'master' of https://github.com/freemarketTeam6/kandazakka.git
 		<div style="margin-bottom:250px">
 		
 		<body style="background-color:#FFFFFF; text-align:center;">
