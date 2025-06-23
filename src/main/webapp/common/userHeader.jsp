@@ -6,7 +6,7 @@
 		<div style="text-align:center">
 
 			<td style="text-align:center;">
-			<a href="/view/top.jsp" target="_blank" >  
+			<a href="<%=request.getContextPath()%>/view/top.jsp" >  
 			<img src="${pageContext.request.contextPath}/pic/kandafm.png" alt="ロゴ"border="0">
 			</a>
 			</td>
@@ -22,7 +22,7 @@
 		<div style="text-align:right">
 		<%
 		//ユーザー情報取得
-		User user=(User)session.getAttribute("user");
+		User user = (User)session.getAttribute("user");
 		//未ログインの場合
 		if (user == null) {	
 		%>
@@ -41,18 +41,23 @@
 		%>
 		<hr style="text-align: center; height: 3px; background-color:#ccff99; width: 1500px">
 		</div>
-
+		
+		<% if ( user == null ){ %>
+		
+		<% }else{ %>
 		<div  style="text-align: center">
 			<ul>
 				<a href="<%=request.getContextPath()%>/view/mypage.jsp" style="margin-right: 30px;">マイページ</a>
+				
 				<a href="<%=request.getContextPath()%>/showCart"style="margin-right: 30px;">カート内容</a>
 
 				<a href="<%=request.getContextPath()%>/view/goodsInsert.jsp" style="margin-right: 30px">出品</a>
 
-				<a href="<%=request.getContextPath()%>/view/top.jsp"style="margin-right: 30px;">トップメニューへ</a>
+				<a href="<%=request.getContextPath()%>/view/top.jsp" style="margin-right: 30px;">トップメニューへ</a>
 			</ul>
 		</div>
+		
+		<% } %>
 
-		<hr style="text-align: center; height: 1px; background-color:#ccff99; width: 1500px">
 	</div>
 </header>
