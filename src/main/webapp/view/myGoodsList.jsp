@@ -1,7 +1,10 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.ArrayList,bean.Goods"%>
+<%@page import="java.util.ArrayList,bean.Goods,util.MyFormat"%>
 
 
+<%
+MyFormat myformat = new MyFormat();
+%>
 <html>
 <head>
 <title>出品商品一覧</title>
@@ -44,23 +47,13 @@
 				<td><img src="<%=goods.getImgPath()%>"></td>
 				<td><%=goods.getGoodsName() %></td>
 				<td><%=goods.getPrice() %></td>
-				<td>
-					<%
-
-					
-					%>
-
-					
-
-				</td>
+				<td><%= myformat.statusFormat(goods.getStatus()) %></td>
 			</tr>
-
 			<% 
 			}
 		}
 		%>
 		</table>
-		
 		<form action="<%=request.getContextPath()%>/view/mypage.jsp" method="POST">
 			<input type="submit" value="マイページへ戻る">
 		</form>
