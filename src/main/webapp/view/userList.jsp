@@ -12,6 +12,7 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 <body>
 	<div style="margin:auto">
 		<%@include file="/common/adminHeader.jsp"%>
+		<p style="margin-top:100px"></p>
 
 		<table style="margin: auto">
 			<form action="<%=request.getContextPath()%>/userList" method="post">
@@ -66,6 +67,7 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 		%>
 
 		</table>
+	<p style="margin-top:100px"></p>
 	</div>
 	<%@include file="/common/adminFooter.jsp"%>
 </body>
