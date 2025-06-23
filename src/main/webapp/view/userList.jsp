@@ -13,15 +13,16 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 	<div style="margin:auto">
 		<%@include file="/common/adminHeader.jsp"%>
 
-		<div style="margin: auto">
-		<form action="<%=request.getContextPath()%>/userList" method="post">
-			<input type="text" name="user_id" value="">
-			<input type="submit"value="検索">
-		</form>
-		<form action="<%=request.getContextPath()%>/userList" method="post">
-			<input type="submit" value="全件表示">
-		</form>
-		</div>
+		<table style="margin: auto">
+			<form action="<%=request.getContextPath()%>/userList" method="post">
+				<tr>
+					<td><input type="text" name="user_id" value=""></td>
+					<td><input type="submit"value="検索"></td>
+			</form>
+			<form action="<%=request.getContextPath()%>/userList" method="post">
+					<td><input type="submit" value="全件表示"></td>
+			</form>
+		</table>
 
 		<%
 		if (userList.isEmpty()) {
