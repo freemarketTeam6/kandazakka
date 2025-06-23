@@ -1,8 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="bean.User" %>
 
-<header>
-	
+<header>	
 	<tr>
 		<div style="text-align:center">
 			<td style="text-align:center;"><img src="pic/kandafm.png" alt="ロゴ"></td>
