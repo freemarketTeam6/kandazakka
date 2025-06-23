@@ -31,8 +31,10 @@ public class SalesListServlet extends HttpServlet {
 			request.getRequestDispatcher("/view/salesList.jsp").forward(request, response);			
 			
 		}catch (IllegalStateException e) {
-			String error = "DB接続エラーのため、詳細画面は表示できませんでした。";
+			String error = "DB接続エラーのため、売上一覧画面は表示できませんでした。";
+			Stringr cmd="adminMenu";
 			request.setAttribute("error", error);
+			request.setAttribute("cmd", cmd);
 			request.getRequestDispatcher("/view/adminError.jsp").forward(request, response);
 		}
 		
