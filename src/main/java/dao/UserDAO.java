@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import bean.User;
 
@@ -225,6 +226,59 @@ public class UserDAO {
 			}
 		}
 		return user;
+	}
+
+	// 全ユーザーを表示するメソッド
+	public ArrayList<User> selectUserAll() {
+		Connection con = null;
+		Statement smt = null;
+
+		// 戻り値用の配列宣言
+		ArrayList<User> userList = new ArrayList<User>();
+
+		try {
+			// Userオブジェクトを生成
+			User user = new User();
+
+			// SQL文
+			String sql = "SELECT * FROM userinfo";
+
+			con = getConnection();
+			smt = con.createStatement();
+
+			ResultSet rs = smt.executeQuery(sql);
+
+			if (rs.next()) {
+				user.setUserid(rs.getString("user_id"));
+				user.setName(rs.getString("name"));
+				user.setNamekana(rs.getString("name_kana"));
+				user.setNickname(rs.getString("nickname"));
+				user.setAddress(rs.getString("address"));
+				user.setEmail(rs.getString("email"));
+				user.setPassword(rs.getString("password"));
+				user.setTell(rs.getString("tell"));
+				user.setMemo(rs.getString("memo"));
+				user.setAuthority(rs.getString("authority"));
+			}
+
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
+			}
+		}
+		return userList;
+
 	}
 
 }

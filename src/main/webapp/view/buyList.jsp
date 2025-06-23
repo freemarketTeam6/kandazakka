@@ -42,14 +42,14 @@ MyFormat myFormat = new MyFormat();
 			%>
 
 			<tr>
-				<td><img src="<%=goods.getImgPath()%>" alt="商品写真"></td>
-				<td><%=goods.getGoodsName()%></td>
-				<td><%=myFormat.moneyFormat(goods.getPrice())%></td>
-				<td><%=goods.getQuantity()%></td>
-				<td><%=goods.getCategory()%></td>
-				<td><%=goods.getBuyDate()%></td>
+				<td><img src="<%=goods.get(i).getImgPath()%>" alt="商品写真"></td>
+				<td><%=goods.get(i).getGoodsName()%></td>
+				<td><%=myFormat.moneyFormat(goods.get(i).getPrice())%></td>
+				<td><%=goods.get(i).getQuantity()%></td>
+				<td><%=goods.get(i).getCategory()%></td>
+				<td><%=goods.get(i).getBuyDate()%></td>
 				<td>
-					<form action="<%=request > getContextPath()%>/payment.jsp"
+					<form action="<%=request.getContextPath()%>/payment.jsp"
 						method="post">
 						<input type="submit" value="入金する"></input>
 					</form>
