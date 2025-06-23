@@ -10,7 +10,7 @@
 
 	<div>
 
-		<%@include file="/common/header.jsp"%>
+		<%@include file="/common/userHeader.jsp"%>
 
 		<%
 String error = (String)request.getAttribute("error");
@@ -38,7 +38,7 @@ String cmd = (String)request.getAttribute("cmd");
 		[<a href="<%=request.getContextPath()%>/view/mypage.jsp">マイページに戻る</a>]
 <%}%>
 
-	<%@include file="/common/footer.jsp"%>
+	<%@include file="/common/userFooter.jsp"%>
 
 
 

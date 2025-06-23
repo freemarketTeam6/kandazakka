@@ -3,7 +3,6 @@
 
 <%
 //リクエストスコープからのデータの取得
-ArrayList<User> list = (ArrayList<User>) request.getAttribute("user_list");
 String error = (String) request.getAttribute("error");
 %>
 
@@ -13,7 +12,7 @@ String error = (String) request.getAttribute("error");
 </head>
 
 <body>
-	<%@include file= "../common/userHeader.jsp" %>
+	<%@include file= "/common/userHeader.jsp" %>
 
 <hr style="text-align: center; height: 2px; background-color: black; width: 950px">
 	<h1 style="text-align: center;color:#000000;">マイページ</h1>
