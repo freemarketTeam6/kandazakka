@@ -74,7 +74,7 @@ public class UserListServlet extends HttpServlet {
 				// エラーがあればエラー文とcmdをリクエストスコープに登録し、「error.jsp」へフォワード
 				request.setAttribute("error", error);
 				request.setAttribute("cmd", cmd);
-				request.getRequestDispatcher("/view/UserError.jsp").forward(request, response);
+				request.getRequestDispatcher("/view/adminError.jsp").forward(request, response);
 			}
 
 		}
