@@ -34,9 +34,10 @@ public class ExhibitListServlet extends HttpServlet {
 		} catch (IllegalStateException e) {
 			// リクエストスコープにエラーを入れる
 			error = "DB接続エラーの為、出品一覧表示はできません。";
-			cmd="adminMenu";
+			cmd = "adminMenu";
 			request.setAttribute("error", error);
-			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
+			request.setAttribute("cmd", cmd);
+			request.getRequestDispatcher("/view/adminError.jsp").forward(request, response);
 		}
 	}
 }
