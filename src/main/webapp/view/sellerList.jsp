@@ -35,7 +35,7 @@ ArrayList<User> sellerList = (ArrayList<User>)request.getAttribute("sellerList")
 		<tr>
 			<td><%= sellerList.get(i).getUserid() %></td>
 			<td><%= sellerList.get(i).getName() %></td>
-			<td><%= sellerList.get(i).getNamekana %></td>
+			<td><%= sellerList.get(i).getNamekana() %></td>
 			<td><%= sellerList.get(i).getAddress() %></td>
 			<td><%= sellerList.get(i).getEmail() %></td>
 			<td><%= sellerList.get(i).getTell() %></td>
