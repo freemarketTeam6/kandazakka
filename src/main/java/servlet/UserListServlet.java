@@ -54,7 +54,7 @@ public class UserListServlet extends HttpServlet {
 				// エラー処理
 				if (user == null) {
 					error = "セッション切れのため、ユーザー一覧画面は表示できませんでした。";
-					cmd = "top";
+					cmd = "logout";
 				}
 
 				// 取得したユーザー情報をリクエストスコープに登録
