@@ -1,0 +1,157 @@
+package servlet;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+
+import bean.Inquiries;
+import bean.User;
+import dao.InquiriesDAO;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
+
+@WebServlet("/newInquiry")
+public class NewInquiryServlet extends HttpServlet {
+	String error = "";
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String message = "";
+		Inquiries inquiries = new Inquiries();
+		int inquiryno = 0;
+		try {
+
+			request.setCharacterEncoding("UTF-8");
+
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute("user");
+			InquiriesDAO inquiriesDao = new InquiriesDAO();
+
+			if (user == null) {
+				error = "セッション切れの為、パスワード変更は行えません。 ";
+				request.setAttribute("cmd", "logout");
+				return;
+
+			}
+
+			String userID = user.getUserid();
+			String category = request.getParameter("category");
+			String title = request.getParameter("title");
+			String contents = request.getParameter("contents");
+			int last_inquiryno = inquiriesDao.inquiriesCount();
+
+			Part filePart = request.getPart("image");
+			String filePath = fileSave(filePart, last_inquiryno);
+
+			if (category == null || category.equals("")) {
+
+				message = "お問い合わせカテゴリを選択してください";
+				return;
+
+			}
+			if (title == null || title.equals("")) {
+
+				message = "お問い合わせタイトルを入力してください";
+				return;
+
+			}
+			if (contents == null || contents.equals("")) {
+
+				message = "お問い合わせ内容を入力してください";
+				return;
+
+			}
+
+			inquiries.setUser_id(userID);
+			inquiries.setCategory(category);
+			inquiries.setTitle(title);
+			inquiries.setContents(contents);
+			inquiries.setFile_path(filePath);
+
+			inquiriesDao.insert(inquiries);
+			
+			inquiryno = last_inquiryno+1;
+
+		} catch (IllegalStateException e) {
+			error = "DB接続エラーの為、パスワード変更は行えません。 ";
+			request.setAttribute("cmd", "logout");
+
+		} catch (Exception e) {
+			error = "予期せぬエラーが発生しました。<br>" + e;
+			request.setAttribute("cmd", "logout");
+
+		} finally {
+			if (error.equals("") && message.equals("")) {
+				request.setAttribute("user", inquiryno);
+				request.getRequestDispatcher("/inquiry").forward(request, response);
+
+			} else if (!error.equals("")) {
+				request.setAttribute("error", error);
+				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
+			} else {
+				request.setAttribute("message", message);
+				request.setAttribute("user", inquiries);
+				request.getRequestDispatcher("/view/newInquiry.jsp").forward(request, response);
+			}
+		}
+
+	}
+
+	private String fileSave(Part filePart, int last_inquiryno) throws IOException {
+
+		//ルート情報とファイルパスを管理する変数を初期化
+		String uploadDir = "";
+		String filePath = "";
+
+		//ファイル名を管理する変数
+		String fileName = "";
+
+		//ファイルサイズを元にファイルの有無を確認
+		if (filePart.getSize() != 0) {
+
+			//ファイル名を設定
+			fileName = "inquiries_" + last_inquiryno + 1;
+
+			// 保存先ディレクトリを設定
+			uploadDir = "../../webapp/file/inquiries";
+
+			//アップロード先のディレクトリが存在しない場合に、そのディレクトリを作成
+			File uploadDirectory = new File(uploadDir);
+			if (!uploadDirectory.exists()) {
+				uploadDirectory.mkdirs();
+			}
+
+			//アップロードした画像ファイルパス
+			filePath = uploadDir + "/" + fileName;
+
+			// デバッグ用にパスを出力
+			System.out.println("保存されたパス: " + filePath);
+
+			//ファイルの保存処理（アップロードされたファイルをサーバー上の指定されたディレクトリに保存）
+			try (InputStream inputStream = filePart.getInputStream()) {
+				Files.copy(inputStream, new File(filePath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+			}
+
+			// 保存後にファイルの存在をチェック
+			File savedFile = new File(filePath);
+			if (!savedFile.exists()) {
+				error = "保存に失敗しました。 ";
+				throw new IOException();
+
+			}
+
+			//リクエストスコープにファイル名を設定
+		} else {
+			error = "ファイルがありません";
+		}
+		return filePath;
+
+	}
+}
