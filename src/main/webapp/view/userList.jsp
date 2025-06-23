@@ -3,7 +3,6 @@
 
 <%
 ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
-System.out.print(userList);
 %>
 
 <html>
