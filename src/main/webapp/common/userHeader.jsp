@@ -4,7 +4,7 @@
 <header>	
 	<tr>
 		<div style="text-align:center">
-			<td style="text-align:center;"><a href="<%=request.getContextPath() %>/view/top.jsp"><img src="/pic/kandafm.png" alt="ロゴ"></a></td>
+			<td style="text-align:center;"><a href="<%=request.getContextPath() %>/view/top.jsp"><img src="${pageContext.request.contextPath}/pic/kandafm.png" alt="ロゴ"></a></td>
 		<form action="<%=request.getContextPath()%>/SearchServlet"style="display: inline;">
 			<input id="sbox2" name="keyword" type="text" placeholder="キーワードを入力" />
 			<input id="sbtn1" type="submit" value="検索" />
