@@ -20,7 +20,7 @@ public class SalesListServlet extends HttpServlet {
 		
 		GoodsDAO objGoodsDAO = new GoodsDAO();
 		
-		//try {
+		try {
 			//ステータスが「３」以降の商品をDBからもってきて、salesGoodsListに格納
 			salesGoodsList = objGoodsDAO.selectGoodsByStatus("3");
 			
@@ -30,13 +30,13 @@ public class SalesListServlet extends HttpServlet {
 			//salesList.jspにフォワードする
 			request.getRequestDispatcher("/view/salesList.jsp").forward(request, response);			
 			
-		/*}catch (IllegalStateException e) {
+		}catch (IllegalStateException e) {
 			String error = "DB接続エラーのため、売上一覧画面は表示できませんでした。";
 			String cmd="adminMenu";
 			request.setAttribute("error", error);
 			request.setAttribute("cmd", cmd);
 			request.getRequestDispatcher("/view/adminError.jsp").forward(request, response);
-		}*/
+		}
 		
 
 		
