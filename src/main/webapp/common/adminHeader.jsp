@@ -13,11 +13,23 @@
 	</tr>
 		
 		<div style="text-align:right">
-		<%User user=(User)session.getAttribute("user");%>
+		<%
+		//ユーザー情報取得
+		User user=(User)session.getAttribute("user");
+		//未ログインの場合
+		if (user == null) {	
+		%>
+			<p style="font-size: 24px">未ログイン</p>
+		<%
+		}else{
+		%>
 			<%= user.getNickname() %>
 			<form action="<%=request.getContextPath() %>/logout">
 			<input type="submit" value="ログアウト">
 			</form>
+		<%
+		}
+		%>
 		
 		<hr style="text-align: center; height: 3px; background-color:#ffffa8; width: 1500px">
 		</div>
