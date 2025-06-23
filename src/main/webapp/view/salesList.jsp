@@ -59,5 +59,5 @@ ArrayList<Goods> salesGoodsList = (ArrayList<Goods>)request.getAttribute("salesG
 		
 	</table>
 </body>
-<%@include file="/common/footer.jsp"%>
+<%@include file="/common/adminFooter.jsp"%>
 </html>
