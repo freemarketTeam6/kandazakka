@@ -21,7 +21,7 @@ public class ExhibitListServlet extends HttpServlet {
 		ArrayList<Goods> goodsList = new ArrayList<Goods>();
 		// GoodsDAOのインスタンス化
 		GoodsDAO goodsDao = new GoodsDAO();
-		//try {
+		try {
 			// グッズ情報を全て取得
 			goodsList = goodsDao.selectAll();
 
@@ -31,13 +31,13 @@ public class ExhibitListServlet extends HttpServlet {
 			// exhibitList.jspにフォワード
 			request.getRequestDispatcher("/view/exhibitList.jsp").forward(request, response);
 
-		/*} catch (IllegalStateException e) {
+		} catch (IllegalStateException e) {
 			// リクエストスコープにエラーを入れる
 			error = "DB接続エラーの為、出品一覧表示はできません。";
 			cmd = "adminMenu";
 			request.setAttribute("error", error);
 			request.setAttribute("cmd", cmd);
 			request.getRequestDispatcher("/view/adminError.jsp").forward(request, response);
-		}*/
+		}
 	}
 }
