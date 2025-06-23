@@ -10,24 +10,24 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 <title>ユーザー一覧</title>
 </head>
 <body>
-	<div style="text-align: center">
-		<%@ include file="/common/header.jsp"%>
+	<div style="margin:auto">
+		<%@include file="/common/adminHeader.jsp"%>
 
-		<p style="margin: auto">
+		<div style="margin: auto">
 		<form action="<%=request.getContextPath()%>/userList" method="post">
-			<input style="text" name="user_id" value="">
-			<input style="submit"value="検索">
+			<input type="text" name="user_id" value="">
+			<input type="submit"value="検索">
 		</form>
 		<form action="<%=request.getContextPath()%>/userList" method="post">
-			<input style="submit" value="全件表示">
+			<input type="submit" value="全件表示">
 		</form>
-		</p>
+		</div>
 
 		<%
 		if (userList.isEmpty()) {
 		%>
 
-		<p style="font-size: 24px">
+		<p style="font-size: 24px;text-align:center">
 			<strong>会員登録をしているユーザーはいませんでした。</strong>
 		</p>
 
@@ -48,13 +48,13 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 			%>
 
 			<tr>
-				<td><%=user.get(i).getName()%></td>
-				<td><%=user.get(i).getUserid()%></td>
-				<td><%=goods.get(i).getEmail()%></td>
+				<td><%=userList.get(i).getName()%></td>
+				<td><%=userList.get(i).getUserid()%></td>
+				<td><%=userList.get(i).getEmail()%></td>
 				<td>
 					<form action="<%=request.getContextPath() %>/userList" method="post">
 						<input style="submit" value="削除">
-						<input style="hidden" name="delno" value="<%=user.get(i).getUserid() %>"
+						<input style="hidden" name="delno" value="<%=userList.get(i).getUserid() %>"
 					</form>
 				</td>
 			</tr>
@@ -66,6 +66,6 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 
 		</table>
 	</div>
-	<%@include file="/common/footer.jsp"%>
+	<%@include file="/common/adminFooter.jsp"%>
 </body>
 </html>

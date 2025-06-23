@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/userList")
 public class UserListServlet extends HttpServlet {
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String error = "";
 		String cmd = "";
 
