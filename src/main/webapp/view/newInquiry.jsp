@@ -9,35 +9,35 @@
 
 	<h1>お問い合わせ</h1>
 	
-	<form action="<%=request.getContextPath()%>/newInpuiry" method="post">
+	<form action="<%=request.getContextPath()%>/newInquiry" method="post">
 		<table border="1">
 			<tr>
 				<th>お問い合わせカテゴリ</t>
-				<td><select name="inquiry">
-					<option value="select">選択</option>
-					<option value="">取引に関する問題</option>
-					<option value="">出品に関する質問</option>
-					<option value="">商品に関する質問</option>
-					<option value="">購入に関する質問</option>
-					<option value="">配送に関する問題</option>
-					<option value="">アカウントに関する問題</option>
-					<option value="">支払い・返金について</option>
-					<option value="">違反報告・安全に関する問題</option>
-					<option value="">アプリの不具合・バグ報告</option>
-					<option value="">その他</option>
+				<td><select name="category">
+					<option value="select" disabled>選択</option>
+					<option value="0">取引に関する問題</option>
+					<option value="1">出品に関する質問</option>
+					<option value="2">商品に関する質問</option>
+					<option value="3">購入に関する質問</option>
+					<option value="4">配送に関する問題</option>
+					<option value="5">アカウントに関する問題</option>
+					<option value="6">支払い・返金について</option>
+					<option value="7">違反報告・安全に関する問題</option>
+					<option value="8">アプリの不具合・バグ報告</option>
+					<option value="9">その他</option>
 			</select></td>
 			</tr>
 			<tr>
 				<td>お問い合わせタイトル</td>
-				<td><input type="text" name="inquiry" value=""></td>
+				<td><input type="text" name="title" value=""></td>
 			</tr>
 			<tr>
 				<td>詳細記入欄</td>
-				<td><textarea name="inquirydetail" value=""></textarea></td>
+				<td><textarea name="contents" value=""></textarea></td>
 			</tr>
 			<tr>
 				<td>添付ファイル</td>
-				<td><input type="file" name="inquirypath" size="30" value=""></td>
+				<td><input type="file" name="file_path" size="30" value=""></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" name="sendinquiry" value="送信"></input></td>

@@ -203,5 +203,47 @@ public class InquiriesDAO {
 		}
 		return Inquiries;
 	}
+	
+	public int inquiriesCount() {
+
+		// 変数宣言
+		Connection con = null; // DBコネクション
+		Statement smt = null; // SQLステートメント
+
+		int last_inquiryno = 0;
+
+		try {
+			//②SQL文を文字列として定義
+			String sql = "SELECT * FROM inquiryinfo ORDER BY id DESC"
+					+ "LIMIT 1;";
+
+			con = InquiriesDAO.getConnection();
+			smt = con.createStatement();
+
+			// SQL文発行
+			ResultSet rs = smt.executeQuery(sql);
+
+			// 検索結果をArrayListに格納
+			rs.next();
+			last_inquiryno = rs.getInt("inquiryno");
+
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
+			}
+		}
+		return last_inquiryno;
+	}
 
 }
