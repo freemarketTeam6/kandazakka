@@ -36,8 +36,6 @@ if(message==null){
 		
 		<body style="background-color:#FFFFFF; text-align:center;">
 			<h1 style="color:#000000;">ログイン</h1>
-		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
-		
 		
 		<div style="margin-bottom:300px">
 		<br>	
@@ -56,6 +54,7 @@ if(message==null){
  					<tr>
  						<td colspan=2 style="text-align:center"><br>
  							<input type="submit" value="ログイン">
+ 							<input type="hidden" name="from" value="user">
  						</td>
  					</tr>
  					<tr>	

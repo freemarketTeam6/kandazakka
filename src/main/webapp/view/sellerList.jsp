@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.ArrayList, bean.Goods"%>
+<%@page import="java.util.ArrayList, bean.Goods,bean.User"%>
 
 
 <%
@@ -30,12 +30,12 @@ ArrayList<User> sellerList = (ArrayList<User>)request.getAttribute("sellerList")
 
 		<%
 		if (sellerList != null) {
-			for(int i= 0; i< sellerList.size().i++){
+			for(int i= 0; i< sellerList.size();i++){
 		%>
 		<tr>
 			<td><%= sellerList.get(i).getUserid() %></td>
 			<td><%= sellerList.get(i).getName() %></td>
-			<td><%= sellerList.get(i).getNamekana %></td>
+			<td><%= sellerList.get(i).getNamekana() %></td>
 			<td><%= sellerList.get(i).getAddress() %></td>
 			<td><%= sellerList.get(i).getEmail() %></td>
 			<td><%= sellerList.get(i).getTell() %></td>

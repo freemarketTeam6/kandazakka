@@ -124,9 +124,11 @@ public class UserDAO {
 		Connection con = null;
 		Statement smt = null;
 
+
 		String sql = "INSERT INTO userinfo (user_id, name, name_kana, nickname, address, email, password, tell, memo, authority) VALUES ('"	
 		+ user.getUserid() + "','" + user.getName() + "','" + user.getNamekana() + "','" + user.getNickname() + "','" 	+ user.getAddress() + "','" 
 		+ user.getEmail() + "','" + user.getPassword() + "','" + user.getTell() + "','" + user.getMemo() + "', 'u')";
+
 
 		try {
 			con = getConnection();

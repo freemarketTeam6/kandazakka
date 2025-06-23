@@ -4,7 +4,6 @@
 
 <%
 ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList");
-User user = (User)session.getAttribute("user");
 %>
 
 <html lang="ja">
@@ -15,15 +14,6 @@ User user = (User)session.getAttribute("user");
     body {
       margin: 0;
       font-family: sans-serif;
-    }
-
-    header {
-      display: flex;
-      justify-content: center; /* 全体中央寄せ */
-      align-items: center;
-      padding: 10px;
-      border-bottom: 1px solid #000;
-      gap: 300px; /* ← 間隔を広げた */
     }
 
     .search-box {
@@ -60,36 +50,7 @@ User user = (User)session.getAttribute("user");
 </head>
 <body>
 
-  <header>
-  	<form action="/view/top.jsp">
-  		<div>神田雑貨店フリマ</div>
-  	</form>
-    
-    <form action="<%= request.getContextPath() %>/search">
-      <div class="search-box">
-      	<input type="text" placeholder="検索">
-      	<button>検索</button>
-      </div>
-    </form>
-    
-    <form action="<%= request.getContextPath() %>/view/userLogin.jsp">
-    	<div class="login-btn">
-       		<input type="submit" value="ログイン">
-    	</div>
-    </form>
-    
-  </header>
-
-	<table>
-	<tr>
-		<td><a href="<%= request.getContextPath() %>/view/mypage.jsp">マイページ</a></td>
-		<td><a href="<%= request.getContextPath() %>/showCart">カート内容</a></td>
-		<td><a href="<%= request.getContextPath() %>/goodsInsert">出品</a></td>
-		<td><a href="<%= request.getContextPath() %>/adminLogin">管理者ページ</a></td>
-	</tr>
-	</table>
-	
-	<hr>
+	<%@include file="../common/userHeader.jsp"%>
 	
 	<div>
 	<% 
@@ -107,6 +68,7 @@ User user = (User)session.getAttribute("user");
 		<% } %>
 		<% } %>
 	</div>
-
+	
+	<%@include file="../common/userFooter.jsp"%>
 </body>
 </html>

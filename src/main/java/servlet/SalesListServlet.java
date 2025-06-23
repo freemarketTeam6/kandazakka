@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/saleslist")
+@WebServlet("/salesList")
 public class SalesListServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -20,7 +20,7 @@ public class SalesListServlet extends HttpServlet {
 		
 		GoodsDAO objGoodsDAO = new GoodsDAO();
 		
-		try {
+		//try {
 			//ステータスが「３」以降の商品をDBからもってきて、salesGoodsListに格納
 			salesGoodsList = objGoodsDAO.selectGoodsByStatus(3);
 			
@@ -30,11 +30,13 @@ public class SalesListServlet extends HttpServlet {
 			//salesList.jspにフォワードする
 			request.getRequestDispatcher("/view/salesList.jsp").forward(request, response);			
 			
-		}catch (IllegalStateException e) {
-			String error = "DB接続エラーのため、詳細画面は表示できませんでした。";
+		/*}catch (IllegalStateException e) {
+			String error = "DB接続エラーのため、売上一覧画面は表示できませんでした。";
+			String cmd="adminMenu";
 			request.setAttribute("error", error);
-			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
-		}
+			request.setAttribute("cmd", cmd);
+			request.getRequestDispatcher("/view/adminError.jsp").forward(request, response);
+		}*/
 		
 
 		

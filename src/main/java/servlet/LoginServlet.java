@@ -25,10 +25,13 @@ public class LoginServlet extends HttpServlet {
 		// DTOオブジェクト宣言
 		User user = new User();
 		
+		String from = null;
+		
 	try {	
 		// パラメータの取得
 		String userid = request.getParameter("userid");
 		String password = request.getParameter("password");
+		from = request.getParameter("from");
 		
 		// UserDAOをインスタンス化し、関連メソッドを呼び出す。
 		UserDAO objDao = new UserDAO();
@@ -38,8 +41,14 @@ public class LoginServlet extends HttpServlet {
 		session.setAttribute("user",user);
 		
 		if(user.getUserid()==null){
+			if(from.equals("admin")) {
+				request.setAttribute("message","入力データが間違っています");
+				request.getRequestDispatcher("/view/adminLogin.jsp").forward(request, response);
+			}
+			else {
 			request.setAttribute("message","入力データが間違っています");
 			request.getRequestDispatcher("/view/userLogin.jsp").forward(request, response);
+			}
 		}else {
 			//ユーザー用クッキーの生成
  			Cookie useridCookie = new Cookie("userid", userid);
@@ -56,8 +65,13 @@ public class LoginServlet extends HttpServlet {
 		error = "DB接続エラーの為、一覧表示を行えませんでした。";
 	}finally {
 		if (error.equals("")) {
-			// 登録された件数を持ってmenu.jspにフォワード
+			if(from.equals("admin")) {
+				//adminLoginからの遷移の場合は管理者メニューにフォワード
+				request.getRequestDispatcher("/view/adminMenu.jsp").forward(request, response);
+			}else {
+			// 一般ユーザーのログインの場合top.jspにフォワード
 			request.getRequestDispatcher("/view/top.jsp").forward(request, response);
+			}
 		}else {
 			request.setAttribute("cmd", cmd);
 			request.setAttribute("error", error);
