@@ -47,7 +47,7 @@
 				</tr>
 				<tr>
 					<td style="text-align: center; width: 100px"><a
-						href="<%=request.getContextPath()%>/Logout">【ログアウト】</a></td>
+						href="<%=request.getContextPath()%>/logout">【ログアウト】</a></td>
 				</tr>
 			</table>
 
