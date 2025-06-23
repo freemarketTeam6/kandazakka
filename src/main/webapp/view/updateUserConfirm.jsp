@@ -50,10 +50,10 @@ body {
 <body>
 	<div class="main">
 		<header>
-			<%@include file="/common/header.jsp"%>
+			<%@include file="/common/userHeader.jsp"%>
 		</header>
 
-		<%User user = (User)request.getAttribute("user"); %>
+		<%User updateUser = (User)request.getAttribute("user"); %>
 
 		<h1>ユーザー情報変更</h1>
 
@@ -61,46 +61,46 @@ body {
 
 			<tr>
 				<td class="thclass"><span>ユーザーID</span></td>
-				<td><span><%=user.getUserid()%></span></td>
+				<td><span><%=updateUser.getuserid()%></span></td>
 			</tr>
 			<tr>
 				<td class="thclass"><span>名前</span></td>
-				<td><span><%=user.getName()%></span></td>
+				<td><span><%=updateUser.getName()%></span></td>
 			</tr>
 			<tr>
 				<td class="thclass"><span>名前（カナ）</span></td>
-				<td><span><%=user.getNamekana()%></span></td>
+				<td><span><%=updateUser.getNamekana()%></span></td>
 
 			</tr>
 			<tr>
 				<td class="thclass"><span>ニックネーム</span></td>
-				<td><span><%=user.getNickname()%></span></td>
+				<td><span><%=updateUser.getNickname()%></span></td>
 			</tr>
 			<tr>
 				<td class="thclass"><span>住所</span></td>
-				<td><span><%=user.getAddres()%></span></td>
+				<td><span><%=updateUser.getAddres()%></span></td>
 			</tr>
 			<tr>
 				<td class="thclass"><span>電話番号</span></td>
-				<td><span><%=user.getTell()%></span></td>
+				<td><span><%=updateUser.getTell()%></span></td>
 			</tr>
 			<tr>
 				<td class="thclass"><span>Eメール</span></td>
-				<td><span><%=user.getEmail()%></span></td>
+				<td><span><%=updateUser.getEmail()%></span></td>
 			</tr>
 
 			<tr>
 				<td class="thclass"><span>パスワード</span></td>
-				<td><span><%=user.getPassword()%></span></td>
+				<td><span><%=updateUser.getPassword()%></span></td>
 			</tr>
 			<tr>
 				<td class="thclass"><span>メモ</span></td>
-				<td><span><%=user.getMemo()%></span></td>
+				<td><span><%=updateUser.getMemo()%></span></td>
 			</tr>
 
 			<tr>
 				<td class="thclass"><span>メモ</span></td>
-				<td><span><%=user.getMemo()%></span></td>
+				<td><span><%=updateUser.getMemo()%></span></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
@@ -141,7 +141,7 @@ body {
 		</script>
 
 		<footer>
-			<%@include file="/common/footer.jsp"%>
+			<%@include file="/common/userFooter.jsp"%>
 		</footer>
 
 	</div>

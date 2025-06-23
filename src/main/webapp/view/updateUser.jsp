@@ -69,16 +69,27 @@ body {
 
 </head>
 <body>
-<%@include file="../common/userHeader.jsp"%>
+	<%@include file="../common/userHeader.jsp"%>
 	<div class="main">
 
 
 		<!-- requestUserは、一度目の入力の際に未入力の項目があった場合、
 			再入力の手間を省けるよう、自動入力させるために必要	 -->
 
+	
 		<%
-		User sessionUser = (User) session.getAttribute("user");
-		User requestUser = (User) request.getAttribute("user");
+		User sessionuser = (User) session.getAttribute("user");
+		User requestuser = (User) request.getAttribute("user");
+		if(requestuser==null){
+			requestuser= new User();
+			requestuser.setAddress("");
+			requestuser.setName("");
+			requestuser.setEmail("");
+			requestuser.setUserid("");
+			requestuser.setNamekana("");
+			requestuser.setNickname("");
+			requestuser.setTell("");
+		}
 
 		String message = (String) request.getAttribute("message");
 		if (message == null) {
@@ -86,69 +97,72 @@ body {
 		}
 		%>
 
-		
+
 		<h1>ユーザー情報変更</h1>
-		
+
 		<!-- inputタグの中に value = requestUser.get●●()を記述していたが、
 				マイページからこのjspに飛んだ時にnullのためエラーが出る。
-				6/23 14時点では、いったんvalueを削除して進めることとする -->
+				6/23 14時点では、いったんvalueを削除して進めることとする 
+				6/23 16時　修正済-->
+
 
 		<form action="<%=request.getContextPath()%>/updateUser"
-			name="updatesessionUser" method="post">
+			name="updateUser" method="post">
 
 			<h3><%=message%></h3>
 			<table class="update">
 
 
 				<tr class="text">
-					<td>&nbsp;</td>
-					<td>&lt;&lt;変更前情報&gt;&gt;</td>
-					<td>&lt;&lt;変更後情報&gt;&gt;</td>
+				<td>&nbsp;</td>
+				<td>&lt;&lt;変更前情報&gt;&gt;</td>
+				<td>&lt;&lt;変更後情報&gt;&gt;</td>
 				</tr>
 
 				<tr>
 					<td class="thclass"><span>名前</span></td>
-					<td><span><%=sessionUser.getName()%></span></td>
+					<td><span><%=sessionuser.getName()%></span></td>
 					<td><input type="text" name="name" id="name"
-						required="required"></input></td>
+						required="required" value="<%=requestuser.getName()%>"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>名前（カナ）</span></td>
-					<td><span><%=sessionUser.getNamekana()%></span></td>
+					<td><span><%=sessionuser.getNamekana()%></span></td>
 					<td><input type="text" name="name_kana" id="name_kana"
-						required="required"></input></td>
+						required="required" value="<%=requestuser.getNamekana()%>"></input></td>
 
 				</tr>
 				<tr>
 					<td class="thclass"><span>ニックネーム</span></td>
-					<td><span><%=sessionUser.getNickname()%></span></td>
+					<td><span><%=sessionuser.getNickname()%></span></td>
 					<td><input type="text" name="nickname" id="nickname"
-						required="required"></input></td
+						required="required" value="<%=requestuser.getNickname()%>"></input></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>ユーザーID</span></td>
-					<td><span><%= sessionUser.getUserid() %></span></td>
-					<td><input type="text" name="userID" id="userid"
-						required="required"></input></td>
+					<td><span><%=sessionuser.getUserid()%></span></td>
+					<td><input type="text" name="userid" id="userid"
+						 value="<%=requestuser.getUserid()%>"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>住所</span></td>
-					<td><span><%= sessionUser.getAddress() %></span></td>
+					<td><span><%=sessionuser.getAddress()%></span></td>
 					<td><input type="text" name="address" id="address"
-						required="required"></input></td>
+						required="required" value="<%=requestuser.getAddress()%>"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>電話番号</span></td>
-					<td><span><%= sessionUser.getTell() %></span></td>
+					<td><span><%=sessionuser.getTell()%></span></td>
 					<td><input type="tel" name="tell" id="tell"
 						oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-						required="required"></input></td>
+						required="required" value="<%=requestuser.getTell()%>"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>Eメール</span></td>
-					<td><span><%= sessionUser.getEmail() %></span></td>
-					<td><input type="email" name="email" required="required"></input></td>
+					<td><span><%=sessionuser.getEmail()%></span></td>
+					<td><input type="email" name="email" required="required"
+						value="<%=requestuser.getEmail()%>"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>メモ</span></td>
@@ -164,13 +178,14 @@ body {
 				<tr>
 					<td class="thclass"><span>新規パスワード</span></td>
 					<td>&nbsp;</td>
-					<td><input type="password" id="pass" name="pass" required="required"></td>
+					<td><input type="password" id="pass" name="pass"
+						required="required"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>新規パスワード（確認用）</span></td>
 					<td>&nbsp;</td>
 					<td><input type="password" id="checkpass" name="checkpass"
-						required="required" oninput="CheckPassword(this)"></input></td>
+						required="required"></input></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -184,27 +199,54 @@ body {
 				</tr>
 				<tr>
 					<td></td>
-					<td colspan=2 style="text-align: center;">
-						<input type="submit" value="変更する" id="btn" style="width: 40%;">
-					</td>
+					<td colspan=2 style="text-align: center;"><input type="submit"
+						value="変更する" id="btn" style="width: 40%;" disabled></td>
 				</tr>
 
 			</table>
 		</form>
 
 		<script type="text/javascript">
+			checkpass.oninput = function() {
+				var pass = document.updateUser.pass.value;
+				var checkpass = document.updateUser.checkpass.value;
+				var element = document.getElementById("btn");
+				var textbgColor = document.getElementById("checkpass");
 
-		function CheckPassword(confirm){
-			//入力値の取得
-			const input1 = pass.value;
-			const input2 = checkpass.value;
-			if ( input1 != input2){
-				confirm.setCustomValidity("入力値が一致していません");
-			}else{
-				confirm.setCustomValidity("");
+				if (pass == "") {
+					element.disabled = true;
+					textbgColor.style.backgroundColor = "#ffffff";
+					error.innerHTML = "";
+
+				} else if (pass != checkpass) {
+					element.disabled = true;
+					textbgColor.style.backgroundColor = "#ffb3b3";
+					error.innerHTML = "パスワードが一致していません";
+
+				} else if (pass == checkpass) {
+					element.disabled = false;
+					textbgColor.style.backgroundColor = "#ffffff";
+					error.innerHTML = "";
 				}
-		}
+
+			}
+
+			for (var n = 1; n <= 2; n++) {
+				var span = document.querySelectorAll(".update td:nth-child("
+						+ n + ") > span");
+				var maxw = 0;
+				for (var i = 0; i < span.length; i++) {
+					if (span[i].offsetWidth > maxw) {
+						maxw = span[i].offsetWidth
+					}
+				}
+				for (var i = 0; i < span.length; i++) {
+					span[i].style.width = maxw + "px";
+				}
+			}
 		</script>
+
+
 	</div>
 	<%@include file="../common/userFooter.jsp"%>
 </body>

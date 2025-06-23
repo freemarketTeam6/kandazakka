@@ -124,11 +124,11 @@ public class UserDAO {
 		Connection con = null;
 		Statement smt = null;
 
-
-		String sql = "INSERT INTO userinfo (user_id, name, name_kana, nickname, address, email, password, tell, memo, authority) VALUES ('"	
-		+ user.getUserid() + "','" + user.getName() + "','" + user.getNamekana() + "','" + user.getNickname() + "','" 	+ user.getAddress() + "','" 
-		+ user.getEmail() + "','" + user.getPassword() + "','" + user.getTell() + "','" + user.getMemo() + "', 'u')";
-
+		String sql = "INSERT INTO userinfo (user_id, name, name_kana, nickname, address, email, password, tell, memo, authority) VALUES ('"
+				+ user.getUserid() + "','" + user.getName() + "','" + user.getNamekana() + "','" + user.getNickname()
+				+ "','" + user.getAddress() + "','"
+				+ user.getEmail() + "','" + user.getPassword() + "','" + user.getTell() + "','" + user.getMemo()
+				+ "', 'u')";
 
 		try {
 			con = getConnection();
@@ -155,17 +155,18 @@ public class UserDAO {
 	}
 
 	// ユーザー情報変更機能
-	public void update(User user) {
+	public void update(User user, String nowUserid) {
 
 		Connection con = null;
 		Statement smt = null;
 
 		try {
-			String sql = "UPDATE userinfo SET name = '" + user.getName() + ", name_kana = '" + user.getNamekana()
+			String sql = "UPDATE userinfo SET user_id = '" + user.getUserid() + "', name = '" + user.getName()
+					+ "', name_kana = '" + user.getNamekana()
 					+ "', nickname = '" + user.getNickname() + "', address = '" + user.getAddress() + "', email = '"
 					+ user.getEmail() + "', password = '" + user.getPassword() + "', tell = '" + user.getTell()
-					+ "', memo = '" + user.getMemo() + "' WHERE user_id = '" + user.getUserid() + "';";
-
+					+ "', memo = '" + user.getMemo() + "' WHERE user_id = '" + nowUserid + "';";
+			
 			con = getConnection();
 			smt = con.createStatement();
 
