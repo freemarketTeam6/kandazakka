@@ -42,9 +42,12 @@
 
 		<div  style="text-align: center">
 			<ul>
-				<a href="<%=request.getContextPath()%>/view/mypage.jsp"style="margin-right: 30px;">マイページ</a>
-				<a href="<%=request.getContextPath()%>/showCart.jsp"style="margin-right: 30px;">カート内容</a>
-				<a href="<%=request.getContextPath()%>/goodsInsert.jsp"style="margin-right: 30px;">出品</a>
+
+				<a href="<%=request.getContextPath()%>/view/mypage.jsp" style="margin-right: 30px;">マイページ</a>
+				<a href="<%=request.getContextPath()%>/showCart"style="margin-right: 30px;">カート内容</a>
+
+				<a href="<%=request.getContextPath()%>/view/goodsInsert.jsp" style="margin-right: 30px">出品</a>
+
 				<a href="<%=request.getContextPath()%>/view/top.jsp"style="margin-right: 30px;">トップメニューへ</a>
 			</ul>
 		</div>
