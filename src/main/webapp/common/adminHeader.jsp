@@ -5,7 +5,7 @@
 	<tr>
 		<div style="text-align:center">
 			<td style="text-align:center;">
-			<a href="<%=request.getContextPath()%>/view/top.jsp" target="_blank" >  
+			<a href="<%=request.getContextPath()%>/view/top.jsp">
 			<img src="${pageContext.request.contextPath}/pic/kandafm.png" alt="ロゴ"border="0">
 			</a>
 			</td>
@@ -23,7 +23,7 @@
 		//ユーザー情報取得
 		User user=(User)session.getAttribute("user");
 		//未ログインの場合
-		if (user == null) {	
+		if (user == null || user.getAuthority().equals("u")) {	
 		%>
 			<p style="font-size: 15px">未ログイン</p>
 		<%
