@@ -34,7 +34,6 @@ if(message==null){
  		<br>
 		<div style="margin-bottom:250px">
 		
-		<hr style="text-align:center; height:2px; background-color:black; width:950px">
 		<body style="background-color:#FFFFFF; text-align:center;">
 			<h1 style="color:#000000;">ログイン</h1>
 		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
@@ -53,18 +52,18 @@ if(message==null){
  						<td ><input type=text size="30" name="password" value="<%=password %>"></input></td>
  					</tr>
  					
+ 					<div style="text-align: center">
  					<tr>
  						<td colspan=2 style="text-align:center"><br>
  							<input type="submit" value="ログイン">
  						</td>
  					</tr>
- 					
  					<tr>	
  						<td style="text-align: center; width: 80px; font-size: 15px;"><a
-							href="<%=request.getContextPath() %>/view/menu.jsp">新規登録</a>
-							
+							href="<%=request.getContextPath() %>/view/menu.jsp">新規登録</a>	
 						</td>
  					</tr>
+ 					</div>
  				</table>
  			</form>
  			<p>
