@@ -257,7 +257,7 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getInt("status"));
+				goods.setStatus(rs.getString("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
