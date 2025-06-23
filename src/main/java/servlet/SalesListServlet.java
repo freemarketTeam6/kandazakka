@@ -33,7 +33,7 @@ public class SalesListServlet extends HttpServlet {
 		}catch (IllegalStateException e) {
 			String error = "DB接続エラーのため、詳細画面は表示できませんでした。";
 			request.setAttribute("error", error);
-			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
+			request.getRequestDispatcher("/view/adminError.jsp").forward(request, response);
 		}
 		
 

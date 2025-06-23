@@ -41,8 +41,14 @@ public class LoginServlet extends HttpServlet {
 		session.setAttribute("user",user);
 		
 		if(user.getUserid()==null){
+			if(from.equals("admin")) {
+				request.setAttribute("message","入力データが間違っています");
+				request.getRequestDispatcher("/view/adminLogin.jsp").forward(request, response);
+			}
+			else {
 			request.setAttribute("message","入力データが間違っています");
 			request.getRequestDispatcher("/view/userLogin.jsp").forward(request, response);
+			}
 		}else {
 			//ユーザー用クッキーの生成
  			Cookie useridCookie = new Cookie("userid", userid);
