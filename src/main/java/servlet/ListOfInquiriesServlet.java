@@ -26,7 +26,7 @@ public class ListOfInquiriesServlet extends HttpServlet {
 			
 			//お問い合わせの一覧(InqueriesList)を持って画面にフォワード
 			request.setAttribute("InquiriesList", InquiriesList);
-			request.getRequestDispatcher("/view/listOfInquiry.jsp");
+			request.getRequestDispatcher("/view/listOfInquiries.jsp").forward(request, response);
 		}catch(IllegalStateException e){
 			error="DB接続エラーの為、お問い合わせ一覧の表示は行えませんでした。";
 			cmd="adminMenu";
