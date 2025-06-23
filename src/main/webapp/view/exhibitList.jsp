@@ -48,7 +48,7 @@ MyFormat myformat = new MyFormat();
 				<td style="text-align: center; width: 200px"><%=goods.getSelluserId()%></td>
 				<td style="text-align: center; width: 200px"><%=goods.getGoodsName()%></td>
 				<td style="text-align: center; width: 200px"><%=myFormat.moneyFormat.(goods.getPrice())%></td>
-				<td style="text-align: center; width: 200px"><%=myFormat.statusFormat(goods.getStatus())%></td>
+				<td style="text-align: center; width: 200px"><%=myFormat.statusFormat.(goods.getStatus())%></td>
 			</tr>
 			<%
 			}
