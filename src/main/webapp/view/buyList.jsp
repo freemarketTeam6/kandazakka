@@ -13,6 +13,7 @@ MyFormat myFormat = new MyFormat();
 <body>
 	<div style="text-align: center">
 		<%@ include file="../common/userHeader.jsp"%>
+		<p style="margin-top:100px"></p>
 
 		<%
 		if (goodsList.isEmpty()) {
@@ -62,6 +63,7 @@ MyFormat myFormat = new MyFormat();
 		%>
 
 		</table>
+		<p style="margin-top:100px"></p>
 		<br>
 		<p style="text-align: center">		
 			<a href="<%=request.getContextPath()%>/view/mypage.jsp" method="POST">マイページに戻る</a>
