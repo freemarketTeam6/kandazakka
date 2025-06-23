@@ -30,7 +30,6 @@ if(message==null){
 		<title>神田雑貨店フリマ</title>
 	</head>
 	<body>
- 		<%@include file= "../common/userHeader.jsp" %>
  		<br>
 		<div style="margin-bottom:250px">
 		
@@ -45,11 +44,11 @@ if(message==null){
  				<table style="margin:0 auto">
  					<tr>
  						<th style="background-color:#6666ff; width:120px">ユーザーID</th>
- 						<td ><input type=text size="30" name="userid" value="<%=userid%>"></input></td>
+ 						<td ><input type=text size="30" name="userid" value=""></input></td>
  					</tr>
  					<tr>
  						<th style="background-color:#6666ff; width:120px">パスワード</th>
- 						<td ><input type=text size="30" name="password" value="<%=password %>"></input></td>
+ 						<td ><input type=text size="30" name="password" value=""></input></td>
  					</tr>
  					
  					<div style="text-align: center">
@@ -60,7 +59,9 @@ if(message==null){
  					</tr>
  					<tr>	
  						<td style="text-align: center; width: 80px; font-size: 15px;"><a
-							href="<%=request.getContextPath() %>/view/menu.jsp">新規登録</a>	
+							href="<%=request.getContextPath() %>/view/newRegistration.jsp">新規登録</a>
+							
+
 						</td>
  					</tr>
  					</div>
@@ -70,7 +71,8 @@ if(message==null){
  			<%=message %>
  		<br>
  		</div>
- 		<%@include file= "../common/userFooter.jsp" %>
+ 		<%@include file= "/common/userFooter.jsp" %>
+
 		</table>	
  	</body>
  </html>
