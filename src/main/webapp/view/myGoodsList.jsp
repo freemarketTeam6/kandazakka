@@ -61,7 +61,7 @@
 		%>
 		</table>
 		
-		<form action="<%=request.getContextPath()%>/mypage" method="POST">
+		<form action="<%=request.getContextPath()%>/view/mypage.jsp" method="POST">
 			<input type="submit" value="マイページへ戻る">
 		</form>
 
