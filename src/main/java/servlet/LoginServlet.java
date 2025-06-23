@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if(user.getUserid()==null){
 			request.setAttribute("message","入力データが間違っています");
-			request.getRequestDispatcher("/view/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/view/userLogin.jsp").forward(request, response);
 		}else {
 			//ユーザー用クッキーの生成
  			Cookie useridCookie = new Cookie("userid", userid);
@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 	}finally {
 		if (error.equals("")) {
 			// 登録された件数を持ってmenu.jspにフォワード
-			request.getRequestDispatcher("/view/menu.jsp").forward(request, response);
+			request.getRequestDispatcher("/view/top.jsp").forward(request, response);
 		}else {
 			request.setAttribute("cmd", cmd);
 			request.setAttribute("error", error);
