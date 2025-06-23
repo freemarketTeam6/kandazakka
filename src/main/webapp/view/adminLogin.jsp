@@ -36,8 +36,6 @@ if(message==null){
 		
 		<body style="background-color:#FFFFFF; text-align:center;">
 			<h1 style="color:#000000;">管理者ログイン</h1>
-		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
-		
 		
 		<div style="margin-bottom:300px">
 		<br>	
