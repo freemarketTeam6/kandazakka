@@ -30,7 +30,7 @@ if(message==null){
 		<title>神田雑貨店フリマ</title>
 	</head>
 	<body>
- 		<%@include file= "../common/header.jsp" %>
+ 		<%@include file= "../common/userHeader.jsp" %>
  		<br>
 		<div style="margin-bottom:250px">
 		
@@ -71,7 +71,7 @@ if(message==null){
  			<%=message %>
  		<br>
  		</div>
- 		<%@include file= "../common/footer.jsp" %>
+ 		<%@include file= "../common/userFooter.jsp" %>
 		</table>	
  	</body>
  </html>
