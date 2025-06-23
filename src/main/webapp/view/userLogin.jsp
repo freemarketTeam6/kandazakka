@@ -30,22 +30,16 @@ if(message==null){
 		<title>神田雑貨店フリマ</title>
 	</head>
 	<body>
-<<<<<<< HEAD
  		<%@include file= "../common/userHeader.jsp" %>
-=======
-	<%@include file= "/common/userHeader.jsp" %>
  		<br>
->>>>>>> branch 'master' of https://github.com/freemarketTeam6/kandazakka.git
 		<div style="margin-bottom:250px">
 		
 		<body style="background-color:#FFFFFF; text-align:center;">
 			<h1 style="color:#000000;">ログイン</h1>
-		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
-		
 		
 		<div style="margin-bottom:300px">
 		<br>	
- 			<form action="<%=request.getContextPath() %>/LoginServlet"method="post">
+ 			<form action="<%=request.getContextPath()%>/login"method="post">
  				<table style="margin:0 auto">
  					<tr>
  						<th style="background-color:#6666ff; width:120px">ユーザーID</th>
@@ -64,7 +58,7 @@ if(message==null){
  					</tr>
  					<tr>	
  						<td style="text-align: center; width: 80px; font-size: 15px;"><a
-							href="<%=request.getContextPath() %>/view/newRegistration.jsp">新規登録</a>
+							href="<%=request.getContextPath()%>/view/newRegistration.jsp">新規登録</a>
 							
 
 						</td>
