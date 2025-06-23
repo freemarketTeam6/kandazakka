@@ -47,12 +47,12 @@ body {
 </style>
 
 <link rel="stylesheet"
-	href="<%=request.getContextPath() %>/css/style.css">
+	href="<%=request.getContextPath()%>/css/style.css">
 </head>
 <body>
 
 	<header>
-		<%@include file="/common/header.jsp"%>
+		<%@include file="/common/userHeader.jsp"%>
 	</header>
 
 	<header style="text-align: center">
@@ -60,16 +60,16 @@ body {
 	</header>
 
 	<%
-	Goods goods = (Goods)request.getAttribute("goods");
-	
-	String message = (String)request.getAttribute("empty");
-	if(message == null){
+	Goods goods = (Goods) request.getAttribute("goods");
+
+	String message = (String) request.getAttribute("empty");
+	if (message == null) {
 		message = "";
 	}
 	%>
-		<h3><%=message%></h3>
+	<h3><%=message%></h3>
 
-	<form action="<%=request.getContextPath() %>/goodsInsert"
+	<form action="<%=request.getContextPath()%>/goodsInsert"
 		name="goodsInsert" method="post">
 		<table class="insert">
 
@@ -81,28 +81,31 @@ body {
 			</tr>
 			<tr>
 				<th>商品名</th>
-				<td><input type="text" name="neme" required="required" value="<%=goods.getGoodsName()%>">
-				</td>
+				<td><input type="text" name="neme" required="required"
+					value="<%=goods.getGoodsName()%>"></td>
 			</tr>
 			<tr>
 				<th>価格</th>
-				<td><input type="text" name="price" required="required" value="<%=goods.getPrice()%>"
+				<td><input type="text" name="price" required="required"
+					value="<%=goods.getPrice()%>"
 					oninput="this.value=this.value.replace(/[^0-9]/g,'')"></td>
 			</tr>
 			<tr>
 				<th>個数</th>
-				<td><input type="text" name=" quantity" required="required" value="<%=goods.getQuantity()%>"
+				<td><input type="text" name=" quantity" required="required"
+					value="<%=goods.getQuantity()%>"
 					oninput="this.value=this.value.replace(/[^0-9]/g,'')"></td>
 			</tr>
 			<tr>
 				<th>種類</th>
-				<td><input type="text" name="category" required="required" value="<%=goods.getCategory()%>"
-					placeholder="食器、おもちゃ等"></input></td>
+				<td><input type="text" name="category" required="required"
+					value="<%=goods.getCategory()%>" placeholder="食器、おもちゃ等"></input></td>
 			</tr>
 
 			<tr>
 				<th>状態・商品説明</th>
-				<td><input type="textarea" name="goods_memo" value="<%=goods.getGoodsMemo()%>"></input></td>
+				<td><input type="textarea" name="goods_memo"
+					value="<%=goods.getGoodsMemo()%>"></input></td>
 			</tr>
 			<tr>
 				<th>地域</th>
@@ -128,9 +131,7 @@ body {
 			</tr>
 		</table>
 	</form>
-
-
-
+	<%@include file="/common/userFooter.jsp"%>
 </body>
 
 </html>
