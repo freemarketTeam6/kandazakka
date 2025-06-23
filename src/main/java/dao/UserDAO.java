@@ -125,7 +125,7 @@ public class UserDAO {
 		Statement smt = null;
 
 		String sql = "INSERT INTO userinfo (name, name_kana, nickname, address, email, password, tell, memo, authority) VALUES ('"
-				+ user.getName() + "', '" + user.getNamekana() + "', '" + user.getNickname() + "', '" + user.getAddres()
+				+ user.getName() + "', '" + user.getNamekana() + "', '" + user.getNickname() + "', '" + user.getAddress()
 				+ "', '" + user.getEmail() + "', '" + user.getPassword() + "', '" + user.getTell() + "', '"
 				+ user.getMemo() + "','" + "u" + ");";
 
@@ -161,7 +161,7 @@ public class UserDAO {
 
 		try {
 			String sql = "UPDATE userinfo SET name = '" + user.getName() + ", name_kana = '" + user.getNamekana()
-					+ "', nickname = '" + user.getNickname() + "', address = '" + user.getAddres() + "', email = '"
+					+ "', nickname = '" + user.getNickname() + "', address = '" + user.getAddress() + "', email = '"
 					+ user.getEmail() + "', password = '" + user.getPassword() + "', tell = '" + user.getTell()
 					+ "', memo = '" + user.getMemo() + "' WHERE user_id = '" + user.getUserid() + "';";
 
