@@ -22,7 +22,7 @@ public class SalesListServlet extends HttpServlet {
 		
 		//try {
 			//ステータスが「３」以降の商品をDBからもってきて、salesGoodsListに格納
-			salesGoodsList = objGoodsDAO.selectGoodsByStatus(3);
+			salesGoodsList = objGoodsDAO.selectGoodsByStatus("3");
 			
 			//スコープに登録
 			request.setAttribute("salesGoodsList", salesGoodsList);

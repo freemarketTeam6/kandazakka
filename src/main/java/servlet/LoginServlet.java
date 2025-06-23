@@ -37,8 +37,7 @@ public class LoginServlet extends HttpServlet {
 		UserDAO objDao = new UserDAO();
 		user =objDao.selectByUser(userid,password);
 		
-		HttpSession session=request.getSession();
-		session.setAttribute("user",user);
+		
 		
 		if(user.getUserid()==null){
 			if(from.equals("admin")) {
@@ -50,6 +49,10 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("/view/userLogin.jsp").forward(request, response);
 			}
 		}else {
+			//ユーザー情報をSessionに登録
+			HttpSession session=request.getSession();
+			session.setAttribute("user",user);
+			
 			//ユーザー用クッキーの生成
  			Cookie useridCookie = new Cookie("userid", userid);
  			useridCookie.setMaxAge(60 * 60 * 24 * 5);
@@ -65,7 +68,7 @@ public class LoginServlet extends HttpServlet {
 		error = "DB接続エラーの為、一覧表示を行えませんでした。";
 	}finally {
 		if (error.equals("")) {
-			if(from.equals("admin")) {
+			if(from.equals("admin") && user.getAuthority().equals("m")) {
 				//adminLoginからの遷移の場合は管理者メニューにフォワード
 				request.getRequestDispatcher("/view/adminMenu.jsp").forward(request, response);
 			}else {

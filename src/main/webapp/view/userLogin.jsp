@@ -49,7 +49,7 @@ if(message==null){
  						<th style="background-color:#6666ff; width:120px">パスワード</th>
  						<td ><input type=text size="30" name="password" value=""></input></td>
  					</tr>
- 					
+ 				</table>	
  					<div style="text-align: center">
  					<tr>
  						<td colspan=2 style="text-align:center"><br>
@@ -57,15 +57,15 @@ if(message==null){
  							<input type="hidden" name="from" value="user">
  						</td>
  					</tr>
+					</div>
+					<br>
+					<div style="text-align: center">
  					<tr>	
  						<td style="text-align: center; width: 80px; font-size: 15px;"><a
 							href="<%=request.getContextPath()%>/view/newRegistration.jsp">新規登録</a>
-							
-
 						</td>
  					</tr>
  					</div>
- 				</table>
  			</form>
  			<p>
  			<%=message %>

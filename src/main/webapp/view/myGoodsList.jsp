@@ -46,8 +46,10 @@
 				<td><%=goods.getPrice() %></td>
 				<td>
 					<%
+
 					
 					%>
+
 					
 
 				</td>
