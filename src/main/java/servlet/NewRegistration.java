@@ -143,6 +143,8 @@ public class NewRegistration extends HttpServlet {
 		try {
 			//insertメソッドを呼び出し
 			objUserDAO.insert(user);
+			//ログイン画面にフォワード	
+			request.getRequestDispatcher("/view/userLogin.jsp").forward(request, response);
 			
 		}catch( Exception e ) {
 			error = "DB接続エラーの為、一覧表示は行えませんでした。";
