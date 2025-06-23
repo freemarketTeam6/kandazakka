@@ -56,7 +56,7 @@ public class User {
 		this.nick_name=nick_name;
 	}
 	
-	public String getAddres() {
+	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
