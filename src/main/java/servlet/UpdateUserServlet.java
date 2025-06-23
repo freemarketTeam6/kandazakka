@@ -35,11 +35,12 @@ public class UpdateUserServlet extends HttpServlet {
 
 			}
 
+			String nowUserid = user.getUserid();
 			String name = request.getParameter("name");
 			String name_kana = request.getParameter("name_kana");
 			String nickname = request.getParameter("nickname");
-			String userID = request.getParameter("userID");
-			String mail = request.getParameter("mail");
+			String userID = request.getParameter("userid");
+			String mail = request.getParameter("email");
 			String oldPass = request.getParameter("oldpass");
 			String password = request.getParameter("pass");
 			String passwordCheck = request.getParameter("checkpass");
@@ -58,8 +59,8 @@ public class UpdateUserServlet extends HttpServlet {
 			updateUser.setNickname(nickname);
 			updateUser.setTell(tell);
 			
-			
 
+			
 			if (name.equals("")) {
 				message = "名前を入力してください";
 
@@ -93,7 +94,7 @@ public class UpdateUserServlet extends HttpServlet {
 				return;
 			}
 
-			if (userDao.selectByUser(userID) != null) {
+			if (userDao.selectByUser(userID).getUserid() != null) {
 				message = "このユーザーIDはすでに使われています！";
 				updateUser.setUserid("");
 				return;
@@ -128,13 +129,13 @@ public class UpdateUserServlet extends HttpServlet {
 				message = "パスワード（確認用）を入力してください";
 				return;
 
-			} else if (password.equals(passwordCheck)) {
+			} else if (!password.equals(passwordCheck)) {
 				message = "パスワードとパスワード（確認用）が一致しません";
 				return;
 
 			}
 			
-			userDao.update(updateUser);
+			userDao.update(updateUser,nowUserid);
 			session.invalidate();
 			session.setAttribute("user",updateUser);
 			

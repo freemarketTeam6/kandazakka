@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>updateUser</title>
+<title>requestuser</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 
@@ -77,6 +77,16 @@ body {
 		<%
 		User sessionuser = (User) session.getAttribute("user");
 		User requestuser = (User) request.getAttribute("user");
+		if(requestuser==null){
+			requestuser= new User();
+			requestuser.setAddress("");
+			requestuser.setName("");
+			requestuser.setEmail("");
+			requestuser.setUserid("");
+			requestuser.setNamekana("");
+			requestuser.setNickname("");
+			requestuser.setTell("");
+		}
 
 		String message = (String) request.getAttribute("message");
 		if (message == null) {
@@ -87,8 +97,8 @@ body {
 
 		<h1>ユーザー情報変更</h1>
 
-		<form action="<%=request.getContextPath()%>/updatesessionUser"
-			name="updatesessionUser" method="post">
+		<form action="<%=request.getContextPath()%>/updateUser"
+			name="updateUser" method="post">
 
 			<h3><%=message%></h3>
 			<table class="update">
@@ -102,48 +112,48 @@ body {
 
 				<tr>
 					<td class="thclass"><span>名前</span></td>
-					<td><span><%=sessionUser.getName()%></span></td>
+					<td><span><%=sessionuser.getName()%></span></td>
 					<td><input type="text" name="name" id="name"
-						required="required"value="<%=requestUser.getName()%>"></input></td>
+						required="required"value="<%=requestuser.getName()%>"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>名前（カナ）</span></td>
-					<td><span><%=sessionUser.getNamekana()%></span></td>
+					<td><span><%=sessionuser.getNamekana()%></span></td>
 					<td><input type="text" name="name_kana" id="name_kana"
-						required="required" value="<%=requestUser.getNamekana()%>"></input></td>
+						required="required" value="<%=requestuser.getNamekana()%>"></input></td>
 
 				</tr>
 				<tr>
 					<td class="thclass"><span>ニックネーム</span></td>
-					<td><span><%=sessionUser.getNickname()%></span></td>
+					<td><span><%=sessionuser.getNickname()%></span></td>
 					<td><input type="text" name="nickname" id="nickname"
-						required="required" value="<%=requestUser.getNickname()%>"></input></td>
+						required="required" value="<%=requestuser.getNickname()%>"></input></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>ユーザーID</span></td>
-					<td><span><%=sessionUser.getUserid()%></span></td>
+					<td><span><%=sessionuser.getUserid()%></span></td>
 					<td><input type="text" name="userid" id="userid"
-						required="required" value="<%=requestUser.getUserid()%>"></input></td>
+						required="required" value="<%=requestuser.getUserid()%>"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>住所</span></td>
-					<td><span><%=sessionUser.getAddres()%></span></td>
+					<td><span><%=sessionuser.getAddress()%></span></td>
 					<td><input type="text" name="address" id="address"
-						required="required" value="<%=requestUser.getAddres()%>"></input></td>
+						required="required" value="<%=requestuser.getAddress()%>"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>電話番号</span></td>
-					<td><span><%=sessionUser.getTell()%></span></td>
+					<td><span><%=sessionuser.getTell()%></span></td>
 					<td><input type="tel" name="tell" id="tell"
 						oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-						required="required" value="<%=requestUser.getTell()%>"></input></td>
+						required="required" value="<%=requestuser.getTell()%>"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>Eメール</span></td>
-					<td><span><%=sessionUser.getEmail()%></span></td>
+					<td><span><%=sessionuser.getEmail()%></span></td>
 					<td><input type="email" name="email" required="required"
-						value="<%=requestUser.gerEmail()%>"></input></td>
+						value="<%=requestuser.getEmail()%>"></input></td>
 				</tr>
 				<tr>
 					<td class="thclass"><span>メモ</span></td>

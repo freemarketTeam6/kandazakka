@@ -154,16 +154,16 @@ public class UserDAO {
 	}
 
 	// ユーザー情報変更機能
-	public void update(User user) {
+	public void update(User user, String nowUserid) {
 
 		Connection con = null;
 		Statement smt = null;
 
 		try {
-			String sql = "UPDATE userinfo SET name = '" + user.getName() + ", name_kana = '" + user.getNamekana()
+			String sql = "UPDATE userinfo SET user_id = '" + user.getUserid() + "', name = '" + user.getName() + "', name_kana = '" + user.getNamekana()
 					+ "', nickname = '" + user.getNickname() + "', address = '" + user.getAddress() + "', email = '"
 					+ user.getEmail() + "', password = '" + user.getPassword() + "', tell = '" + user.getTell()
-					+ "', memo = '" + user.getMemo() + "' WHERE user_id = '" + user.getUserid() + "';";
+					+ "', memo = '" + user.getMemo() + "' WHERE user_id = '" + nowUserid + "';";
 
 			con = getConnection();
 			smt = con.createStatement();
