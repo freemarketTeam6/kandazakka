@@ -12,7 +12,6 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 <body>
 	<div style="margin:auto">
 		<%@include file="/common/adminHeader.jsp"%>
-		<p style="margin-top:100px"></p>
 
 		<table style="margin: auto">
 			<form action="<%=request.getContextPath()%>/userList" method="post">
@@ -24,6 +23,7 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 					<td><input type="submit" value="全件表示"></td>
 			</form>
 		</table>
+		<p style="margin-top:100px"></p>
 
 		<%
 		if (userList.isEmpty()) {
