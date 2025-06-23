@@ -1,12 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="bean.User" %>
 
-<header>
-	<div class="header-container">
-    	<div class="logo">
-			<td style="text-align:center;"><img src="img" alt="神田雑貨店フリマロゴ"></td>
-		</div>	
-		
+<header>	
+	<tr>
+		<div style="text-align:center">
+			<td style="text-align:center;"><img src="pic/kandafm.png" alt="ロゴ"></td>
+		<form id="form1" action="自分のサイトURL">
+			<input id="sbox2" name="s" type="text" placeholder="キーワードを入力" />
+			<input id="sbtn1" type="submit" value="検索" />
+		</form>
+		</div>
+	</tr>
+	
 		<div style="text-align:right">
 		<%
 		//ユーザー情報取得
@@ -20,14 +25,14 @@
 		<%
 		}else{
 		%>
-			<%= user.getNick_name() %>
+			<%= user.getNickname() %>
 			<form action="<%=request.getContextPath() %>/LogoutServlet">
 			<input type="submit" value="ログアウト">
 			</form>
 		<%
 		}
 		%>
-		<hr style="text-align: center; height: 3px; background-color:#00a1e9; width: 1500px">
+		<hr style="text-align: center; height: 3px; background-color:#ccff99; width: 1500px">
 		</div>
 
 		<div  style="text-align: center">
@@ -38,6 +43,6 @@
 			</ul>
 		</div>
 
-		<hr style="text-align: center; height: 1px; background-color:#00a1e9; width: 1500px">
+		<hr style="text-align: center; height: 1px; background-color:#ccff99; width: 1500px">
 	</div>
 </header>

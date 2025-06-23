@@ -83,8 +83,7 @@ public class GoodsDAO {
 			return goodsList;
 
 	}
-	
-	
+
 
 	//userID渡したらその人の出品商品リストを取得するメソッド
 	public ArrayList<Goods> selectGoodsBySelluser(String userid){

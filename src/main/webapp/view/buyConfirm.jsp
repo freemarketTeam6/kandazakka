@@ -14,7 +14,7 @@ int total = (int)request.getAttribute("total");
 <title>神田雑貨店フリマ</title>
 </head>
 <body>
-	<%@include file= "../common/header.jsp" %>
+	<%@include file= "../common/userHeader.jsp" %>
 	<table style="margin: auto; width: 850px">
 		<tr>
 			<td style="text-align: center; width: 508px; font-size: 24px;">購入完了</td>
@@ -82,7 +82,7 @@ int total = (int)request.getAttribute("total");
 	</tr>
 	</table>
 		
-		<%@include file= "../common/footer.jsp" %>
+		<%@include file= "../common/userFooter.jsp" %>
 	</div>
 </body>
 </html>
