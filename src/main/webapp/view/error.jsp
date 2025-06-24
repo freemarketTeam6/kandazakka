@@ -29,10 +29,10 @@ String cmd = (String)request.getAttribute("cmd");
 		[<a href="<%=request.getContextPath()%>/logout">TOP画面に戻る</a>]
 
 		<%	}else if(cmd.equals("top")){	%>
-		[<a href="<%=request.getContextPath()%>/top">TOP画面に戻る</a>]
+		[<a href="<%=request.getContextPath()%>/list">TOP画面に戻る</a>]
 
 		<%	}else if(cmd.equals("list")){	%>
-		[<a href="<%=request.getContextPath()%>/list">出品商品一覧に戻る</a>]
+		[<a href="<%=request.getContextPath()%>/exhibitList">出品商品一覧に戻る</a>]
 
 		<%	}else if(cmd.equals("mypage")){	%>
 		[<a href="<%=request.getContextPath()%>/view/mypage.jsp">マイページに戻る</a>]
