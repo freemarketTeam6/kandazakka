@@ -1,24 +1,32 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 import bean.Goods;
 import dao.GoodsDAO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 /**
  * 
  */
 @WebServlet("/changeGoods")
+@MultipartConfig
 public class ChangeGoodsServlet extends HttpServlet {
+	String error = "";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String error = "";
+		this.error = "";
 		String cmd = "";
 		try {
 			GoodsDAO goodsDao = new GoodsDAO();
@@ -33,10 +41,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 			String memo = request.getParameter("memo");
 
 			// 入力チェック
-			if (imgpath.equals("")) {
-				error = "グッズの写真がない為、商品情報変更できません。";
-				return;
-			}
+			
 			if (goodsname.equals("")) {
 				error = "グッズの名前が未入力の為、商品情報変更できません。";
 				return;
@@ -57,11 +62,21 @@ public class ChangeGoodsServlet extends HttpServlet {
 				error = "グッズの地域が未入力の為、商品情報変更できません。";
 				return;
 			}
+			
+			//ファイル取得用のimage情報を受け取る
+			Part filePart = request.getPart("image");
+
+			//ルート情報とファイルパスを管理する変数を初期化
+			String filePath=fileSave(filePart,imgpath);
+			
+			if(filePath.equals("")) {
+				filePath=imgpath;
+			}
 
 			// 新しい情報をbookに格納
 			Goods goods = new Goods();
 			goods.setGoodsName(goodsname);
-			goods.setImgPath(imgpath);
+			goods.setImgPath(filePath);
 			goods.setPrice(Integer.parseInt(price));
 			goods.setQuantity(Integer.parseInt(quantity));
 			goods.setCategory(category);
@@ -70,6 +85,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 
 			// DBの更新処理
 			goodsDao.update(goods);
+			request.setAttribute("goods", goods);
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、商品情報変更は行えませんでした。";
 			cmd = "logout";
@@ -84,6 +100,61 @@ public class ChangeGoodsServlet extends HttpServlet {
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			}
 		}
+
+	}
+	
+	private String fileSave(Part filePart,String imgpath) throws IOException{
+
+		//ルート情報とファイルパスを管理する変数を初期化
+		String uploadDir = "";
+		String filePath = "";
+		
+		//ファイル名を管理する変数
+		String fileName = "";
+
+		//ファイルサイズを元にファイルの有無を確認
+		if (filePart.getSize() != 0) {
+			
+			//ファイル名を取得
+			fileName= imgpath.substring(imgpath.lastIndexOf("/"));
+			
+
+			// 保存先ディレクトリを設定
+			//uploadDir = "../webapp/file/images";
+			uploadDir = "C:/Users/kanda-it/git/kandazakka/src/main/webapp/file/images";
+
+			//アップロード先のディレクトリが存在しない場合に、そのディレクトリを作成
+			File uploadDirectory = new File(uploadDir);
+			if (!uploadDirectory.exists()) {
+				uploadDirectory.mkdirs();
+			}
+			
+
+			//アップロードした画像ファイルパス
+			filePath = uploadDir + fileName;
+
+			// デバッグ用にパスを出力
+			System.out.println("保存されたパス: " + filePath);
+
+			//ファイルの保存処理（アップロードされたファイルをサーバー上の指定されたディレクトリに保存）
+			try (InputStream inputStream = filePart.getInputStream()) {
+				Files.copy(inputStream, new File(filePath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+			}
+
+			// 保存後にファイルの存在をチェック
+			File savedFile = new File(filePath);
+			if (!savedFile.exists()) {
+				error = "保存に失敗しました。 ";
+				throw new IOException();
+				
+			}
+			
+
+			//リクエストスコープにファイル名を設定
+		} else {
+			fileName = imgpath;
+		}
+		return filePath;
 
 	}
 
