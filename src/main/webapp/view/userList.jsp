@@ -10,9 +10,8 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 <title>ユーザー一覧</title>
 </head>
 <body>
-	<div style="margin:auto">
+	<div style="text-align: center">
 		<%@include file="/common/adminHeader.jsp"%>
-
 
 		<table style="margin: auto">
 			<form action="<%=request.getContextPath()%>/userList">
@@ -39,12 +38,12 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 		} else {
 		%>
 
-		<table style="margin: auto">
+		<table style="margin: auto; text-align: center">
 			<tr>
-				<th>名前</th>
-				<th>ユーザーID</th>
-				<th>Eメール</th>
-				<th>削除</th>
+				<th style="background-color:#ffffa8; width:200px">名前</th>
+				<th style="background-color:#ffffa8; width:200px">ユーザーID</th>
+				<th style="background-color:#ffffa8; width:200px">Eメール</th>
+				<th style="background-color:#ffffa8; width:200px">削除</th>
 			</tr>
 
 			<%
@@ -56,7 +55,9 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 				<td><%=userList.get(i).getUserid()%></td>
 				<td><%=userList.get(i).getEmail()%></td>
 				<td>
-					<form action="<%=request.getContextPath() %>/userList" method="post">
+
+					<form action="<%=request.getContextPath() %>/userList" method="get">
+
 						<input type="submit" value="削除">
 						<input type="hidden" name="delno" value="<%=userList.get(i).getUserid() %>">
 					</form>
