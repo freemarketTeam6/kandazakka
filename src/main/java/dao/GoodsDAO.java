@@ -214,6 +214,7 @@ public class GoodsDAO {
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
+				goods.setRegion(rs.getString("region"));
 			}
 		}catch(Exception e) {
 			throw new IllegalStateException(e);
