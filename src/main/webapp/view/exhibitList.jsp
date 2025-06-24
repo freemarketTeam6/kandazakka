@@ -17,7 +17,6 @@ MyFormat myformat = new MyFormat();
 	<a href="<%= request.getContextPath() %>/view/adminMenu.jsp">【管理者メニュー画面】</a>
 
 	<div style="text-align: center">
-		<%@include file="/common/adminHeader.jsp"%>
 		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
 		<h1 style="text-align: center;color:#000000;">出品一覧</h1>
 		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
