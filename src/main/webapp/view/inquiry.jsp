@@ -14,14 +14,9 @@ int inquiryNo = (int)request.getAttribute("inquiryNo");
   <style>
    body {
     font-family: Arial, sans-serif;
-    background-color: #e5ddd5;
     color: #333;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 .container {
@@ -43,19 +38,19 @@ h1 {
     margin-bottom: 0;
 }
 
-form {
+.form {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-input[type="text"], textarea {
+#textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-input[type="submit"] {
+#submit{
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -64,7 +59,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-input[type="submit"]:hover {
+#submit:hover {
     background-color: #45a049;
 }
 
@@ -120,12 +115,15 @@ input[type="submit"]:hover {
     </style>
 
 </head>
+<body>
+
+<%@include file="/common/userHeader.jsp"%>
 
     <div class="container">
         <h1>問い合わせメッセージ</h1>
-        <form action="<%=request.getContextPath()%>/inquiry" method="POST">
-            <textarea name="message" placeholder="メッセージを入力してください..." required></textarea>
-            <input type="submit" value="送信">
+        <form action="<%=request.getContextPath()%>/inquiry" method="POST" class="form">
+            <textarea name="message" placeholder="メッセージを入力してください..." required id="textarea"></textarea>
+            <input type="submit" value="送信" id="submit">
             <input type="hidden" name="inquiryNo" value="<%= inquiryNo %>">
             <input type="hidden" name="cmd" value="insert">
             <input type="hidden" name="from" value="user">
@@ -160,5 +158,7 @@ input[type="submit"]:hover {
         %>
         </div>
     </div>
+    <a href="<%=request.getContextPath()%>/inquiryList">問い合わせ一覧に戻る</a>
+    	<%@include file="../common/userFooter.jsp"%>
 </body>
 </html>
