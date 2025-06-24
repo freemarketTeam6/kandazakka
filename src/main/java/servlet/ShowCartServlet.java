@@ -39,9 +39,10 @@ public class ShowCartServlet extends HttpServlet {
 			}
 
 			Goods goods = new Goods();
-			GoodsDAO GoodsDao = new GoodsDAO();
 			if (orderList != null) {
+				orderList.add(goods);
 				total += goods.getPrice();
+				
 			}
 			// リクエストスコープに登録
 			session.setAttribute("orderList", orderList);
