@@ -10,7 +10,7 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 <title>ユーザー一覧</title>
 </head>
 <body>
-	<div style="margin:auto">
+	<div style="text-align: center">
 		<%@include file="/common/adminHeader.jsp"%>
 
 		<table style="margin: auto">
@@ -40,10 +40,10 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 
 		<table style="margin: auto">
 			<tr>
-				<th>名前</th>
-				<th>ユーザーID</th>
-				<th>Eメール</th>
-				<th>削除</th>
+				<th style="background-color:#ffffa8; width:300px>名前</th>
+				<th style="background-color:#ffffa8; width:300px>ユーザーID</th>
+				<th style="background-color:#ffffa8; width:300px>Eメール</th>
+				<th style="background-color:#ffffa8; width:300px>削除</th>
 			</tr>
 
 			<%
