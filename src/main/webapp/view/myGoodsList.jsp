@@ -15,12 +15,7 @@ MyFormat myformat = new MyFormat();
 
 
 <body>
-	<header>
-		<h2 style="text-align: center; font-size: 40px">出品一覧</h2>
-		<hr size=10px color="greeen">
-	</header>
-
-
+	<%@include file="../common/userHeader.jsp"%>
 
 	<hr size=5px color="black">
 
@@ -50,7 +45,7 @@ MyFormat myformat = new MyFormat();
 				<td><%=goods.getGoodsName() %></td>
 				<td><%=goods.getPrice() %></td>
 				<td><%= myformat.statusFormat(goods.getStatus()) %></td>
-				<td><a href="<%=request.getContextPath()%>/view/changeGoods.jsp" style="margin-right: 30px;">内容変更</a></td>
+				<td><a href="<%=request.getContextPath()%>/view/changeGoods.jsp&<%=goods.getGoodsId %>" style="margin-right: 30px;">内容変更</a></td>
 				<td><a href="<%=request.getContextPath()%>/" style="margin-right: 30px;">発送する</a></td>
 			</tr>
 			<% 
@@ -64,7 +59,7 @@ MyFormat myformat = new MyFormat();
 
 
 	</div>
-
+	<%@include file="../common/userFooter.jsp"%>
 
 </body>
 </html>
