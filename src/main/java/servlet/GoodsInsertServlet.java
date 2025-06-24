@@ -212,7 +212,7 @@ public class GoodsInsertServlet extends HttpServlet {
 		} else {
 			error = "ファイルがありません";
 		}
-		return filePath;
+		return fileName;
 
 	}
 }

@@ -173,7 +173,7 @@ public class NewInquiryServlet extends HttpServlet {
 		} else {
 			error = "ファイルがありません";
 		}
-		return filePath;
+		return fileName;
 
 	}
 }
