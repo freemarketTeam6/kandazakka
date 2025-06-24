@@ -12,11 +12,13 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/goodsDetail")
 public class GoodsDetailServlet extends HttpServlet {
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String error = "";
 		String cmd = "";
 
 		try {
+			// cmd取得（商品情報変更のため）
+			cmd = (String) request.getParameter("cmd");
 			// 表示する商品情報を格納するGoodsオブジェクトを生成
 			Goods goods = new Goods();
 
@@ -45,7 +47,11 @@ public class GoodsDetailServlet extends HttpServlet {
 		} finally {
 			// エラーがなければ「goodsDetail.jsp」へフォワード
 			if (error.equals("")) {
-				request.getRequestDispatcher("/view/goodsDetail.jsp").forward(request, response);
+				if (cmd.equals("detail")) {
+					request.getRequestDispatcher("/view/goodsDetail.jsp").forward(request, response);
+				} else {
+					request.getRequestDispatcher("/view/changeGoods.jsp").forward(request, response);
+				}
 			} else {
 				// エラーがあればエラー文とcmdをリクエストスコープに登録し、「error.jsp」へフォワード
 				request.setAttribute("error", error);

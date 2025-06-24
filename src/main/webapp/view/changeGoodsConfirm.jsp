@@ -21,12 +21,12 @@ MyFormat format = new MyFormat();
 		<table style="margin: 0 auto">
 		<br>
 		<tr>以下の情報で商品情報を変更しました。</tr>
-					
+			<%-- 写真変更機能追加後に追加予定		
 			<tr>
 				<th style="background-color: #00a7db; width: 100">写真</th>	
 				<td style="text-align:center;"><img src="<%= goods.getImgPath() %>" alt="商品写真"></td>
 			</tr>
-			<br>
+			<br> --%>
 			<tr>	
 				<th style="background-color: #00a7db; width: 100">商品名</th>
 				<td style="text-align:center; color:#000000; font-size:20px"><%= goods.getGoodsName() %></td>
@@ -41,21 +41,21 @@ MyFormat format = new MyFormat();
 			</tr>
 			<tr>	
 				<th style="background-color: #00a7db; width: 100">種類</th>
-				<td style="text-align:center; color:#000000; font-size:20px"><%= goods.getCategory %></td>
+				<td style="text-align:center; color:#000000; font-size:20px"><%= goods.getCategory() %></td>
 			</tr>
 			<tr>	
 				<th style="background-color: #00a7db; width: 100">地域</th>
-				<td style="text-align:center; color:#000000; font-size:20px"><%= goods.getRegion %></td>
+				<td style="text-align:center; color:#000000; font-size:20px"><%= format.regionFormat(goods.getRegion()) %></td>
 			</tr>
 			<tr>
 				<th style="background-color: #00a7db; width: 100">備考</th>
-				<td style="text-align:center; color:#000000; font-size:20px"><%= goods.getMemo() %></td>
+				<td style="text-align:center; color:#000000; font-size:20px"><%= goods.getGoodsMemo() %></td>
 			</tr>	
  			<br>
 		</table>
 		<br>
 	</div>
-	<form action="<%=request.getContextPath()%>/mygoodsList" method="post">
+	<form action="<%=request.getContextPath()%>/mygoodsList" method="get">
 		<input type="submit" name="BackMygoods" value="出品一覧へ戻る"></input>
 	</form>
 </body>

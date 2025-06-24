@@ -32,7 +32,7 @@ public class DeleteServlet extends HttpServlet {
 		}
 		
 		//削除対象のステータスが「販売中」（DB上だと「０」かどうか調べる
-		if ( objGoodsDAO.selectGoodsByGoodsID(goodsID).getStatus() == 0) {
+		if ( objGoodsDAO.selectGoodsByGoodsID(goodsID).getStatus().equals("0")) {
 			error = "販売中の商品でないため、削除処理は行えませんでした。";
 			request.setAttribute("error", error);
 		}

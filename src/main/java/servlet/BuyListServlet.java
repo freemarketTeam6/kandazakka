@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/buyList")
 public class BuyListServlet extends HttpServlet {
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String error = "";
 		String cmd = "";
 
@@ -57,7 +57,7 @@ public class BuyListServlet extends HttpServlet {
 				// エラーがあればエラー文とcmdをリクエストスコープに登録し、「userError.jsp」へフォワード
 				request.setAttribute("error", error);
 				request.setAttribute("cmd", cmd);
-				request.getRequestDispatcher("/view/userError.jsp").forward(request, response);
+				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			}
 		}
 	}

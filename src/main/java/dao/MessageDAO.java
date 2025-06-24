@@ -2,7 +2,6 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,7 +28,7 @@ public class MessageDAO {
 	}
 
 	//問い合わせID(inquiryNo)をもとに、inquiry_messagesから問い合わせのメッセージ内容を取得するメソッド
-	public ArrayList<Message> selectMessageByInquiryNo(int inquiryNo){
+	public ArrayList<Message> selectMessageByInquiryNoFromInquiryMessage(int inquiryNo){
 		
 		Connection con = null;
 		Statement smt = null;
@@ -38,13 +37,15 @@ public class MessageDAO {
 		ArrayList<Message> messageList = new ArrayList<Message>();
 		
 		//SQL文定義
-		String sql = "SELECT * FROM inquiry_messages WHERE inquiry_no = " + inquiryNo;
+
+		String sql = "SELECT * FROM inquiry_messages WHERE inquiryno = " + inquiryNo;
+
 		
 		try {
 			con = getConnection();
 			smt = con.createStatement();
 			
-			ResultSet rs = smt.executeQuery("sql");
+			ResultSet rs = smt.executeQuery(sql);
 			
 			while( rs.next() ) {
 				Message message = new Message();
@@ -76,6 +77,58 @@ public class MessageDAO {
 		return messageList;
 	}
 	
+	/*
+	 * 問い合わせID(inquiryNo)をもとに、inquiryinfoから問い合わせのメッセージ内容
+	 * （ユーザーのはじめの問い合わせ内容）を取得するメソッド
+	 */
+	public ArrayList<Message> selectMessageByInquiryNoFromInquiryInfo(int inquiryNo){
+		
+		Connection con = null;
+		Statement smt = null;
+		
+		//戻り値用のMessage型のArrayListを宣言
+		ArrayList<Message> messageList = new ArrayList<Message>();
+		
+		//SQL文定義
+		String sql = "SELECT * FROM inquiryinfo WHERE inquiryno = " + inquiryNo;
+		
+		try {
+			con = getConnection();
+			smt = con.createStatement();
+			
+			ResultSet rs = smt.executeQuery(sql);
+			
+			while( rs.next() ) {
+				Message message = new Message();
+				message.setInquiryNumber(rs.getInt("inquiryno"));
+				message.setUserId(rs.getString("user_id"));
+				message.setCategory(rs.getString("category"));
+				message.setTitle(rs.getString("title"));
+				message.setMessage(rs.getString("contents"));
+				message.setFilePath(rs.getString("file_path"));
+				messageList.add(message);
+			}
+			
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
+			}
+		}
+		
+		return messageList;
+	}	
+	
 	//goodsIDをもとに、goods_messagesからメッセージを取得するメソッド
 	public ArrayList<Message> selectMessageByGoodsId(int goodsId){
 		
@@ -92,7 +145,7 @@ public class MessageDAO {
 			con = getConnection();
 			smt = con.createStatement();
 			
-			ResultSet rs = smt.executeQuery("sql");
+			ResultSet rs = smt.executeQuery(sql);
 			
 			while( rs.next() ) {
 				Message message = new Message();
@@ -131,8 +184,8 @@ public class MessageDAO {
 		
 		//SQL文
 		String sql = "INSERT INTO inquiry_messages(user_id, inquiryno, message, date) VALUES("
-				+ message.getUserId() + "'," + message.getInquiryNumber() + ",'" 
-				+ message.getMessage() + "'," + message.getDate() + ")";
+				+ message.getUserId() + "," + message.getInquiryNumber() + ",'" 
+				+ message.getMessage() + "', CURDATE())";
 		try {
 			con = getConnection();
 			smt = con.createStatement();
@@ -158,9 +211,9 @@ public class MessageDAO {
 		Statement smt = null;
 		
 		//SQL文
-		String sql = "INSERT INTO goods_messages(user_id, goods_id, message, date) VALUES("
+		String sql = "INSERT INTO goods_messages(user_id, goods_id, message, date) VALUES('"
 				+ message.getUserId() + "'," + message.getGoodsId() + ",'" 
-				+ message.getMessage() + "'," + message.getDate() + ")";
+				+ message.getMessage() + "', CURDATE())";
 		try {
 			con = getConnection();
 			smt = con.createStatement();

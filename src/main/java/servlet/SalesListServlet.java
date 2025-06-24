@@ -22,7 +22,7 @@ public class SalesListServlet extends HttpServlet {
 		
 		try {
 			//ステータスが「３」以降の商品をDBからもってきて、salesGoodsListに格納
-			salesGoodsList = objGoodsDAO.selectGoodsByStatus(3);
+			salesGoodsList = objGoodsDAO.selectGoodsByStatus("3");
 			
 			//スコープに登録
 			request.setAttribute("salesGoodsList", salesGoodsList);
@@ -31,9 +31,11 @@ public class SalesListServlet extends HttpServlet {
 			request.getRequestDispatcher("/view/salesList.jsp").forward(request, response);			
 			
 		}catch (IllegalStateException e) {
-			String error = "DB接続エラーのため、詳細画面は表示できませんでした。";
+			String error = "DB接続エラーのため、売上一覧画面は表示できませんでした。";
+			String cmd="adminMenu";
 			request.setAttribute("error", error);
-			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
+			request.setAttribute("cmd", cmd);
+			request.getRequestDispatcher("/view/adminError.jsp").forward(request, response);
 		}
 		
 

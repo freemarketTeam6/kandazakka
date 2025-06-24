@@ -23,7 +23,7 @@ public class PaymentServlet extends HttpServlet {
 		GoodsDAO goodsDaoObj = new GoodsDAO();
 		
 		//商品のステータスを2(入金済み・発送待ち)に変更
-		goodsDaoObj.updateStatus(goodsid, 2);
+		goodsDaoObj.updateStatus(goodsid, "2");
 		
 		//paymentConfirm.jspに送る用Goodsオブジェクト
 		Goods goods = goodsDaoObj.selectGoodsByGoodsID(goodsid);

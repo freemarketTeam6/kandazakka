@@ -36,8 +36,6 @@ if(message==null){
 		
 		<body style="background-color:#FFFFFF; text-align:center;">
 			<h1 style="color:#000000;">ログイン</h1>
-		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
-		
 		
 		<div style="margin-bottom:300px">
 		<br>	
@@ -45,28 +43,31 @@ if(message==null){
  				<table style="margin:0 auto">
  					<tr>
  						<th style="background-color:#6666ff; width:120px">ユーザーID</th>
- 						<td ><input type=text size="30" name="userid" value=""></input></td>
+ 						<td ><input type=text size="30" name="userid" value="<%=userid%>"></input></td>
  					</tr>
  					<tr>
  						<th style="background-color:#6666ff; width:120px">パスワード</th>
- 						<td ><input type=text size="30" name="password" value=""></input></td>
+
+ 						<td ><input type=text size="30" name="password" value="<%=password %>"></input></td>
+
  					</tr>
- 					
+ 				</table>	
  					<div style="text-align: center">
  					<tr>
  						<td colspan=2 style="text-align:center"><br>
  							<input type="submit" value="ログイン">
+ 							<input type="hidden" name="from" value="user">
  						</td>
  					</tr>
+					</div>
+					<br>
+					<div style="text-align: center">
  					<tr>	
  						<td style="text-align: center; width: 80px; font-size: 15px;"><a
 							href="<%=request.getContextPath()%>/view/newRegistration.jsp">新規登録</a>
-							
-
 						</td>
  					</tr>
  					</div>
- 				</table>
  			</form>
  			<p>
  			<%=message %>

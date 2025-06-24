@@ -3,7 +3,6 @@
 
 <%
 //リクエストスコープからのデータの取得
-ArrayList<User> list = (ArrayList<User>) request.getAttribute("user_list");
 String error = (String) request.getAttribute("error");
 %>
 
@@ -13,7 +12,7 @@ String error = (String) request.getAttribute("error");
 </head>
 
 <body>
-	<%@include file= "../common/userHeader.jsp" %>
+	<%@include file= "/common/userHeader.jsp" %>
 
 <hr style="text-align: center; height: 2px; background-color: black; width: 950px">
 	<h1 style="text-align: center;color:#000000;">マイページ</h1>
@@ -60,7 +59,7 @@ String error = (String) request.getAttribute("error");
 	
 	<br>
 	<div style="text-align: center">
-	<form>
+	<form action="<%=request.getContextPath() %>/view/updateUser.jsp">
 		<input type="submit" name="update" value="ユーザー情報変更"></input>
 	</form>
 	</div>
@@ -73,17 +72,17 @@ String error = (String) request.getAttribute("error");
 		</tr>
 		<tr>
 			<td style="text-align: center; width: 80px; font-size: 15px;">[<a
-				href="<%=request.getContextPath() %>/view/mygoodsList.jsp">出品一覧</a>]
+				href="<%=request.getContextPath() %>/mygoodsList">出品一覧</a>]
 			</td>
 		</tr>
 		<tr>
 			<td style="text-align: center; width: 80px; font-size: 15px;">[<a
-				href="<%=request.getContextPath() %>/view/buyList.jsp">購入一覧</a>]
+				href="<%=request.getContextPath() %>/buyList">購入一覧</a>]
 			</td>
 		</tr>
 		<tr>
 			<td style="text-align: center; width: 80px; font-size: 15px;">[<a
-				href="<%=request.getContextPath() %>/view/newInquiry.jsp">お問い合わせ</a>]
+				href="<%=request.getContextPath() %>/inquiryList">お問い合わせ</a>]
 			</td>
 		</tr>
 	</table>

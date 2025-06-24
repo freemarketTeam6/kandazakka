@@ -21,7 +21,7 @@ public class Goods {
 	// グッズの状態、商品説明
 	private String goodsMemo;
 	// 出品のステータス
-	private int status;
+	private String status;
 	// 出品日
 	private Date exhibitDate;
 	// 購入日
@@ -104,11 +104,11 @@ public class Goods {
 	}
 
 	// グッズの状態
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

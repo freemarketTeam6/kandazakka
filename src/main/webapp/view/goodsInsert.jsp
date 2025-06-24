@@ -43,6 +43,7 @@ body {
 	resize: none;
 	width: 100%;
 	height: 200px;
+	vertical-align: top;
 }
 </style>
 
@@ -51,61 +52,71 @@ body {
 </head>
 <body>
 
-	<header>
-		<%@include file="/common/userHeader.jsp"%>
-	</header>
+
+	<%@include file="/common/userHeader.jsp"%>
 
 	<header style="text-align: center">
 		<h1>出品</h1>
 	</header>
 
 	<%
-	Goods goods = (Goods) request.getAttribute("goods");
 
-	String message = (String) request.getAttribute("empty");
-	if (message == null) {
+	Goods goods = (Goods)request.getAttribute("goods");
+	
+	String message = (String)request.getAttribute("empty");
+	if(message == null){
+
 		message = "";
 	}
 	%>
 	<h3><%=message%></h3>
 
-	<form action="<%=request.getContextPath()%>/goodsInsert"
-		name="goodsInsert" method="post">
+
+
+	<form action="<%=request.getContextPath() %>/goodsInsert"
+		name="goodsInsert" method="post" enctype="multipart/form-data">
+
+
 		<table class="insert">
 
 
 			<tr>
 				<th>写真</th>
 				<td><input type="file" name="image" required="required"
-					accept="image/ping,image/jpeg" multiple /></td>
+					accept="image/png,image/jpeg" multiple /></td>
 			</tr>
 			<tr>
 				<th>商品名</th>
-				<td><input type="text" name="neme" required="required"
-					value="<%=goods.getGoodsName()%>"></td>
+
+				<td><input type="text" name="name" required="required" value="">
+				</td>
 			</tr>
 			<tr>
 				<th>価格</th>
-				<td><input type="text" name="price" required="required"
-					value="<%=goods.getPrice()%>"
+				<td><input type="text" name="price" required="required" value=""
+
 					oninput="this.value=this.value.replace(/[^0-9]/g,'')"></td>
 			</tr>
 			<tr>
 				<th>個数</th>
-				<td><input type="text" name=" quantity" required="required"
-					value="<%=goods.getQuantity()%>"
+
+				<td><input type="text" name=" quantity" required="required" value=""
+
 					oninput="this.value=this.value.replace(/[^0-9]/g,'')"></td>
 			</tr>
 			<tr>
 				<th>種類</th>
-				<td><input type="text" name="category" required="required"
-					value="<%=goods.getCategory()%>" placeholder="食器、おもちゃ等"></input></td>
+
+				<td><input type="text" name="category" required="required" value=""
+					placeholder="食器、おもちゃ等"></input></td>
+
 			</tr>
 
 			<tr>
 				<th>状態・商品説明</th>
-				<td><input type="textarea" name="goods_memo"
-					value="<%=goods.getGoodsMemo()%>"></input></td>
+
+				<td><input type="textarea" name="goods_memo" value=""></input></td>
+
 			</tr>
 			<tr>
 				<th>地域</th>

@@ -16,15 +16,6 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
       font-family: sans-serif;
     }
 
-    header {
-      display: flex;
-      justify-content: center; /* 全体中央寄せ */
-      align-items: center;
-      padding: 10px;
-      border-bottom: 1px solid #000;
-      gap: 300px; /* ← 間隔を広げた */
-    }
-
     .search-box {
       display: flex;
       align-items: center;
@@ -55,57 +46,54 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
     .item td{
     	text-align:center;
     }
+    
+    .imgBox{
+       	border-radius: 2px;
+    }
+    
+    .img{
+    	display: inline-block;
+    	position: relative;
+
+    }
+    
+    .priceOnImg{
+    	position:  absolute;
+    	bottom: 0;
+    	right: 0;
+    	padding-right: 5px;
+    	padding-left: 5px;
+    	background-color: black;
+    	color: white;
+    }
   </style>
 </head>
 <body>
 
-  <header>
-  	<form action="/view/top.jsp">
-  		<div>神田雑貨店フリマ</div>
-  	</form>
-    
-    <form action="<%= request.getContextPath() %>/search">
-      <div class="search-box">
-      	<input type="text" placeholder="検索">
-      	<button>検索</button>
-      </div>
-    </form>
-    
-    <form action="<%= request.getContextPath() %>/view/userLogin.jsp">
-    	<div class="login-btn">
-       		<input type="submit" value="ログイン">
-    	</div>
-    </form>
-    
-  </header>
-
-	<table>
-	<tr>
-		<td><a href="<%= request.getContextPath() %>/view/mypage.jsp">マイページ</a></td>
-		<td><a href="<%= request.getContextPath() %>/showCart">カート内容</a></td>
-		<td><a href="<%= request.getContextPath() %>/view/goodsInsert.jsp">出品</a></td>
-		<td><a href="<%= request.getContextPath() %>/view/adminLogin.jsp">管理者ページ</a></td>
-	</tr>
-	</table>
+	<%@include file="../common/userHeader.jsp"%>
 	
-	<hr>
-	
-	<div>
+	<div class="imgBox" style="display:flex">
 	<% 
 	 if (goodsList != null && !goodsList.isEmpty()) {
 		 for ( int i = 0; i < goodsList.size(); i++){ %>
-	 }
-		<div style="display: inline-block;">
+		
 		<!-- 画像のパスは今後変更予定 -->
-			<img src="<%= goodsList.get(i).getImgPath() %>" alt="写真" width="200" height="200">
-			<%=  goodsList.get(i).getPrice()%>円
-		</div>		
+		<form action="<%=request.getContextPath()%>/goodsDetail">
+			<div  class="img">
+				<input type="image" src="${ goodsList.get(i).getImgPath() }" alt="写真" width="200" height="200">
+				<strong class="priceOnImg"><%=  goodsList.get(i).getPrice()%>円</strong>
+				<input type="hidden" name="cmd" value="detail">
+				<input type="hidden" name="goods_id" value="<%=  goodsList.get(i).getGoodsId()%>">
+			</div>		
+		</form>
+
 	<% if ( i % 5 == 0 ){%>
 			<br>
 		<% } %>
 		<% } %>
 		<% } %>
 	</div>
-
+	
+	<%@include file="../common/userFooter.jsp"%>
 </body>
 </html>

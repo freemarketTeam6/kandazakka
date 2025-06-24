@@ -14,47 +14,67 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/userList")
 public class UserListServlet extends HttpServlet {
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String error = "";
 		String cmd = "";
 
 		try {
+			// 画面から送信される情報を受け取るためのエンコードを設定
+			request.setCharacterEncoding("UTF-8");
+
 			// 表示するユーザー情報を格納するUser型のArrayListを生成
 			ArrayList<User> userList = new ArrayList<User>();
 
 			// UserDAOクラスのオブジェクトを生成
-			UserDAO userDao = new UserDAO();// Userクラスのオブジェクトを生成
+			UserDAO userDao = new UserDAO();
+
+			// Userクラスのオブジェクトを生成
 			User user = new User();
 
 			// 画面からパラメータを取得
-			String delno = request.getParameter("delno");
+			String delnoUser_id = request.getParameter("delno");
+
+			user = userDao.selectByUser(delnoUser_id);
+
 			// もし削除対象のデータが送られていればリストから削除
-			if (delno != null) {
-				userList.remove(Integer.parseInt(delno));
+			if (delnoUser_id != null) {
+				if (user.getUserid() == null) {
+					error = "削除対象のユーザーが存在しない為、ユーザー削除処理は行えませんでした。";
+					cmd = "userList";
+					return;
+				} else {
+					userList.remove(Integer.parseInt(delnoUser_id));
+					return;
+				}
 			}
 
 			// 画面からパラメータを取得
 			String user_id = request.getParameter("user_id");
+
 			// もしユーザーIDが送られていれば対象者のみを表示
 			if (user_id != null) {
 				userList.add(userDao.selectByUser(user_id));
+
+				// 取得したユーザー情報をリクエストスコープに登録
+				request.setAttribute("userList", userList);
+			} else {
+				// ユーザー情報を取得
+				userList = userDao.selectUserAll();
+
+				// セッションからデータを受け取る
+				HttpSession session = request.getSession();
+				user = (User) session.getAttribute("user");
+
+				// エラー処理
+				/*
+				 * if (user == null) { error = "セッション切れのため、ユーザー一覧画面は表示できませんでした。"; cmd =
+				 * "logout"; }
+				 */
+
+				// 取得したユーザー情報をリクエストスコープに登録
+				request.setAttribute("userList", userList);
+
 			}
-
-			// ユーザー情報を取得
-			userList = userDao.selectUserAll();
-
-			// セッションからデータを受け取る
-			HttpSession session = request.getSession();
-			user = (User) session.getAttribute("user");
-
-			// エラー処理
-			if (user == null) {
-				error = "セッション切れのため、ユーザー一覧画面は表示できませんでした。";
-				cmd = "top";
-			}
-
-			// 取得したユーザー情報をリクエストスコープに登録
-			request.setAttribute("userList", userList);
 
 			// エラー処理
 		} catch (IllegalStateException e) {
@@ -68,7 +88,7 @@ public class UserListServlet extends HttpServlet {
 				// エラーがあればエラー文とcmdをリクエストスコープに登録し、「error.jsp」へフォワード
 				request.setAttribute("error", error);
 				request.setAttribute("cmd", cmd);
-				request.getRequestDispatcher("/view/UserError.jsp").forward(request, response);
+				request.getRequestDispatcher("/view/adminError.jsp").forward(request, response);
 			}
 
 		}

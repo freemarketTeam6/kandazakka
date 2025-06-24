@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 import bean.Goods;
 
@@ -16,7 +15,7 @@ public class GoodsDAO {
 	
 	//データベース接続情報
 	private static String RDB_DRIVE ="org.mariadb.jdbc.Driver";
-	private static String URL ="jdbc:mariadb://localhost/mybookdb";
+	private static String URL ="jdbc:mariadb://localhost/kandazakkadb";
 	private static String USER ="root";
 	private static String PASS ="root123";
 	
@@ -63,11 +62,11 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getInt("status"));
+				goods.setStatus(rs.getString("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
-
+				goodsList.add(goods);
 			}
 			
 			}catch(Exception e) {
@@ -114,7 +113,7 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getInt("status"));
+				goods.setStatus(rs.getString("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -163,7 +162,7 @@ public class GoodsDAO {
 					goods.setQuantity(rs.getInt("quantity"));
 					goods.setCategory(rs.getString("category"));
 					goods.setGoodsMemo(rs.getString("goods_memo"));
-					goods.setStatus(rs.getInt("status"));
+					goods.setStatus(rs.getString("status"));
 					goods.setExhibitDate(rs.getDate("exhibit_date"));
 					goods.setBuyDate(rs.getDate("exhibit_date"));
 					goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -211,10 +210,11 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getInt("status"));
+				goods.setStatus(rs.getString("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
+				goods.setRegion(rs.getString("region"));
 			}
 		}catch(Exception e) {
 			throw new IllegalStateException(e);
@@ -257,7 +257,7 @@ public class GoodsDAO {
 				goods.setQuantity(rs.getInt("quantity"));
 				goods.setCategory(rs.getString("category"));
 				goods.setGoodsMemo(rs.getString("goods_memo"));
-				goods.setStatus(rs.getInt("status"));
+				goods.setStatus(rs.getString("status"));
 				goods.setExhibitDate(rs.getDate("exhibit_date"));
 				goods.setBuyDate(rs.getDate("exhibit_date"));
 				goods.setBuyuserId(rs.getString("exhibit_date"));
@@ -281,14 +281,13 @@ public class GoodsDAO {
 	public void insert( Goods goods ) {
 		 Connection con = null;
 		 Statement smt = null;
-		 
-		 //出品日時の取得
-		 Date nowDate = new Date();
+		
 		 
 		 //SQL文
-		 String sql = "INSERT INTO goodsinfo (selluser_id, img_path, name, price, quantity, categoty, goods_memo, status, region, exhibit_date) VALUE ('"
+		 String sql = "INSERT INTO goodsinfo (selluser_id, img_path, name, price, quantity, category, goods_memo, status, region, exhibit_date) VALUE ('"
 				 + goods.getSelluserId() + "','" +  goods.getImgPath() + "','" + goods.getGoodsName() + "','" + goods.getPrice() + "','" + goods.getQuantity() + "','"
-				 + goods.getCategory() + "','" + goods.getGoodsMemo() +"','"  + goods.getStatus() + "','" + goods.getRegion() + "','" + nowDate + "')";
+				 + goods.getCategory() + "','" + goods.getGoodsMemo() +"','"  + goods.getStatus() + "','" + goods.getRegion() + "', CURDATE())";
+		 
 		 
 		  try{
 			 con = getConnection();
@@ -364,7 +363,7 @@ public class GoodsDAO {
 	
 
 	//ステータスの番号を引数に、該当の商品をDBから参照してくる
-	public ArrayList<Goods> selectGoodsByStatus(int status){
+	public ArrayList<Goods> selectGoodsByStatus(String status){
 		  Connection con = null;
 		  Statement smt = null;
 		  
@@ -413,13 +412,13 @@ public class GoodsDAO {
 //	1…入金待ち（購入済み）
 //	2…発送待ち（入金済み）
 //　3…発送完了
-		public void updateStatus(int goodsID,int statusNum){
+		public void updateStatus(int goodsID,String statusNum){
 			 
 			  Connection con = null;
 			  Statement smt = null;
 			  
 			  try{	
-				  String sql= "UPDATE goodsinfo SET status = '" + statusNum +"' WHERE = goods_id = "+goodsID+"'";
+				  String sql= "UPDATE goodsinfo SET status = '" + statusNum +"' WHERE goods_id = "+goodsID;
 			  
 				  con = getConnection();
 				  smt = con.createStatement();

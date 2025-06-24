@@ -1,25 +1,70 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@page contentType="text/html; charset=UTF-8" %>
 <%@page import="bean.User" %>
+
+<style>
+@charset "UTF-8";*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: 100%;
+    height: 110px;
+    padding: 0 5%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav{
+    width: 50%;
+}
+
+nav ul{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #000;
+}
+</style>
 
 <header>	
 	<tr>
-		<div style="text-align:center">
-			<td style="text-align:center;"><a href="<%=request.getContextPath() %>/view/top.jsp"><img src="/pic/kandafm.png" alt="ロゴ"></a></td>
+	<br>
+		<div class="logo">
+			<a href="<%=request.getContextPath()%>/view/top.jsp">
+			<img src="${pageContext.request.contextPath}/pic/kandafm.png" alt="ロゴ"border="0">
+			</a>
+		</div>	
+		
 		<form action="<%=request.getContextPath()%>/SearchServlet"style="display: inline;">
 			<input id="sbox2" name="keyword" type="text" placeholder="キーワードを入力" />
 			<input id="sbtn1" type="submit" value="検索" />
 		</form>
-		</div>
-	</tr>
 	
-		<div style="text-align:right">
+		<nav>
+			<ul>
+				<li><a href="<%=request.getContextPath()%>/view/goodsInsert.jsp">
+					<img src="${pageContext.request.contextPath}/pic/box.png" alt="ロゴ"border="0"></a><li>
+				<li><a href="<%=request.getContextPath()%>/list">
+					<img src="${pageContext.request.contextPath}/pic/top.png" alt="ロゴ"border="0"></a><li>
+				<li><a href="<%=request.getContextPath()%>/showCart">
+					<img src="${pageContext.request.contextPath}/pic/cart.png" alt="ロゴ"border="0"></a><li>	
+				<li><a href="<%=request.getContextPath()%>/view/mypage.jsp">
+					<img src="${pageContext.request.contextPath}/pic/mypage.png" alt="ロゴ"border="0"></a><li>
+				
 		<%
 		//ユーザー情報取得
-		User user=(User)session.getAttribute("user");
+		User user = (User)session.getAttribute("user");
 		//未ログインの場合
 		if (user == null) {	
 		%>
-			<form action="<%=request.getContextPath() %>/login"method="post">
+			<form action="<%=request.getContextPath() %>/view/userLogin.jsp" method="post">
 			<input type="submit" value="ログイン">
 			</form>
 		<%
@@ -32,18 +77,7 @@
 		<%
 		}
 		%>
-		<hr style="text-align: center; height: 3px; background-color:#ccff99; width: 1500px">
-		</div>
-
-		<div  style="text-align: center">
-			<ul>
-				<a href="<%=request.getContextPath()%>/view/mypage.jsp"style="margin-right: 30px;">マイページ</a>
-				<a href="<%=request.getContextPath()%>/view/showCart.jsp"style="margin-right: 30px;">カート内容</a>
-				<a href="<%=request.getContextPath()%>/view/goodsInsert.jsp"style="margin-right: 30px;">出品</a>
-				<a href="<%=request.getContextPath()%>/view/top.jsp"style="margin-right: 30px;">トップメニューへ</a>
 			</ul>
-		</div>
-
-		<hr style="text-align: center; height: 1px; background-color:#ccff99; width: 1500px">
-	</div>
+		</nav>
+<br>
 </header>

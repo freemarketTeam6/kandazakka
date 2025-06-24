@@ -124,10 +124,11 @@ public class UserDAO {
 		Connection con = null;
 		Statement smt = null;
 
-		String sql = "INSERT INTO userinfo (name, name_kana, nickname, address, email, password, tell, memo, authority) VALUES ('"
-				+ user.getName() + "', '" + user.getNamekana() + "', '" + user.getNickname() + "', '" + user.getAddress()
-				+ "', '" + user.getEmail() + "', '" + user.getPassword() + "', '" + user.getTell() + "', '"
-				+ user.getMemo() + "','" + "u" + ");";
+		String sql = "INSERT INTO userinfo (user_id, name, name_kana, nickname, address, email, password, tell, memo, authority) VALUES ('"
+				+ user.getUserid() + "','" + user.getName() + "','" + user.getNamekana() + "','" + user.getNickname()
+				+ "','" + user.getAddress() + "','"
+				+ user.getEmail() + "','" + user.getPassword() + "','" + user.getTell() + "','" + user.getMemo()
+				+ "', 'u')";
 
 		try {
 			con = getConnection();
@@ -154,17 +155,18 @@ public class UserDAO {
 	}
 
 	// ユーザー情報変更機能
-	public void update(User user) {
+	public void update(User user, String nowUserid) {
 
 		Connection con = null;
 		Statement smt = null;
 
 		try {
-			String sql = "UPDATE userinfo SET name = '" + user.getName() + ", name_kana = '" + user.getNamekana()
+			String sql = "UPDATE userinfo SET user_id = '" + user.getUserid() + "', name = '" + user.getName()
+					+ "', name_kana = '" + user.getNamekana()
 					+ "', nickname = '" + user.getNickname() + "', address = '" + user.getAddress() + "', email = '"
 					+ user.getEmail() + "', password = '" + user.getPassword() + "', tell = '" + user.getTell()
-					+ "', memo = '" + user.getMemo() + "' WHERE user_id = '" + user.getUserid() + "';";
-
+					+ "', memo = '" + user.getMemo() + "' WHERE user_id = '" + nowUserid + "';";
+			
 			con = getConnection();
 			smt = con.createStatement();
 
@@ -240,8 +242,6 @@ public class UserDAO {
 		ArrayList<User> userList = new ArrayList<User>();
 
 		try {
-			// Userオブジェクトを生成
-			User user = new User();
 
 			// SQL文
 			String sql = "SELECT * FROM userinfo";
@@ -251,7 +251,9 @@ public class UserDAO {
 
 			ResultSet rs = smt.executeQuery(sql);
 
-			if (rs.next()) {
+			while (rs.next()) {
+				// Userオブジェクトを生成
+				User user = new User();
 				user.setUserid(rs.getString("user_id"));
 				user.setName(rs.getString("name"));
 				user.setNamekana(rs.getString("name_kana"));
@@ -262,6 +264,7 @@ public class UserDAO {
 				user.setTell(rs.getString("tell"));
 				user.setMemo(rs.getString("memo"));
 				user.setAuthority(rs.getString("authority"));
+				userList.add(user);
 			}
 
 		} catch (Exception e) {

@@ -15,7 +15,7 @@ public class ShippingServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//GoodsDAOのオブジェクト化
-		GoodsDAO goodsDaoObj = new GoodsDAO();
+		GoodsDAO objGoodsDAO = new GoodsDAO();
 		
 		//商品IDの情報だけもらう
 		int goodsid = Integer.parseInt(request.getParameter("goodsid"));
@@ -24,7 +24,7 @@ public class ShippingServlet extends HttpServlet {
 		String cmd = request.getParameter("cmd");
 		
 		//受け取ったパラメータをもとに、DBから商品の情報を取得
-		Goods goods = goodsDaoObj.selectGoodsByGoodsID(goodsid);
+		Goods goods = objGoodsDAO.selectGoodsByGoodsID(goodsid);
 		
 		/*
 		 * cmdの値によって処理内容を変える
@@ -43,7 +43,10 @@ public class ShippingServlet extends HttpServlet {
 		}else if( cmd.equals("shipping")) {	//マイページ → 出品商品一覧 → shipping.jspで発送ボタンを押したときに遷移
 			
 			//商品のステータスを2(入金済み)から3（発送済み）へ変更
-			goods.setStatus(3);
+			goods.setStatus("3");
+			
+			//DBのステータスを変える
+			objGoodsDAO.updateStatus(goodsid, "3");
 			
 			//商品情報をリクエストスコープに登録
 			request.setAttribute("goods", goods);

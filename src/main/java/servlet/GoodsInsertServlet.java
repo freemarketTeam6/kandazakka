@@ -5,11 +5,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import bean.Goods;
 import bean.User;
 import dao.GoodsDAO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,12 +21,14 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 @WebServlet("/goodsInsert")
+@MultipartConfig
 public class GoodsInsertServlet extends HttpServlet {
 	String error = "";
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
 		String empty = "";
+		this.error="";
 		GoodsDAO goodsDao = new GoodsDAO();
 		try {
 			
@@ -41,7 +46,7 @@ public class GoodsInsertServlet extends HttpServlet {
 			String filePath=fileSave(filePart,user.getUserid());
 			
 			// 出品者のIDを格納する変数
-			String selluserId = request.getParameter(user.getUserid());
+			String selluserId =user.getUserid();
 			// グッズの名前
 			String goodsName = request.getParameter("name");
 			// グッズの値段
@@ -53,7 +58,7 @@ public class GoodsInsertServlet extends HttpServlet {
 			// グッズの状態、商品説明
 			String goodsMemo = request.getParameter("goods_memo");
 			// 出品のステータス
-			int status = 0;
+			String status = "0";
 			// 出品地域
 			String region = request.getParameter("region");
 			
@@ -143,14 +148,39 @@ public class GoodsInsertServlet extends HttpServlet {
 
 		//ファイルサイズを元にファイルの有無を確認
 		if (filePart.getSize() != 0) {
+			
+			//拡張子を取得
+			
+			//アップロードされたファイルの詳細情報を取得
+			String contentDisposition = filePart.getHeader("content-disposition");
+			
+			
+			//ファイル名を取得するための正規表現パターンを設定
+			Pattern pattern = Pattern.compile("filename=\"(.*)\"");
+			
+			//正規表現パターンを使用して、詳細情報からファイル名を抽出
+			Matcher matcher = pattern.matcher(contentDisposition);
+			
+			
+			//抽出したファイル名が存在していればファイル名を管理する変数に代入、なければ空白を代入
+			if (matcher.find()) {
+				fileName = matcher.group(1);
+			} else {
+				fileName = "";
+			}
+			
+			//拡張子を取得
+			fileName= fileName.substring(fileName.lastIndexOf("."));
+			
 
 
 			//ファイル名を設定
-			fileName = "goods_"+userid+"_"+goodsDao.userGoodsCount(userid)+1;
+			fileName = "goods_"+userid+"_"+(goodsDao.userGoodsCount(userid)+1)+fileName;
 			
 
 			// 保存先ディレクトリを設定
-			uploadDir = "../../webapp/file/images";
+			//uploadDir = "../webapp/file/images";
+			uploadDir = "C:/Users/kanda-it/git/kandazakka/src/main/webapp/file/images";
 
 			//アップロード先のディレクトリが存在しない場合に、そのディレクトリを作成
 			File uploadDirectory = new File(uploadDir);

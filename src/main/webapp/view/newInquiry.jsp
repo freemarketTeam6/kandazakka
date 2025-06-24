@@ -9,7 +9,7 @@
 
 	<h1>お問い合わせ</h1>
 	
-	<form action="<%=request.getContextPath()%>/newInquiry" method="post">
+	<form action="<%=request.getContextPath()%>/newInquiry" method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<th>お問い合わせカテゴリ</t>
@@ -37,7 +37,7 @@
 			</tr>
 			<tr>
 				<td>添付ファイル</td>
-				<td><input type="file" name="file_path" size="30" value=""></td>
+				<td><input type="file" name="file_path" size="30" value="" accept="image/png,image/jpeg" multiple /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" name="sendinquiry" value="送信"></input></td>
