@@ -31,7 +31,7 @@ public class InquiryListServlet extends HttpServlet {
 
 			//お問い合わせの一覧(InqueriesList)を持って画面にフォワード
 			request.setAttribute("InquiriesList", UserInquiriesList);
-			request.getRequestDispatcher("/view/inquiryList.jsp");
+			request.getRequestDispatcher("/view/inquiryList.jsp").forward(request, response);
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、お問い合わせ一覧の表示は行えませんでした。";
 			request.setAttribute("error", error);
