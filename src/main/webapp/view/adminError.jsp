@@ -37,6 +37,14 @@
 		<%
 		}
 		%>
+		
+		<%
+		if (cmd.equals("userList")) {
+		%>
+		[<a href="<%=request.getContextPath()%>/userList">ユーザー一覧に戻る</a>]
+		<%
+		}
+		%>
 
 
 	</div>
