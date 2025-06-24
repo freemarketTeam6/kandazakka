@@ -40,10 +40,10 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 
 		<table style="margin: auto">
 			<tr>
-				<th style="background-color:#ffffa8; width:300px>名前</th>
-				<th style="background-color:#ffffa8; width:300px>ユーザーID</th>
-				<th style="background-color:#ffffa8; width:300px>Eメール</th>
-				<th style="background-color:#ffffa8; width:300px>削除</th>
+				<th style="background-color:#ffffa8; width:200px>名前</th>
+				<th style="background-color:#ffffa8; width:200px>ユーザーID</th>
+				<th style="background-color:#ffffa8; width:200px>Eメール</th>
+				<th style="background-color:#ffffa8; width:200px>削除</th>
 			</tr>
 
 			<%
@@ -55,7 +55,7 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 				<td><%=userList.get(i).getUserid()%></td>
 				<td><%=userList.get(i).getEmail()%></td>
 				<td>
-					<form action="<%=request.getContextPath() %>/userList" method="post">
+					<form action="<%=request.getContextPath() %>/userList" method="GET">
 						<input type="submit" value="削除">
 						<input type="hidden" name="delno" value="<%=userList.get(i).getUserid() %>"
 					</form>
