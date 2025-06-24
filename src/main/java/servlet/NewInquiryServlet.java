@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import bean.Inquiries;
 import bean.User;
@@ -76,8 +78,8 @@ public class NewInquiryServlet extends HttpServlet {
 			inquiries.setFile_path(filePath);
 
 			inquiriesDao.insert(inquiries);
-			
-			inquiryno = last_inquiryno+1;
+
+			inquiryno = last_inquiryno + 1;
 
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、お問い合わせ作成は行えませんでした。";
@@ -106,7 +108,6 @@ public class NewInquiryServlet extends HttpServlet {
 
 	private String fileSave(Part filePart, int last_inquiryno) throws IOException {
 
-		//ルート情報とファイルパスを管理する変数を初期化
 		String uploadDir = "";
 		String filePath = "";
 
@@ -116,11 +117,32 @@ public class NewInquiryServlet extends HttpServlet {
 		//ファイルサイズを元にファイルの有無を確認
 		if (filePart.getSize() != 0) {
 
+			//拡張子を取得
+
+			//アップロードされたファイルの詳細情報を取得
+			String contentDisposition = filePart.getHeader("content-disposition");
+
+			//ファイル名を取得するための正規表現パターンを設定
+			Pattern pattern = Pattern.compile("filename=\"(.*)\"");
+
+			//正規表現パターンを使用して、詳細情報からファイル名を抽出
+			Matcher matcher = pattern.matcher(contentDisposition);
+
+			//抽出したファイル名が存在していればファイル名を管理する変数に代入、なければ空白を代入
+			if (matcher.find()) {
+				fileName = matcher.group(1);
+			} else {
+				fileName = "";
+			}
+
+			//拡張子を取得
+			fileName = fileName.substring(fileName.lastIndexOf("."));
+
 			//ファイル名を設定
-			fileName = "inquiries_" + last_inquiryno + 1;
+			fileName = "inquiries_" + (last_inquiryno + 1) + fileName;
 
 			// 保存先ディレクトリを設定
-			uploadDir = "../../webapp/file/inquiries";
+			uploadDir = "C:/Users/kanda-it/git/kandazakka/src/main/webapp/file/inquiries";
 
 			//アップロード先のディレクトリが存在しない場合に、そのディレクトリを作成
 			File uploadDirectory = new File(uploadDir);
