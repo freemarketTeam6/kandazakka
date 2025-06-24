@@ -30,6 +30,15 @@ int total = (int) request.getAttribute("total");
 <body>
 
 	<table style="border: 1px;">
+			<tr>
+				<th style="background-color: #00a7db; width: 80">商品画像</th>
+				<th style="background-color: #00a7db; width: 80">グッズID</th>
+				<th style="background-color: #00a7db; width: 80">出品者ID</th>
+				<th style="background-color: #00a7db; width: 80">商品名</th>
+				<th style="background-color: #00a7db; width: 80">金額</th>
+				<th style="background-color: #00a7db; width: 80">個数</th>
+				<th style="background-color: #00a7db; width: 80">カートから削除</th>
+			</tr>
 
 		<%
 		if (orderList != null) {
