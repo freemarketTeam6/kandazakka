@@ -9,6 +9,7 @@
 			<form action="<%=request.getContextPath()%>/list" method="POST">
 				<input type="image" src="${pageContext.request.contextPath}/pic/kandafm.png" alt="ロゴ"border="0">
 			</form>
+			
 			</td>
 			<br>
 		<form action="<%=request.getContextPath()%>/SearchServlet"style="display: inline;">

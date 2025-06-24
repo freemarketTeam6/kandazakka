@@ -71,11 +71,16 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
 	<% 
 	 if (goodsList != null && !goodsList.isEmpty()) {
 		 for ( int i = 0; i < goodsList.size(); i++){ %>
-		<div  class="img">
+		
 		<!-- 画像のパスは今後変更予定 -->
-			<img src="<%= goodsList.get(i).getImgPath() %>" alt="写真" width="200" height="200">
-			<strong class="priceOnImg"><%=  goodsList.get(i).getPrice()%>円</strong>
-		</div>		
+		<form action="<%=request.getContextPath()%>/goodsDetail">
+			<div  class="img">
+				<input type="image" src="${ goodsList.get(i).getImgPath() }" alt="写真" width="200" height="200">
+				<strong class="priceOnImg"><%=  goodsList.get(i).getPrice()%>円</strong>
+				<input type="hidden" name="cmd" value="detail">
+			</div>		
+		</form>
+
 	<% if ( i % 5 == 0 ){%>
 			<br>
 		<% } %>
