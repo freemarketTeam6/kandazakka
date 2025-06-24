@@ -1,8 +1,8 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.*,bean.Inquiries"%>
+<%@page import="java.util.*,bean.Inquiries,java.util.ArrayList"%>
 
 <%
-ArrayList<Inquiries> InquiriesList = (ArrayList<Inquiries>) request.getAttribute("InquiriesList");
+ArrayList<Inquiries> inquiriesList = (ArrayList<Inquiries>) request.getAttribute("InquiriesList");
 %>
 <html>
 <head>
@@ -49,24 +49,34 @@ body {
 	text-align: center;
 	color: #b22222;
 }
+
+#new{
+text-align: right;
+margin-right:10%;
+}
+
 </style>
 </head>
 <body>
 
+<%@include file="../common/userHeader.jsp"%>
 
+<p id="new">
+<a href="<%=request.getContextPath()%>/view/newInquiry.jsp">新規作成</a>
+</p>
 
 <table class="inquiriesList">
 		<tr>
 			<th>No.</th>
 			<th>カテゴリ</th>
 			<th>お問い合わせタイトル</th>
-			<th>お問い合わせタイトル</th>
+			<th></th>
 			
 		</tr>
 		
 		<%
 		//リストがnullじゃないとき繰り返し処理によってlistの値を取得
-		if (inquiriesList != null) {
+		if (!(inquiriesList.isEmpty())) {
 			for (int i = 0; i < inquiriesList.size(); i++) {
 				Inquiries inquiries = (Inquiries) inquiriesList.get(i);
 				int No = i+1;
@@ -108,6 +118,7 @@ body {
 					}
 					}
 			</script>
+			<%@include file="../common/userFooter.jsp"%>
 	</body>
 	
 </html>

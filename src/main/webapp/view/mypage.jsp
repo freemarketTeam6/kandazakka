@@ -82,7 +82,7 @@ String error = (String) request.getAttribute("error");
 		</tr>
 		<tr>
 			<td style="text-align: center; width: 80px; font-size: 15px;">[<a
-				href="<%=request.getContextPath() %>/listOfInquiries">お問い合わせ</a>]
+				href="<%=request.getContextPath() %>/inquiryList">お問い合わせ</a>]
 			</td>
 		</tr>
 	</table>
