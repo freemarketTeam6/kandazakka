@@ -30,6 +30,7 @@ int total = (int) request.getAttribute("total");
 </head>
 <body>
 
+
 	<table style="border: 1px; margin: auto; text-align: center">
 		<tr>
 			<th style="background-color: #ccff99; width: 200">商品画像</th>
@@ -41,20 +42,25 @@ int total = (int) request.getAttribute("total");
 			<th style="background-color: #ccff99; width: 200">カートから削除</th>
 		</tr>
 
+
 		<%
 		if (orderList != null) {
 			for (int i = 0; i < orderList.size(); i++) {
 		%>
 
 		<tr>
+
 			<td><%=orderList.get(i).getImgPath()%></td>
 			<td><%=orderList.get(i).getGoodsId()%></a></td>
+
 			<td><%=orderList.get(i).getSelluserId()%></td>
 			<td><%=orderList.get(i).getGoodsName()%></td>
 			<td><%=myformat.moneyFormat(orderList.get(i).getPrice())%></td>
 			<td><%=orderList.get(i).getQuantity()%></td>
 			<td><a
 				href="<%=request.getContextPath()%>/showCart?delno=<%=i%>">削除</a></td>
+
+
 		</tr>
 
 		<%
@@ -69,6 +75,7 @@ int total = (int) request.getAttribute("total");
 		<tr>
 			<th
 				style="background-color: #ccff99; text-align: center; width: 200px">合計</th>
+
 			<td><%=total%></td>
 		</tr>
 	</table>
