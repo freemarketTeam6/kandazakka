@@ -5,11 +5,10 @@
 	<tr>
 		<div style="text-align:center">
 			<td style="text-align:center;">
-
-			<a href="<%=request.getContextPath()%>/view/top.jsp" >  
-
-			<img src="${pageContext.request.contextPath}/pic/kandafm.png" alt="ロゴ"border="0">
-			</a>
+			
+			<form action="<%=request.getContextPath()%>/list" method="POST">
+				<input type="image" src="${pageContext.request.contextPath}/pic/kandafm.png" alt="ロゴ"border="0">
+			</form>
 			</td>
 			<br>
 		<form action="<%=request.getContextPath()%>/SearchServlet"style="display: inline;">
@@ -46,15 +45,14 @@
 		
 		<% }else{ %>
 		<div  style="text-align: center">
-			<ul>
-
-				<a href="<%=request.getContextPath()%>/view/mypage.jsp" style="margin-right: 30px;">マイページ</a>
+			<table>
+				<tr><a href="<%=request.getContextPath()%>/view/mypage.jsp" style="margin-right: 30px;">マイページ</a></tr>
+				<tr><a href="<%=request.getContextPath()%>/showCart"style="margin-right: 30px;">カート内容</a></tr>
+				<tr><a href="<%=request.getContextPath()%>/view/goodsInsert.jsp" style="margin-right: 30px">出品</a></tr>
+				<tr><a href="<%=request.getContextPath()%>/list">トップメニューへ</a></tr>
 				
-				<a href="<%=request.getContextPath()%>/showCart"style="margin-right: 30px;">カート内容</a>
+			</table>
 
-				<a href="<%=request.getContextPath()%>/view/goodsInsert.jsp" style="margin-right: 30px">出品</a>
-
-				<a href="<%=request.getContextPath()%>/list" style="margin-right: 30px;">トップメニューへ</a>
 			</ul>
 		</div>
 		

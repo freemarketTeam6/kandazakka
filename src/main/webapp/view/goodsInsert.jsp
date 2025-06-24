@@ -74,9 +74,9 @@ body {
 
 
 			<tr>
+			<!-- 	写真のinputタグからは accept="image/ping,image/jpeg" multiple を削除 -->
 				<th>写真</th>
-				<td><input type="file" name="image" required="required"
-					accept="image/ping,image/jpeg" multiple /></td>
+				<td><input type="file" name="image" required="required"></td>
 			</tr>
 			<tr>
 				<th>商品名</th>
