@@ -39,6 +39,8 @@ public class SendMail {
 
 			// 送信先メールアドレスを指定（ご自分のメールアドレスに変更）
 			mimeMessage.setRecipients(Message.RecipientType.TO, "r-nakajima@sr-net.co.jp");
+			//userdbに登録されたメールアドレスを使用
+			//mimeMessage.setRecipients(Message.RecipientType.TO, address);
 
 			// メールのタイトルを指定
 			mimeMessage.setSubject(subject, "iso-2022-jp");
@@ -63,4 +65,6 @@ public class SendMail {
 			System.out.println("送信に失敗しました。\n" + e);
 		}
 	}
+	
+	
 }
