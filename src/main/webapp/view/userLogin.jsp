@@ -47,7 +47,9 @@ if(message==null){
  					</tr>
  					<tr>
  						<th style="background-color:#6666ff; width:120px">パスワード</th>
- 						<td ><input type=text size="30" name="password" value="<%=password%>"></input></td>
+
+ 						<td ><input type=text size="30" name="password" value="<%=password %>"></input></td>
+
  					</tr>
  				</table>	
  					<div style="text-align: center">

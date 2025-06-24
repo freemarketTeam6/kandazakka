@@ -21,27 +21,27 @@
 
 			<table style="text-align: center; margin: auto; width: 850px">
 				<tr>
-					<td style="text-align: center; width: 80px; font-size: 30px;">[<a
+					<td style="text-align: center; width: 80px;">[<a
 						href="<%=request.getContextPath()%>/userList">ユーザー一覧</a>]
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: center; width: 80px; font-size: 30px;">[<a
+					<td style="text-align: center; width: 80px;">[<a
 						href="<%=request.getContextPath()%>/exhibitList">出品・取引情報一覧</a>]
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: center; width: 80px; font-size: 30px;">[<a
+					<td style="text-align: center; width: 80px;">[<a
 						href="<%=request.getContextPath()%>/salesList">売上一覧表示</a>]
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: center; width: 80px; font-size: 30px;">[<a
+					<td style="text-align: center; width: 80px;">[<a
 						href="<%=request.getContextPath()%>/sellerList">出品者表示</a>]
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: center; width: 80px; font-size: 30px;">[<a
+					<td style="text-align: center; width: 80px;">[<a
 						href="<%=request.getContextPath()%>/listOfInquiries">お問い合わせ一覧</a>]
 					</td>
 				</tr>
