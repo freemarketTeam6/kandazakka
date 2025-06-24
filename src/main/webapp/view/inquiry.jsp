@@ -9,7 +9,7 @@ int inquiryNo = (int)request.getAttribute("inquiryNo");
 <html>
 <head>
 <title>お問い合わせ</title>
-<link rel="stylesheet" href="../view/css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
   <style>
    body {
@@ -121,6 +121,10 @@ input[type="submit"]:hover {
 
 </head>
 
+<body>
+
+<%-- <%@include file= "/common/userHeader.jsp" %> --%>
+
     <div class="container">
         <h1>問い合わせメッセージ</h1>
         <form action="<%=request.getContextPath()%>/inquiry" method="POST">
@@ -160,5 +164,7 @@ input[type="submit"]:hover {
         %>
         </div>
     </div>
+    
+<%--     <a href="<%=request.getContextPath() %>/inquiryList">お問い合わせ</a> --%>
 </body>
 </html>

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import bean.Goods;
 import bean.User;
-import dao.GoodsDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,7 +19,11 @@ public class ShowCartServlet extends HttpServlet {
 		String cmd = "";
 		User user = null;
 		int total = 0;
+		// 商品リスト用のArrayListを作成
+		ArrayList<Goods> GoodsListInCart = new ArrayList<Goods>();
+
 		try {
+			// 削除対象の商品番号を取得
 			String delno = request.getParameter("delno");
 
 			HttpSession session = request.getSession();
@@ -38,14 +41,18 @@ public class ShowCartServlet extends HttpServlet {
 				orderList.remove(Integer.parseInt(delno));
 			}
 
-			Goods goods = new Goods();
-			GoodsDAO GoodsDao = new GoodsDAO();
 			if (orderList != null) {
-				total += goods.getPrice();
+				
+
+				for (int i = 0; i < orderList.size(); i++) {
+					Goods goods = orderList.get(i);
+					GoodsListInCart.add(goods);
+				}
 			}
+
 			// リクエストスコープに登録
-			session.setAttribute("orderList", orderList);
-			request.setAttribute("total", total);
+			session.setAttribute("orderList", GoodsListInCart);
+
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、カート状況は確認できません。";
 			cmd = "logout";

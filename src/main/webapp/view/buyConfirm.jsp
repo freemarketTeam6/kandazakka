@@ -6,8 +6,7 @@ ArrayList<Goods> list = (ArrayList<Goods>) request.getAttribute("goods_List");
 String error = (String)request.getAttribute("error");
 //MyFormatクラスのオブジェクトを生成
 MyFormat myFormat = new MyFormat();
-//合計価格用の変数
-int total = (int)request.getAttribute("total");
+
 %>
 <html>
 <head>
@@ -40,6 +39,10 @@ int total = (int)request.getAttribute("total");
 			
 			<%
 			if (list != null) {
+				
+				//合計価格用の変数
+				int total = (int)request.getAttribute("total");
+				
 				for (int i = 0; i < list.size(); i++) {
 					Goods goods = (Goods) list.get(i);
 			%>
