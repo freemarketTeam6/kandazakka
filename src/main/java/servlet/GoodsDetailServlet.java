@@ -51,8 +51,10 @@ public class GoodsDetailServlet extends HttpServlet {
 			if (error.equals("")) {
 				if (cmd.equals("detail")) {
 					request.getRequestDispatcher("/view/goodsDetail.jsp").forward(request, response);
-				} else {
+				} else if(cmd.equals("update")){
 					request.getRequestDispatcher("/view/changeGoods.jsp").forward(request, response);
+				}else {
+					request.getRequestDispatcher("/view/shipping.jsp").forward(request, response);
 				}
 			} else {
 				// エラーがあればエラー文とcmdをリクエストスコープに登録し、「error.jsp」へフォワード
