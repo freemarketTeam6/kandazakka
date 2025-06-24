@@ -69,7 +69,9 @@
 			</table>
 
 			<div class="submit">
-				<input type="submit" value="登録" id="insertSubmit">
+				<p style="margin: auto">
+					<input type="submit" value="登録" id="insertSubmit">
+				</p>
 			</div>
 
 		</form>
