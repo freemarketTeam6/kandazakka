@@ -19,6 +19,7 @@ public class GoodsDetailServlet extends HttpServlet {
 		try {
 			// cmd取得（商品情報変更のため）
 			cmd = (String) request.getParameter("cmd");
+
 			// 表示する商品情報を格納するGoodsオブジェクトを生成
 			Goods goods = new Goods();
 
@@ -32,15 +33,16 @@ public class GoodsDetailServlet extends HttpServlet {
 			goods = goodsDao.selectGoodsByGoodsID(goods_id);
 
 			// エラー処理
-			if (goods.getGoodsId()==0) {
+			if (goods.getGoodsId() == 0) {
 				error = "表示対象の商品が存在しないため、詳細画面は表示されませんでした。";
 				cmd = "list";
+				return;
 			}
 
 			// 取得した商品情報をリクエストスコープに登録
 			request.setAttribute("goods", goods);
 
-		// エラー処理
+			// エラー処理
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーのため、詳細画面は表示できませんでした。";
 			cmd = "logout";
@@ -56,7 +58,7 @@ public class GoodsDetailServlet extends HttpServlet {
 				// エラーがあればエラー文とcmdをリクエストスコープに登録し、「error.jsp」へフォワード
 				request.setAttribute("error", error);
 				request.setAttribute("cmd", cmd);
-				request.getRequestDispatcher("/view/UserError.jsp").forward(request, response);
+				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			}
 		}
 	}
