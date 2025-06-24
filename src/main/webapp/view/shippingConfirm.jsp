@@ -45,9 +45,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 		</tr>			
 	</table>
 	
-	<form aciton="<%= request.getContextPath() %>/view/mypage.jsp">
-		<input type="submit" value="出品一覧に戻る">
-	</form>
+	<a href="<%= request.getContextPath() %>/mygoodsList">出品一覧に戻る</a>
 
 </body>
 <%@include file="../common/userFooter.jsp"%>

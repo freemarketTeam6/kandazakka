@@ -35,7 +35,7 @@ public class MyGoodsListServlet extends HttpServlet {
 		String userid=user.getUserid();
 				
 		//GoodsDAOのオブジェクトを作成
-		GoodsDAO goodsDaoObj=new GoodsDAO();		
+		GoodsDAO goodsDaoObj=new GoodsDAO();
 		
 		
 		//useridをもとに出品したGoodsオブジェクトのArrayListを取得
