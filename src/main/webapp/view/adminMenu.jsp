@@ -46,6 +46,6 @@
 				</tr>
 			</table>
 	<br>
-	<%@include file="/common/footer.jsp"%>
+	<%@include file="/common/adminFooter.jsp"%>
 </body>
 </html>

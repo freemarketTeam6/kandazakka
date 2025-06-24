@@ -16,11 +16,11 @@ MyFormat myformat = new MyFormat();
 
 <body>
 	<%@include file="../common/userHeader.jsp"%>
-
-	<hr size=5px color="black">
+	
+	<h2 style="text-align:center">出品商品一覧</h2>
 
 	<div>
-		<table border="1">
+		<table border="1" style="margin: auto; width:80%">
 			<tr>
 				<th>商品画像</th>
 				<th>商品名</th>
@@ -41,9 +41,11 @@ MyFormat myformat = new MyFormat();
 				%>
 
 			<tr>
+
 				<td><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" size="10px"></td>
+
 				<td><%=goods.getGoodsName() %></td>
-				<td><%=goods.getPrice() %></td>
+				<td><%=myformat.yenFormat(goods.getPrice())%></td>
 				<td><%= myformat.statusFormat(goods.getStatus()) %></td>
 				<td><a href="<%=request.getContextPath()%>/goodsDetail?goods_id=<%=goods.getGoodsId() %>&cmd=update" style="margin-right: 30px;">内容変更</a></td>
 				<td>
@@ -55,10 +57,10 @@ MyFormat myformat = new MyFormat();
 		}
 		%>
 		</table>
-		<form action="<%=request.getContextPath()%>/view/mypage.jsp" method="POST">
+		<form action="<%=request.getContextPath()%>/view/mypage.jsp" method="POST" style="text-align: center">
 			<input type="submit" value="マイページへ戻る">
 		</form>
-
+		<br>
 
 	</div>
 	<%@include file="../common/userFooter.jsp"%>
