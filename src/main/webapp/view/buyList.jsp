@@ -43,7 +43,7 @@ MyFormat myFormat = new MyFormat();
 			%>
 
 			<tr>
-				<td><img src="<%=goodsList.get(i).getImgPath()%>" alt="商品写真"></td>
+				<td><img src="<%=request.getContextPath() %>/file/images/<%= goodsList.get(i).getImgPath() %>" alt="商品写真"></td>
 				<td><%=goodsList.get(i).getGoodsName()%></td>
 				<td><%=myFormat.moneyFormat(goodsList.get(i).getPrice())%></td>
 				<td><%=goodsList.get(i).getQuantity()%></td>
