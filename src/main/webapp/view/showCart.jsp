@@ -30,6 +30,15 @@ int total = (int) request.getAttribute("total");
 <body>
 
 	<table style="border: 1px;">
+			<tr>
+				<th style="background-color: #00a7db; width: 80">商品画像</th>
+				<th style="background-color: #00a7db; width: 80">グッズID</th>
+				<th style="background-color: #00a7db; width: 80">出品者ID</th>
+				<th style="background-color: #00a7db; width: 80">商品名</th>
+				<th style="background-color: #00a7db; width: 80">金額</th>
+				<th style="background-color: #00a7db; width: 80">個数</th>
+				<th style="background-color: #00a7db; width: 80">カートから削除</th>
+			</tr>
 
 		<%
 		if (orderList != null) {
@@ -37,21 +46,21 @@ int total = (int) request.getAttribute("total");
 		%>
 		<tr>
 			<td colspan="5" ,rowspan="5"><%=orderList.get(i).getImgPath()%></td>
-			<td><%=orderList.get(i).getGoodsId()%></a></td>
+			<td><%=orderList.get(i).getGoodsId()%></td>
 			<td><%=orderList.get(i).getSelluserId()%></td>
 			<td><%=orderList.get(i).getGoodsName()%></td>
-			<td><%=myFormat.moneyFormat(orderList.get(i).goods.getPrice())%></td>
+			<td><%=myformat.moneyFormat(orderList.get(i).getPrice())%></td>
 			<td><%=orderList.get(i).getQuantity()%></td>
 			<td><a
 				href="<%=request.getContextPath()%>/showCart?delno=<%=i%>">削除</a></td>
-		</tr>
-		<%
+		</tr>		<%
 		}
 		}
 		%>
+
 		<tr>
 			<th
-				style="background-color: #6666ff; text-align: center; width: 200px">合計</th>
+				style="background-color: #00a7db; text-align: center; width: 200px">合計</th>
 			<td><%=total%></td>
 		</tr>
 	</table>
