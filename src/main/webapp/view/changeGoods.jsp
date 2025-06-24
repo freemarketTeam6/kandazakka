@@ -38,12 +38,12 @@ MyFormat format = new MyFormat();
 		<tr>
 			<th style="background-color: #00a7db; width: 100">価格</th>
 			<td style="text-align: center; color: #000000; font-size: 20px"><%=format.yenFormat(goods.getPrice())%></td>
-			<td><input type="text" name="price" value=""></td>
+			<td><input type="text" name="price" value=""　oninput="this.value=this.value.replace(/[^0-9]/g,'')"></td>
 		</tr>
 		<tr>
 			<th style="background-color: #00a7db; width: 100">個数</th>
 			<td style="text-align: center; color: #000000; font-size: 20px"><%=goods.getQuantity()%></td>
-			<td><input type="text" name="quantity" value=""></td>
+			<td><input type="text" name="quantity" value=""　oninput="this.value=this.value.replace(/[^0-9]/g,'')"></td>
 		</tr>
 		<tr>
 			<th style="background-color: #00a7db; width: 100">種類</th>
