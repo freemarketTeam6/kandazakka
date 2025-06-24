@@ -21,7 +21,7 @@ MyFormat myFormat = new MyFormat();
 		<p style="margin-top: 100px"></p>
 
 		<p style="text-align: center">
-			<img src="<%=goods.getImgPath()%>" alt="商品写真">
+			<img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" alt="商品写真">
 		</p>
 		
 		<p style="margin-top: 25px"></p>

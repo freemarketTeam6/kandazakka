@@ -41,7 +41,7 @@ MyFormat myformat = new MyFormat();
 				%>
 
 			<tr>
-				<td><img src="<%=goods.getImgPath()%>" size="10px"></td>
+				<td><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" size="10px"></td>
 				<td><%=goods.getGoodsName() %></td>
 				<td><%=goods.getPrice() %></td>
 				<td><%= myformat.statusFormat(goods.getStatus()) %></td>

@@ -23,7 +23,7 @@ MyFormat format = new MyFormat();
 		<tr>以下の情報で商品情報を変更しました。</tr>		
 			<tr>
 				<th style="background-color: #00a7db; width: 100">写真</th>	
-				<td style="text-align:center;"><img src="<%= goods.getImgPath()%>" alt="商品写真"></td>
+				<td style="text-align:center;"><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" alt="商品写真"></td>
 			</tr>
 			<br> 
 			<tr>	
