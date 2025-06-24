@@ -25,12 +25,14 @@ MyFormat myformat = new MyFormat();
 	<hr size=5px color="black">
 
 	<div>
-		<table>
+		<table border="1">
 			<tr>
 				<th>商品画像</th>
 				<th>商品名</th>
 				<th>金額</th>
 				<th>取引状況</th>
+				<th>登録内容変更</th>
+				<th>発送</th>
 			</tr>
 
 			<%
@@ -44,10 +46,12 @@ MyFormat myformat = new MyFormat();
 				%>
 
 			<tr>
-				<td><img src="<%=goods.getImgPath()%>"></td>
+				<td><img src="<%=goods.getImgPath()%>" size="10px"></td>
 				<td><%=goods.getGoodsName() %></td>
 				<td><%=goods.getPrice() %></td>
 				<td><%= myformat.statusFormat(goods.getStatus()) %></td>
+				<td><a href="<%=request.getContextPath()%>/view/changeGoods.jsp" style="margin-right: 30px;">内容変更</a></td>
+				<td><a href="<%=request.getContextPath()%>/" style="margin-right: 30px;">発送する</a></td>
 			</tr>
 			<% 
 			}
