@@ -2,7 +2,6 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -92,7 +91,7 @@ public class MessageDAO {
 			con = getConnection();
 			smt = con.createStatement();
 			
-			ResultSet rs = smt.executeQuery("sql");
+			ResultSet rs = smt.executeQuery(sql);
 			
 			while( rs.next() ) {
 				Message message = new Message();
@@ -132,7 +131,7 @@ public class MessageDAO {
 		//SQL文
 		String sql = "INSERT INTO inquiry_messages(user_id, inquiryno, message, date) VALUES("
 				+ message.getUserId() + "'," + message.getInquiryNumber() + ",'" 
-				+ message.getMessage() + "'," + message.getDate() + ")";
+				+ message.getMessage() + "', CURDATE())";
 		try {
 			con = getConnection();
 			smt = con.createStatement();
@@ -158,9 +157,9 @@ public class MessageDAO {
 		Statement smt = null;
 		
 		//SQL文
-		String sql = "INSERT INTO goods_messages(user_id, goods_id, message, date) VALUES("
+		String sql = "INSERT INTO goods_messages(user_id, goods_id, message, date) VALUES('"
 				+ message.getUserId() + "'," + message.getGoodsId() + ",'" 
-				+ message.getMessage() + "'," + message.getDate() + ")";
+				+ message.getMessage() + "', CURDATE())";
 		try {
 			con = getConnection();
 			smt = con.createStatement();
