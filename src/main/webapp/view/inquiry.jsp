@@ -3,7 +3,7 @@
 
 <%
 ArrayList<Message> messageList = (ArrayList<Message>) request.getAttribute("messageList");
-
+int inquiryNo = (int)request.getAttribute("inquiryNo");
 %>
 
 <html>
@@ -123,10 +123,12 @@ input[type="submit"]:hover {
 
     <div class="container">
         <h1>問い合わせメッセージ</h1>
-        <form action="<%=request.getContextPath()%>/message" method="post">
+        <form action="<%=request.getContextPath()%>/inquiry" method="POST">
             <textarea name="message" placeholder="メッセージを入力してください..." required></textarea>
             <input type="submit" value="送信">
-            <input type="hidden" name="add" value="add">
+            <input type="hidden" name="inquiryNo" value="<%= inquiryNo %>">
+            <input type="hidden" name="cmd" value="insert">
+            <input type="hidden" name="from" value="user">
         </form>
 
         <hr>

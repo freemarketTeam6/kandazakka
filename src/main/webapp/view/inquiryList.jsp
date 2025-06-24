@@ -87,7 +87,7 @@ margin-right:10%;
 			<td><span><%=inquiries.getTitle()%></span></td>
 
 			<td>
-			<a href="<%=request.getContextPath()%>/inquiry?inquiryNum=<%=inquiriesList.get(i).getInquiryno()%>&from=user">返信</a>
+			<a href="<%=request.getContextPath()%>/inquiry?inquiryNo=<%=inquiriesList.get(i).getInquiryno()%>&from=user">返信</a>
 			</td>
 		</tr>
 		<%
