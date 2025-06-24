@@ -78,6 +78,7 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
 				<input type="image" src="${ goodsList.get(i).getImgPath() }" alt="写真" width="200" height="200">
 				<strong class="priceOnImg"><%=  goodsList.get(i).getPrice()%>円</strong>
 				<input type="hidden" name="cmd" value="detail">
+				<input type="hidden" name="goods_id" value="<%=  goodsList.get(i).getGoodsId()%>">
 			</div>		
 		</form>
 
