@@ -16,9 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-/**
- * 
- */
+
 @WebServlet("/changeGoods")
 @MultipartConfig
 public class ChangeGoodsServlet extends HttpServlet {
@@ -39,6 +37,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 			String category = request.getParameter("category");
 			String region = request.getParameter("region");
 			String memo = request.getParameter("memo");
+			int goodsid = Integer.parseInt(request.getParameter("goodsid"));
 
 			// 入力チェック
 			
@@ -82,6 +81,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 			goods.setCategory(category);
 			goods.setRegion(region);
 			goods.setGoodsMemo(memo);
+			goods.setGoodsId(goodsid);
 
 			// DBの更新処理
 			goodsDao.update(goods);
@@ -157,5 +157,5 @@ public class ChangeGoodsServlet extends HttpServlet {
 		return filePath;
 
 	}
-
+	
 }
