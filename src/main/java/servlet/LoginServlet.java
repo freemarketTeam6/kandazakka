@@ -72,8 +72,8 @@ public class LoginServlet extends HttpServlet {
 				//adminLoginからの遷移の場合は管理者メニューにフォワード
 				request.getRequestDispatcher("/view/adminMenu.jsp").forward(request, response);
 			}else {
-			// 一般ユーザーのログインの場合top.jspにフォワード
-			request.getRequestDispatcher("/view/top.jsp").forward(request, response);
+			// 一般ユーザーのログインの場合ListServletにフォワード
+			request.getRequestDispatcher("/list").forward(request, response);
 			}
 		}else {
 			request.setAttribute("cmd", cmd);

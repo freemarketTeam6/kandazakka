@@ -14,8 +14,18 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/list")
 public class ListServlet extends HttpServlet {
 	
-	public void doGet( HttpServletRequest request, HttpServletResponse response) 
+	public void doPost( HttpServletRequest request, HttpServletResponse response) 
 	throws IOException, ServletException{
+		commonMethod( request, response);
+	}
+	
+	public void doGet( HttpServletRequest request, HttpServletResponse response) 
+			throws IOException, ServletException{
+		commonMethod( request, response);
+	}
+	
+	public void commonMethod(HttpServletRequest request, HttpServletResponse response) 
+			throws IOException, ServletException{
 		
 		//GoodsDAOのインスタンス化
 		GoodsDAO objGoodsDAO = new GoodsDAO();
