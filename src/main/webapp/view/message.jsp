@@ -11,10 +11,17 @@ int goods_id = (int)request.getAttribute("goods_id");
     <title>Chat Room</title>
     <style>
 
+   body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
 .container {
     width: 90%;
     max-width: 600px;
-    margin: 10px auto;
+    margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -36,13 +43,13 @@ h1 {
     gap: 10px;
 }
 
-input[type="text"], textarea {
+#textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-input[type="submit"] {
+#submit{
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -51,7 +58,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-input[type="submit"]:hover {
+#submit:hover {
     background-color: #45a049;
 }
 
@@ -63,8 +70,19 @@ input[type="submit"]:hover {
     overflow-y: auto;
     padding-right: 10px;
 }
+
+.adminMessage {
+	/* display:left; で管理者のメッセージを右寄せにしたい*/
+    display: flex;
+    flex-direction: column;
+    background-color: #8fbc8f;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.15);
+}
     
-.message {
+.userMessage {
+	/* display:right;でユーザーのメッセージを右寄せにしたい*/
     display: flex;
     flex-direction: column;
     background-color: #dcf8c6;
@@ -104,7 +122,7 @@ input[type="submit"]:hover {
         <h1>取引メッセージ</h1>
         <form action="<%=request.getContextPath()%>/message" method="post" class="form">
             <textarea name="message" placeholder="メッセージを入力してください..." required></textarea>
-            <input type="submit" value="送信">
+            <input type="submit" value="送信" id="submit">
             <input type="hidden" name="goods_id" value=<%= goods_id %>>
             <input type="hidden" name="cmd" value="insert">
         </form>
@@ -117,7 +135,7 @@ input[type="submit"]:hover {
             if (messageList != null && !messageList.isEmpty()) {
                 for (int i = 0; i < messageList.size(); i++) {
         %>
-                    <div class="message">
+                    <div class="userMessage">
                         <p class="message-content"><strong><%= messageList.get(i).getUserId() %>:</strong> <%= messageList.get(i).getMessage() %></p>
                         <p class="message-timestamp"><em><%= messageList.get(i).getDate() %></em></p>
                     </div>
