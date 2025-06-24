@@ -40,10 +40,10 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 
 		<table style="margin: auto">
 			<tr>
-				<th style="background-color:#ffffa8; width:200px>名前</th>
-				<th style="background-color:#ffffa8; width:200px>ユーザーID</th>
-				<th style="background-color:#ffffa8; width:200px>Eメール</th>
-				<th style="background-color:#ffffa8; width:200px>削除</th>
+				<th style="background-color:#ffffa8; width:200px">名前</th>
+				<th style="background-color:#ffffa8; width:200px">ユーザーID</th>
+				<th style="background-color:#ffffa8; width:200px">Eメール</th>
+				<th style="background-color:#ffffa8; width:200px">削除</th>
 			</tr>
 
 			<%
