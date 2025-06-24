@@ -1,23 +1,60 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="bean.User" %>
 
+<style>
+@charset "UTF-8";*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: 100%;
+    height: 110px;
+    padding: 0 5%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav{
+    width: 50%;
+}
+
+nav ul{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #000;
+}
+</style>
 <header>
 	<tr>
-		<div style="text-align:center">
-			<td style="text-align:center;">
+	<br>
+		<div class="logo">
 			<a href="<%=request.getContextPath()%>/view/top.jsp">
 			<img src="${pageContext.request.contextPath}/pic/kandafm.png" alt="ロゴ"border="0">
 			</a>
-			</td>
-			<br>
+		</div>	
+		
 		<form action="<%=request.getContextPath()%>/SearchServlet"style="display: inline;">
 			<input id="sbox2" name="keyword" type="text" placeholder="キーワードを入力" />
 			<input id="sbtn1" type="submit" value="検索" />
 		</form>
-		</div>
-	</tr>
 		
-		<div style="text-align:right">
+	
+		<nav>
+			<ul>
+				<li><a href="<%=request.getContextPath()%>/exhibitList"style="margin-right: 30px;">出品商品</a></li>
+				<li><a href="<%=request.getContextPath()%>/sellerList"style="margin-right: 30px;">出品者</a></li>
+				<li><a href="<%=request.getContextPath()%>/userList"style="margin-right: 30px;">ユーザー</a></li>
+				<li><a href="<%=request.getContextPath()%>/salesList"style="margin-right: 30px;">売上</a></li>
+				<li><a href="<%=request.getContextPath()%>/listOfInquiries"style="margin-right: 30px;">問い合わせ</a></li>
+			
 
 		<%
 		//ユーザー情報取得
@@ -37,20 +74,9 @@
 		<%
 		}
 		%>
-		
-		<hr style="text-align: center; height: 3px; background-color:#ffffa8; width: 1500px">
-		</div>
-
-		<div  style="text-align: center">
-			<ul>
-				<a href="<%=request.getContextPath()%>/exhibitList"style="margin-right: 30px;">出品商品</a>
-				<a href="<%=request.getContextPath()%>/sellerList"style="margin-right: 30px;">出品者</a>
-				<a href="<%=request.getContextPath()%>/userList"style="margin-right: 30px;">ユーザー</a>
-				<a href="<%=request.getContextPath()%>/salesList"style="margin-right: 30px;">売上</a>
-				<a href="<%=request.getContextPath()%>/listOfInquiries"style="margin-right: 30px;">問い合わせ</a>
 			</ul>
-		</div>
+		</nav>
+	<tr>	
+ <br>
 
-		<hr style="text-align: center; height: 1px; background-color:#ffffa8; width: 1500px">
-	</div>
 </header>

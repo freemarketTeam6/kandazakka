@@ -22,6 +22,9 @@ public class InquiryServlet extends HttpServlet {
 		// エラー文と遷移先を格納する変数宣言
 		String error = "";
 		String cmd = "";
+		
+		//遷移先を判別するパラメータ
+		String from = "";
 
 		try {
 			// addパラメータ取得
@@ -52,6 +55,8 @@ public class InquiryServlet extends HttpServlet {
 
 			}
 
+			from = (String)request.getParameter("from");
+			
 			// お問い合わせIDを取得
 			int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
 			
@@ -80,8 +85,14 @@ public class InquiryServlet extends HttpServlet {
 
 		} finally {
 			if (error.equals("")) {
-				// inquiryDetails.jspに遷移
-				request.getRequestDispatcher("/view/inquiryDetails.jsp").forward(request, response);
+
+				if(from.equals("user")) {
+				// inquiry.jspに遷移
+				request.getRequestDispatcher("/view/inquiry.jsp").forward(request, response);
+				}else if(from.equals("admin")) {
+					request.getRequestDispatcher("/view/inquiryDetails.jsp").forward(request, response);
+				}
+
 			}else {
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			}
