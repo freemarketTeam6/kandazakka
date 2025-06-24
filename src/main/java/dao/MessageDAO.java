@@ -43,7 +43,7 @@ public class MessageDAO {
 			con = getConnection();
 			smt = con.createStatement();
 			
-			ResultSet rs = smt.executeQuery("sql");
+			ResultSet rs = smt.executeQuery(sql);
 			
 			while( rs.next() ) {
 				Message message = new Message();
