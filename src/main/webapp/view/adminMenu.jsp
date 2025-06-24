@@ -8,13 +8,8 @@
 <body>
 <%@include file= "../common/adminHeader.jsp" %>
 
-	<hr
-		style="text-align: center; height: 2px; background-color: black; width: 950px">
 	<h1 style="text-align: center; color: #000000;">管理者メニュー</h1>
-	<hr
-		style="text-align: center; height: 2px; background-color: black; width: 950px">
-
-
+	<br>
 	<div style="margin-bottom: 250px">
 		<div style="text-align: center">
 
@@ -50,7 +45,7 @@
 						href="<%=request.getContextPath()%>/logout">【ログアウト】</a></td>
 				</tr>
 			</table>
-
+	<br>
 	<%@include file="/common/footer.jsp"%>
 </body>
 </html>
