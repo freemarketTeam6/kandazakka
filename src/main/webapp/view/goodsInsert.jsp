@@ -59,6 +59,7 @@ body {
 	</header>
 
 	<%
+	
 	Goods goods = (Goods)request.getAttribute("goods");
 	
 	String message = (String)request.getAttribute("empty");

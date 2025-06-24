@@ -287,6 +287,7 @@ public class GoodsDAO {
 				 + goods.getSelluserId() + "','" +  goods.getImgPath() + "','" + goods.getGoodsName() + "','" + goods.getPrice() + "','" + goods.getQuantity() + "','"
 				 + goods.getCategory() + "','" + goods.getGoodsMemo() +"','"  + goods.getStatus() + "','" + goods.getRegion() + "', CURDATE())";
 		 
+		 
 		  try{
 			 con = getConnection();
 			 smt = con.createStatement();
