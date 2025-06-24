@@ -41,10 +41,7 @@ nav ul li a{
 			</a>
 		</div>	
 		
-		<form action="<%=request.getContextPath()%>/SearchServlet"style="display: inline;">
-			<input id="sbox2" name="keyword" type="text" placeholder="キーワードを入力" />
-			<input id="sbtn1" type="submit" value="検索" />
-		</form>
+		
 		
 	
 		<nav>

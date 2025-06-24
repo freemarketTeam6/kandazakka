@@ -50,6 +50,8 @@ public class NewInquiryServlet extends HttpServlet {
 			int last_inquiryno = inquiriesDao.inquiriesCount();
 
 			Part filePart = request.getPart("file_path");
+			
+			//ここでエラー吐く
 			String filePath = fileSave(filePart, last_inquiryno);
 
 			if (category == null || category.equals("")) {

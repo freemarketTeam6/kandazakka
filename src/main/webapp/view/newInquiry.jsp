@@ -9,7 +9,7 @@
 
 	<h1>お問い合わせ</h1>
 	
-	<form action="<%=request.getContextPath()%>/newInquiry" method="post" enctype="multipart/form-data">
+	<form action="<%=request.getContextPath()%>/newInquiry" method="POST" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<th>お問い合わせカテゴリ</t>
