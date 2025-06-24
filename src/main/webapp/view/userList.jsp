@@ -13,7 +13,6 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 	<div style="margin:auto">
 		<%@include file="/common/adminHeader.jsp"%>
 
-
 		<table style="margin: auto">
 			<form action="<%=request.getContextPath()%>/userList">
 				<tr>
@@ -57,8 +56,8 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 				<td><%=userList.get(i).getEmail()%></td>
 				<td>
 					<form action="<%=request.getContextPath() %>/userList" method="post">
-						<input style="submit" value="削除">
-						<input style="hidden" name="delno" value="<%=userList.get(i).getUserid() %>"
+						<input type="submit" value="削除">
+						<input type="hidden" name="delno" value="<%=userList.get(i).getUserid() %>"
 					</form>
 				</td>
 			</tr>
