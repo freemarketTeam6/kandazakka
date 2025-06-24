@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import bean.Message;
+import bean.User;
 import dao.MessageDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/inquiry")
 public class InquiryServlet extends HttpServlet {
@@ -23,45 +25,38 @@ public class InquiryServlet extends HttpServlet {
 		String error = "";
 		String cmd = "";
 		
-		//遷移先を判別するパラメータ
-		String from = "";
+		// お問い合わせIDを取得
+		int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
 
 		try {
 			// addパラメータ取得
-			String add = request.getParameter("add");
+			cmd = request.getParameter("cmd");
 
 			// addがaddだったらメッセージ追加を行う
-			if (!(add==null)) {
+			if ( cmd != null && cmd.equals("insert")) {
+				
+				//セッションから送信したユーザーの情報を取得
+				HttpSession session = request.getSession();
+				User user = (User) session.getAttribute("user");
+				String userid = user.getUserid();
+				
 				// 送信されたメッセージの情報を取得
-				String userid = (String) request.getParameter("userid");
-				int inquiryNum = Integer.parseInt(request.getParameter("inquiryNum"));
 				String message = (String) request.getParameter("message");
-
-				// 送信された日時を取得
-				Date nowdate = new Date();
 
 				// Messageクラスをインスタンス化
 				Message messageDto = new Message();
 
 				// Messageオブジェクトに情報を格納
 				messageDto.setUserId(userid);
-				messageDto.setInquiryNumber(inquiryNum);
+				messageDto.setInquiryNumber(inquiryNo);
 				messageDto.setMessage(message);
-				messageDto.setDate(nowdate);
 
 				// MessageDAOをインスタンス化し、MessageオブジェクトをDBに格納
 				MessageDAO messageDao = new MessageDAO();
 				messageDao.insertMesssageIntoInquiryMessages(messageDto);
 
 			}
-
-			from = (String)request.getParameter("from");
 			
-			// お問い合わせIDを取得
-			int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
-			
-			
-
 			// Inquiry.jspに表示するメッセージログを格納したArrayListを作成
 			ArrayList<Message> messageList = new ArrayList<Message>();
 			
@@ -76,6 +71,9 @@ public class InquiryServlet extends HttpServlet {
 
 			// リクエストスコープにメッセージログが入ったArrayListを登録
 			request.setAttribute("messageList", messageList);
+			
+			//リクエストスコープにinquiryNoを登録
+			request.setAttribute("inquiryNo", inquiryNo);
 
 		} catch (Exception e) {
 			error = "DB接続エラーの為、お問い合わせ詳細を表示できません。";
@@ -85,14 +83,8 @@ public class InquiryServlet extends HttpServlet {
 
 		} finally {
 			if (error.equals("")) {
-
-				if(from.equals("user")) {
-				// inquiry.jspに遷移
-				request.getRequestDispatcher("/view/inquiry.jsp").forward(request, response);
-				}else if(from.equals("admin")) {
-					request.getRequestDispatcher("/view/inquiryDetails.jsp").forward(request, response);
-				}
-
+				// inquiryDetails.jspに遷移
+				request.getRequestDispatcher("/view/inquiryDetails.jsp").forward(request, response);
 			}else {
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			}
