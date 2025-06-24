@@ -45,7 +45,7 @@ int total = (int)request.getAttribute("total");
 			%>
 			
 			<tr>
-				<td><%= list.get(i).getImgPass() %></td>
+				<td><%= list.get(i).getImgPath() %></td>
 				<td><%= list.get(i).getGoodsName() %></td>
 				<td><%= myFormat.moneyFormat(list.get(i).getPrice()) %></td>
 			</tr>
