@@ -197,7 +197,7 @@ public class UserDAO {
 		ArrayList<User> sellerList = new ArrayList<>();
 		try {
 			// SQL文 ミスありそう
-			String sql = "SELECT u.user_id,u.name,u.name_kana,u.address,u.email,u.tell" + " FROM userinfo u "
+			String sql = "SELECT DISTINCT u.user_id,u.name,u.name_kana,u.address,u.email,u.tell" + " FROM userinfo u "
 					+ "INNER JOIN goodsinfo g ON u.user_id=g.selluser_id";
 
 			con = getConnection();
