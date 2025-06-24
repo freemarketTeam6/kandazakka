@@ -1,6 +1,16 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@ page import="bean.Goods"%>
 
+<%
+//セッションスコープからのuser情報の取得
+User checkUser = (User)session.getAttribute("user");
+
+//userがNULL(＝未ログイン)だったらログインページに飛ばす
+if(checkUser==null){
+	request.getRequestDispatcher("/view/userLogin.jsp").forward(request, response);
+}
+%>
+
 <html>
 
 <head>

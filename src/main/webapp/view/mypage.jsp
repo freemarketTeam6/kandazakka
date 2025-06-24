@@ -2,8 +2,13 @@
 <%@page import="java.util.ArrayList,bean.User"%>
 
 <%
-//リクエストスコープからのデータの取得
-String error = (String) request.getAttribute("error");
+//セッションスコープからのuser情報の取得
+User checkUser = (User)session.getAttribute("user");
+
+//userがNULL(＝未ログイン)だったらログインページに飛ばす
+if(checkUser==null){
+	request.getRequestDispatcher("/view/userLogin.jsp").forward(request, response);
+}
 %>
 
 <html>

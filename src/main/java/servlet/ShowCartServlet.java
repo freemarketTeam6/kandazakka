@@ -24,11 +24,10 @@ public class ShowCartServlet extends HttpServlet {
 			String delno = request.getParameter("delno");
 
 			HttpSession session = request.getSession();
-			// ログインしていなかったらエラー
+			// ログインしていなかったらログインページに飛ばす
 			user = (User) session.getAttribute("user");
 			if (user == null) {
-				error = "セッション切れの為、カート状況は確認できません。";
-				cmd = "logout";
+				request.getRequestDispatcher("/view/userLogin.jsp").forward(request, response);
 				return;
 			}
 
