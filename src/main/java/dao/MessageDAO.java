@@ -37,7 +37,7 @@ public class MessageDAO {
 		ArrayList<Message> messageList = new ArrayList<Message>();
 		
 		//SQL文定義
-		String sql = "SELECT * FROM inquiry_messages WHERE inquiry_no = " + inquiryNo;
+		String sql = "SELECT * FROM inquiry_messages WHERE inquiry_no = '" + inquiryNo+"'";
 		
 		try {
 			con = getConnection();
