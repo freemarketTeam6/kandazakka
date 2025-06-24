@@ -14,49 +14,64 @@ MyFormat myFormat = new MyFormat();
 <body>
 	<div style="text-align: center">
 		<%@ include file="/common/userHeader.jsp"%>
-		<img src="<%=goods.getImgPath()%>" alt="商品写真"> <br> <br>
-		<p style="font-size: 24px">
+		<hr
+			style="text-align: center; height: 2px; background-color: black; width: 950px">
+		<h1 style="text-align: center; color: #000000;">商品詳細</h1>
+		<hr
+			style="text-align: center; height: 2px; background-color: black; width: 950px">
+		<p style="margin-top: 100px"></p>
+
+		<p style="text-align: center">
+			<img src="<%=goods.getImgPath()%>" alt="商品写真">
+		</p>
+
+		<p style="font-size: 24px; text-align: center">
 			<strong><%=goods.getGoodsName()%></strong>
 		</p>
-		<br> <br>
-		<p style="font-size: 20px"><%=myFormat.moneyFormat(goods.getPrice())%></p>
-		<br>
+
+		<p style="font-size: 20px; text-align: center">
+			<%=myFormat.moneyFormat(goods.getPrice())%>
+		</p>
 
 		<table style="margin: auto">
 			<tr>
-				<th>商品の数量：</th>
+				<th style="background-color: #ccff99; width: 200px">商品の数量</th>
 				<td><%=goods.getQuantity()%></td>
 			</tr>
 			<tr>
-				<th>商品の種類：</th>
+				<th style="background-color: #ccff99; width: 200px">商品の種類</th>
 				<td><%=goods.getCategory()%></td>
 			</tr>
 			<tr>
-				<th>商品の状態：</th>
-				<td><%=goods.getStatus()%></td>
-			</tr>
-			<tr>
-				<th>出品日：</th>
+				<th style="background-color: #ccff99; width: 200px">出品日</th>
 				<td><%=goods.getExhibitDate()%></td>
 			</tr>
 			<tr>
-				<th>出品地域：</th>
+				<th style="background-color: #ccff99; width: 200px">出品地域</th>
 				<td><%=goods.getRegion()%></td>
 			</tr>
 			<tr>
-				<th>商品の説明：</th>
-				<td><%=goods.getGoodsMemo()%></td>
+				<th style="background-color: #ccff99; width: 200px">商品の説明</th>
+				<td style="white-space: pre-line"><%=goods.getGoodsMemo()%></td>
 			</tr>
 		</table>
 
+		<p style="margin-top: 50px"></p>
+
+		<div style="text-align: center">
+			<form action="<%=request.getContextPath()%>/insertCart" method="get">
+				<input type="submit" value="カートに入れる"></input> <input type="hidden" name="goodsId" value="<%=goods.getGoodsId()%>">
+			</form>
+		</div>
+
 		<!-- 未ログインの場合にログインページへ遷移する処理は「message.jsp」と「InsertCartServlet」でやる -->
-		<a href="<%=request.getContextPath()%>/message?goods_id=<%=goods.getGoodsId()%>&cmd=list">メッセージ></a> <br>
-		<br>
-		<form action="<%=request.getContextPath()%>/InsertCartServlet"
-			method="post">
-			<input type="submit" value="カートに入れる"></input>
-		</form>
+		<p style="text-align: center">
+			<a
+				href="<%=request.getContextPath()%>/message?goods_id=<%=goods.getGoodsId()%>&cmd=list">メッセージ></a>
+		</p>
+
 	</div>
+	<p style="margin-top: 100px"></p>
 	<%@include file="/common/userFooter.jsp"%>
 </body>
 </html>
