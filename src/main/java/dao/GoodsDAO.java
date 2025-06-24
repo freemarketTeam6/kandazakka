@@ -315,7 +315,7 @@ public class GoodsDAO {
 		  
 		  try{	
 			  String sql= "UPDATE goodsinfo SET img_path = '" + goods.getImgPath() + "', name = '" + goods.getGoodsName() + "', price = '" + goods.getPrice()
-			  + "', quantity = '" + goods.getQuantity() + "', categoty = '" + goods.getCategory() + "', region = '" + goods.getRegion() + "', goods_memo = '" + goods.getGoodsMemo()
+			  + "', quantity = '" + goods.getQuantity() + "', category = '" + goods.getCategory() + "', region = '" + goods.getRegion() + "', goods_memo = '" + goods.getGoodsMemo()
 			  + "' WHERE goods_id = '" + goods.getGoodsId()  + "'";
 		  
 			  con = getConnection();
