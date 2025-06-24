@@ -9,7 +9,7 @@ int inquiryNo = (int)request.getAttribute("inquiryNo");
 <html>
 <head>
 <title>お問い合わせ</title>
-<link rel="stylesheet" href="../view/css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
   <style>
    body {
@@ -119,6 +119,10 @@ h1 {
 
 <%@include file="/common/userHeader.jsp"%>
 
+<body>
+
+<%-- <%@include file= "/common/userHeader.jsp" %> --%>
+
     <div class="container">
         <h1>問い合わせメッセージ</h1>
         <form action="<%=request.getContextPath()%>/inquiry" method="POST" class="form">
@@ -158,7 +162,9 @@ h1 {
         %>
         </div>
     </div>
+
     <a href="<%=request.getContextPath()%>/inquiryList">問い合わせ一覧に戻る</a>
     	<%@include file="../common/userFooter.jsp"%>
+
 </body>
 </html>
