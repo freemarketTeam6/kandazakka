@@ -30,6 +30,22 @@
 		}
 		%>
 
+		<%
+		if (cmd.equals("logout")) {
+		%>
+		[<a href="<%=request.getContextPath()%>/view/adminLogin.jsp">管理者ログインに戻る</a>]
+		<%
+		}
+		%>
+		
+		<%
+		if (cmd.equals("userList")) {
+		%>
+		[<a href="<%=request.getContextPath()%>/userList">ユーザー一覧に戻る</a>]
+		<%
+		}
+		%>
+
 
 	</div>
 

@@ -2,7 +2,7 @@
 <%@page import="java.util.*,bean.Inquiries"%>
 
 <%
-ArrayList<Inquiries> InquiriesList = (ArrayList<Inquiries>) request.getAttribute("InquiriesList");
+ArrayList<Inquiries> inquiriesList = (ArrayList<Inquiries>) request.getAttribute("InquiriesList");
 %>
 <html>
 <head>
@@ -25,7 +25,7 @@ ArrayList<Inquiries> InquiriesList = (ArrayList<Inquiries>) request.getAttribute
 		<!-- リクエストスコープからデータの取得 -->
 		<%
 		//リストがnullじゃないとき繰り返し処理によってlistの値を取得
-		if (inquiriesList != null) {
+		if (!(inquiriesList.isEmpty())) {
 			for (int i = 0; i < inquiriesList.size(); i++) {
 				Inquiries inquiries = (Inquiries) inquiriesList.get(i);
 		%>
@@ -38,7 +38,9 @@ ArrayList<Inquiries> InquiriesList = (ArrayList<Inquiries>) request.getAttribute
 
 			<td style="text-align: center; width: 125px">
 				<!-- PRIMARY KEYのgetInquirynoを参照してチャット機能へのリンク --> <a
-				href="<%=request.getContextPath()%>/listOfInquiriesDetail?=inquiryno<%=inquiriesList.get(i).getInquiryno()%>">返信</a>
+
+				href="<%=request.getContextPath()%>/inquiry?inquiryNo=<%=inquiriesList.get(i).getInquiryno()%>&from=admin">返信</a>
+
 			</td>
 		</tr>
 		<%
