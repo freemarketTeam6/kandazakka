@@ -53,7 +53,7 @@ MyFormat myFormat = new MyFormat();
 			</tr>
 			<tr>
 				<th style="background-color: #ccff99; width: 200px">出品地域</th>
-				<td><%=goods.getRegion()%></td>
+				<td><%=myFormat.regionFormat(goods.getRegion())%></td>
 			</tr>
 			<tr>
 				<th style="background-color: #ccff99; width: 200px">商品の説明</th>
