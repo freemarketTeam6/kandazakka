@@ -70,8 +70,6 @@ public class ChangeGoodsServlet extends HttpServlet {
 
 			// DBの更新処理
 			goodsDao.update(goods);
-			// 取得した商品情報をリクエストスコープに登録
-			request.setAttribute("goods", goods);
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、商品情報変更は行えませんでした。";
 			cmd = "logout";
