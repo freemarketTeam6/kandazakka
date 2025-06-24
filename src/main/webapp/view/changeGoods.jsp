@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList,bean.Goods,util.MyFormat"%>
 
 <%
+ArrayList<Goods> myGoodsList = (ArrayList<Goods>)request.getAttribute("myGoodsList");
 //リクエストスコープに登録した書籍情報を取得
 Goods goods= (Goods)request.getAttribute("goods");
 //MyFormatクラスのオブジェクトを生成

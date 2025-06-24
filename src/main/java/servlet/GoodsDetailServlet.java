@@ -17,6 +17,8 @@ public class GoodsDetailServlet extends HttpServlet {
 		String cmd = "";
 
 		try {
+			// cmd取得（商品情報変更のため）
+			cmd = (String) request.getParameter("cmd");
 			// 表示する商品情報を格納するGoodsオブジェクトを生成
 			Goods goods = new Goods();
 
@@ -45,7 +47,11 @@ public class GoodsDetailServlet extends HttpServlet {
 		} finally {
 			// エラーがなければ「goodsDetail.jsp」へフォワード
 			if (error.equals("")) {
-				request.getRequestDispatcher("/view/goodsDetail.jsp").forward(request, response);
+				if (cmd.equals("detail")) {
+					request.getRequestDispatcher("/view/goodsDetail.jsp").forward(request, response);
+				} else {
+					request.getRequestDispatcher("/view/changeGoods.jsp").forward(request, response);
+				}
 			} else {
 				// エラーがあればエラー文とcmdをリクエストスコープに登録し、「error.jsp」へフォワード
 				request.setAttribute("error", error);
