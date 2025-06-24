@@ -117,7 +117,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 		if (filePart.getSize() != 0) {
 			
 			//ファイル名を取得
-			fileName= imgpath.substring(imgpath.lastIndexOf("/"));
+			fileName= imgpath;
 			
 
 			// 保存先ディレクトリを設定
@@ -132,7 +132,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 			
 
 			//アップロードした画像ファイルパス
-			filePath = uploadDir + fileName;
+			filePath = uploadDir +"/"+ fileName;
 
 			// デバッグ用にパスを出力
 			System.out.println("保存されたパス: " + filePath);
@@ -155,7 +155,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 		} else {
 			fileName = imgpath;
 		}
-		return filePath;
+		return fileName;
 
 	}
 	

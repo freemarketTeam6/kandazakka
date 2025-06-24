@@ -29,7 +29,9 @@ int total = 0;
 		<div style="text-align: center">
 			<br>
 			<tr>
+
 				<td style="text-align: center; color: #000000; font-size: 30px"><strong>購入が完了しました。</strong></td>
+
 			</tr>
 
 			<div style="text-align: center">
