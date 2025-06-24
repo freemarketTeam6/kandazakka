@@ -230,7 +230,7 @@ public class GoodsDAO {
 	}
 	
 	//検索機能　キーワード、地域、種類（カテゴリ）を引数に検索を行う
-	public ArrayList<Goods> search(String keyword, String region, String category){
+	public ArrayList<Goods> search(String keyword, String region){
 		Connection con = null;
 		Statement smt = null;
 		 
@@ -238,7 +238,7 @@ public class GoodsDAO {
 		ArrayList<Goods> goodsList = new ArrayList<Goods>();
 		
 		//SQL文
-		String sql = "SELECT * FROM goodsinfo WHERE name LIKE '%" + keyword + "%' AND region LIKE '%" + region + "%' AND category LIKE '%" + category + "%'";
+		String sql = "SELECT * FROM goodsinfo WHERE name LIKE '%" + keyword + "%' OR region = '" + region + "' OR category LIKE '%" + keyword + "%'";
 		
 		try {
 			
@@ -315,7 +315,7 @@ public class GoodsDAO {
 		  
 		  try{	
 			  String sql= "UPDATE goodsinfo SET img_path = '" + goods.getImgPath() + "', name = '" + goods.getGoodsName() + "', price = '" + goods.getPrice()
-			  + "', quantity = '" + goods.getQuantity() + "', categoty = '" + goods.getCategory() + "', region = '" + goods.getRegion() + "', goods_memo = '" + goods.getGoodsMemo()
+			  + "', quantity = '" + goods.getQuantity() + "', category = '" + goods.getCategory() + "', region = '" + goods.getRegion() + "', goods_memo = '" + goods.getGoodsMemo()
 			  + "' WHERE goods_id = '" + goods.getGoodsId()  + "'";
 		  
 			  con = getConnection();

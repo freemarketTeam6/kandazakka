@@ -25,11 +25,10 @@ public class SearchServlet extends HttpServlet {
 			// パラメータの取得
 			String keyword = request.getParameter("keyword");
 			String region = request.getParameter("region");
-			String category = request.getParameter("category");
 
 			//GoodsDAOのsearchメソッドを呼び出し、goodsListに格納
 			GoodsDAO goodsDao = new GoodsDAO();
-			ArrayList<Goods> goodsList = goodsDao.search(keyword, region, category);
+			ArrayList<Goods> goodsList = goodsDao.search(keyword, region);
 			
 			// リクエストスコープにgoodsListという名前で登録
 			request.setAttribute("goodsList", goodsList);

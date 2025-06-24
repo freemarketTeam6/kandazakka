@@ -19,9 +19,9 @@ if(checkUser==null){
 <body>
 	<%@include file= "/common/userHeader.jsp" %>
 
-<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
+
 	<h1 style="text-align: center;color:#000000;">マイページ</h1>
-<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
+
 
 	<table style="margin:20px auto; border: solid 0px; cellpadding:4px; border-spacing:4px; width:540px;">		
 		<tr>
@@ -35,27 +35,27 @@ if(checkUser==null){
 		<table style="margin: auto">
 		<br>
 			<tr>	
-				<th style="background-color: #00a7db; width: 100">名前</th>
+				<th style="background-color: #ccff99; width: 100">名前</th>
 				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getName()%></td>
 			</tr>	
 			<tr>	
-				<th style="background-color: #00a7db; width: 100">名前(カナ)</th>
+				<th style="background-color: #ccff99; width: 100">名前(カナ)</th>
 				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getNamekana()%></td>
 			</tr>
 			<tr>	
-				<th style="background-color: #00a7db; width: 100">ニックネーム</th>
+				<th style="background-color: #ccff99; width: 100">ニックネーム</th>
 				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getNickname()%></td>
 			</tr>
 			<tr>	
-				<th style="background-color: #00a7db; width: 100">住所</th>
+				<th style="background-color: #ccff99; width: 100">住所</th>
 				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getAddress()%></td>
 			</tr>
 			<tr>
-				<th style="background-color: #00a7db; width: 100">メールアドレス</th>
+				<th style="background-color: #ccff99; width: 100">メールアドレス</th>
 				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getEmail()%></td>
 			</tr>
 			<tr>
-				<th style="background-color: #00a7db; width: 100">電話番号</th>
+				<th style="background-color: #ccff99; width: 100">電話番号</th>
 				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getTell()%></td>
 			</tr>
 			
@@ -68,30 +68,27 @@ if(checkUser==null){
 		<input type="submit" name="update" value="ユーザー情報変更"></input>
 	</form>
 	</div>
-	
-	<table style="text-align:center;margin: auto; width: 850px">
+	<br>
+	<table style="text-align:center;margin: auto; width: 450px">
 		<tr>
-			<td style="text-align: center; width: 80px; font-size: 15px;">[<a
+			<td style="text-align: center; width: 10px; font-size: 15px;">[<a
 				href="<%=request.getContextPath() %>/view/goodsInsert.jsp">出品</a>]
 			</td>
-		</tr>
-		<tr>
-			<td style="text-align: center; width: 80px; font-size: 15px;">[<a
+		
+			<td style="text-align: center; width: 10px; font-size: 15px;">[<a
 				href="<%=request.getContextPath() %>/mygoodsList">出品一覧</a>]
 			</td>
-		</tr>
-		<tr>
-			<td style="text-align: center; width: 80px; font-size: 15px;">[<a
+		
+			<td style="text-align: center; width: 10px; font-size: 15px;">[<a
 				href="<%=request.getContextPath() %>/buyList">購入一覧</a>]
 			</td>
-		</tr>
-		<tr>
-			<td style="text-align: center; width: 80px; font-size: 15px;">[<a
+		
+			<td style="text-align: center; width: 10px; font-size: 15px;">[<a
 				href="<%=request.getContextPath() %>/inquiryList">お問い合わせ</a>]
 			</td>
 		</tr>
 	</table>
-	
+	<br>
 	<%@include file= "../common/userFooter.jsp" %>
 </body>
 </html>

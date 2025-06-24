@@ -42,11 +42,11 @@ if(message==null){
  			<form action="<%=request.getContextPath()%>/login"method="post">
  				<table style="margin:0 auto">
  					<tr>
- 						<th style="background-color:#6666ff; width:120px">ユーザーID</th>
+ 						<th style="background-color:#ccff99; width:120px">ユーザーID</th>
  						<td ><input type=text size="30" name="userid" value="<%=userid%>"></input></td>
  					</tr>
  					<tr>
- 						<th style="background-color:#6666ff; width:120px">パスワード</th>
+ 						<th style="background-color:#ccff99; width:120px">パスワード</th>
 
  						<td ><input type=password size="30" name="password" value="<%=password %>"></input></td>
 

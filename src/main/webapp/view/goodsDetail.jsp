@@ -14,24 +14,29 @@ MyFormat myFormat = new MyFormat();
 <body>
 	<div style="text-align: center">
 		<%@ include file="/common/userHeader.jsp"%>
-		<hr
-			style="text-align: center; height: 2px; background-color: black; width: 950px">
+		
+		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
 		<h1 style="text-align: center; color: #000000;">商品詳細</h1>
-		<hr
-			style="text-align: center; height: 2px; background-color: black; width: 950px">
+		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
 		<p style="margin-top: 100px"></p>
 
 		<p style="text-align: center">
 			<img src="<%=goods.getImgPath()%>" alt="商品写真">
 		</p>
-
+		
+		<p style="margin-top: 25px"></p>
+		
 		<p style="font-size: 24px; text-align: center">
 			<strong><%=goods.getGoodsName()%></strong>
 		</p>
-
+		
+		<p style="margin-top: 25px"></p>
+		
 		<p style="font-size: 20px; text-align: center">
 			<%=myFormat.moneyFormat(goods.getPrice())%>
 		</p>
+		
+		<p style="margin-top: 25px"></p>
 
 		<table style="margin: auto">
 			<tr>
@@ -48,7 +53,7 @@ MyFormat myFormat = new MyFormat();
 			</tr>
 			<tr>
 				<th style="background-color: #ccff99; width: 200px">出品地域</th>
-				<td><%=goods.getRegion()%></td>
+				<td><%=myFormat.regionFormat(goods.getRegion())%></td>
 			</tr>
 			<tr>
 				<th style="background-color: #ccff99; width: 200px">商品の説明</th>
@@ -60,14 +65,16 @@ MyFormat myFormat = new MyFormat();
 
 		<div style="text-align: center">
 			<form action="<%=request.getContextPath()%>/insertCart" method="get">
-				<input type="submit" value="カートに入れる"></input> <input type="hidden" name="goodsId" value="<%=goods.getGoodsId()%>">
+				<input type="submit" value="カートに入れる">
+				<input type="hidden" name="goodsId" value="<%=goods.getGoodsId()%>">
 			</form>
 		</div>
+		
+		<p style="margin-top: 25px"></p>
 
 		<!-- 未ログインの場合にログインページへ遷移する処理は「message.jsp」と「InsertCartServlet」でやる -->
 		<p style="text-align: center">
-			<a
-				href="<%=request.getContextPath()%>/message?goods_id=<%=goods.getGoodsId()%>&cmd=list">メッセージ></a>
+			<a href="<%=request.getContextPath()%>/message?goods_id=<%=goods.getGoodsId()%>&cmd=list">メッセージ></a>
 		</p>
 
 	</div>

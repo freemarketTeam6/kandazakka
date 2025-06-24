@@ -41,6 +41,7 @@ public class ShowCartServlet extends HttpServlet {
 				orderList.remove(Integer.parseInt(delno));
 			}
 
+
 			if (orderList != null) {
 				
 
@@ -48,6 +49,7 @@ public class ShowCartServlet extends HttpServlet {
 					Goods goods = orderList.get(i);
 					GoodsListInCart.add(goods);
 				}
+
 			}
 
 			// リクエストスコープに登録
