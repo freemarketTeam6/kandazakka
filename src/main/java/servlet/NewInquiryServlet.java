@@ -35,7 +35,7 @@ public class NewInquiryServlet extends HttpServlet {
 			InquiriesDAO inquiriesDao = new InquiriesDAO();
 
 			if (user == null) {
-				error = "セッション切れの為、パスワード変更は行えません。 ";
+				error = "セッション切れの為、お問い合わせ作成は行えませんでした。";
 				request.setAttribute("cmd", "logout");
 				return;
 
@@ -80,11 +80,11 @@ public class NewInquiryServlet extends HttpServlet {
 			inquiryno = last_inquiryno+1;
 
 		} catch (IllegalStateException e) {
-			error = "DB接続エラーの為、パスワード変更は行えません。 ";
+			error = "DB接続エラーの為、お問い合わせ作成は行えませんでした。";
 			request.setAttribute("cmd", "logout");
 
 		} catch (Exception e) {
-			error = "予期せぬエラーが発生しました。<br>" + e;
+			error = "予期せぬエラーが発生しました。" + e;
 			request.setAttribute("cmd", "logout");
 
 		} finally {
