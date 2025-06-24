@@ -45,7 +45,7 @@ MyFormat myformat = new MyFormat();
 				<td><%=goods.getGoodsName() %></td>
 				<td><%=goods.getPrice() %></td>
 				<td><%= myformat.statusFormat(goods.getStatus()) %></td>
-				<td><a href="<%=request.getContextPath()%>/goodsDetail?<%=goods.getGoodsId() %>&cmd=update" style="margin-right: 30px;">内容変更</a></td>
+				<td><a href="<%=request.getContextPath()%>/goodsDetail?goods_id=<%=goods.getGoodsId() %>&cmd=update" style="margin-right: 30px;">内容変更</a></td>
 				<td>
 					<a href="<%=request.getContextPath()%>/shipping?cmd=detail&goods_id=<%=goods.getGoodsId() %>" style="margin-right: 30px;">発送する</a>
 				</td>
