@@ -29,15 +29,15 @@
 			</tr>
 			<tr>
 				<td>お問い合わせタイトル</td>
-				<td><input type="text" name="title" value=""></td>
+				<td><input type="text" name="title"></td>
 			</tr>
 			<tr>
 				<td>詳細記入欄</td>
-				<td><textarea name="contents" value=""></textarea></td>
+				<td><textarea name="contents"></textarea></td>
 			</tr>
 			<tr>
 				<td>添付ファイル</td>
-				<td><input type="file" name="file_path" size="30" value="" accept="image/png,image/jpeg" multiple /></td>
+				<td><input type="file" name="file_path" size="30" accept="image/png,image/jpeg" multiple /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" name="sendinquiry" value="送信"></input></td>

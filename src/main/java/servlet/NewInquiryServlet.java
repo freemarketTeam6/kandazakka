@@ -49,7 +49,7 @@ public class NewInquiryServlet extends HttpServlet {
 			String contents = request.getParameter("contents");
 			int last_inquiryno = inquiriesDao.inquiriesCount();
 
-			Part filePart = request.getPart("image");
+			Part filePart = request.getPart("file_path");
 			String filePath = fileSave(filePart, last_inquiryno);
 
 			if (category == null || category.equals("")) {
