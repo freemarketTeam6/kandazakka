@@ -173,7 +173,7 @@ h1 {
 	</div>
 	<p style="margin-top: 50px"></p>
 	<p style="text-align: center">
-		<a href="<%=request.getContextPath()%>/inquiryList">問い合わせ一覧に戻る</a>
+		<a href="<%=request.getContextPath()%>/listOfInquiries">問い合わせ一覧に戻る</a>
 	</p>
 	<p style="margin-top: 100px"></p>
 	<%@include file="../common/userFooter.jsp"%>
