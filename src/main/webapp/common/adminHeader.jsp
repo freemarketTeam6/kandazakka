@@ -49,13 +49,17 @@ nav ul li a{
 	
 		<nav>
 			<ul>
-				<li><a href="<%=request.getContextPath()%>/exhibitList"style="margin-right: 30px;">出品商品</a></li>
-				<li><a href="<%=request.getContextPath()%>/sellerList"style="margin-right: 30px;">出品者</a></li>
-				<li><a href="<%=request.getContextPath()%>/userList"style="margin-right: 30px;">ユーザー</a></li>
-				<li><a href="<%=request.getContextPath()%>/salesList"style="margin-right: 30px;">売上</a></li>
-				<li><a href="<%=request.getContextPath()%>/listOfInquiries"style="margin-right: 30px;">問い合わせ</a></li>
+				<li><a href="<%=request.getContextPath()%>/exhibitList">
+					<img src="${pageContext.request.contextPath}/pic/box2.png" alt="ロゴ"border="0"></a><li>
+				<li><a href="<%=request.getContextPath()%>/sellerList">
+					<img src="${pageContext.request.contextPath}/pic/box3.png" alt="ロゴ"border="0"></a><li>
+				<li><a href="<%=request.getContextPath()%>/userList">
+					<img src="${pageContext.request.contextPath}/pic/user.png" alt="ロゴ"border="0"></a><li>
+				<li><a href="<%=request.getContextPath()%>/salesList">
+					<img src="${pageContext.request.contextPath}/pic/okane.png" alt="ロゴ"border="0"></a><li>
+				<li><a href="<%=request.getContextPath()%>/listOfInquiries">
+					<img src="${pageContext.request.contextPath}/pic/mail.png" alt="ロゴ"border="0"></a><li>
 			
-
 		<%
 		//ユーザー情報取得
 		User user=(User)session.getAttribute("user");
