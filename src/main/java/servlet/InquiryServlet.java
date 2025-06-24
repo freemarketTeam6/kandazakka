@@ -12,9 +12,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/inquiery")
+@WebServlet("/inquiry")
 public class InquiryServlet extends HttpServlet {
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// メッセージ送信があれば送信されたメッセージをDBに格納し、そのスレッドのメッセージログをもってjspに遷移するサーブレット
 		// メッセージ送信がなければメッセージログをもってjspに遷移する
@@ -24,11 +24,11 @@ public class InquiryServlet extends HttpServlet {
 		String cmd = "";
 
 		try {
-			// cmdパラメータ取得
+			// addパラメータ取得
 			String add = request.getParameter("add");
 
 			// addがaddだったらメッセージ追加を行う
-			if (add.equals("add")) {
+			if (!(add==null)) {
 				// 送信されたメッセージの情報を取得
 				String userid = (String) request.getParameter("userid");
 				int inquiryNum = Integer.parseInt(request.getParameter("inquiryNum"));
@@ -67,11 +67,15 @@ public class InquiryServlet extends HttpServlet {
 		} catch (Exception e) {
 			error = "DB接続エラーの為、お問い合わせ詳細を表示できません。";
 			cmd = "top";
+			request.setAttribute("cmd", cmd);
+			request.setAttribute("error", error);
 
 		} finally {
 			if (error.equals("")) {
 				// inquiry.jspに遷移
-				request.getRequestDispatcher("/view/inquiry.jsp").forward(request, response);
+				request.getRequestDispatcher("/view/inquiryDetails.jsp").forward(request, response);
+			}else {
+				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			}
 
 		}
