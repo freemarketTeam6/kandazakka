@@ -70,6 +70,7 @@ MyFormat format = new MyFormat();
 			<td><input type="text" name="memo"></td>
 		</tr>
 		<tr>
+		<input type="hidden" name="goodsid" value="<%= goods.getGoodsId() %>"></input>
 			<td colspan="3"><input type="submit" value="更新"></td>
 		</tr>
 	</table>
