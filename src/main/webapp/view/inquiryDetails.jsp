@@ -121,11 +121,12 @@ input[type="submit"]:hover {
 <body>
     <div class="container">
         <h1>問い合わせメッセージ</h1>
-        <form action="<%=request.getContextPath()%>/inquiry">
+        <form action="<%=request.getContextPath()%>/inquiry" method="POST">
             <textarea name="message" placeholder="メッセージを入力してください..." required></textarea>
             <input type="submit" value="送信">
             <input type="hidden" name="inquiryNo" value="<%= inquiryNo %>">
             <input type="hidden" name="cmd" value="insert">
+            <input type="hidden" name="from" value="admin">
         </form>
 
         <hr>

@@ -16,8 +16,18 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/inquiry")
 public class InquiryServlet extends HttpServlet {
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		commonMethod(request, response);
+	}
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		commonMethod(request, response);
+	}
+	
+	public void commonMethod(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		// メッセージ送信があれば送信されたメッセージをDBに格納し、そのスレッドのメッセージログをもってjspに遷移するサーブレット
 		// メッセージ送信がなければメッセージログをもってjspに遷移する
 
@@ -27,6 +37,9 @@ public class InquiryServlet extends HttpServlet {
 		
 		// お問い合わせIDを取得
 		int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
+		
+		//どこから来たかを判別するfromの値を取得（管理者側 or ユーザー側）
+		String from = request.getParameter("from");
 
 		try {
 			// addパラメータ取得
@@ -83,8 +96,14 @@ public class InquiryServlet extends HttpServlet {
 
 		} finally {
 			if (error.equals("")) {
-				// inquiryDetails.jspに遷移
-				request.getRequestDispatcher("/view/inquiryDetails.jsp").forward(request, response);
+				if ( from.equals("admin")) {
+					// inquiryDetails.jspに遷移
+					request.getRequestDispatcher("/view/inquiryDetails.jsp").forward(request, response);
+				}else if ( from.equals("user")) {
+					// inquiry.jspに遷移
+					request.getRequestDispatcher("/view/inquiry.jsp").forward(request, response);
+				}
+
 			}else {
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			}

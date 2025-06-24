@@ -183,8 +183,8 @@ public class MessageDAO {
 		Statement smt = null;
 		
 		//SQL文
-		String sql = "INSERT INTO inquiry_messages(user_id, inquiryno, message, date) VALUES("
-				+ message.getUserId() + "," + message.getInquiryNumber() + ",'" 
+		String sql = "INSERT INTO inquiry_messages(user_id, inquiryno, message, date) VALUES('"
+				+ message.getUserId() + "'," + message.getInquiryNumber() + ",'" 
 				+ message.getMessage() + "', CURDATE())";
 		try {
 			con = getConnection();
