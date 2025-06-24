@@ -10,6 +10,11 @@ public class Message {
 	private int inquiryNumber;
 	private String message;
 	private Date date;
+
+	//↓inquiryinfoの情報
+	private String category;
+	private String title;
+	private String filePath;
 	
 	//コンストラクタ
 	public Message() {
@@ -19,6 +24,9 @@ public class Message {
 		this.inquiryNumber = 0;
 		this.message = null;
 		this.date = null;
+		this.category = null;
+		this.title = null;
+		this.filePath = null;
 	}
 	
 	//アクセサメソッド	
@@ -68,6 +76,30 @@ public class Message {
 	
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public String getCateory() {
+		return category;
+	}
+	
+	public void setCategory( String category) {
+		this.category = category;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public String getFilePath() {
+		return filePath;
+	}
+	
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 
 

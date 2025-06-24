@@ -28,7 +28,7 @@ public class MessageDAO {
 	}
 
 	//問い合わせID(inquiryNo)をもとに、inquiry_messagesから問い合わせのメッセージ内容を取得するメソッド
-	public ArrayList<Message> selectMessageByInquiryNo(int inquiryNo){
+	public ArrayList<Message> selectMessageByInquiryNoFromInquiryMessage(int inquiryNo){
 		
 		Connection con = null;
 		Statement smt = null;
@@ -37,7 +37,9 @@ public class MessageDAO {
 		ArrayList<Message> messageList = new ArrayList<Message>();
 		
 		//SQL文定義
-		String sql = "SELECT * FROM inquiry_messages WHERE inquiry_no = '" + inquiryNo+"'";
+
+		String sql = "SELECT * FROM inquiry_messages WHERE inquiryno = " + inquiryNo;
+
 		
 		try {
 			con = getConnection();
@@ -74,6 +76,58 @@ public class MessageDAO {
 		
 		return messageList;
 	}
+	
+	/*
+	 * 問い合わせID(inquiryNo)をもとに、inquiryinfoから問い合わせのメッセージ内容
+	 * （ユーザーのはじめの問い合わせ内容）を取得するメソッド
+	 */
+	public ArrayList<Message> selectMessageByInquiryNoFromInquiryInfo(int inquiryNo){
+		
+		Connection con = null;
+		Statement smt = null;
+		
+		//戻り値用のMessage型のArrayListを宣言
+		ArrayList<Message> messageList = new ArrayList<Message>();
+		
+		//SQL文定義
+		String sql = "SELECT * FROM inquiryinfo WHERE inquiryno = " + inquiryNo;
+		
+		try {
+			con = getConnection();
+			smt = con.createStatement();
+			
+			ResultSet rs = smt.executeQuery(sql);
+			
+			while( rs.next() ) {
+				Message message = new Message();
+				message.setInquiryNumber(rs.getInt("inquiryno"));
+				message.setUserId(rs.getString("user_id"));
+				message.setCategory(rs.getString("category"));
+				message.setTitle(rs.getString("title"));
+				message.setMessage(rs.getString("contents"));
+				message.setFilePath(rs.getString("file_path"));
+				messageList.add(message);
+			}
+			
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
+			}
+		}
+		
+		return messageList;
+	}	
 	
 	//goodsIDをもとに、goods_messagesからメッセージを取得するメソッド
 	public ArrayList<Message> selectMessageByGoodsId(int goodsId){

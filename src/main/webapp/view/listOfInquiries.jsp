@@ -38,7 +38,9 @@ ArrayList<Inquiries> inquiriesList = (ArrayList<Inquiries>) request.getAttribute
 
 			<td style="text-align: center; width: 125px">
 				<!-- PRIMARY KEYのgetInquirynoを参照してチャット機能へのリンク --> <a
-				href="<%=request.getContextPath()%>/listOfInquiriesDetail?=inquiryno<%=inquiriesList.get(i).getInquiryno()%>&from=admin">返信</a>
+
+				href="<%=request.getContextPath()%>/inquiry?inquiryNo=<%=inquiriesList.get(i).getInquiryno()%>&from=admin">返信</a>
+
 			</td>
 		</tr>
 		<%

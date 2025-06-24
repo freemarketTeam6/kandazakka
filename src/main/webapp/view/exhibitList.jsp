@@ -14,10 +14,13 @@ MyFormat myformat = new MyFormat();
 
 <body>
 	<%@include file="../common/adminHeader.jsp"%>
+	<a href="<%= request.getContextPath() %>/view/adminMenu.jsp">【管理者メニュー画面】</a>
 
-	<h1 style="text-align: center; color: #000000;">出品情報一覧</h1>
-	<hr
-		style="text-align: center; height: 2px; background-color: black; width: 950px">
+	<div style="text-align: center">
+		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
+		<h1 style="text-align: center;color:#000000;">出品一覧</h1>
+		<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
+
 
 		<table style="text-align: center; margin: auto; width: 850px">
 
@@ -26,7 +29,7 @@ MyFormat myformat = new MyFormat();
 				<th style="background-color: #ffffa8; width: 200px">出品ユーザーID</th>
 				<th style="background-color: #ffffa8; width: 200px">グッズ名</th>
 				<th style="background-color: #ffffa8; width: 200px">金額</th>
-				<th style="background-color: #ffffa8; width: 300px" colspan="3">取引状況</th>
+				<th style="background-color: #ffffa8; width: 300px">取引状況</th>
 			</tr>
 
 			<%
