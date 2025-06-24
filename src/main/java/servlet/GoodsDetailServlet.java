@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/goodsDetail")
 public class GoodsDetailServlet extends HttpServlet {
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String error = "";
 		String cmd = "";
 
