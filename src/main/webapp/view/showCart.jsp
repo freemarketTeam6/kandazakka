@@ -60,7 +60,7 @@ int total = (int) request.getAttribute("total");
 		%>
 		<tr>
 			<th
-				style="background-color: #6666ff; text-align: center; width: 200px">合計</th>
+				style="background-color: #00a7db; text-align: center; width: 200px">合計</th>
 			<td><%=total%></td>
 		</tr>
 	</table>
