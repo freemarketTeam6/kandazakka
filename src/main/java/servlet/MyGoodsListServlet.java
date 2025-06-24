@@ -43,17 +43,14 @@ public class MyGoodsListServlet extends HttpServlet {
 		myGoodsList=goodsDaoObj.selectGoodsBySelluser(userid);
 		
 		//リクエストスコープに出品一覧GoodsのArrayListを送る
-		request.setAttribute("myGoodsList", myGoodsList);
-		
-		//myGoodsList.jspに遷移
-		request.getRequestDispatcher("/view/myGoodsList.jsp").forward(request, response);
+		request.setAttribute("myGoodsList", myGoodsList);	
 	}catch (IllegalStateException e) {
 		cmd = "mypage";
 		error = "DB接続エラーの為、出品一覧を表示できません。";
 	} finally {
 		if (error.equals("")) {
-			// 登録された件数を持ってbuyConrirm.jspにフォワード
-			request.getRequestDispatcher("/view/buyConfirm.jsp").forward(request, response);
+			//myGoodsList.jspに遷移
+			request.getRequestDispatcher("/view/myGoodsList.jsp").forward(request, response);
 		} else {
 			request.setAttribute("cmd", cmd);
 			request.setAttribute("error", error);

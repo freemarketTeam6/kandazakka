@@ -51,7 +51,9 @@ MyFormat myformat = new MyFormat();
 				<td style="text-align: center; width: 200px"><%=myformat.statusFormat(goods.getStatus())%></td>
 			</tr>
 			<%
+				}
 			}
+			
 			%>
 		</table>
 	</div>

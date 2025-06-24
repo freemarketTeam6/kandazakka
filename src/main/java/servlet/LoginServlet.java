@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
 		error = "DB接続エラーの為、一覧表示を行えませんでした。";
 	}finally {
 		if (error.equals("")) {
-			if(from.equals("admin")) {
+			if(from.equals("admin") && user.getAuthority().equals("m")) {
 				//adminLoginからの遷移の場合は管理者メニューにフォワード
 				request.getRequestDispatcher("/view/adminMenu.jsp").forward(request, response);
 			}else {

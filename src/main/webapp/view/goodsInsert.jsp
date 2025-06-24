@@ -69,8 +69,10 @@ body {
 	%>
 		<h3><%=message%></h3>
 
+
 	<form action="<%=request.getContextPath() %>/goodsInsert"
 		name="goodsInsert" method="post" enctype="multipart/form-data">
+
 		<table class="insert">
 
 

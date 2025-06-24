@@ -14,6 +14,7 @@ ArrayList<User> sellerList = (ArrayList<User>)request.getAttribute("sellerList")
 </head>
 
 <body>
+	<%@include file="../common/adminHeader.jsp"%>
 	<a href="<%= request.getContextPath() %>/view/adminMenu.jsp">【管理者メニュー画面】</a>
 	<h1 style="text-align: center;">出品者一覧</h1>
 	<hr size=5px color="black">
@@ -45,6 +46,7 @@ ArrayList<User> sellerList = (ArrayList<User>)request.getAttribute("sellerList")
 		}
 		%>
 	</table>
+<%@include file="/common/adminFooter.jsp"%>
 </body>
 
 </html>
