@@ -24,6 +24,7 @@ public class GoodsInsertServlet extends HttpServlet {
 			throws IOException, ServletException {
 
 		String empty = "";
+		this.error="";
 		GoodsDAO goodsDao = new GoodsDAO();
 		try {
 			
@@ -41,7 +42,7 @@ public class GoodsInsertServlet extends HttpServlet {
 			String filePath=fileSave(filePart,user.getUserid());
 			
 			// 出品者のIDを格納する変数
-			String selluserId = request.getParameter(user.getUserid());
+			String selluserId =user.getUserid();
 			// グッズの名前
 			String goodsName = request.getParameter("name");
 			// グッズの値段
@@ -53,7 +54,7 @@ public class GoodsInsertServlet extends HttpServlet {
 			// グッズの状態、商品説明
 			String goodsMemo = request.getParameter("goods_memo");
 			// 出品のステータス
-			String status = 0;
+			String status = "0";
 			// 出品地域
 			String region = request.getParameter("region");
 			
@@ -146,7 +147,7 @@ public class GoodsInsertServlet extends HttpServlet {
 
 
 			//ファイル名を設定
-			fileName = "goods_"+userid+"_"+goodsDao.userGoodsCount(userid)+1;
+			fileName = "goods_"+userid+"_"+(goodsDao.userGoodsCount(userid)+1)+".jpg";
 			
 
 			// 保存先ディレクトリを設定

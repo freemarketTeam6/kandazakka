@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 import bean.Goods;
 
@@ -281,14 +280,12 @@ public class GoodsDAO {
 	public void insert( Goods goods ) {
 		 Connection con = null;
 		 Statement smt = null;
-		 
-		 //出品日時の取得
-		 Date nowDate = new Date();
+		
 		 
 		 //SQL文
-		 String sql = "INSERT INTO goodsinfo (selluser_id, img_path, name, price, quantity, categoty, goods_memo, status, region, exhibit_date) VALUE ('"
+		 String sql = "INSERT INTO goodsinfo (selluser_id, img_path, name, price, quantity, category, goods_memo, status, region, exhibit_date) VALUE ('"
 				 + goods.getSelluserId() + "','" +  goods.getImgPath() + "','" + goods.getGoodsName() + "','" + goods.getPrice() + "','" + goods.getQuantity() + "','"
-				 + goods.getCategory() + "','" + goods.getGoodsMemo() +"','"  + goods.getStatus() + "','" + goods.getRegion() + "','" + nowDate + "')";
+				 + goods.getCategory() + "','" + goods.getGoodsMemo() +"','"  + goods.getStatus() + "','" + goods.getRegion() + "', CURDATE())";
 		 
 		  try{
 			 con = getConnection();
