@@ -418,7 +418,7 @@ public class GoodsDAO {
 			  Statement smt = null;
 			  
 			  try{	
-				  String sql= "UPDATE goodsinfo SET status = '" + statusNum +"' WHERE = goods_id = "+goodsID+"'";
+				  String sql= "UPDATE goodsinfo SET status = '" + statusNum +"' WHERE goods_id = "+goodsID;
 			  
 				  con = getConnection();
 				  smt = con.createStatement();

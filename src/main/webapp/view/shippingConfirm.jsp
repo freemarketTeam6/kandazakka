@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.ArrayList,bean.Book, bean.User, util.MyFormat"%>
+<%@page import="java.util.ArrayList, bean.Goods, bean.User, util.MyFormat"%>
 
 <%
 Goods goods = (Goods)request.getAttribute("goods");
@@ -11,7 +11,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 <link rel="stylesheet" href="<%= request.getContextPath() %>/view/css/style.css">
 </head>
 <body>
-	<%@include file="/common/header.jsp"%>
+	<%@include file="../common/userHeader.jsp"%>
 	<a href="<%=request.getContextPath()%>/view/mypage.jsp">マイページへ</a>
 	<h1 style="text-align: center;">発送完了</h1>
 	<hr size=5px color="black">
@@ -29,7 +29,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 		</tr>
 		<tr>
 			<td style="background-color: #6666FF">個数</td>
-			<td style="background-color: aqua;"><%=goods.getquantity()%></td>
+			<td style="background-color: aqua;"><%=goods.getQuantity()%></td>
 		</tr>
 		<tr>
 			<td style="background-color: #6666FF">種類</td>
@@ -50,5 +50,5 @@ Goods goods = (Goods)request.getAttribute("goods");
 	</form>
 
 </body>
-<%@include file="/common/footer.jsp"%>
+<%@include file="../common/userFooter.jsp"%>
 </html>

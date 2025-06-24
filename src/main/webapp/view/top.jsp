@@ -47,9 +47,14 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
     	text-align:center;
     }
     
+    .imgBox{
+       	border-radius: 2px;
+    }
+    
     .img{
     	display: inline-block;
     	position: relative;
+
     }
     
     .priceOnImg{
@@ -67,7 +72,7 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
 
 	<%@include file="../common/userHeader.jsp"%>
 	
-	<div style="display:flex">
+	<div class="imgBox" style="display:flex">
 	<% 
 	 if (goodsList != null && !goodsList.isEmpty()) {
 		 for ( int i = 0; i < goodsList.size(); i++){ %>
