@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.ArrayList, bean.Message" %>
 
 <%
@@ -10,22 +10,11 @@ int goods_id = (int)request.getAttribute("goods_id");
 <head>
     <title>Chat Room</title>
     <style>
-   body {
-    font-family: Arial, sans-serif;
-    background-color: #e5ddd5;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
 
 .container {
     width: 90%;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -41,7 +30,7 @@ h1 {
     margin-bottom: 0;
 }
 
-form {
+.form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -108,12 +97,15 @@ input[type="submit"]:hover {
 </head>
 
 <body>
+
+	<%@include file="../common/userHeader.jsp"%>
+	
     <div class="container">
         <h1>取引メッセージ</h1>
-        <form action="<%=request.getContextPath()%>/message" method="post">
+        <form action="<%=request.getContextPath()%>/message" method="post" class="form">
             <textarea name="message" placeholder="メッセージを入力してください..." required></textarea>
             <input type="submit" value="送信">
-            <input type="hidden" name="goods_id" value="goods_id">
+            <input type="hidden" name="goods_id" value=<%= goods_id %>>
             <input type="hidden" name="cmd" value="insert">
         </form>
 
@@ -139,5 +131,6 @@ input[type="submit"]:hover {
         %>
         </div>
     </div>
+	<%@include file="../common/userFooter.jsp"%>    
 </body>
 </html>

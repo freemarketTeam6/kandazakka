@@ -20,7 +20,20 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/message")
 public class MessageServlet extends HttpServlet {
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		commonMethod(request, response);
+		
+	}
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		commonMethod(request, response);
+	}
+	
+	public void commonMethod(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		
 		//エラー文を格納する変数宣言
 		String error ="";
@@ -48,16 +61,12 @@ public class MessageServlet extends HttpServlet {
 			//入力されたメッセージ内容を取得
 			String message = request.getParameter("message");
 			
-			//現在日時を取得
-			Date nowdate = new Date();
-			
 			Message messageinfo = new Message();
 			
 			//messageに必要な情報を格納していく
 			messageinfo.setUserId(user.getUserid());
 			messageinfo.setGoodsId(goods_id);
 			messageinfo.setMessage(message);
-			messageinfo.setDate(nowdate);
 			
 			 objMsgDAO.insertMesssageIntoGoodsMessages(messageinfo);
 			 

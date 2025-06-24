@@ -50,7 +50,7 @@ MyFormat myFormat = new MyFormat();
 		</table>
 
 		<!-- 未ログインの場合にログインページへ遷移する処理は「message.jsp」と「InsertCartServlet」でやる -->
-		<a href="<%=request.getContextPath()%>/view/message.jsp">メッセージ></a> <br>
+		<a href="<%=request.getContextPath()%>/message?goods_id=<%=goods.getGoodsId()%>&cmd=list">メッセージ></a> <br>
 		<br>
 		<form action="<%=request.getContextPath()%>/InsertCartServlet"
 			method="post">
