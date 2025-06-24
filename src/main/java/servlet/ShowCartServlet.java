@@ -40,7 +40,6 @@ public class ShowCartServlet extends HttpServlet {
 
 			Goods goods = new Goods();
 			if (orderList != null) {
-				orderList.add(goods);
 				total += goods.getPrice();
 				
 			}
