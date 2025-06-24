@@ -59,6 +59,7 @@ body {
 	</header>
 
 	<%
+	
 	Goods goods = (Goods)request.getAttribute("goods");
 	
 	String message = (String)request.getAttribute("empty");
@@ -68,19 +69,21 @@ body {
 	%>
 		<h3><%=message%></h3>
 
-	<form action="<%=request.getContextPath()%>/goodsInsert"
-		name="goodsInsert" method="post">
+
+	<form action="<%=request.getContextPath() %>/goodsInsert"
+		name="goodsInsert" method="post" enctype="multipart/form-data">
+
 		<table class="insert">
 
 
 			<tr>
 				<th>写真</th>
 				<td><input type="file" name="image" required="required"
-					accept="image/ping,image/jpeg" multiple /></td>
+					accept="image/png,image/jpeg" multiple /></td>
 			</tr>
 			<tr>
 				<th>商品名</th>
-				<td><input type="text" name="neme" required="required" value="">
+				<td><input type="text" name="name" required="required" value="">
 				</td>
 			</tr>
 			<tr>
