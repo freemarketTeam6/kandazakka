@@ -69,7 +69,7 @@
 			</table>
 
 			<div class="submit">
-				<p style="margin: auto">
+				<p style="text-align: center">
 					<input type="submit" value="登録" id="insertSubmit">
 				</p>
 			</div>
