@@ -53,13 +53,21 @@ public class InquiryServlet extends HttpServlet {
 			}
 
 			// お問い合わせIDを取得
-			int inquiryNum = Integer.parseInt(request.getParameter("inquiryNum"));
+			int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
+			
+			
 
 			// Inquiry.jspに表示するメッセージログを格納したArrayListを作成
 			ArrayList<Message> messageList = new ArrayList<Message>();
+			
 			// inquiryNumをもとにメッセージログを取得するメソッド
 			MessageDAO messageDao = new MessageDAO();
-			messageList = messageDao.selectMessageByInquiryNo(inquiryNum);
+			
+			//inquiry_infoからユーザーからきた初めの問い合わせメッセージを取得
+			messageList = messageDao.selectMessageByInquiryNoFromInquiryInfo(inquiryNo);
+			
+			//inquiry_messageから、2件目以降の問い合わせメッセージを取得し、messageListの末尾に追加
+			messageList.addAll(messageDao.selectMessageByInquiryNoFromInquiryMessage(inquiryNo));
 
 			// リクエストスコープにメッセージログが入ったArrayListを登録
 			request.setAttribute("messageList", messageList);
@@ -72,7 +80,7 @@ public class InquiryServlet extends HttpServlet {
 
 		} finally {
 			if (error.equals("")) {
-				// inquiry.jspに遷移
+				// inquiryDetails.jspに遷移
 				request.getRequestDispatcher("/view/inquiryDetails.jsp").forward(request, response);
 			}else {
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
