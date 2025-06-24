@@ -22,7 +22,7 @@ MyFormat format = new MyFormat();
 	<table border="1">
 		<tr>
 			<th style="background-color: #00a7db; width: 100">写真</th>
-			<td style="text-align: center;"><img src="<%= goods.getImgPath() %>"
+			<td style="text-align: center;"><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>"
 				alt="商品写真"></td>
 				
 			<td><input type="file" name="image" value="" accept="image/png,image/jpeg" multiple /></input>
