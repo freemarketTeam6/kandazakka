@@ -55,7 +55,9 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 				<td><%=userList.get(i).getUserid()%></td>
 				<td><%=userList.get(i).getEmail()%></td>
 				<td>
+
 					<form action="<%=request.getContextPath() %>/userList" method="get">
+
 						<input type="submit" value="削除">
 						<input type="hidden" name="delno" value="<%=userList.get(i).getUserid() %>">
 					</form>
