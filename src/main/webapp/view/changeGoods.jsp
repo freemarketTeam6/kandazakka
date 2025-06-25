@@ -14,15 +14,55 @@ MyFormat format = new MyFormat();
 <title>商品情報変更</title>
 </head>
 <body>
+<%@include file="../common/userHeader.jsp"%>
+
+<style>
+.changegoods{
+min-width: 300px;
+	width: auto;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.changegoods th{
+background-color: #00a7db;
+
+}
+.changegoods td{
+text-align: center;
+}
+.changegoods input[type="textarea"] {
+	resize: none;
+	width: 98%;
+	height: 200px;
+	vertical-align: top;
+}
+.changegoods input[type="text"],
+.changegoods input[type="file"]{
+text-align: center;
+	width: 98%;
+}
+
+.changegoods select{
+	text-align: center;
+	width: 80%;
+}
+.changegoods img {
+	width: 100%;
+	height:100%;
+	max-height: 150px;
+	object-fit: cover;
+}
+</style>
 <!-- フォーマットと地域の値があっているか、Attributeの名前 -->
 
 <h1>出品情報変更</h1>
 <hr>
 <form action="<%=request.getContextPath()%>/changeGoods" name="changeGoods" method="post" enctype="multipart/form-data">
-	<table border="1">
+	<table class="changegoods" border="1">
 		<tr>
-			<th style="background-color: #00a7db; width: 100">写真</th>
-			<td style="text-align: center;"><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>"
+			<th>写真</th>
+			<td><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>"
 				alt="商品写真"></td>
 				
 			<td><input type="file" name="image" value="" accept="image/png,image/jpeg" multiple /></input>
@@ -31,28 +71,28 @@ MyFormat format = new MyFormat();
 		</tr>
 		<br>
 		<tr>
-			<th style="background-color: #00a7db; width: 100" >商品名</th>
-			<td style="text-align: center; color: #000000; font-size: 20px"><%=goods.getGoodsName()%></td>
+			<th>商品名</th>
+			<td><%=goods.getGoodsName()%></td>
 			<td><input type="text" name="goodsname" value=""></td>
 		</tr>
 		<tr>
-			<th style="background-color: #00a7db; width: 100">価格</th>
-			<td style="text-align: center; color: #000000; font-size: 20px"><%=format.yenFormat(goods.getPrice())%></td>
+			<th>価格</th>
+			<td><%=format.yenFormat(goods.getPrice())%></td>
 			<td><input type="text" name="price" value="" oninput="this.value=this.value.replace(/[^0-9]/g,'')"></td>
 		</tr>
 		<tr>
-			<th style="background-color: #00a7db; width: 100">個数</th>
-			<td style="text-align: center; color: #000000; font-size: 20px"><%=goods.getQuantity()%></td>
+			<th>個数</th>
+			<td><%=goods.getQuantity()%></td>
 			<td><input type="text" name="quantity" value="" oninput="this.value=this.value.replace(/[^0-9]/g,'')"></td>
 		</tr>
 		<tr>
-			<th style="background-color: #00a7db; width: 100">種類</th>
-			<td style="text-align: center; color: #000000; font-size: 20px"><%=goods.getCategory()%></td>
+			<th>種類</th>
+			<td><%=goods.getCategory()%></td>
 			<td><input type="text" name="category" value=""></td>
 		</tr>
 		<tr>
-			<th style="background-color: #00a7db; width: 100">地域</th>
-			<td style="text-align: center; color: #000000; font-size: 20px"><%=format.regionFormat(goods.getRegion())%></td>
+			<th>地域</th>
+			<td><%=format.regionFormat(goods.getRegion())%></td>
 			<td><select name="region">
 					<option value="select">選択</option>
 					<option value="0">北海道</option>
@@ -65,9 +105,9 @@ MyFormat format = new MyFormat();
 			</select></td>
 		</tr>
 		<tr>
-			<th style="background-color: #00a7db; width: 100">備考</th>
-			<td style="text-align: center; color: #000000; font-size: 20px"><%=goods.getGoodsMemo()%></td>
-			<td><input type="text" name="memo"></td>
+			<th>備考</th>
+			<td><%=goods.getGoodsMemo()%></td>
+			<td><input type="textarea" name="memo"></td>
 		</tr>
 		<tr>
 		<input type="hidden" name="goodsid" value="<%= goods.getGoodsId() %>"></input>
@@ -75,5 +115,6 @@ MyFormat format = new MyFormat();
 		</tr>
 	</table>
 </form>
+<%@include file="/common/userFooter.jsp"%>
 </body>
 </html>

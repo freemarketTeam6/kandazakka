@@ -19,9 +19,7 @@ if(checkUser==null){
 
 <title>出品</title>
 
-<style>
 
-</style>
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
