@@ -65,10 +65,8 @@ body {
 
 	<%@include file="/common/userHeader.jsp"%>
 
-	<header style="text-align: center">
-		<h1>出品</h1>
-	</header>
-
+		<h1 style="text-align: center; color: #000000;background-color:#ccff99;">出品</h1>
+	
 	<%
 
 	Goods goods = (Goods)request.getAttribute("goods");

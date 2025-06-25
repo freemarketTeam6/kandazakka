@@ -12,12 +12,10 @@ MyFormat myformat = new MyFormat();
 </head>
 
 
-
-
 <body>
 	<%@include file="../common/userHeader.jsp"%>
 	
-	<h2 style="text-align:center">出品商品一覧</h2>
+	<h1 style="text-align: center; color: #000000;background-color:#ccff99;">出品商品一覧</h1>
 
 	<div>
 		<table border="1" style="margin: auto; width:80%">
