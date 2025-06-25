@@ -4,12 +4,12 @@
 .wrap{
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 70vh;
 }
 
-footer{
+footer{	
+	height: 30px;
     width: 100%;
-    background-color: #ffffa8;
     color: #black;
     text-align: center;
     padding: 5px 0;
@@ -17,7 +17,9 @@ footer{
 </style>
 
 <footer>
-	<div style="text-align:center">
-	<tr><td>copyright (c) 2025 all rights reserved.</td></tr>
+<div class="wrap"></div>
+	<div style="text-align:center" >
+	<p style="background-color:#ffffa8;">
+		copyright (c) 2025 all rights reserved.</p>
 	</div>
 </footer>
