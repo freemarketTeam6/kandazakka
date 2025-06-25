@@ -70,16 +70,16 @@ MyFormat myformat = new MyFormat();
 	<h1 style="text-align: center; color: #000000;background-color:#ccff99;">出品商品一覧</h1>
 	<p style="margin-top: 50px"></p>
 	<div>
-		<table class="mygoodsList" border="1" style="margin: auto">
+		<table class="mygoodsList" border="1" style="text-align: center; margin: auto">
 
 			<tr>
-				<th style="background-color: #ccff99">商品画像</th>
-				<th style="background-color: #ccff99">商品名</th>
-				<th style="background-color: #ccff99">金額</th>
-				<th style="background-color: #ccff99">取引状況</th>
-				<th style="background-color: #ccff99">登録内容変更</th>
-				<th style="background-color: #ccff99">発送</th>
-				<th style="background-color: #ccff99">出品停止</th>
+				<th style="background-color: #ccff99  width: 200px">商品画像</th>
+				<th style="background-color: #ccff99  width: 200px">商品名</th>
+				<th style="background-color: #ccff99  width: 200px">金額</th>
+				<th style="background-color: #ccff99  width: 200px">取引状況</th>
+				<th style="background-color: #ccff99  width: 200px">登録内容変更</th>
+				<th style="background-color: #ccff99  width: 200px">発送</th>
+				<th style="background-color: #ccff99  width: 200px">出品停止</th>
 			</tr>
 
 			<%
@@ -131,6 +131,7 @@ MyFormat myformat = new MyFormat();
 			}
 			%>
 		</table>
+		<p style="margin-top: 50px"></p>
 		<form action="<%=request.getContextPath()%>/view/mypage.jsp"
 			method="POST" style="text-align: center">
 			<input type="submit" value="マイページへ戻る">
