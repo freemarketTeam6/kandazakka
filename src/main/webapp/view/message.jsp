@@ -20,7 +20,7 @@ int goods_id = (int)request.getAttribute("goods_id");
 
 .container {
     width: 90%;
-    max-width: 600px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
@@ -71,19 +71,21 @@ h1 {
     padding-right: 10px;
 }
 
-.adminMessage {
+.mineMessage {
 	/* display:left; で管理者のメッセージを右寄せにしたい*/
     display: flex;
+    float: right;
     flex-direction: column;
-    background-color: #8fbc8f;
+    background: #00B900;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.15);
 }
     
-.userMessage {
+.partnerMessage {
 	/* display:right;でユーザーのメッセージを右寄せにしたい*/
     display: flex;
+    float: left;
     flex-direction: column;
     background-color: #dcf8c6;
     padding: 10px;
@@ -130,17 +132,35 @@ h1 {
         <hr>
 
         <h2>Messages</h2>
+
         <div class="messages">
         <%
             if (messageList != null && !messageList.isEmpty()) {
                 for (int i = 0; i < messageList.size(); i++) {
         %>
-                    <div class="userMessage">
-                        <p class="message-content"><strong><%= messageList.get(i).getUserId() %>:</strong> <%= messageList.get(i).getMessage() %></p>
-                        <p class="message-timestamp"><em><%= messageList.get(i).getDate() %></em></p>
+
+        <%
+            if ( user.getUserid().equals(messageList.get(i).getUserId() )){
+        %>        
+                    <div class="mineMessage">
+                    	<div class="bms_message_box">
+                        	<p class="message-content"><strong><%= messageList.get(i).getUserId() %>:</strong> <%= messageList.get(i).getMessage() %></p>
+                        	<p class="message-timestamp"><em><%= messageList.get(i).getDate() %></em></p>
+                        </div>
                     </div>
         <%
+            }else if ( ! user.getUserid().equals(messageList.get(i).getUserId() )){
+        %>        
+                    <div class="partnerMessage">
+                    	<div class="bms_message_box">
+                        	<p class="message-content"><strong><%= messageList.get(i).getUserId() %>:</strong> <%= messageList.get(i).getMessage() %></p>
+                        	<p class="message-timestamp"><em><%= messageList.get(i).getDate() %></em></p>
+                        </div>
+                    </div>        
+        
+        <%
                 }
+            }
             } else {
         %>
                 <p class="no-messages">No messages available.</p>
