@@ -68,18 +68,18 @@ MyFormat myformat = new MyFormat();
 
 
 	<h1 style="text-align: center; color: #000000;background-color:#ccff99;">出品商品一覧</h1>
-
+	<p style="margin-top: 50px"></p>
 	<div>
-		<table class="mygoodsList" border="1">
+		<table class="mygoodsList" border="1" style="margin: auto">
 
 			<tr>
-				<th>商品画像</th>
-				<th>商品名</th>
-				<th>金額</th>
-				<th>取引状況</th>
-				<th>登録内容変更</th>
-				<th>発送</th>
-				<th>出品停止</th>
+				<th style="background-color: #ccff99">商品画像</th>
+				<th style="background-color: #ccff99">商品名</th>
+				<th style="background-color: #ccff99">金額</th>
+				<th style="background-color: #ccff99">取引状況</th>
+				<th style="background-color: #ccff99">登録内容変更</th>
+				<th style="background-color: #ccff99">発送</th>
+				<th style="background-color: #ccff99">出品停止</th>
 			</tr>
 
 			<%
@@ -93,7 +93,8 @@ MyFormat myformat = new MyFormat();
 
 			<tr>
 
-				<td id="imgBox"><img src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>"></td>
+				<td id="imgBox"><img src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>"　alt="商品写真"></td>
+
 
 				<td id="goodsName"><%=goods.getGoodsName()%></td>
 				<td id="price"><%=myformat.yenFormat(goods.getPrice())%></td>

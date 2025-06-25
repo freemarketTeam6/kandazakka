@@ -47,7 +47,6 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 			for (int i = 0; i < userList.size(); i++) {
 			%>
 
-
 		<tr>
 			<td><%= userList.get(i).getUserid() %></td>
 			<td><%= userList.get(i).getName() %></td>
@@ -57,7 +56,7 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 			<td><%= userList.get(i).getTell() %></td>
 			<td>
 
-				<form action="<%=request.getContextPath() %>/userList" method="get">
+				<form action="<%=request.getContextPath() %>/delete" method="get">
           <input type="hidden"
 						name="userid" value="<%=userList.get(i).getUserid() %>">
 					<input type="submit" value="削除"> 

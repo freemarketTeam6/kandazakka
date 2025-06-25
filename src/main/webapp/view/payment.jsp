@@ -1,10 +1,14 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+
+<%@page import="bean.Goods,dao.GoodsDAO"  %>
+
 <%@page import="java.util.*,bean.Goods,util.MyFormat"%>
 
 <%
 
 MyFormat myFormat = new MyFormat();
 %>
+
 
 <html>
 <head>
@@ -20,9 +24,13 @@ MyFormat myFormat = new MyFormat();
 <p>購入商品情報を確認し、入金してください。</p>
 
 <%
-//リクエストスコープから商品のGoodsオブジェクトを取得
-Goods goods = (Goods)request.getAttribute("goods");
+//送られてきた商品IDを取得
+String goodsIdString = (String)request.getParameter("goodsId");
+int goodsId = Integer.parseInt(goodsIdString);
 
+//商品IDをもとに商品オブジェクトを検索
+GoodsDAO goodsDao = new GoodsDAO();
+Goods goods = goodsDao.selectGoodsByGoodsID(goodsId);
 
 %>
 
@@ -31,7 +39,9 @@ Goods goods = (Goods)request.getAttribute("goods");
 <table>写真
 
 <th>写真</th>
-<td><img src="<%=request.getContextPath()%>/file/images/<%=orderList.get(i).getImgPath()%>" alt="商品写真"></td>
+
+<td><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" alt="商品写真"></td>
+
 <th>商品名</th>
 <td><%=goods.getGoodsName()%></td>
 
