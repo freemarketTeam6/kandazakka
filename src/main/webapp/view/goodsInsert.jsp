@@ -16,13 +16,9 @@ if(checkUser==null){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
 <title>出品</title>
 
-
-
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 </head>
 <body>
 
@@ -47,15 +43,15 @@ if(checkUser==null){
 	<form action="<%=request.getContextPath() %>/goodsInsert"
 		name="goodsInsert" method="post" enctype="multipart/form-data">
 
-		<table class="goodsinsert" style="margin: auto">
+		<table class="goodsinsert" style="margin: auto;">
 
 			<tr>
-				<th style="background-color: #ccff99; width: 100">写真</th>
+				<th style="background-color: #ccff99; width: 150">写真</th>
 				<td><input type="file" name="image" required="required"
 					accept="image/png,image/jpeg" multiple /></td>
 			</tr>
 			<tr>
-				<th style="background-color: #ccff99; width: 100">商品名</th>
+				<th style="background-color: #ccff99; width: 150">商品名</th>
 
 				<td><input type="text" name="name" required="required" value="">
 				</td>
