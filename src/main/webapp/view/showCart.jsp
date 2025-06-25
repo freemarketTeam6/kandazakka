@@ -18,7 +18,7 @@ int total = 0;
 
 
 <h1 style="text-align: center; color: #000000;background-color:#ccff99;">カート内容</h1>
-
+<br>
 
 <p style="margin-top: 100px"></p>
 
