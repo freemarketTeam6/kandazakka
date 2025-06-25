@@ -22,8 +22,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 		style="width: 200; height: 150; margin: 0 auto; border-spacing: 0 10px">
 		<tr>
 			<td>写真</td>
-			<td><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>"
-				alt="商品写真"></td>
+			<td><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" alt="商品写真"></td>
 		<tr>
 			<td style="background-color: #6666FF">商品名</td>
 			<td style="background-color: aqua;"><%=goods.getGoodsName()%></td>
