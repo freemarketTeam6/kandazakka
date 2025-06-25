@@ -16,12 +16,12 @@ Goods goods = (Goods)request.getAttribute("goods");
 	<h1 style="text-align: center;">発送</h1>
 	<hr size=5px color="black">
 	
-	<p>この商品を発送しますか？</p>
+	<p style="text-align: center;margin-top:50px;margin-bottom:30px"><strong>この商品を発送しますか？</strong></p>
 	
 	<table
 		style="width: 200; height: 150; margin: 0 auto; border-spacing: 0 10px">
 		<tr>
-			<td>写真</td>
+			<td style="background-color: #6666FF">写真</td>
 			<td><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" alt="商品写真"></td>
 		<tr>
 			<td style="background-color: #6666FF">商品名</td>
@@ -45,15 +45,28 @@ Goods goods = (Goods)request.getAttribute("goods");
 		</tr>			
 	</table>
 	
+	<table style="margin:auto">
+	<tr>
+	<td>
+	<br>
 	<form action="<%= request.getContextPath() %>/shipping">
 		<input type="submit" value="発送">
 		<input type="hidden" name="goodsid" value="<%= goods.getGoodsId() %>">
 		<input type="hidden" name="cmd" value="shipping">
+		<br>
 	</form>
+	</td>
+	</tr>
 	
+	<tr>
+	<td>
+	<br>
 	<form aciton="<%= request.getContextPath() %>/view/mypage.jsp">
 		<input type="submit" value="キャンセル">
 	</form>
+	</td>
+	</tr>
+</table>
 
 </body>
 <%@include file="../common/userFooter.jsp"%>
