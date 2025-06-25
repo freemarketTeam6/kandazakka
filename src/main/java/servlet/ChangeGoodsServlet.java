@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import bean.Goods;
@@ -111,14 +113,22 @@ public class ChangeGoodsServlet extends HttpServlet {
 		String filePath = "";
 		
 		//ファイル名を管理する変数
-		String fileName = "";
+		String newFileName = "";
 
 		//ファイルサイズを元にファイルの有無を確認
 		if (filePart.getSize() != 0) {
 			
 			//ファイル名を取得
-			fileName= imgpath;
+			String fileName= imgpath;
 			
+			int extensionIndex=fileName.lastIndexOf(".");
+			int nameIndex = fileName.lastIndexOf("_");
+			String extension=fileName.substring(extensionIndex);
+			String name = fileName.substring(0,nameIndex+1);
+			String change = fileName.substring(nameIndex+1,extensionIndex);
+			int changeNo = Integer.parseInt(change)+1;
+			
+			newFileName=name+changeNo+extension;
 
 			// 保存先ディレクトリを設定
 			//uploadDir = "../webapp/file/images";
@@ -132,7 +142,8 @@ public class ChangeGoodsServlet extends HttpServlet {
 			
 
 			//アップロードした画像ファイルパス
-			filePath = uploadDir +"/"+ fileName;
+			filePath = uploadDir +"/"+ newFileName;
+			Path deletePath = Paths.get(uploadDir +"/"+ fileName);
 
 			// デバッグ用にパスを出力
 			System.out.println("保存されたパス: " + filePath);
@@ -148,14 +159,17 @@ public class ChangeGoodsServlet extends HttpServlet {
 				error = "保存に失敗しました。 ";
 				throw new IOException();
 				
+			}else {
+				Files.delete(deletePath);
+				System.out.println("削除されたパス: " + deletePath);
 			}
 			
 
 			//リクエストスコープにファイル名を設定
 		} else {
-			fileName = imgpath;
+			newFileName = imgpath;
 		}
-		return fileName;
+		return newFileName;
 
 	}
 	
