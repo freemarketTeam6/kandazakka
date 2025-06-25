@@ -55,7 +55,7 @@ Goods goods = goodsDao.selectGoodsByGoodsID(goodsId);
 <td><%=goods.getGoodsMemo() %></td>
 
 <th>価格</th>
-<td><%=myFormat.moneyFormat(goodsList.get(i).getPrice()) %></td>
+<td><%=myFormat.moneyFormat(goods.getPrice())%></td>
 
 
 
@@ -63,11 +63,13 @@ Goods goods = goodsDao.selectGoodsByGoodsID(goodsId);
 
 
 
-<form action="<%=request.getContextPath() %>/payment" method="POST">
+<form action="<%=request.getContextPath() %>/payment" method="get">
+<input type="hidden" name="goodsId" value="<%=goodsId%>">
 <input type="submit" value="入金する">
+
 </form>
 
-<form action="<%=request.getContextPath() %>/buyList" method="POST">
+<form action="<%=request.getContextPath() %>/buyList" method="get">
 <input type="submit"  value="キャンセル">
 </form>
 
