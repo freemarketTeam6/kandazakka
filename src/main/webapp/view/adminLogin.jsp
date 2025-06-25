@@ -71,7 +71,6 @@ if(message==null){
  			</form>
  			<p>
  			<%=message %>
- 		<br>
  		</div>
  		<%@include file= "../common/adminFooter.jsp" %>
 		</table>	
