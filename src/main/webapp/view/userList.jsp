@@ -12,8 +12,12 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 <body>
 	<div style="text-align: center">
 		<%@include file="/common/adminHeader.jsp"%>
-		<h1 style="text-align: center;color:#000000;">ユーザー一覧</h1>
-		<hr style="text-align: center; height: 3px; background-color: black; width: 1500px">
+		<hr style="text-align: center; height: 2px; background-color: black">
+		<br>
+		<h1 style="text-align: center; color: #000000;">ユーザー一覧</h1>
+		<br>
+		<hr style="text-align: center; height: 2px; background-color: black">
+		<p style="margin-top: 100px"></p>
 
 		<table style="margin: auto">
 			<form action="<%=request.getContextPath()%>/userList">
