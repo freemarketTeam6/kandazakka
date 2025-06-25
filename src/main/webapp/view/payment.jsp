@@ -1,5 +1,10 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="bean.Goods"  %>
+<%@page import="java.util.*,bean.Goods,util.MyFormat"%>
+
+<%
+
+MyFormat myFormat = new MyFormat();
+%>
 
 <html>
 <head>
@@ -26,8 +31,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 <table>写真
 
 <th>写真</th>
-<td><img src="<%=goods.getImgPath%>" alt="商品写真"></td>
-
+<td><img src="<%=request.getContextPath()%>/file/images/<%=orderList.get(i).getImgPath()%>" alt="商品写真"></td>
 <th>商品名</th>
 <td><%=goods.getGoodsName()%></td>
 
@@ -41,7 +45,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 <td><%=goods.getGoodsMemo() %></td>
 
 <th>価格</th>
-<td><%=goods.getPrice() %></td>
+<td><%=myFormat.moneyFormat(goodsList.get(i).getPrice()) %></td>
 
 
 
