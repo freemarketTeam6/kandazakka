@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import bean.Goods;
-import bean.Order;
 import bean.User;
 import dao.GoodsDAO;
-import dao.OrderDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
