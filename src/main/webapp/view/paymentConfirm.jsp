@@ -1,5 +1,23 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="bean.Goods"  %>
+
+<%@page import="bean.Goods,dao.GoodsDAO"  %>
+
+<%@page import="java.util.*,bean.Goods,util.MyFormat"%>
+
+<%
+
+MyFormat myFormat = new MyFormat();
+%>
+<%
+//送られてきた商品IDを取得
+String goodsIdString = (String)request.getParameter("goodsId");
+int goodsId = Integer.parseInt(goodsIdString);
+
+//商品IDをもとに商品オブジェクトを検索
+GoodsDAO goodsDao = new GoodsDAO();
+Goods goods = goodsDao.selectGoodsByGoodsID(goodsId);
+
+%>
 
 <html>
 <head>
@@ -14,13 +32,7 @@
 
 <p>入金が完了しました</p>
 
-<%
-//リクエストスコープから商品のGoodsオブジェクトを取得
-Goods goods = (Goods)request.getAttribute("goods");
-
-
-%>
-
+<br>
 
 
 <table>写真
@@ -41,7 +53,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 <td><%=goods.getGoodsMemo() %></td>
 
 <th>価格</th>
-<td><%=goods.getPrice() %></td>
+<td><%=myFormat.moneyFormat(goods.getPrice())%></td>
 
 
 
@@ -51,7 +63,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 
 商品発送までしばらくお待ちください
 
-<form action="<%=request.getContextPath() %>/buyList" method="POST">
+<form action="<%=request.getContextPath() %>/buyList" method="GET">
 <input type="submit"  value="購入一覧へ戻る">
 </form>
 
