@@ -34,6 +34,7 @@ public class BuyListServlet extends HttpServlet {
 			if (user == null) {
 				error = "セッション切れのため、購入履歴は表示できませんでした。";
 				cmd = "top";
+				return;
 			}
 
 			// UserクラスのgetUseridメソッドを使用し、user_idを取得
@@ -41,7 +42,7 @@ public class BuyListServlet extends HttpServlet {
 
 			// 購入した商品の情報を取得
 			goodsList = goodsDao.selectGoodsByByeUser(user_id);
-
+			
 			// 取得した商品情報をリクエストスコープに登録
 			request.setAttribute("goodsList", goodsList);
 

@@ -7,7 +7,7 @@ String error = (String) request.getAttribute("error");
 //MyFormatクラスのオブジェクトを生成
 MyFormat myFormat = new MyFormat();
 //合計価格用の変数
-int total = 0;
+int total = (int) request.getAttribute("total");
 %>
 <html>
 <head>
@@ -41,9 +41,6 @@ int total = 0;
 
 					<%
 					if (list != null) {
-
-						total = (int) request.getAttribute("total");
-
 						for (int i = 0; i < list.size(); i++) {
 							Goods goods = (Goods) list.get(i);
 					%>

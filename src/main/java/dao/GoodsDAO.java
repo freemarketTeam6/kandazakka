@@ -152,7 +152,7 @@ public class GoodsDAO {
 				
 				ResultSet rs = smt.executeQuery(sql);
 				
-				while (rs.next() ){
+				while (rs.next()){
 					Goods goods = new Goods();
 					goods.setGoodsId(rs.getInt("goods_id"));
 					goods.setSelluserId(rs.getString("selluser_id"));
@@ -166,6 +166,9 @@ public class GoodsDAO {
 					goods.setExhibitDate(rs.getDate("exhibit_date"));
 					goods.setBuyDate(rs.getDate("exhibit_date"));
 					goods.setBuyuserId(rs.getString("exhibit_date"));
+					goodsList.add(goods);
+					
+					System.out.print(goodsList);
 				}
 				
 			}catch(Exception e) {
@@ -485,6 +488,32 @@ public class GoodsDAO {
 		}
 		
 		
+		//購入したら購入者・購入日が入力されるメソッド
+		public void updateBuyUserAndBuyDate(int goodsID, String userID) {
+			// 変数宣言
+			Connection con = null; // DBコネクション
+			Statement smt = null; // SQLステートメント
+			
+		try {	
+			String sql = "UPDATE goodsinfo SET buy_date = CURDATE(), buyuser_id = '" + userID + "'WHERE goods_id = " + goodsID;
+			
+			 con = getConnection();
+			 smt = con.createStatement();
+		  
+			  smt.executeUpdate(sql);
+	 	 
+	  }catch(Exception e){
+	    throw new IllegalStateException(e);
+	  }finally{
+	    if( smt != null ){
+	      try{smt.close();}catch(SQLException ignore){}
+	    }
+	    if( con != null ){
+	      try{con.close();}catch(SQLException ignore){}
+	    }
+	  }
+	}
+}
+		
 	//他に必要な機能追加
 
-}

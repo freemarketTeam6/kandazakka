@@ -8,19 +8,20 @@ MyFormat myformat = new MyFormat();
 <html>
 <head>
 <title>出品商品一覧</title>
-<link rel="stylesheet" href="../view/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
 </head>
-
-
 
 
 <body>
 	<%@include file="../common/userHeader.jsp"%>
 
-	<h2 style="text-align: center">出品商品一覧</h2>
+
+	<h1 style="text-align: center; color: #000000;background-color:#ccff99;">出品商品一覧</h1>
 
 	<div>
-		<table border="1" style="margin: auto; width: 80%">
+		<table class="mygoodsList" border="1">
+
 			<tr>
 				<th>商品画像</th>
 				<th>商品名</th>
@@ -55,9 +56,11 @@ MyFormat myformat = new MyFormat();
 				<td><a
 					href="<%=request.getContextPath()%>/goodsDetail?cmd=shipping&goods_id=<%=goods.getGoodsId()%>"
 					style="margin-right: 30px;">発送する</a></td>
+
 				<td><form action="<%=request.getContextPath()%>/mygoods" method="POST">
 					<input type="submit" value="出品停止" name="cancel"></td>
 				</form>
+
 			</tr>
 			<%
 			}

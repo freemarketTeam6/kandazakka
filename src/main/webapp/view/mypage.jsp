@@ -19,9 +19,7 @@ if(checkUser==null){
 <body>
 	<%@include file= "/common/userHeader.jsp" %>
 
-
-	<h1 style="text-align: center;color:#000000;">マイページ</h1>
-
+	<h1 style="text-align: center; color: #000000;background-color:#ccff99;">マイページ</h1>
 
 	<table style="margin:20px auto; border: solid 0px; cellpadding:4px; border-spacing:4px; width:540px;">		
 		<tr>

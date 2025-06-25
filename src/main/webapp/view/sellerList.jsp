@@ -17,7 +17,7 @@ ArrayList<User> sellerList = (ArrayList<User>)request.getAttribute("sellerList")
 	<%@include file="../common/adminHeader.jsp"%>
 	<a href="<%= request.getContextPath() %>/view/adminMenu.jsp">【管理者メニュー画面】</a>
 	<h1 style="text-align: center;">出品者一覧</h1>
-	<hr size=5px color="black">
+	<hr size=3px color="black">
 
 	<table border="1">
 		<tr>
