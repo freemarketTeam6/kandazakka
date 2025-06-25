@@ -25,8 +25,6 @@ public class BuyConfirmServlet extends HttpServlet {
 
 		// DAOオブジェクト宣言
 		GoodsDAO objDao = new GoodsDAO();
-		OrderDAO objOrderDao=new OrderDAO();
-		ArrayList<Goods> goods_list = new ArrayList<>();
 		
 		try {
 			// 文字エンコーディングの指定
@@ -42,8 +40,8 @@ public class BuyConfirmServlet extends HttpServlet {
 			}
 
 			// セッションから"order_list"を取得する。
-			ArrayList<Order> order_list = (ArrayList<Order>) session.getAttribute("order_list");
-			if (order_list == null||order_list.size()==0) {
+			ArrayList<Goods> orderList = (ArrayList<Goods>)session.getAttribute("orderList");
+			if (orderList == null||orderList.size()==0) {
 				cmd = "top";
 				error = "カートの中に何も無かったので購入は出来ません。";
 				return;
@@ -54,20 +52,11 @@ public class BuyConfirmServlet extends HttpServlet {
 			int total=0;
 			
 			//goodsinfoからカートデータ分だけ商品情報を呼び出す
-			for (Order order : order_list) {
-				Goods goods = objDao.selectGoodsByGoodsID(order.getGoodsId());
-				//DBのorderinfoに注文情報を登録
-				objOrderDao.insert(order);
-				//取得したデータをlistに追加
-				goods_list.add(goods);
-			
+			for ( int i = 0; i < orderList.size(); i++ ) {
+				int goodsID = orderList.get(i).getGoodsId();
+				objDao.updateStatus(goodsID, "1");
 				
-				//メール本文の注文情報を格納
-				buyList+=goods.getImgPath()+"\t"
-						+goods.getGoodsName()+"\t"
-						+goods.getPrice()+"円\n";
-				//合計金額を計算
-				total+=goods.getPrice();
+				total += orderList.get(i).getPrice();
 			}
 				
 				//メール件名
@@ -85,11 +74,11 @@ public class BuyConfirmServlet extends HttpServlet {
 				SendMail mail = new SendMail();
 				mail.send(subject, body, user.getEmail());
 				
-				request.setAttribute("goods_List",goods_list);
+				request.setAttribute("goods_List",orderList);
 				request.setAttribute("total",total);
 			
 				//オーダー情報クリア
-				session.setAttribute("order_list", null);
+				session.setAttribute("orderList", null);
 
 		}catch (IllegalStateException e) {
 			cmd = "menu";
