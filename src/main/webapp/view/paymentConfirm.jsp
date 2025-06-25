@@ -51,7 +51,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 
 商品発送までしばらくお待ちください
 
-<form action="<%=request.getContextPath() %>/buyList" method="POST">
+<form action="<%=request.getContextPath() %>/buyList" method="get">
 <input type="submit"  value="購入一覧へ戻る">
 </form>
 
