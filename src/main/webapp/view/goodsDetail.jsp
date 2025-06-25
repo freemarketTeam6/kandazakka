@@ -23,15 +23,12 @@ MyFormat myFormat = new MyFormat();
 	<div style="text-align: center">
 		<%@ include file="/common/userHeader.jsp"%>
 		
-		<hr style="text-align: center; height: 2px; background-color: black">
-		<br>
-		<h1 style="text-align: center; color: #000000;">商品詳細</h1>
-		<br>
-		<hr style="text-align: center; height: 2px; background-color: black">
+		<h1 style="text-align: center; color: #000000;background-color:#ccff99;">商品詳細</h1>
+		
 		<p style="margin-top: 100px"></p>
 
 		<p style="text-align: center">
-			<img class="img" src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>"  width="300" alt="商品写真">
+			<img class="img" src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>"  style="width:300" alt="商品写真">
 		</p>
 		
 		<p style="margin-top: 25px"></p>
