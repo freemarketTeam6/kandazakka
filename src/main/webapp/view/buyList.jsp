@@ -50,6 +50,7 @@ MyFormat myFormat = new MyFormat();
 				<td><%=goodsList.get(i).getQuantity()%></td>
 				<td><%=goodsList.get(i).getCategory()%></td>
 				<td><%=goodsList.get(i).getBuyDate()%></td>
+				
 				<td>
 					<form action="<%=request.getContextPath()%>/view/payment.jsp"
 						method="post">
