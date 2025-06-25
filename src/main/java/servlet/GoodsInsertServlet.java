@@ -175,7 +175,7 @@ public class GoodsInsertServlet extends HttpServlet {
 
 
 			//ファイル名を設定
-			fileName = "goods_"+userid+"_"+(goodsDao.userGoodsCount(userid)+1)+fileName;
+			fileName = "goods_"+userid+"_"+(goodsDao.userGoodsCount(userid)+1)+"_0"+fileName;
 			
 
 			// 保存先ディレクトリを設定

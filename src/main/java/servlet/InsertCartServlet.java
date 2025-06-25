@@ -25,7 +25,8 @@ public class InsertCartServlet extends HttpServlet {
 			// ログインしていなかったらエラー
 			user = (User) session.getAttribute("user");
 			if (user == null) {
-				error = "セッション切れの為、カートに追加できません。";
+				error = "未ログインのため、カートに追加できません\nログインしてください！";
+				cmd = "login";
 				return;
 			}
 
@@ -42,25 +43,30 @@ public class InsertCartServlet extends HttpServlet {
 			goods.setImgPath(goods.getImgPath());
 			goods.setGoodsName(goods.getGoodsName());
 			goods.setPrice(goods.getPrice());
-			goods.setQuantity(1);
+			goods.setQuantity(goods.getQuantity());
 
 			// セッションからlist配列を取得
 			ArrayList<Goods> orderList = (ArrayList<Goods>) session.getAttribute("orderList");
+			//orderListがなかった場合は新たに作成
 			if (orderList == null) {
 				orderList = new ArrayList<Goods>();
 			}
 			// orderListに加える
 			orderList.add(goods);
 
-			request.setAttribute("Goods", goods);
+			//カートに追加した商品をリクエストスコープに登録
+			request.setAttribute("goods", goods);
+			
 			// カートをセッション保存
 			session.setAttribute("orderList", orderList);
+			
+			
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、カートに追加はできません。";
 			cmd="logout";
 		} finally {
 			if (error.equals("")) {
-				request.getRequestDispatcher("/showCart").forward(request, response);
+				request.getRequestDispatcher("/view/insertCartConfirm.jsp").forward(request, response);
 			} else {
 				request.setAttribute("cmd", cmd);
 				request.setAttribute("error", error);

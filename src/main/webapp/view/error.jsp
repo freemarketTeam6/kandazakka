@@ -36,6 +36,8 @@ String cmd = (String)request.getAttribute("cmd");
 
 		<%	}else if(cmd.equals("mypage")){	%>
 		[<a href="<%=request.getContextPath()%>/view/mypage.jsp">マイページに戻る</a>]
+		<%	}else if(cmd.equals("login")){	%>
+		[<a href="<%=request.getContextPath()%>/view/userLogin.jsp">ログイン画面に戻る</a>]
 <%}%>
 
 	<%@include file="/common/userFooter.jsp"%>
