@@ -17,8 +17,7 @@ int total = 0;
 <hr style="text-align: center; height: 2px; background-color: black; width: 950px">
 <h1 style="text-align: center; color: #000000;">カート内容</h1>
 
-<hr
-	style="text-align: center; height: 2px; background-color: black; width: 950px">
+<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
 <p style="margin-top: 100px"></p>
 
 
@@ -34,7 +33,7 @@ int total = 0;
 
 
 	<%
-	if (orderList.size()!=0) {
+	if (orderList.size() != 0) {
 	%>
 
 	<table style="border: 1px;">
@@ -66,6 +65,7 @@ int total = 0;
 
 			<td><a href="<%=request.getContextPath()%>/showCart?delno=<%=i%>">削除</a></td>
 		</tr>
+
 		
 		<% } %>
 		
@@ -74,8 +74,10 @@ int total = 0;
 			<td><%=myformat.moneyFormat(total)%></td>	
 		</tr>
 		
+
 	</table>
 	
+
 
 	
 	<form class="showCart-form" action="<%=request.getContextPath()%>/view/buyConfirm.jsp" method="get">
@@ -83,16 +85,33 @@ int total = 0;
 	</form>
 		<%
 
-		}else{
-		%>
-		
-		<div padding:200px>
-		<strong style="margin:auto;padding:">カート内は空です。</strong>
-		</div>
-		<%} %>
-		
 
-	
+	<%
+	//合計金額表示用変数に値段を加算
+	total += orderList.get(i).getPrice();
+	}
+	%>
+
+	<tr>
+		<th style="background-color: #00a7db; text-align: center; width: 200px">合計</th>
+		<td><%=myformat.moneyFormat(total)%></td>
+	</tr>
+
+	<%
+	} else {
+	%>
+
+
+
+	<div padding:200px>
+		<strong style="margin: auto; padding:">カート内は空です。</strong>
+	</div>
+	<%
+	}
+	%>
+
+
+
 
 	<p style="margin-top: 100px"></p>
 	<%@include file="/common/userFooter.jsp"%>
