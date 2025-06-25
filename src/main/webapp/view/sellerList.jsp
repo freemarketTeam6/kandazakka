@@ -19,14 +19,14 @@ ArrayList<User> sellerList = (ArrayList<User>)request.getAttribute("sellerList")
 	<h1 style="text-align: center;">出品者一覧</h1>
 	<hr size=3px color="black">
 
-	<table border="1">
+	<table style="margin: auto; text-align: center">
 		<tr>
-			<th>ID</th>
-			<th>名前</th>
-			<th>名前かな</th>
-			<th>住所</th>
-			<th>メールアドレス</th>
-			<th>電話番号</th>
+			<th style="background-color:#ffffa8; width:200px">ID</th>
+			<th style="background-color:#ffffa8; width:200px">名前</th>
+			<th style="background-color:#ffffa8; width:200px">名前かな</th>
+			<th style="background-color:#ffffa8; width:200px">住所</th>
+			<th style="background-color:#ffffa8; width:200px">メールアドレス</th>
+			<th style="background-color:#ffffa8; width:200px">電話番号</th>
 		</tr>
 
 		<%
