@@ -80,7 +80,7 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
 		<!-- 画像のパスは今後変更予定 -->
 		<form action="<%=request.getContextPath()%>/goodsDetail">
 			<div  class="img">
-				<input type="image" src="${ goodsList.get(i).getImgPath() }" alt="写真" width="200" height="200">
+				<input type="image" src="<%=request.getContextPath() %>/file/images/<%= goodsList.get(i).getImgPath() %>" alt="写真" width="200" height="200">
 				<strong class="priceOnImg"><%=  goodsList.get(i).getPrice()%>円</strong>
 				<input type="hidden" name="cmd" value="detail">
 				<input type="hidden" name="goods_id" value="<%=  goodsList.get(i).getGoodsId()%>">

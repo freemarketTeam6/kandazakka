@@ -50,11 +50,12 @@ int total = 0;
 
 		<%
 		for (int i = 0; i < orderList.size(); i++) {
+			total += orderList.get(i).getPrice();
 		%>
 
 		<tr>
 
-			<td><%=orderList.get(i).getImgPath()%></td>
+			<td><img src="<%=request.getContextPath() %>/file/images/<%= orderList.get(i).getImgPath() %>" alt="商品写真"></td>
 			<td><%=orderList.get(i).getGoodsId()%></a></td>
 
 			<td><%=orderList.get(i).getSelluserId()%></td>
@@ -65,14 +66,25 @@ int total = 0;
 			<td><a href="<%=request.getContextPath()%>/showCart?delno=<%=i%>">削除</a></td>
 		</tr>
 
-
+		
+		<% } %>
+		
+		<tr>
+			<th style="background-color: #00a7db; text-align: center; width: 200px">合計</th>
+			<td><%=myformat.moneyFormat(total)%></td>	
+		</tr>
+		
 
 	</table>
+	
 
 
+	
 	<form class="showCart-form" action="<%=request.getContextPath()%>/view/buyConfirm.jsp" method="get">
 		<input type="submit" value="購入">
 	</form>
+		<%
+
 
 	<%
 	//合計金額表示用変数に値段を加算
