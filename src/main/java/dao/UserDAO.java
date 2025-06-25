@@ -293,7 +293,7 @@ public class UserDAO {
 		  Connection con = null;
 		  Statement smt = null;
 		  //SQL文
-		  String sql = "DELETE FROM userinfo WHERE user_id = " + userid;
+		  String sql = "DELETE FROM userinfo WHERE user_id = '" + userid +"'";
 
 		  try{
 		  
