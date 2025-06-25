@@ -8,7 +8,7 @@
 
 <body>
 
-<%@include file = "/common/header.jsp"%>
+<%@include file = "/common/userHeader.jsp"%>
 
 <div>
 
@@ -60,7 +60,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 
 </div>
 
-<%@include file = "/common/footer.jsp"%>
+<%@include file = "/common/userFooter.jsp"%>
 
 
 
