@@ -4,6 +4,8 @@ body {
 	min-width: 800px;
 }
 
+/* ------------------------- */
+
 /*goodsinsert*/ 
 
 .goodsinsert {
@@ -37,6 +39,7 @@ body {
 	height: 200px;
 	vertical-align: top;
 }
+/* ------------------------- */
 
 /* mygoodsList */
 
@@ -68,3 +71,49 @@ body {
 	max-height: 150px;
 	object-fit: contain;
 }
+/* ------------------------- */
+
+/* changegoods */
+
+.changegoods{
+min-width: 300px;
+	width: auto;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.changegoods th{
+background-color: #00a7db;
+}
+
+.changegoods td{
+text-align: center;
+}
+
+.changegoods input[type="textarea"] {
+	resize: none;
+	width: 98%;
+	height: 200px;
+	vertical-align: top;
+}
+
+.changegoods input[type="text"],
+.changegoods input[type="file"]{
+text-align: center;
+	width: 98%;
+}
+
+.changegoods select{
+	text-align: center;
+	width: 80%;
+}
+
+.changegoods img {
+	width: 100%;
+	height:100%;
+	max-height: 150px;
+	object-fit: cover;
+}
+
+/* ------------------------- */

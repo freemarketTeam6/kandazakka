@@ -14,7 +14,12 @@ MyFormat myFormat = new MyFormat();
 <body>
 	<div style="text-align: center">
 		<%@ include file="../common/userHeader.jsp"%>
-		<p style="margin-top:100px"></p>
+		<hr style="text-align: center; height: 2px; background-color: black">
+		<br>
+		<h1 style="text-align: center; color: #000000;">購入履歴</h1>
+		<br>
+		<hr style="text-align: center; height: 2px; background-color: black">
+		<p style="margin-top: 100px"></p>
 
 		<%
 		if (goodsList.isEmpty()) {
