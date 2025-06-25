@@ -17,7 +17,8 @@ public class PaymentServlet extends HttpServlet {
 		try {
 		//マイページの購入品一覧の「入金」ボタンから遷移
 		//商品IDの情報だけもらう
-		int goodsid = (int)request.getAttribute("goodsid");
+		String goodsidString = (String)request.getParameter("goodsId");
+		int goodsid = Integer.parseInt(goodsidString);
 		
 		//GoodsDAOのオブジェクト化
 		GoodsDAO goodsDaoObj = new GoodsDAO();
