@@ -64,6 +64,8 @@ MyFormat myFormat = new MyFormat();
 		</table>
 
 		<p style="margin-top: 50px"></p>
+		
+		<% if ( ! user.getUserid().equals(goods.getSelluserId())){ %>
 
 		<div style="text-align: center">
 			<form action="<%=request.getContextPath()%>/insertCart" method="get">
@@ -71,6 +73,8 @@ MyFormat myFormat = new MyFormat();
 				<input type="hidden" name="goodsId" value="<%=goods.getGoodsId()%>">
 			</form>
 		</div>
+		
+		<% } %>
 		
 		<p style="margin-top: 25px"></p>
 
