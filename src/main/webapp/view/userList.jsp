@@ -10,8 +10,8 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 <title>ユーザー一覧</title>
 </head>
 <body>
-	<div style="text-align: center">
 		<%@include file="/common/adminHeader.jsp"%>
+
 		<hr style="text-align: center; height: 2px; background-color: black">
 		<br>
 		<h1 style="text-align: center; color: #000000;">ユーザー一覧</h1>
@@ -46,9 +46,12 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 
 		<table style="margin: auto; text-align: center">
 			<tr>
+				<th style="background-color:#ffffa8; width:200px">ID</th>
 				<th style="background-color:#ffffa8; width:200px">名前</th>
-				<th style="background-color:#ffffa8; width:200px">ユーザーID</th>
-				<th style="background-color:#ffffa8; width:200px">Eメール</th>
+				<th style="background-color:#ffffa8; width:200px">名前かな</th>
+				<th style="background-color:#ffffa8; width:200px">住所</th>
+				<th style="background-color:#ffffa8; width:200px">メールアドレス</th>
+				<th style="background-color:#ffffa8; width:200px">電話番号</th>
 				<th style="background-color:#ffffa8; width:200px">削除</th>
 			</tr>
 
@@ -57,9 +60,12 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 			%>
 
 			<tr>
-				<td><%=userList.get(i).getName()%></td>
-				<td><%=userList.get(i).getUserid()%></td>
-				<td><%=userList.get(i).getEmail()%></td>
+				<td><%= userList.get(i).getUserid() %></td>
+				<td><%= userList.get(i).getName() %></td>
+				<td><%= userList.get(i).getNamekana() %></td>
+				<td><%= userList.get(i).getAddress() %></td>
+				<td><%= userList.get(i).getEmail() %></td>
+				<td><%= userList.get(i).getTell() %></td>
 				<td>
 
 					<form action="<%=request.getContextPath() %>/userList" method="get">
