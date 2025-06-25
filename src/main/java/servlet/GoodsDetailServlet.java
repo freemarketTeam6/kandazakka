@@ -41,7 +41,7 @@ public class GoodsDetailServlet extends HttpServlet {
 
 			// 取得した商品情報をリクエストスコープに登録
 			request.setAttribute("goods", goods);
-
+			
 			// エラー処理
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーのため、詳細画面は表示できませんでした。";
