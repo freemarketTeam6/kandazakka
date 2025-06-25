@@ -45,7 +45,7 @@ MyFormat myformat = new MyFormat();
 
 				<td><img
 					src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>"
-					size="10px"></td>
+					size="10px" width="300" alt="商品写真"></td>
 
 				<td><%=goods.getGoodsName()%></td>
 				<td><%=myformat.yenFormat(goods.getPrice())%></td>
