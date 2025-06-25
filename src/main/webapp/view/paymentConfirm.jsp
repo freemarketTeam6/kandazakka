@@ -4,6 +4,7 @@
 
 <%@page import="java.util.*,bean.Goods,util.MyFormat"%>
 
+
 <%
 MyFormat myFormat = new MyFormat();
 %>
