@@ -64,6 +64,7 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
     	padding-right: 5px;
     	padding-left: 5px;
     	background-color: black;
+    	opacity: 0.5;
     	color: white;
     }
   </style>

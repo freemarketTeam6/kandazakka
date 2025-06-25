@@ -6,8 +6,8 @@
 	<title>お問い合わせ新規作成</title>
 </head>
 <body style="background-color:#FFFFFF; text-align:center;">
-
-	<h1>お問い合わせ</h1>
+<%@include file="../common/userHeader.jsp"%>
+	<h1 style="text-align: center; color: #000000;background-color:#ccff99;">お問い合わせ</h1>
 	
 	<form action="<%=request.getContextPath()%>/newInquiry" method="POST" enctype="multipart/form-data">
 		<table border="1">
@@ -45,5 +45,6 @@
 		</table>
 		
 	</form>
+	<%@include file="../common/userFooter.jsp"%>
 </body>
 </html>
