@@ -9,6 +9,7 @@
 <%@include file= "../common/adminHeader.jsp" %>
 
 	<h1 style="text-align: center; color: #000000;">管理者メニュー</h1>
+	<hr style="text-align: center; height: 3px; background-color: black">
 	<br>
 	<div style="margin-bottom: 250px">
 		<div style="text-align: center">

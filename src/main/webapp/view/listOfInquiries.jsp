@@ -13,6 +13,8 @@ ArrayList<Inquiries> inquiriesList = (ArrayList<Inquiries>) request.getAttribute
 
 	<a href="<%=request.getContextPath()%>/view/adminMenu.jsp">【管理者メニュー画面】</a>
 	<h1 style="text-align: center;">お問い合わせ一覧</h1>
+	<hr style="text-align: center; height: 3px; background-color: black; width: 1500px">
+	
 	<table style="margin: auto">
 		<tr>
 			<th>No.</th>
