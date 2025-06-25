@@ -152,7 +152,7 @@ public class GoodsDAO {
 				
 				ResultSet rs = smt.executeQuery(sql);
 				
-				while (rs.next() ){
+				while (rs.next()){
 					Goods goods = new Goods();
 					goods.setGoodsId(rs.getInt("goods_id"));
 					goods.setSelluserId(rs.getString("selluser_id"));
@@ -166,6 +166,9 @@ public class GoodsDAO {
 					goods.setExhibitDate(rs.getDate("exhibit_date"));
 					goods.setBuyDate(rs.getDate("exhibit_date"));
 					goods.setBuyuserId(rs.getString("exhibit_date"));
+					goodsList.add(goods);
+					
+					System.out.print(goodsList);
 				}
 				
 			}catch(Exception e) {

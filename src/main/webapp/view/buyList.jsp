@@ -3,6 +3,7 @@
 
 <%
 ArrayList<Goods> goodsList = (ArrayList<Goods>) request.getAttribute("goodsList");
+
 MyFormat myFormat = new MyFormat();
 %>
 
