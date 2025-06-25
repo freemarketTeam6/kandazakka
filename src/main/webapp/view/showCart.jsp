@@ -14,7 +14,12 @@ int total = 0;
 
 <%@include file="/common/userHeader.jsp"%>
 
+
+
+<hr
+	style="text-align: center; height: 2px; background-color: black; width: 950px">
 <h1 style="text-align: center; color: #000000;background-color:#ccff99;">カート内容</h1>
+
 
 <p style="margin-top: 100px"></p>
 
@@ -28,13 +33,30 @@ int total = 0;
 </head>
 <body>
 
+	<style>
+.img {
+	width: 100%;
+	height: 100%;
+	max-height: 150px;
+	object-fit: contain;
+}
+
+.showCart {
+	min-width: 300px;
+	width: auto;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+
 
 
 	<%
 	if (orderList.size() != 0) {
 	%>
 
-	<table style="border: 1px;">
+	<table class="showCart" style="border: 1px;">
 		<tr>
 			<th style="background-color: #00a7db; width: 80">商品画像</th>
 			<th style="background-color: #00a7db; width: 80">グッズID</th>
@@ -53,7 +75,9 @@ int total = 0;
 
 		<tr>
 
-			<td><img src="<%=request.getContextPath()%>/file/images/<%=orderList.get(i).getImgPath()%>" alt="商品写真"></td>
+			<td><img class="img"
+				src="<%=request.getContextPath()%>/file/images/<%=orderList.get(i).getImgPath()%>"
+				alt="商品写真"></td>
 			<td><%=orderList.get(i).getGoodsId()%></a></td>
 
 			<td><%=orderList.get(i).getSelluserId()%></td>
@@ -61,7 +85,8 @@ int total = 0;
 			<td><%=myformat.moneyFormat(orderList.get(i).getPrice())%></td>
 			<td><%=orderList.get(i).getQuantity()%></td>
 
-			<td><a href="<%=request.getContextPath()%>/showCart?delno=<%=i%>">削除</a></td>
+			<td><a
+				href="<%=request.getContextPath()%>/showCart?delno=<%=i%>">削除</a></td>
 		</tr>
 
 
@@ -70,21 +95,24 @@ int total = 0;
 		%>
 
 		<tr>
-			<th style="background-color: #00a7db; text-align: center; width: 200px">合計</th>
+			<th
+				style="background-color: #00a7db; text-align: center; width: 200px">合計</th>
 			<td><%=myformat.moneyFormat(total)%></td>
 		</tr>
 
 	</table>
 
 
-	<form class="showCart-form" action="<%=request.getContextPath()%>/buyConfirm">
+	<form class="showCart-form"
+		action="<%=request.getContextPath()%>/buyConfirm">
 
 		<input type="submit" value="購入">
 	</form>
 
 	<tr>
-		<th style="background-color: #00a7db; text-align: center; width: 200px">合計</th>
-		<td><%=myformat.moneyFormat(total)%></td>
+		<th colspan="3"
+			style="background-color: #00a7db; text-align: center; width: 200px">合計</th>
+		<td colspan="4"><%=myformat.moneyFormat(total)%></td>
 	</tr>
 
 	<%
