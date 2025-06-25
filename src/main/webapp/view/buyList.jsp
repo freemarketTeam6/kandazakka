@@ -42,6 +42,7 @@ MyFormat myFormat = new MyFormat();
 
 			<%
 			for (int i = 0; i < goodsList.size(); i++) {
+				if ( goodsList.get(i).getStatus().equals("1")){
 			%>
 
 			<tr>
@@ -62,6 +63,7 @@ MyFormat myFormat = new MyFormat();
 			</tr>
 
 			<%
+			}
 			}
 		}
 		%>
