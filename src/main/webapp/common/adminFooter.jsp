@@ -4,7 +4,7 @@
 .wrap{
   display: flex;
   flex-direction: column;
-  min-height: 70vh;
+  min-height: 60vh;
 }
 
 footer{	
@@ -19,7 +19,8 @@ footer{
 <footer>
 <div class="wrap"></div>
 	<div style="text-align:center" >
-	<p style="background-color:#ffffa8;">
-		copyright (c) 2025 all rights reserved.</p>
+	<tr><p style="background-color:#ffffa8;">神田雑貨店</p></tr>
+	<tr><p style="background-color:#ffffa8;">
+		copyright (c) 2025 all rights reserved.</p></tr>
 	</div>
 </footer>
