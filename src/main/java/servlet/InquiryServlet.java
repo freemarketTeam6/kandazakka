@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import bean.Message;
 import bean.User;
@@ -36,7 +35,7 @@ public class InquiryServlet extends HttpServlet {
 		String cmd = "";
 		
 		// お問い合わせIDを取得
-		int inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
+		int inquiryNo = Integer.parseInt(request.getParameter("inquiryno"));
 		
 		//どこから来たかを判別するfromの値を取得（管理者側 or ユーザー側）
 		String from = request.getParameter("from");
