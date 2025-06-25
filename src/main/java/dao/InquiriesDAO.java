@@ -214,8 +214,7 @@ public class InquiriesDAO {
 
 		try {
 			//②SQL文を文字列として定義
-			String sql = "SELECT * FROM inquiryinfo ORDER BY id DESC"
-					+ "LIMIT 1;";
+			String sql = "SELECT * FROM inquiryinfo ORDER BY inquiryno DESC LIMIT 1";
 
 			con = InquiriesDAO.getConnection();
 			smt = con.createStatement();
