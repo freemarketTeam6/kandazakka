@@ -65,7 +65,15 @@ MyFormat myFormat = new MyFormat();
 
 		<p style="margin-top: 50px"></p>
 		
-		<% if ( ! user.getUserid().equals(goods.getSelluserId())){ %>
+		<!--  セッションのユーザーがnullだったら、カートに入れるボタンを押したときにログイン画面に飛ぶ -->
+		<% if ( user == null ){ %>
+		<div style="text-align: center">
+			<form action="<%=request.getContextPath()%>/login" method="POST">
+				<input type="submit" value="カートに入れる">
+				<input type="hidden" name="from" value="user">
+			</form>
+		</div>		
+		<% } else if ( user != null && ! user.getUserid().equals(goods.getSelluserId())){ %>
 
 		<div style="text-align: center">
 			<form action="<%=request.getContextPath()%>/insertCart" method="get">
