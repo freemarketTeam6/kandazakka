@@ -54,7 +54,10 @@ public class MyFormat {
 		} else if (status.equals("3")) {
 			formatStatus = "発送完了";
 
-		} else {
+		} else if (status.equals("9")) {
+			formatStatus = "出品停止中";
+		
+		}else {
 			formatStatus = status;
 
 		}
