@@ -76,7 +76,7 @@ int total = 0;
 
 	</table>
 
-	<form class="showCart-form" action="<%=request.getContextPath()%>/view/buyConfirm.jsp" method="get">
+	<form class="showCart-form" action="<%=request.getContextPath()%>/buyConfirm" method="get">
 		<input type="submit" value="購入">
 	</form>
 
