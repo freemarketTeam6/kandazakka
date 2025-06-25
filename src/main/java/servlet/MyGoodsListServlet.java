@@ -42,6 +42,12 @@ public class MyGoodsListServlet extends HttpServlet {
 		ArrayList<Goods> myGoodsList = new ArrayList<Goods>();
 		myGoodsList=goodsDaoObj.selectGoodsBySelluser(userid);
 		
+		//商品のステータスを2(入金済み・発送待ち)に変更
+				
+		if("name".equals(name)) {
+		goodsDaoObj.updateStatus(goodsid, "9");
+		}
+		
 		//リクエストスコープに出品一覧GoodsのArrayListを送る
 		request.setAttribute("myGoodsList", myGoodsList);	
 	}catch (IllegalStateException e) {
