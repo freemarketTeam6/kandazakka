@@ -31,13 +31,13 @@ MyFormat myFormat = new MyFormat();
 
 		<table style="margin: auto">
 			<tr>
-				<th>商品画像</th>
-				<th>商品名</th>
-				<th>価格</th>
-				<th>数量</th>
-				<th>種類</th>
-				<th>購入日</th>
-				<th>入金状況ステータス</th>
+				<th style="background-color: #ccff99">商品画像</th>
+				<th style="background-color: #ccff99">商品名</th>
+				<th style="background-color: #ccff99">価格</th>
+				<th style="background-color: #ccff99">数量</th>
+				<th style="background-color: #ccff99">種類</th>
+				<th style="background-color: #ccff99">購入日</th>
+				<th style="background-color: #ccff99">入金状況ステータス</th>
 			</tr>
 
 			<%
