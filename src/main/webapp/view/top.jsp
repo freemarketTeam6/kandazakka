@@ -48,13 +48,14 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
     }
     
     .imgBox{
-       	border-radius: 2px;
+    	width: 70%;
+    	margin: 0 auto;
+    	margin-top: 20px;
     }
     
     .img{
     	display: inline-block;
     	position: relative;
-
     }
     
     .priceOnImg{
@@ -67,29 +68,37 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
     	opacity: 0.5;
     	color: white;
     }
+    
+    .imgContent{
+    	display: inline-flex;
+    	margin-right: 10px;
+    	margin-top: 10px;
+    }
   </style>
 </head>
 <body>
 
 	<%@include file="../common/userHeader.jsp"%>
 	
-	<div class="imgBox" style="display:flex">
+	<div class="imgBox">
 	<% 
 	 if (goodsList != null && !goodsList.isEmpty()) {
 		 for ( int i = 0; i < goodsList.size(); i++){ %>
 		
 		<!-- 画像のパスは今後変更予定 -->
+		<div class="imgContent">
 		<form action="<%=request.getContextPath()%>/goodsDetail">
 			<div  class="img">
 				<input type="image" src="<%=request.getContextPath() %>/file/images/<%= goodsList.get(i).getImgPath() %>" alt="写真" width="200" height="200">
-				<strong class="priceOnImg"><%=  goodsList.get(i).getPrice()%>円</strong>
+					<strong class="priceOnImg"><%=  goodsList.get(i).getPrice()%>円</strong>
 				<input type="hidden" name="cmd" value="detail">
 				<input type="hidden" name="goods_id" value="<%=  goodsList.get(i).getGoodsId()%>">
 			</div>		
 		</form>
+		</div>
 
-	<% if ( i % 5 == 0 ){%>
-			<br>
+	<% if ( i+1 % 5 == 0 ){ %>
+		<br>
 		<% } %>
 		<% } %>
 		<% } %>

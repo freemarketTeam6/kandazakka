@@ -13,6 +13,7 @@ import bean.User;
 import dao.GoodsDAO;
 import dao.InquiriesDAO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 @WebServlet("/newInquiry")
+@MultipartConfig
 public class NewInquiryServlet extends HttpServlet {
 	String error = "";
 
