@@ -83,8 +83,7 @@ public class NewInquiryServlet extends HttpServlet {
 			inquiries.setFile_path(filePath);
 
 			inquiriesDao.insert(inquiries);
-
-			inquiryno = last_inquiryno + 1;
+			inquiryno = inquiriesDao.inquiriesCount();
 
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、お問い合わせ作成は行えませんでした。";
@@ -96,7 +95,7 @@ public class NewInquiryServlet extends HttpServlet {
 
 		} finally {
 			if (error.equals("") && message.equals("")) {
-				request.setAttribute("user", inquiryno);
+				request.setAttribute("inquiryNo", inquiryno);
 				request.getRequestDispatcher("/inquiry").forward(request, response);
 
 			} else if (!error.equals("")) {
