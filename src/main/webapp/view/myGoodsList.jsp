@@ -53,14 +53,30 @@ MyFormat myformat = new MyFormat();
 				<td><a
 					href="<%=request.getContextPath()%>/goodsDetail?goods_id=<%=goods.getGoodsId()%>&cmd=update"
 					style="margin-right: 30px;">内容変更</a></td>
-				<td><a
-					href="<%=request.getContextPath()%>/goodsDetail?cmd=shipping&goods_id=<%=goods.getGoodsId()%>"
-					style="margin-right: 30px;">発送する</a></td>
-
-				<td><form action="<%=request.getContextPath()%>/mygoods" method="POST">
-					<input type="submit" value="出品停止" name="cancel"></td>
+				<td>
+				<% if ( goods.getStatus().equals("0")){ %>
+				<a href="<%=request.getContextPath()%>/goodsDetail?cmd=shipping&goods_id=<%=goods.getGoodsId()%>"
+					style="margin-right: 30px;">発送する</a>
+				<% } %>		
+				</td>
+				
+				<% if ( goods.getStatus().equals("0")){ %>
+				<td>
+				<form action="<%=request.getContextPath()%>/mygoodsList">
+					<input type="submit" value="出品停止">
+					<input type="hidden" name="param" value="cancel">
+					<input type="hidden" name="goods_id" value="<%=goods.getGoodsId()%>">
 				</form>
-
+				</td>
+				<% } else if ( goods.getStatus().equals("9")){%>
+				<td>
+				<form action="<%=request.getContextPath()%>/mygoodsList">
+					<input type="submit" value="出品再開">
+					<input type="hidden" name="param" value="restart">
+					<input type="hidden" name="goods_id" value="<%=goods.getGoodsId()%>">
+				</form>
+				</td>
+				<% } %>		
 			</tr>
 			<%
 			}
