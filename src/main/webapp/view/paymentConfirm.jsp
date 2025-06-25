@@ -63,6 +63,7 @@ Goods goods = goodsDao.selectGoodsByGoodsID(goodsId);
 
 商品発送までしばらくお待ちください
 
+
 <form action="<%=request.getContextPath() %>/buyList" method="GET">
 <input type="submit"  value="購入一覧へ戻る">
 </form>
