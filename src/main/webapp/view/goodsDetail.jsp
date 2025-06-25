@@ -6,7 +6,15 @@ Goods goods = (Goods) request.getAttribute("goods");
 
 MyFormat myFormat = new MyFormat();
 %>
+<style>
+.img {
+	width: 100%;
+	height:100%;
+	max-height: 150px;
+	object-fit: contain;
+}
 
+</style>
 <html>
 <head>
 <title>商品詳細</title>
@@ -23,7 +31,7 @@ MyFormat myFormat = new MyFormat();
 		<p style="margin-top: 100px"></p>
 
 		<p style="text-align: center">
-			<img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" width="300" alt="商品写真">
+			<img class="img" src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>"  alt="商品写真">
 		</p>
 		
 		<p style="margin-top: 25px"></p>

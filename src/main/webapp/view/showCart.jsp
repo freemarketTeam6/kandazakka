@@ -32,6 +32,16 @@ int total = 0;
 </head>
 <body>
 
+<style>
+.img {
+	width: 100%;
+	height:100%;
+	max-height: 150px;
+	object-fit: contain;
+}
+
+</style>
+
 
 
 	<%
@@ -57,7 +67,7 @@ int total = 0;
 
 		<tr>
 
-			<td><img src="<%=request.getContextPath()%>/file/images/<%=orderList.get(i).getImgPath()%>" alt="商品写真"></td>
+			<td><img class="img" src="<%=request.getContextPath()%>/file/images/<%=orderList.get(i).getImgPath()%>" alt="商品写真"></td>
 			<td><%=orderList.get(i).getGoodsId()%></a></td>
 
 			<td><%=orderList.get(i).getSelluserId()%></td>

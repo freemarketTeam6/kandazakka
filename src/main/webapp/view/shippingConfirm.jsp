@@ -11,6 +11,15 @@ Goods goods = (Goods)request.getAttribute("goods");
 <link rel="stylesheet" href="<%= request.getContextPath() %>/view/css/style.css">
 </head>
 <body>
+<style>
+.img {
+	width: 100%;
+	height:100%;
+	max-height: 150px;
+	object-fit: contain;
+}
+
+</style>
 	<%@include file="../common/userHeader.jsp"%>
 	<a href="<%=request.getContextPath()%>/view/mypage.jsp">マイページへ</a>
 	<h1 style="text-align: center;">発送完了</h1>
@@ -22,7 +31,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 		style="width: 200; height: 150; margin: 0 auto; border-spacing: 0 10px">
 		<tr>
 			<td>写真</td>
-			<td><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" alt="商品写真"></td>
+			<td><img class="img" src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" alt="商品写真"></td>
 		<tr>
 			<td style="background-color: #6666FF">商品名</td>
 			<td style="background-color: aqua;"><%=goods.getGoodsName()%></td>
