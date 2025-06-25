@@ -9,16 +9,14 @@ body {
 /*goodsinsert*/ 
 
 .goodsinsert {
-	min-width: 300px;
-	width: 60%;
-	margin-top: 5%;
-	margin-left: auto;
-	margin-right: auto;
+	width: 70%;
+	margin-top: 10px auto;
+	margin: auto;
 }
 
 .goodsinsert th {
-	background-color: #cccccc;
-	width: auto;
+	background-color: #ccff99;
+	width: 150px;
 	text-align: left;
 	padding-left: 2px;
 }
