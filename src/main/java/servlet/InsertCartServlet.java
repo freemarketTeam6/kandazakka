@@ -25,7 +25,8 @@ public class InsertCartServlet extends HttpServlet {
 			// ログインしていなかったらエラー
 			user = (User) session.getAttribute("user");
 			if (user == null) {
-				error = "セッション切れの為、カートに追加できません。";
+				error = "未ログインのため、カートに追加できません\nログインしてください！";
+				cmd = "login";
 				return;
 			}
 

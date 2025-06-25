@@ -12,15 +12,12 @@ MyFormat myFormat = new MyFormat();
 </head>
 <body>
 	<%@include file="../common/userHeader.jsp"%>
-	<table style="margin: auto; width: 850px">
-		<tr>
-			<td style="text-align: center; width: 508px; font-size: 24px;">カート追加完了</td>
-			<td style="width: 80px">&nbsp;</td>
-			<td style="width: 80px">&nbsp;</td>
-		</tr>
-	</table>
-
-	<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
+	
+<hr style="text-align: center; height: 2px; background-color: black; width: 100%">
+<br>
+<h1 style="text-align: center; color: #000000;">カート追加完了</h1>
+<br>
+<hr style="text-align: center; height: 2px; background-color: black; width: 100%">
 	<div style="margin-bottom: 50px"></div>
 
 		<div style="text-align: center">
