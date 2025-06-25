@@ -14,6 +14,15 @@ int total = (int) request.getAttribute("total");
 <title>神田雑貨店フリマ</title>
 </head>
 <body>
+<style>
+.img {
+	width: 100%;
+	height:100%;
+	max-height: 150px;
+	object-fit: contain;
+}
+
+</style>
 	<%@include file="../common/userHeader.jsp"%>
 	<table style="margin: auto; width: 850px">
 		<tr>
@@ -46,7 +55,7 @@ int total = (int) request.getAttribute("total");
 					%>
 
 					<tr>
-						<td><%=list.get(i).getImgPath()%></td>
+						<td><img class="img" src="<%=request.getContextPath() %>/file/images/<%= list.get(i).getImgPath() %>" alt="商品写真"></td>
 						<td><%=list.get(i).getGoodsName()%></td>
 						<td><%=myFormat.moneyFormat(list.get(i).getPrice())%></td>
 					</tr>

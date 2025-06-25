@@ -14,7 +14,8 @@ MyFormat myFormat = new MyFormat();
 <body>
 	<div style="text-align: center">
 		<%@ include file="../common/userHeader.jsp"%>
-		<p style="margin-top:100px"></p>
+		<h1 style="text-align: center; color: #000000;background-color:#ccff99;">購入履歴</h1>
+		<p style="margin-top: 100px"></p>
 
 		<%
 		if (goodsList.isEmpty()) {
@@ -51,7 +52,7 @@ MyFormat myFormat = new MyFormat();
 				<td><%=goodsList.get(i).getCategory()%></td>
 				<td><%=goodsList.get(i).getBuyDate()%></td>
 				<td>
-					<form action="<%=request.getContextPath()%>/payment.jsp"
+					<form action="<%=request.getContextPath()%>/view/payment.jsp"
 						method="post">
 						<input type="submit" value="入金する"></input>
 					</form>

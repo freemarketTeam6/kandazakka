@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import util.SendMail;
+import util.SendMailKanda;
 
 @WebServlet("/buyConfirm")
 public class BuyConfirmServlet extends HttpServlet {
@@ -33,6 +33,7 @@ public class BuyConfirmServlet extends HttpServlet {
 			// セッションからGoodsオブジェクトを取得してセッション切れの判定
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
+			String userID = user.getUserid();
 			if (user == null) {
 				cmd = "logout";
 				error = "セッション切れの為、購入は出来ません。";
@@ -55,7 +56,7 @@ public class BuyConfirmServlet extends HttpServlet {
 			for ( int i = 0; i < orderList.size(); i++ ) {
 				int goodsID = orderList.get(i).getGoodsId();
 				objDao.updateStatus(goodsID, "1");
-				
+				objDao.updateBuyUserAndBuyDate(goodsID, userID);
 				total += orderList.get(i).getPrice();
 			}
 				
@@ -71,7 +72,7 @@ public class BuyConfirmServlet extends HttpServlet {
 							+ "円\n\n"
 							+"またのご利用よろしくお願いします。";
 				//メール送信
-				SendMail mail = new SendMail();
+				SendMailKanda mail = new SendMailKanda();
 				mail.send(subject, body, user.getEmail());
 				
 				request.setAttribute("goods_List",orderList);

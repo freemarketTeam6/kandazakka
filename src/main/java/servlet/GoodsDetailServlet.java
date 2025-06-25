@@ -3,18 +3,24 @@ package servlet;
 import java.io.IOException;
 
 import bean.Goods;
+import bean.User;
 import dao.GoodsDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/goodsDetail")
 public class GoodsDetailServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String error = "";
 		String cmd = "";
+		
+		// セッションからデータを受け取る
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
 
 		try {
 			// 表示する商品情報を格納するGoodsオブジェクトを生成

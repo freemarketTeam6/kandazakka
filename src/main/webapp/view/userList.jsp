@@ -10,54 +10,66 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 <title>ユーザー一覧</title>
 </head>
 <body>
-	<div style="text-align: center">
-		<%@include file="/common/adminHeader.jsp"%>
-		<h1 style="text-align: center;color:#000000;">ユーザー一覧</h1>
-		<hr style="text-align: center; height: 3px; background-color: black; width: 1500px">
+	<%@include file="/common/adminHeader.jsp"%>
+	<br>
+	<a href="<%= request.getContextPath() %>/view/adminMenu.jsp">【管理者メニュー画面】</a>
 
-		<table style="margin: auto">
-			<form action="<%=request.getContextPath()%>/userList">
-				<tr>
-					<td><input type="text" name="user_id" value=""></td>
-					<td><input type="submit"value="検索"></td>
-			</form>
-			<form action="<%=request.getContextPath()%>/userList">
-					<td><input type="submit" value="全件表示"></td>
-			</form>
-		</table>
-		<p style="margin-top:100px"></p>
+	<br>
+	<h1 style="text-align: center; color: #000000;">ユーザー一覧</h1>
+	<br>
+	<hr style="text-align: center; height: 2px; background-color: black">
+	<p style="margin-top: 50px"></p>
 
-
-		<table style="margin: auto; text-align: center">
+	<table style="margin: auto">
+		<form action="<%=request.getContextPath()%>/userList">
 			<tr>
-				<th style="background-color:#ffffa8; width:200px">名前</th>
-				<th style="background-color:#ffffa8; width:200px">ユーザーID</th>
-				<th style="background-color:#ffffa8; width:200px">Eメール</th>
-				<th style="background-color:#ffffa8; width:200px">削除</th>
-			</tr>
+				<td><input type="text" name="user_id" value=""></td>
+				<td><input type="submit" value="検索"></td>
+		</form>
+		<form action="<%=request.getContextPath()%>/userList">
+			<td><input type="submit" value="全件表示"></td>
+		</form>
+	</table>
+	<p style="margin-top: 100px"></p>
 
-			<%
+	<table style="margin: auto; text-align: center">
+		<tr>
+			<th style="background-color: #ffffa8; width: 200px">ID</th>
+			<th style="background-color: #ffffa8; width: 200px">名前</th>
+			<th style="background-color: #ffffa8; width: 200px">名前かな</th>
+			<th style="background-color: #ffffa8; width: 200px">住所</th>
+			<th style="background-color: #ffffa8; width: 200px">メールアドレス</th>
+			<th style="background-color: #ffffa8; width: 200px">電話番号</th>
+			<th style="background-color: #ffffa8; width: 200px">削除</th>
+		</tr>
+    
+		<%
 			for (int i = 0; i < userList.size(); i++) {
 			%>
 
-			<tr>
-				<td><%=userList.get(i).getName()%></td>
-				<td><%=userList.get(i).getUserid()%></td>
-				<td><%=userList.get(i).getEmail()%></td>
-				<td>
-					<form action="<%=request.getContextPath() %>/delete" method="get">
-						<input type="hidden" name="userid" value="<%=userList.get(i).getUserid() %>">
-						<input type="submit" value="削除">
-					</form>
-				</td>
-			</tr>
 
-			<%
+		<tr>
+			<td><%= userList.get(i).getUserid() %></td>
+			<td><%= userList.get(i).getName() %></td>
+			<td><%= userList.get(i).getNamekana() %></td>
+			<td><%= userList.get(i).getAddress() %></td>
+			<td><%= userList.get(i).getEmail() %></td>
+			<td><%= userList.get(i).getTell() %></td>
+			<td>
+
+				<form action="<%=request.getContextPath() %>/userList" method="get">
+          <input type="hidden"
+						name="userid" value="<%=userList.get(i).getUserid() %>">
+					<input type="submit" value="削除"> 
+				</form>
+			</td>
+		</tr>
+		<%
 			}
 		%>
 
-		</table>
-	<p style="margin-top:100px"></p>
+	</table>
+	<p style="margin-top: 100px"></p>
 	</div>
 	<%@include file="/common/adminFooter.jsp"%>
 </body>

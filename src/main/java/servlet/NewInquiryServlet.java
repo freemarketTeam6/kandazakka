@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 import bean.Inquiries;
 import bean.User;
+import dao.GoodsDAO;
 import dao.InquiriesDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -110,35 +111,41 @@ public class NewInquiryServlet extends HttpServlet {
 
 	private String fileSave(Part filePart, int last_inquiryno) throws IOException {
 
+		//ルート情報とファイルパスを管理する変数を初期化
 		String uploadDir = "";
 		String filePath = "";
-
+		
 		//ファイル名を管理する変数
 		String fileName = "";
+		
+		GoodsDAO goodsDao = new GoodsDAO();
 
 		//ファイルサイズを元にファイルの有無を確認
 		if (filePart.getSize() != 0) {
-
+			
 			//拡張子を取得
-
+			
 			//アップロードされたファイルの詳細情報を取得
 			String contentDisposition = filePart.getHeader("content-disposition");
-
+			
+			
 			//ファイル名を取得するための正規表現パターンを設定
 			Pattern pattern = Pattern.compile("filename=\"(.*)\"");
-
+			
 			//正規表現パターンを使用して、詳細情報からファイル名を抽出
 			Matcher matcher = pattern.matcher(contentDisposition);
-
+			
+			
 			//抽出したファイル名が存在していればファイル名を管理する変数に代入、なければ空白を代入
 			if (matcher.find()) {
 				fileName = matcher.group(1);
 			} else {
 				fileName = "";
 			}
-
+			
 			//拡張子を取得
-			fileName = fileName.substring(fileName.lastIndexOf("."));
+			fileName= fileName.substring(fileName.lastIndexOf("."));
+			
 
 			//ファイル名を設定
 			fileName = "inquiries_" + (last_inquiryno + 1) + fileName;

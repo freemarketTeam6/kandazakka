@@ -19,43 +19,7 @@ if(checkUser==null){
 
 <title>出品</title>
 
-<style>
-body {
-	min-width: 800px;
-}
 
-.insert {
-	min-width: 300px;
-	width: 60%;
-	margin-top: 5%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.insert th {
-	background-color: #cccccc;
-	width: auto;
-	text-align: left;
-	padding-left: 2px;
-}
-
-.insert td {
-	text-align: center;
-	padding-left: 2px;
-	width: auto;
-}
-
-.insert td input {
-	width: 100%;
-}
-
-.insert input[type="textarea"] {
-	resize: none;
-	width: 100%;
-	height: 200px;
-	vertical-align: top;
-}
-</style>
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
@@ -65,10 +29,8 @@ body {
 
 	<%@include file="/common/userHeader.jsp"%>
 
-	<header style="text-align: center">
-		<h1>出品</h1>
-	</header>
-
+		<h1 style="text-align: center; color: #000000;background-color:#ccff99;">出品</h1>
+	
 	<%
 
 	Goods goods = (Goods)request.getAttribute("goods");
@@ -87,7 +49,7 @@ body {
 		name="goodsInsert" method="post" enctype="multipart/form-data">
 
 
-		<table class="insert">
+		<table class="goodsinsert">
 
 
 			<tr>
