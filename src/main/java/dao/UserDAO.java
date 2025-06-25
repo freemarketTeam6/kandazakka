@@ -286,5 +286,31 @@ public class UserDAO {
 		return userList;
 
 	}
+	
+	//ユーザー削除
+	public void delete(String userid){
+		 
+		  Connection con = null;
+		  Statement smt = null;
+		  //SQL文
+		  String sql = "DELETE FROM userinfo WHERE user_id = " + userid;
+
+		  try{
+		  
+			  con = getConnection();
+			  smt = con.createStatement();
+			  
+			  smt.executeUpdate(sql);
+			  
+			  }catch(Exception e){
+				  throw new IllegalStateException(e);
+				  }finally{
+					  if( smt != null ){
+						  try{smt.close();}catch(SQLException ignore){}}
+					  if( con != null ){
+						  try{con.close();}catch(SQLException ignore){}
+						  }
+					  }
+	}
 
 }
