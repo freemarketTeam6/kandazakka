@@ -50,9 +50,9 @@ public class NewInquiryServlet extends HttpServlet {
 			String category = request.getParameter("category");
 			String title = request.getParameter("title");
 			String contents = request.getParameter("contents");
-			int last_inquiryno = inquiriesDao.inquiriesCount();
 
 			Part filePart = request.getPart("file_path");
+			int last_inquiryno = inquiriesDao.inquiriesCount();
 			
 			//ここでエラー吐く
 			String filePath = fileSave(filePart, last_inquiryno);
@@ -83,8 +83,13 @@ public class NewInquiryServlet extends HttpServlet {
 			inquiries.setFile_path(filePath);
 
 			inquiriesDao.insert(inquiries);
-
-			inquiryno = last_inquiryno + 1;
+			last_inquiryno = inquiriesDao.inquiriesCount();
+			
+			if(last_inquiryno==-1) {
+				inquiryno = 0;
+			}else {
+			inquiryno = last_inquiryno;
+			}
 
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、お問い合わせ作成は行えませんでした。";
@@ -96,7 +101,8 @@ public class NewInquiryServlet extends HttpServlet {
 
 		} finally {
 			if (error.equals("") && message.equals("")) {
-				request.setAttribute("user", inquiryno);
+				request.setAttribute("inquiryno", inquiryno);
+				System.out.println(inquiryno);
 				request.getRequestDispatcher("/inquiry").forward(request, response);
 
 			} else if (!error.equals("")) {

@@ -88,9 +88,9 @@ public class InquiriesDAO {
 		Statement smt = null; // SQLステートメント
 
 		// SQL文
-		String sql = "INSERT INTO inquiryinfo VALUES(NULL,'" + "','" + Inquiries.getUser_id() + "',"
-				+ Inquiries.getCategory() + "'," + Inquiries.getTitle() + "',"
-				+ Inquiries.getContents() + "'," + Inquiries.getFile_path() + ")";
+		String sql = "INSERT INTO inquiryinfo  (inquiryno, user_id, category, title, contents, file_path) VALUES (NULL,'" + Inquiries.getUser_id() + "','"
+				+ Inquiries.getCategory() + "','" + Inquiries.getTitle() + "','"
+				+ Inquiries.getContents() + "','" + Inquiries.getFile_path() + "')";
 
 		try {
 			// DBに接続
@@ -210,7 +210,7 @@ public class InquiriesDAO {
 		Connection con = null; // DBコネクション
 		Statement smt = null; // SQLステートメント
 
-		int last_inquiryno = 0;
+		int last_inquiryno;
 
 		try {
 			//②SQL文を文字列として定義
@@ -223,8 +223,11 @@ public class InquiriesDAO {
 			ResultSet rs = smt.executeQuery(sql);
 
 			// 検索結果をArrayListに格納
-			rs.next();
+			if(rs.next()==false) {
+				last_inquiryno=-1;
+			}else {
 			last_inquiryno = rs.getInt("inquiryno");
+			}
 
 		} catch (Exception e) {
 			throw new IllegalStateException(e);
