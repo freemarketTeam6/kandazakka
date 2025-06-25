@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import util.SendMail;
+import util.SendMailKanda;
 
 @WebServlet("/buyConfirm")
 public class BuyConfirmServlet extends HttpServlet {
@@ -82,7 +82,7 @@ public class BuyConfirmServlet extends HttpServlet {
 							+ "円\n\n"
 							+"またのご利用よろしくお願いします。";
 				//メール送信
-				SendMail mail = new SendMail();
+				SendMailKanda mail = new SendMailKanda();
 				mail.send(subject, body, user.getEmail());
 				
 				request.setAttribute("goods_List",goods_list);

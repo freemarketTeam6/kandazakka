@@ -10,7 +10,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class SendMail {
+public class SendMailKanda {
 	public void send(String subject, String body, String address) {
 		try {
 			Properties props = System.getProperties();
