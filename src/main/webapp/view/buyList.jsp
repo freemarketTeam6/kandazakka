@@ -51,7 +51,7 @@ MyFormat myFormat = new MyFormat();
 				<td><%=goodsList.get(i).getCategory()%></td>
 				<td><%=goodsList.get(i).getBuyDate()%></td>
 				<td>
-					<form action="<%=request.getContextPath()%>/payment.jsp"
+					<form action="<%=request.getContextPath()%>/view/payment.jsp"
 						method="post">
 						<input type="submit" value="入金する"></input>
 					</form>
