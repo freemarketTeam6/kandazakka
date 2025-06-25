@@ -1,9 +1,11 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.ArrayList, bean.Goods"%>
+<%@page import="java.util.ArrayList, bean.Goods, util.MyFormat"%>
 
 
 <%
 ArrayList<Goods> salesGoodsList = (ArrayList<Goods>)request.getAttribute("salesGoodsList");
+
+MyFormat myformat = new MyFormat();
 %>
 
 <html>
@@ -59,8 +61,8 @@ ArrayList<Goods> salesGoodsList = (ArrayList<Goods>)request.getAttribute("salesG
 			<td><%= salesGoodsList.get(i).getGoodsName() %></td>
 			<td><%= salesGoodsList.get(i).getBuyuserId() %></td>
 			<td><%= salesGoodsList.get(i).getSelluserId() %></td>
-			<td><%= salesGoodsList.get(i).getPrice() %></td>
-			<td><%= sales*0.1 %></td>
+			<td><%= myformat.yenFormat(salesGoodsList.get(i).getPrice()) %></td>
+			<td><%= sales*0.1 %>円</td>
 		</tr>
 		
 		<% } %>

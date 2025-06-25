@@ -70,6 +70,12 @@ Goods goods = goodsDao.selectGoodsByGoodsID(goodsId);
 
 
 
+<form action="<%=request.getContextPath() %>/buyList" method="GET">
+<input type="submit"  value="購入一覧へ戻る">
+</form>
+
+
+
 	</div>
 
 	<%@include file="/common/userFooter.jsp"%>

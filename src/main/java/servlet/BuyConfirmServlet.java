@@ -52,9 +52,8 @@ public class BuyConfirmServlet extends HttpServlet {
 			
 			//goodsinfoからカートデータ分だけ商品情報を呼び出す
 			for ( int i = 0; i < orderList.size(); i++ ) {
-				int goodsID = orderList.get(i).getGoodsId();
-				objDao.updateStatus(goodsID, "1");
-				objDao.updateBuyUserAndBuyDate(goodsID, userID);
+				Goods orderGoods =orderList.get(i);
+				buyList=buyList+"\n商品名"+orderGoods.getGoodsName()+"\t価格"+orderGoods.getPrice()+"円";
 				total += orderList.get(i).getPrice();
 			}
 				
@@ -65,13 +64,13 @@ public class BuyConfirmServlet extends HttpServlet {
 							+"ご購入ありがとうございます。\n"
 							+"以下内容でご注文を受け付けましたので、ご連絡致します。\n\n"
 							+buyList
-							+"合計" 
+							+"\n\n合計" 
 							+ total 
 							+ "円\n\n"
 							+"またのご利用よろしくお願いします。";
 				//メール送信
 				SendMailKanda mail = new SendMailKanda();
-				mail.send(subject, body, user.getEmail());
+				mail.buyMail(subject, body, user.getEmail());
 				
 				request.setAttribute("goods_List",orderList);
 				request.setAttribute("total",total);

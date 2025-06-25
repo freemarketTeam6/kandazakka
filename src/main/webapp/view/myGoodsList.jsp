@@ -73,13 +73,13 @@ MyFormat myformat = new MyFormat();
 		<table class="mygoodsList" border="1" style="text-align: center; margin: auto">
 
 			<tr>
-				<th style="background-color: #ccff99  width: 200px">商品画像</th>
-				<th style="background-color: #ccff99  width: 200px">商品名</th>
-				<th style="background-color: #ccff99  width: 200px">金額</th>
-				<th style="background-color: #ccff99  width: 200px">取引状況</th>
-				<th style="background-color: #ccff99  width: 200px">登録内容変更</th>
-				<th style="background-color: #ccff99  width: 200px">発送</th>
-				<th style="background-color: #ccff99  width: 200px">出品停止</th>
+				<th style="background-color: #ccff99;width: 200px">商品画像</th>
+				<th style="background-color: #ccff99;width: 200px">商品名</th>
+				<th style="background-color: #ccff99;width: 200px">金額</th>
+				<th style="background-color: #ccff99;width: 200px">取引状況</th>
+				<th style="background-color: #ccff99;width: 200px">登録内容変更</th>
+				<th style="background-color: #ccff99;width: 200px">発送</th>
+				<th style="background-color: #ccff99;width: 200px">出品停止</th>
 			</tr>
 
 			<%
@@ -93,7 +93,7 @@ MyFormat myformat = new MyFormat();
 
 			<tr>
 
-				<td id="imgBox"><img src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>"　alt="商品写真"></td>
+				<td id="imgBox"><img src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>" style="width:200px"alt="商品写真"></td>
 
 
 				<td id="goodsName"><%=goods.getGoodsName()%></td>
@@ -102,7 +102,7 @@ MyFormat myformat = new MyFormat();
 				<td id="change"><a href="<%=request.getContextPath()%>/goodsDetail?goods_id=<%=goods.getGoodsId()%>&cmd=update"
 					style="margin-right: 30px;">内容変更</a></td>
 				<td id="shipping">
-				<% if ( goods.getStatus().equals("0")){ %>
+				<% if ( goods.getStatus().equals("2")){ %>
 				<a href="<%=request.getContextPath()%>/goodsDetail?cmd=shipping&goods_id=<%=goods.getGoodsId()%>"
 					style="margin-right: 30px;">発送する</a>
 				<% } %>		

@@ -11,6 +11,23 @@ MyFormat myFormat = new MyFormat();
 <head>
 <title>購入履歴</title>
 </head>
+	<style>
+.img {
+	width: 100%;
+	height: 100%;
+	max-height: 150px;
+	object-fit: contain;
+}
+
+.showCart {
+	min-width: 300px;
+	width: auto;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+
 <body>
 	<div style="text-align: center">
 		<%@ include file="../common/userHeader.jsp"%>
@@ -42,10 +59,11 @@ MyFormat myFormat = new MyFormat();
 
 			<%
 			for (int i = 0; i < goodsList.size(); i++) {
+				if ( goodsList.get(i).getStatus().equals("1")){
 			%>
 
 			<tr>
-				<td><img src="<%=request.getContextPath() %>/file/images/<%= goodsList.get(i).getImgPath() %>" alt="商品写真"></td>
+				<td><img class="img" src="<%=request.getContextPath() %>/file/images/<%= goodsList.get(i).getImgPath() %>" alt="商品写真"></td>
 				<td><%=goodsList.get(i).getGoodsName()%></td>
 				<td><%=myFormat.moneyFormat(goodsList.get(i).getPrice())%></td>
 				<td><%=goodsList.get(i).getQuantity()%></td>
@@ -62,6 +80,7 @@ MyFormat myFormat = new MyFormat();
 			</tr>
 
 			<%
+			}
 			}
 		}
 		%>
