@@ -82,6 +82,55 @@ public class GoodsDAO {
 			return goodsList;
 
 	}
+	
+	//DBから出品中の商品全部持ってくるメソッド
+	public ArrayList<Goods> selectAllNowSale(){
+		Connection con = null;
+		Statement smt = null;
+		
+		//戻り値用の配列宣言
+		ArrayList<Goods> goodsList = new ArrayList<Goods>();
+		
+		String sql = "SELECT * FROM goodsinfo WHERE status = '0'";
+		
+		try {
+			
+			con = getConnection();
+			smt = con.createStatement();
+			
+			ResultSet rs = smt.executeQuery(sql);
+			
+			while (rs.next() ){
+				Goods goods = new Goods();
+				goods.setGoodsId(rs.getInt("goods_id"));
+				goods.setSelluserId(rs.getString("selluser_id"));
+
+				goods.setImgPath(rs.getString("img_path"));
+				goods.setGoodsName(rs.getString("name"));
+				goods.setPrice(rs.getInt("price"));
+				goods.setQuantity(rs.getInt("quantity"));
+				goods.setCategory(rs.getString("category"));
+				goods.setGoodsMemo(rs.getString("goods_memo"));
+				goods.setStatus(rs.getString("status"));
+				goods.setExhibitDate(rs.getDate("exhibit_date"));
+				goods.setBuyDate(rs.getDate("exhibit_date"));
+				goods.setBuyuserId(rs.getString("exhibit_date"));
+				goodsList.add(goods);
+			}
+			
+			}catch(Exception e) {
+				throw new IllegalStateException(e);
+			}finally {
+				if ( smt != null) {
+					try {smt.close();}catch(SQLException ignore) {}
+				}
+				if ( con != null ) {
+					try { con.close();}catch(SQLException ignore) {}
+				}
+			}
+			return goodsList;
+
+	}	
 
 
 	//userID渡したらその人の出品商品リストを取得するメソッド
@@ -167,8 +216,6 @@ public class GoodsDAO {
 					goods.setBuyDate(rs.getDate("exhibit_date"));
 					goods.setBuyuserId(rs.getString("exhibit_date"));
 					goodsList.add(goods);
-					
-					System.out.print(goodsList);
 				}
 				
 			}catch(Exception e) {
