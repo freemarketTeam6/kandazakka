@@ -18,9 +18,9 @@ MyFormat myformat = new MyFormat();
 
 
 	<h1 style="text-align: center; color: #000000;background-color:#ccff99;">出品商品一覧</h1>
-
+	<p style="margin-top: 50px"></p>
 	<div>
-		<table class="mygoodsList" border="1">
+		<table class="mygoodsList" border="1" style="margin: auto">
 
 			<tr>
 				<th style="background-color: #ccff99">商品画像</th>
@@ -45,7 +45,7 @@ MyFormat myformat = new MyFormat();
 
 				<td><img
 					src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>"
-					size="10px" width="300" alt="商品写真"></td>
+					size="10px" width="200" alt="商品写真"></td>
 
 				<td><%=goods.getGoodsName()%></td>
 				<td><%=myformat.yenFormat(goods.getPrice())%></td>
