@@ -24,15 +24,13 @@ int total = (int) request.getAttribute("total");
 
 </style>
 	<%@include file="../common/userHeader.jsp"%>
-	<table style="margin: auto; width: 850px">
-		<tr>
-			<td style="text-align: center; width: 508px; font-size: 24px;">購入完了</td>
-			<td style="width: 80px">&nbsp;</td>
-			<td style="width: 80px">&nbsp;</td>
-		</tr>
-	</table>
-
-	<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
+	
+	<hr style="text-align: center; height: 2px; background-color: black; width: 100%">
+	<br>
+	<h1 style="text-align: center; color: #000000">購入完了</h1>
+	<br>
+	<hr style="text-align: center; height: 2px; background-color: black; width: 100%">
+	
 	<div style="margin-bottom: 250px">
 
 		<div style="text-align: center">
@@ -66,7 +64,6 @@ int total = (int) request.getAttribute("total");
 					%>
 				</table>
 
-				<hr style="text-align: center; height: 2px; background-color: black; width: 950px">
 				<div style="text-align: center">
 					<tr>
 						<table style="margin: 0 auto">
@@ -77,10 +74,8 @@ int total = (int) request.getAttribute("total");
 					<br>
 
 					<br>
-					<tr>上記の商品を購入しました。
-					</tr>
-					<tr>出品者の発送をお待ちください。
-					</tr>
+					<p>上記の商品を購入しました。</p>
+					<p>入金し、出品者の発送をお待ちください。</p>
 					<br>
 
 					<br>
