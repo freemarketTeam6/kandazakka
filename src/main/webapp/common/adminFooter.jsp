@@ -1,11 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 <style>
-.wrapper{
-    min-height: 100vh;
-    position: relative;/*←相対位置*/
-    padding-bottom: 30px;/*←footerの高さ*/
-    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+.wrap{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 footer{
@@ -14,9 +13,6 @@ footer{
     color: #black;
     text-align: center;
     padding: 5px 0;
-
- position: absolute;/*←絶対位置*/
-    bottom: 0; /*下に固定*/
 }
 </style>
 
