@@ -43,10 +43,10 @@ nav ul li a{
 		</div>	
 		
 		<form action="<%=request.getContextPath()%>/search"style="display: inline;">
-			<input id="sbox2" name="keyword" type="text" placeholder="キーワードを入力" />
+			<input id="sbox2" name="keyword" type="text" placeholder="キーワードを入力">
 
 			<select name="region">
-						<option value="">選択してください</option>
+						<option value="null">選択してください</option>
 						<option value="0">北海道</option>
 						<option value="1">東北</option>
 						<option value="2">関東</option>

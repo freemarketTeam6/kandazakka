@@ -237,6 +237,11 @@ public class GoodsDAO {
 		//戻り値用の配列宣言
 		ArrayList<Goods> goodsList = new ArrayList<Goods>();
 		
+		//keywordが未入力の場合、nullにする
+		if ( keyword.equals("")) {
+			keyword = null;
+		}
+		
 		//SQL文
 		String sql = "SELECT * FROM goodsinfo WHERE name LIKE '%" + keyword + "%' OR region = '" + region + "' OR category LIKE '%" + keyword + "%'";
 		
