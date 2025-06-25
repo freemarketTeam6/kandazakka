@@ -11,9 +11,12 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 </head>
 <body>
 	<%@include file="/common/adminHeader.jsp"%>
+	<br>
 	<a href="<%= request.getContextPath() %>/view/adminMenu.jsp">【管理者メニュー画面】</a>
 
+	<br>
 	<h1 style="text-align: center; color: #000000;">ユーザー一覧</h1>
+	<br>
 	<hr style="text-align: center; height: 2px; background-color: black">
 	<p style="margin-top: 50px"></p>
 
