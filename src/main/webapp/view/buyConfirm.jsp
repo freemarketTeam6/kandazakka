@@ -25,11 +25,7 @@ int total = (int) request.getAttribute("total");
 </style>
 	<%@include file="../common/userHeader.jsp"%>
 	
-	<hr style="text-align: center; height: 2px; background-color: black; width: 100%">
-	<br>
-	<h1 style="text-align: center; color: #000000">購入完了</h1>
-	<br>
-	<hr style="text-align: center; height: 2px; background-color: black; width: 100%">
+	<h1 style="text-align: center; color: #000000;background-color:#ccff99;">購入完了</h1>
 	
 	<div style="margin-bottom: 250px">
 
