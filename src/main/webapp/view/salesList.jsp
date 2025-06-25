@@ -50,7 +50,9 @@ ArrayList<Goods> salesGoodsList = (ArrayList<Goods>)request.getAttribute("salesG
 		
 		<!-- 	表は左から購入日、商品画像、商品名、購入者、販売者、金額、利益（金額の10％） -->
 		
-		<% for ( int i = 0; i < salesGoodsList.size(); i++){ %>
+		<% for ( int i = 0; i < salesGoodsList.size(); i++){ 
+			double sales = salesGoodsList.get(i).getPrice();
+		%>
 		<tr>
 			<td><%= salesGoodsList.get(i).getBuyDate() %></td>
 			<td><%= salesGoodsList.get(i).getImgPath() %></td>
@@ -58,7 +60,7 @@ ArrayList<Goods> salesGoodsList = (ArrayList<Goods>)request.getAttribute("salesG
 			<td><%= salesGoodsList.get(i).getBuyuserId() %></td>
 			<td><%= salesGoodsList.get(i).getSelluserId() %></td>
 			<td><%= salesGoodsList.get(i).getPrice() %></td>
-			<td><%= salesGoodsList.get(i).getPrice() %>*0.1</td>
+			<td><%= sales*0.1 %></td>
 		</tr>
 		
 		<% } %>

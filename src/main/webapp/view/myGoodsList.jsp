@@ -54,7 +54,7 @@ MyFormat myformat = new MyFormat();
 					href="<%=request.getContextPath()%>/goodsDetail?goods_id=<%=goods.getGoodsId()%>&cmd=update"
 					style="margin-right: 30px;">内容変更</a></td>
 				<td>
-				<% if ( goods.getStatus().equals("0")){ %>
+				<% if ( goods.getStatus().equals("2")){ %>
 				<a href="<%=request.getContextPath()%>/goodsDetail?cmd=shipping&goods_id=<%=goods.getGoodsId()%>"
 					style="margin-right: 30px;">発送する</a>
 				<% } %>		
