@@ -11,7 +11,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendMail {
-	public static void send(String subject, String body, String address) {
+	public void send(String subject, String body, String address) {
 		try {
 			Properties props = System.getProperties();
 
@@ -38,7 +38,7 @@ public class SendMail {
 			mimeMessage.setFrom(new InternetAddress("test.sender@kanda-it-school-system.com", "神田IT School", "iso-2022-jp"));
 
 			// 送信先メールアドレスを指定（ご自分のメールアドレスに変更）
-			mimeMessage.setRecipients(Message.RecipientType.TO, "r-nakajima@sr-net.co.jp");
+			mimeMessage.setRecipients(Message.RecipientType.TO, address);
 			//userdbに登録されたメールアドレスを使用
 			//mimeMessage.setRecipients(Message.RecipientType.TO, address);
 

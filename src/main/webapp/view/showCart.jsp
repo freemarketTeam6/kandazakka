@@ -14,10 +14,12 @@ int total = 0;
 
 <%@include file="/common/userHeader.jsp"%>
 
+
 <hr style="text-align: center; height: 2px; background-color: black; width: 950px">
 <h1 style="text-align: center; color: #000000;">カート内容</h1>
 
 <hr style="text-align: center; height: 2px; background-color: black; width: 950px">
+
 <p style="margin-top: 100px"></p>
 
 
@@ -78,7 +80,9 @@ int total = 0;
 
 	</table>
 
+
 	<form class="showCart-form" action="<%=request.getContextPath()%>/buyConfirm">
+
 		<input type="submit" value="購入">
 	</form>
 

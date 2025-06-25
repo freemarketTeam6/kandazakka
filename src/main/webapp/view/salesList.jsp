@@ -17,7 +17,7 @@ ArrayList<Goods> salesGoodsList = (ArrayList<Goods>)request.getAttribute("salesG
 	
 	<a href="<%= request.getContextPath() %>/view/adminMenu.jsp">【管理者メニュー画面】</a>
 	<h1 style="text-align: center;">売上一覧</h1>
-	<hr size=5px color="black">
+	<hr size=3px color="black">
 	
 	<!-- 今後、月別・年別ソート機能追加予定 -->
 	<div class="searchBox">
