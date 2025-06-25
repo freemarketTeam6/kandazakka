@@ -31,7 +31,7 @@ MyFormat myFormat = new MyFormat();
 		<p style="margin-top: 100px"></p>
 
 		<p style="text-align: center">
-			<img class="img" src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>"  width="300" alt="商品写真">
+			<img class="img" src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>"  style="width:300" alt="商品写真">
 		</p>
 		
 		<p style="margin-top: 25px"></p>
