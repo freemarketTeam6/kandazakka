@@ -60,17 +60,17 @@ margin-right:10%;
 <body>
 
 <%@include file="../common/userHeader.jsp"%>
-
+<h1 style="text-align: center; color: #000000;background-color:#ccff99;">お問い合わせ一覧</h1>
 <p id="new">
 <a href="<%=request.getContextPath()%>/view/newInquiry.jsp">新規作成</a>
 </p>
 
 <table class="inquiriesList">
 		<tr>
-			<th>No.</th>
-			<th>カテゴリ</th>
-			<th>お問い合わせタイトル</th>
-			<th></th>
+			<th style="background-color: #ccff99">No.</th>
+			<th style="background-color: #ccff99">カテゴリ</th>
+			<th style="background-color: #ccff99">お問い合わせタイトル</th>
+			<th style="background-color: #ccff99">返信</th>
 			
 		</tr>
 		

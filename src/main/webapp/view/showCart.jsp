@@ -16,8 +16,7 @@ int total = 0;
 
 
 
-<hr
-	style="text-align: center; height: 2px; background-color: black; width: 950px">
+
 <h1 style="text-align: center; color: #000000;background-color:#ccff99;">カート内容</h1>
 
 
