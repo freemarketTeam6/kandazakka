@@ -34,8 +34,8 @@ public class ListServlet extends HttpServlet {
 		ArrayList<Goods> goodsList = new ArrayList<Goods>();
 		
 		try {
-		//全件取得
-		goodsList = objGoodsDAO.selectAll();
+		//販売中商品全件取得
+		goodsList = objGoodsDAO.selectAllNowSale();
 		
 		//スコープにgoodsListを登録
 		request.setAttribute("goodsList", goodsList);

@@ -17,11 +17,11 @@ ArrayList<Inquiries> inquiriesList = (ArrayList<Inquiries>) request.getAttribute
 	
 	<table style="margin: auto">
 		<tr>
-			<th>No.</th>
-			<th>カテゴリ</th>
-			<th>お問い合わせタイトル</th>
-			<th>ユーザー</th>
-			<th>返信</th>
+			<th style="background-color:#ffffa8; width:200px">No.</th>
+			<th style="background-color:#ffffa8; width:200px">カテゴリ</th>
+			<th style="background-color:#ffffa8; width:200px">お問い合わせタイトル</th>
+			<th style="background-color:#ffffa8; width:200px">ユーザー</th>
+			<th style="background-color:#ffffa8; width:200px">返信</th>
 		</tr>
 
 		<!-- リクエストスコープからデータの取得 -->

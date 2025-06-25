@@ -25,19 +25,17 @@ public class LoginServlet extends HttpServlet {
 		// DTOオブジェクト宣言
 		User user = new User();
 		
-		String from = null;
-		
-	try {	
 		// パラメータの取得
 		String userid = request.getParameter("userid");
 		String password = request.getParameter("password");
-		from = request.getParameter("from");
+		String from = request.getParameter("from");
+		
+	try {	
+
 		
 		// UserDAOをインスタンス化し、関連メソッドを呼び出す。
 		UserDAO objDao = new UserDAO();
 		user =objDao.selectByUser(userid,password);
-		
-		
 		
 		if(user.getUserid()==null){
 			if(from.equals("admin")) {
