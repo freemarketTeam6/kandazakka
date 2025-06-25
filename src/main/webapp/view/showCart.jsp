@@ -15,12 +15,11 @@ int total = 0;
 <%@include file="/common/userHeader.jsp"%>
 
 
-<hr
-	style="text-align: center; height: 2px; background-color: black; width: 950px">
-<h1 style="text-align: center; color: #000000;">カート内容</h1>
 
 <hr
 	style="text-align: center; height: 2px; background-color: black; width: 950px">
+<h1 style="text-align: center; color: #000000;background-color:#ccff99;">カート内容</h1>
+
 
 <p style="margin-top: 100px"></p>
 
