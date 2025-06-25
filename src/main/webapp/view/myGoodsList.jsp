@@ -8,8 +8,58 @@ MyFormat myformat = new MyFormat();
 <html>
 <head>
 <title>出品商品一覧</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<style>
+.mygoodsList{
+	width:75%;
+	margin: 20px auto;
+	
+}
+
+.mygoodsList tr th{
+	height: 35px;
+	font-size: 20px;
+}
+
+.mygoodsList tr td{
+	padding: 5px;
+}
+
+.mygoodsList #imgBox{
+	height: 100px;
+	width: 100px;
+	'
+}
+
+.mygoodsList #goodsName{
+	width: 250px;
+}
+
+.mygoodsList #price{
+	width: 100px;
+	text-align: right;
+}
+
+.mygoodsList #status{
+	width: 100px;
+	text-align: center;
+}
+
+.mygoodsList #change{
+	width: 150px;
+	text-align: center;
+}
+
+.mygoodsList #shipping{
+	width: 100px;
+	text-align: center;
+}
+
+.mygoodsList #changeStatus{
+	width: 100px;
+	text-align: center;
+}
+</style>
 </head>
 
 
@@ -43,17 +93,14 @@ MyFormat myformat = new MyFormat();
 
 			<tr>
 
-				<td><img
-					src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>"
-					size="10px"></td>
+				<td id="imgBox"><img src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>"></td>
 
-				<td><%=goods.getGoodsName()%></td>
-				<td><%=myformat.yenFormat(goods.getPrice())%></td>
-				<td><%=myformat.statusFormat(goods.getStatus())%></td>
-				<td><a
-					href="<%=request.getContextPath()%>/goodsDetail?goods_id=<%=goods.getGoodsId()%>&cmd=update"
+				<td id="goodsName"><%=goods.getGoodsName()%></td>
+				<td id="price"><%=myformat.yenFormat(goods.getPrice())%></td>
+				<td id="status"><%=myformat.statusFormat(goods.getStatus())%></td>
+				<td id="change"><a href="<%=request.getContextPath()%>/goodsDetail?goods_id=<%=goods.getGoodsId()%>&cmd=update"
 					style="margin-right: 30px;">内容変更</a></td>
-				<td>
+				<td id="shipping">
 				<% if ( goods.getStatus().equals("0")){ %>
 				<a href="<%=request.getContextPath()%>/goodsDetail?cmd=shipping&goods_id=<%=goods.getGoodsId()%>"
 					style="margin-right: 30px;">発送する</a>
@@ -61,7 +108,7 @@ MyFormat myformat = new MyFormat();
 				</td>
 				
 				<% if ( goods.getStatus().equals("0")){ %>
-				<td>
+				<td id="changeStatus">
 				<form action="<%=request.getContextPath()%>/mygoodsList">
 					<input type="submit" value="出品停止">
 					<input type="hidden" name="param" value="cancel">
@@ -69,7 +116,7 @@ MyFormat myformat = new MyFormat();
 				</form>
 				</td>
 				<% } else if ( goods.getStatus().equals("9")){%>
-				<td>
+				<td  id="changeStatus">
 				<form action="<%=request.getContextPath()%>/mygoodsList">
 					<input type="submit" value="出品再開">
 					<input type="hidden" name="param" value="restart">
