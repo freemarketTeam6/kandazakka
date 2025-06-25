@@ -42,7 +42,7 @@ public class InsertCartServlet extends HttpServlet {
 			goods.setImgPath(goods.getImgPath());
 			goods.setGoodsName(goods.getGoodsName());
 			goods.setPrice(goods.getPrice());
-			goods.setQuantity(1);
+			goods.setQuantity(goods.getQuantity());
 
 			// セッションからlist配列を取得
 			ArrayList<Goods> orderList = (ArrayList<Goods>) session.getAttribute("orderList");
