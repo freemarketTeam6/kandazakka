@@ -33,6 +33,7 @@ public class BuyConfirmServlet extends HttpServlet {
 			// セッションからGoodsオブジェクトを取得してセッション切れの判定
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
+			String userID = user.getUserid();
 			if (user == null) {
 				cmd = "logout";
 				error = "セッション切れの為、購入は出来ません。";
@@ -55,7 +56,7 @@ public class BuyConfirmServlet extends HttpServlet {
 			for ( int i = 0; i < orderList.size(); i++ ) {
 				int goodsID = orderList.get(i).getGoodsId();
 				objDao.updateStatus(goodsID, "1");
-				
+				objDao.updateBuyUserAndBuyDate(goodsID, userID);
 				total += orderList.get(i).getPrice();
 			}
 				
