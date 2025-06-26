@@ -560,6 +560,56 @@ public class GoodsDAO {
 	    }
 	  }
 	}
+		
+		//管理者画面で売上一覧を表示後、月・年で検索するメソッド
+		public ArrayList<Goods> searchByYearOrMonth(String year, String month){
+			// 変数宣言
+			Connection con = null; // DBコネクション
+			Statement smt = null; // SQLステートメント
+			
+			//戻り値用のArrayListを宣言
+			ArrayList<Goods> goodsList = new ArrayList<Goods>();
+			
+			String sql = "";
+			
+			//SQL文
+			if( year.equals("") && ! month.equals("")) {
+				sql = "SELECT * FROM goodsinfo WHERE buy_date LIKE '%" + month + "%' AND status = '3'";
+			}else if ( ! year.equals("") &&  month.equals("")) {
+				sql = "SELECT * FROM goodsinfo WHERE buy_date LIKE '" + year + "%' AND status = '3'";
+			}else if ( ! year.equals("") &&  ! month.equals("") ) {
+				sql = "SELECT * FROM goodsinfo WHERE buy_date LIKE '" + year + "'-'" + month + "%' AND status = '3'";
+			}
+			
+			try {
+				 con = getConnection();
+				 smt = con.createStatement();
+				 ResultSet rs = smt.executeQuery(sql);
+				 
+				 while( rs.next()) {
+					  Goods goods = new Goods();
+					  goods.setBuyDate(rs.getDate("buy_date"));
+					  goods.setImgPath(rs.getString("img_path"));
+					  goods.setGoodsName(rs.getString("name"));
+					  goods.setBuyuserId(rs.getString("buyuser_id"));
+					  goods.setSelluserId(rs.getString("selluser_id"));
+					  goods.setPrice(rs.getInt("price"));
+					  goodsList.add(goods);
+				 }
+				
+			}catch(Exception e){
+			    throw new IllegalStateException(e);
+			  }finally{
+			    if( smt != null ){
+			      try{smt.close();}catch(SQLException ignore){}
+			    }
+			    if( con != null ){
+			      try{con.close();}catch(SQLException ignore){}
+			    }
+			  }
+			return goodsList;
+			}
+		
 }
 		
 	//他に必要な機能追加
