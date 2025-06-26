@@ -114,21 +114,21 @@ MyFormat myformat = new MyFormat();
 				
 				<% if ( goods.getStatus().equals("0")){ %>
 				<td id="changeStatus">
-				<form action="<%=request.getContextPath()%>/mygoodsList">
+				<form action="<%=request.getContextPath()%>/mygoodsList" method="POST">
 					<input type="submit" value="出品停止">
 					<input type="hidden" name="param" value="cancel">
 					<input type="hidden" name="goods_id" value="<%=goods.getGoodsId()%>">
 				</form>
 				</td>
-				<% } else if ( goods.getStatus().equals("9")){%>
-				<td  id="changeStatus">
-				<form action="<%=request.getContextPath()%>/mygoodsList">
+				<% }else  if ( goods.getStatus().equals("9")){ %>
+				<td id="changeStatus">
+				<form action="<%=request.getContextPath()%>/mygoodsList" method="POST">
 					<input type="submit" value="出品再開">
 					<input type="hidden" name="param" value="restart">
 					<input type="hidden" name="goods_id" value="<%=goods.getGoodsId()%>">
 				</form>
-				</td>
-				<% } %>		
+				</td>				
+				<% } %>
 			</tr>
 			<%
 			}
