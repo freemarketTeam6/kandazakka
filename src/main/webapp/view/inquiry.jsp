@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.ArrayList, bean.Message" %>
+<%@page import="java.util.ArrayList, bean.Message,bean.User,dao.UserDAO" %>
 
 <%
 ArrayList<Message> messageList = (ArrayList<Message>) request.getAttribute("messageList");
@@ -140,11 +140,15 @@ h1 {
         <h2>Messages</h2>
         <div class="messages">
         <%
+        	UserDAO userDao = new UserDAO();
             if (messageList != null && !messageList.isEmpty()) {
                 for (int i = 0; i < messageList.size(); i++) {
+                	String userId = messageList.get(i).getUserId();
+                	User massageUser=userDao.selectByUser(userId);
+                	
         %>
         		<!-- 管理者権限ユーザーの発言の場合は、チャットの色変える -->
-        		<% if( messageList.get(i).getAuthority().equals("m")){ %>
+        		<% if( user.getAuthority().equals("m")){ %>
         			<div class="adminMessage">
                         <p class="message-content"><strong><%= messageList.get(i).getUserId() %>:</strong> <%= messageList.get(i).getMessage() %></p>
                         <p class="message-timestamp"><em><%= messageList.get(i).getDate() %></em></p>
