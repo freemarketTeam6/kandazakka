@@ -61,9 +61,8 @@ MyFormat myFormat = new MyFormat();
 
 
 		<form action="<%=request.getContextPath()%>/payment" method="get">
-			<input type="hidden" name="goodsId" value="<%=goodsId%>"> <input
-				type="submit" value="入金する">
-
+			<input type="hidden" name="goodsId" value="<%=goodsId%>">
+			<input type="submit" value="入金する">
 		</form>
 
 <br>

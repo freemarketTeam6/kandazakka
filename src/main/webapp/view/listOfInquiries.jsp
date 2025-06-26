@@ -11,10 +11,9 @@ ArrayList<Inquiries> inquiriesList = (ArrayList<Inquiries>) request.getAttribute
 <body>
 	<%@include file="../common/adminHeader.jsp"%>
 
-	<a href="<%=request.getContextPath()%>/view/adminMenu.jsp">【管理者メニュー画面】</a>
-	<h1 style="text-align: center;">お問い合わせ一覧</h1>
+	<h1 style="text-align: center;">お問い合わせ一覧</h1><br>
 	<hr style="text-align: center; height: 3px; background-color: black; width: 1500px">
-	
+	<br>	
 	<table style="margin: auto">
 		<tr>
 			<th style="background-color:#ffffa8; width:200px">No.</th>

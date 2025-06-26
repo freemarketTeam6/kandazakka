@@ -46,6 +46,8 @@ nav ul li a{
 	
 		<nav>
 			<ul>
+				<li><a href="<%=request.getContextPath()%>/view/adminMenu.jsp">
+					<img src="${pageContext.request.contextPath}/pic/home.png" alt="ロゴ"border="0"></a><li>
 				<li><a href="<%=request.getContextPath()%>/exhibitList">
 					<img src="${pageContext.request.contextPath}/pic/box2.png" alt="ロゴ"border="0"></a><li>
 				<li><a href="<%=request.getContextPath()%>/sellerList">

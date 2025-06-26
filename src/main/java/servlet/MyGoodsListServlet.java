@@ -20,6 +20,9 @@ public class MyGoodsListServlet extends HttpServlet {
 	String cmd = "";
 	String error = "";
 	
+	//パラメータ取得
+	String param= request.getParameter("param");
+	
 	try {
 	
 	// セッションからUserオブジェクトを取得してセッション切れの判定
@@ -42,10 +45,9 @@ public class MyGoodsListServlet extends HttpServlet {
 		ArrayList<Goods> myGoodsList = new ArrayList<Goods>();
 		myGoodsList=goodsDaoObj.selectGoodsBySelluser(userid);
 		
-		//商品のステータスを9(出品停止)に変更
-		String param= request.getParameter("param");
+
 		
-		
+		//パラメータの値によって商品のステータスを変える
 		if ( param != null && param.equals("cancel")) {
 			int goods_id = Integer.parseInt(request.getParameter("goods_id"));
 			goodsDaoObj.updateStatus(goods_id, "9");
@@ -62,9 +64,15 @@ public class MyGoodsListServlet extends HttpServlet {
 		cmd = "mypage";
 		error = "DB接続エラーの為、出品一覧を表示できません。";
 	} finally {
-		if (error.equals("")) {
-			//myGoodsList.jspに遷移
-			request.getRequestDispatcher("/view/myGoodsList.jsp").forward(request, response);
+		if (error.equals("") ) {
+			if ( param != null ) {
+				//myGoodsList.jspに遷移
+				request.getRequestDispatcher("/mygoodsList").forward(request, response);	
+			}else {
+				//myGoodsList.jspに遷移
+				request.getRequestDispatcher("/view/myGoodsList.jsp").forward(request, response);
+			}
+
 		} else {
 			request.setAttribute("cmd", cmd);
 			request.setAttribute("error", error);

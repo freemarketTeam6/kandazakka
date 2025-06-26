@@ -14,12 +14,11 @@ MyFormat myformat = new MyFormat();
 
 <body>
 	<%@include file="../common/adminHeader.jsp"%>
-	<a href="<%= request.getContextPath() %>/view/adminMenu.jsp">【管理者メニュー画面】</a>
 
 	<div style="text-align: center">
-		<h1 style="text-align: center;color:#000000;">出品一覧</h1>
+		<h1 style="text-align: center;color:#000000;">出品一覧</h1><br>
 		<hr style="text-align: center; height: 3px; background-color: black; width: 1500px">
-
+		<br>
 		<table style="text-align: center; margin: auto; width: 850px">
 
 			<tr>

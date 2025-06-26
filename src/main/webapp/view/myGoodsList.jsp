@@ -13,7 +13,7 @@ MyFormat myformat = new MyFormat();
 .mygoodsList{
 	width:75%;
 	margin: 20px auto;
-	
+	border-collapse:collapse;
 }
 
 .mygoodsList tr th{
@@ -59,6 +59,10 @@ MyFormat myformat = new MyFormat();
 	width: 100px;
 	text-align: center;
 }
+
+.border{
+	border-bottom: 1px solid #000000;
+}
 </style>
 </head>
 
@@ -70,7 +74,7 @@ MyFormat myformat = new MyFormat();
 	<h1 style="text-align: center; color: #000000;background-color:#ccff99;">出品商品一覧</h1>
 	<p style="margin-top: 50px"></p>
 	<div>
-		<table class="mygoodsList" border="1" style="text-align: center; margin: auto">
+		<table class="mygoodsList" style="text-align: center; margin: auto">
 
 			<tr>
 				<th style="background-color: #ccff99;width: 200px">商品画像</th>
@@ -91,7 +95,7 @@ MyFormat myformat = new MyFormat();
 					Goods goods = (Goods) myGoodsList.get(i);
 			%>
 
-			<tr>
+			<tr class="border">
 
 				<td id="imgBox"><img src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>" style="width:200px"alt="商品写真"></td>
 

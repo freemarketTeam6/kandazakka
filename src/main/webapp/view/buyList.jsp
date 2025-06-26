@@ -19,13 +19,55 @@ MyFormat myFormat = new MyFormat();
 	object-fit: contain;
 }
 
-.showCart {
-	min-width: 300px;
-	width: auto;
-	margin-top: 5%;
-	margin-left: auto;
-	margin-right: auto;
+.buyList {
+	width:75%;
+	margin: 20px auto;
+	border-collapse:collapse;
 }
+
+.buyList tr td{
+	padding: 5px;
+}
+
+.buyList #imgBox{
+	height: 110px;
+	width: 110px;
+	'
+}
+
+.buyList #goodsName{
+	width: 250px;
+}
+
+.buyList #price{
+	width: 100px;
+	text-align: right;
+}
+
+.buyList #quantity{
+	width: 100px;
+	text-align: center;
+}
+
+.buyList #category{
+	width: 150px;
+	text-align: center;
+}
+
+.buyList #buyDate{
+	width: 150px;
+	text-align: center;
+}
+
+.buyList #status{
+	width: 150px;
+	text-align: center;
+}
+
+.border{
+	border-bottom: 1px solid #000000;
+}
+
 </style>
 
 <body>
@@ -46,7 +88,7 @@ MyFormat myFormat = new MyFormat();
 		} else {
 		%>
 
-		<table style="margin: auto">
+		<table style="margin: auto" class="buyList">
 			<tr>
 				<th style="background-color: #ccff99">商品画像</th>
 				<th style="background-color: #ccff99">商品名</th>
@@ -59,24 +101,35 @@ MyFormat myFormat = new MyFormat();
 
 			<%
 			for (int i = 0; i < goodsList.size(); i++) {
-				if ( goodsList.get(i).getStatus().equals("1")){
+				if ( goodsList.get(i).getStatus().equals("1") || goodsList.get(i).getStatus().equals("2") || goodsList.get(i).getStatus().equals("3")){
 			%>
 
-			<tr>
-				<td><img class="img" src="<%=request.getContextPath() %>/file/images/<%= goodsList.get(i).getImgPath() %>" alt="商品写真"></td>
-				<td><%=goodsList.get(i).getGoodsName()%></td>
-				<td><%=myFormat.moneyFormat(goodsList.get(i).getPrice())%></td>
-				<td><%=goodsList.get(i).getQuantity()%></td>
-				<td><%=goodsList.get(i).getCategory()%></td>
-				<td><%=goodsList.get(i).getBuyDate()%></td>
+			<tr class="border">
+				<td id="imgBox"><img class="img" src="<%=request.getContextPath() %>/file/images/<%= goodsList.get(i).getImgPath() %>" alt="商品写真"></td>
+				<td id="goodsName"><%=goodsList.get(i).getGoodsName()%></td>
+				<td id="price"><%=myFormat.moneyFormat(goodsList.get(i).getPrice())%></td>
+				<td id="quantity"><%=goodsList.get(i).getQuantity()%></td>
+				<td id="category"><%=goodsList.get(i).getCategory()%></td>
+				<td id="buyDate"><%=goodsList.get(i).getBuyDate()%></td>
 				
-				<td>
+				
+				<% if ( goodsList.get(i).getStatus().equals("1")){ %>
+				<td id="status">
 					<form action="<%=request.getContextPath()%>/view/payment.jsp"
 						method="post">
 						<input type="hidden" name="goodsId" value="<%=goodsList.get(i).getGoodsId()%>">
 						<input type="submit" value="入金する"></input>
 					</form>
 				</td>
+				<% }else if ( goodsList.get(i).getStatus().equals("2")){ %>
+				<td id="status">
+					<p>入金済み</p>
+				</td>	
+				<% }else if ( goodsList.get(i).getStatus().equals("3")){ %>
+				<td id="status">
+					<p>発送済み</p>
+				</td>	
+				<% } %>
 			</tr>
 
 			<%

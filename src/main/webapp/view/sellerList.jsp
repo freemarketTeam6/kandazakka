@@ -15,10 +15,10 @@ ArrayList<User> sellerList = (ArrayList<User>)request.getAttribute("sellerList")
 
 <body>
 	<%@include file="../common/adminHeader.jsp"%>
-	<a href="<%= request.getContextPath() %>/view/adminMenu.jsp">【管理者メニュー画面】</a>
-	<h1 style="text-align: center;">出品者一覧</h1>
+	
+	<h1 style="text-align: center;">出品者一覧</h1><br>
 	<hr size=3px color="black">
-
+	<br>
 	<table style="margin: auto; text-align: center">
 		<tr>
 			<th style="background-color:#ffffa8; width:200px">ID</th>

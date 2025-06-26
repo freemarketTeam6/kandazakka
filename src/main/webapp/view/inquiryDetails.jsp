@@ -46,6 +46,7 @@ h1 {
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
+	height: 100px;
 }
 
 #submit {
@@ -71,7 +72,7 @@ h1 {
 }
 
 .adminMessage {
-	/* display:left; で管理者のメッセージを右寄せにしたい*/
+	/* float:left; で管理者のメッセージを右寄せにしたい*/
 	display: flex;
 	flex-direction: column;
 	background-color: #8fbc8f;
@@ -81,7 +82,7 @@ h1 {
 }
 
 .userMessage {
-	/* display:right;でユーザーのメッセージを右寄せにしたい*/
+	/* float:right;でユーザーのメッセージを右寄せにしたい*/
 	display: flex;
 	flex-direction: column;
 	background-color: #dcf8c6;
@@ -114,7 +115,8 @@ h1 {
 </head>
 
 <body>
-	<%@include file="/common/userHeader.jsp"%>
+	<%@include file="/common/adminHeader.jsp"%>
+	
 	<p style="margin-top: 100px"></p>
 	<div class="container">
 		<h1>問い合わせメッセージ</h1>
@@ -136,9 +138,10 @@ h1 {
 			if (messageList != null && !messageList.isEmpty()) {
 				for (int i = 0; i < messageList.size(); i++) {
 			%>
-			<!-- 管理者のユーザーID確定次第「admin」を変更 -->
+			
 			<%
-			if (messageList.get(i).getUserId().equals("admin")) {
+			// 管理者のユーザーID確定次第「9999」を変更 
+			if (messageList.get(i).getUserId().equals("9999")) {
 			%>
 			<div class="adminMessage">
 				<p class="message-content">
@@ -176,6 +179,6 @@ h1 {
 		<a href="<%=request.getContextPath()%>/listOfInquiries">問い合わせ一覧に戻る</a>
 	</p>
 	<p style="margin-top: 100px"></p>
-	<%@include file="../common/userFooter.jsp"%>
+	<%@include file="../common/adminFooter.jsp"%>
 </body>
 </html>
