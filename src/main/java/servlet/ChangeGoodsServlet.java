@@ -59,7 +59,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 			if (category.equals("")) {
 				category=oldGoods.getCategory();
 			}
-			if (region.equals("選択")) {
+			if (region.equals("")) {
 				region=oldGoods.getRegion();
 			}
 			
