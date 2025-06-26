@@ -50,7 +50,22 @@ public class InsertCartServlet extends HttpServlet {
 			//orderListがなかった場合は新たに作成
 			if (orderList == null) {
 				orderList = new ArrayList<Goods>();
+				
+			}else {
+				
+			//カート内に既にする同じ商品を追加しようとしてた場合はinsertCartConfirm.jspに飛んでメッセージ出す
+			for(Goods orderGoods:orderList) {
+				if(goods.getGoodsId()==orderGoods.getGoodsId()) {
+					String msg = "この商品は既にカート内に存在します。";
+					request.setAttribute("msg", msg);
+					request.setAttribute("goods", goods);
+					request.getRequestDispatcher("/view/insertCartConfirm.jsp").forward(request, response);
+					return;
+				}
 			}
+				
+			}
+			
 			// orderListに加える
 			orderList.add(goods);
 
