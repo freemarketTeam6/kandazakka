@@ -20,6 +20,7 @@ public class UpdateUserServlet extends HttpServlet {
 		String error = "";
 		String message = "";
 		User updateUser = new User();
+		User returnUser = new User();
 		try {
 
 			request.setCharacterEncoding("UTF-8");
@@ -47,8 +48,66 @@ public class UpdateUserServlet extends HttpServlet {
 			String address = request.getParameter("address");
 			String memo = request.getParameter("memo");
 			String tell = request.getParameter("tell");
-			
-		
+
+			returnUser.setAddress(address);
+			returnUser.setName(name);
+			returnUser.setEmail(mail);
+			returnUser.setPassword(password);
+			returnUser.setMemo(memo);
+			returnUser.setUserid(userID);
+			returnUser.setNamekana(name_kana);
+			returnUser.setNickname(nickname);
+			returnUser.setTell(tell);
+
+			if (name == null || name.equals("")) {
+
+				name = user.getName();
+			}
+
+			if (name_kana == null || name_kana.equals("")) {
+
+				name_kana = user.getNamekana();
+			}
+
+			if (nickname == null || nickname.equals("")) {
+
+				nickname = user.getNickname();
+			}
+
+			if (userID == null || userID.equals("")) {
+				userID = user.getUserid();
+
+			}
+
+			if (mail == null || mail.equals("")) {
+				mail = user.getEmail();
+			}
+
+			if (oldPass == null || oldPass.equals("")) {
+				message = "現在のパスワードを入力してください";
+				return;
+			}
+
+			if (password == null || password.equals("")) {
+				password = oldPass;
+			}
+
+			if (passwordCheck == null || passwordCheck.equals("")) {
+				passwordCheck = null;
+			}
+
+			if (address == null || address.equals("")) {
+				address = user.getAddress();
+			}
+
+			if (memo == null || memo.equals("")) {
+				memo = user.getMemo();
+			}
+
+			if (tell == null || tell.equals("")) {
+				tell = user.getTell();
+			}
+
 			updateUser.setAddress(address);
 			updateUser.setName(name);
 			updateUser.setEmail(mail);
@@ -58,62 +117,14 @@ public class UpdateUserServlet extends HttpServlet {
 			updateUser.setNamekana(name_kana);
 			updateUser.setNickname(nickname);
 			updateUser.setTell(tell);
-			
 
-			
-			if (name.equals("")) {
-				message = "名前を入力してください";
+			if (!nowUserid.equals(userID)) {
 
-				return;
-			}
-
-			//パラメータを受け取って、ユーザー名（フリガナ）の空欄処理
-
-			if (name_kana.equals("")) {
-				message = "名前（カナ）を入力してください";
-
-				return;
-			} 
-
-			//パラメータを受け取って、ニックネームの空欄処理
-
-			if (nickname.equals("")) {
-				message = "ニックネームを入力してください。";
-
-				return;
-			} 
-
-			/*
-			 * パラメータを受け取って、ユーザーIDに関するエラー処理
-			 * 空欄判定と、重複判定
-			 */
-
-			if (userID.equals("")) {
-				message = "ユーザーIDを入力してください。";
-
-				return;
-			}
-
-			if (userDao.selectByUser(userID).getUserid() != null) {
-				message = "このユーザーIDはすでに使われています！";
-				updateUser.setUserid("");
-				return;
-			}
-			if (tell.equals("")) {
-				message = "電話番号を入力してください。";
-
-				return;
-			}
-
-			/*
-			 * パラメータを受け取って、メールアドレスの空欄処理
-			 * 正規表現を追加予定 6/20
-			 */
-
-			if (address.equals("")) {
-				message = "住所を入力してください";
-
-				return;
+				if (userDao.selectByUser(userID).getUserid() != null) {
+					message = "このユーザーIDはすでに使われています！";
+					updateUser.setUserid("");
+					return;
+				}
 			}
 
 			if (!user.getPassword().equals(oldPass)) {
@@ -121,24 +132,15 @@ public class UpdateUserServlet extends HttpServlet {
 				return;
 			}
 
-			if (password.equals("")) {
-				message = "パスワードを入力してください";
-				return;
-
-			} else if (passwordCheck.equals("")) {
-				message = "パスワード（確認用）を入力してください";
-				return;
-
-			} else if (!password.equals(passwordCheck)) {
+			if (!password.equals(passwordCheck) && passwordCheck != null) {
 				message = "パスワードとパスワード（確認用）が一致しません";
 				return;
 
 			}
-			
-			userDao.update(updateUser,nowUserid);
-			updateUser=userDao.selectByUser(userID);
-			session.setAttribute("user",updateUser);
-			
+
+			userDao.update(updateUser, nowUserid);
+			updateUser = userDao.selectByUser(userID);
+			session.setAttribute("user", updateUser);
 
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、パスワード変更は行えません。 ";
@@ -153,12 +155,12 @@ public class UpdateUserServlet extends HttpServlet {
 				request.setAttribute("user", updateUser);
 				request.getRequestDispatcher("/view/updateUserConfirm.jsp").forward(request, response);
 
-			} else if(!error.equals("")) {
+			} else if (!error.equals("")) {
 				request.setAttribute("error", error);
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
-			}else {
+			} else {
 				request.setAttribute("message", message);
-				request.setAttribute("user", updateUser);
+				request.setAttribute("user", returnUser);
 				request.getRequestDispatcher("/view/updateUser.jsp").forward(request, response);
 			}
 		}

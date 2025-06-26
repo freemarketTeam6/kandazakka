@@ -110,7 +110,7 @@ body {
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td colspan=2 style="text-align: center;"><button type=“button” onclick="<%=request.getContextPath()%>/view/mypage.jsp">マイページへ</button></td>
+				<td colspan=2 style="text-align: center;"><button type=“button” onclick="location.href='<%=request.getContextPath()%>/view/mypage.jsp'">マイページへ</button></td>
 			</tr>
 			
 
