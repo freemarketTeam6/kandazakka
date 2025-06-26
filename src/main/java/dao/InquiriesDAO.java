@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import bean.Inquiries;
 
 public class InquiriesDAO {
-	
 
 	//接続用の情報をフィールドに定数として定義
 	private static final String RDB_DRIVE = "org.mariadb.jdbc.Driver";
@@ -86,11 +85,17 @@ public class InquiriesDAO {
 		// 変数宣言
 		Connection con = null; // DBコネクション
 		Statement smt = null; // SQLステートメント
-
+		String File_path;
+		if (Inquiries.getFile_path() == null) {
+			File_path = "NULL";
+		} else {
+			File_path = "'" + Inquiries.getFile_path() + "'";
+		}
 		// SQL文
-		String sql = "INSERT INTO inquiryinfo  (inquiryno, user_id, category, title, contents, file_path) VALUES (NULL,'" + Inquiries.getUser_id() + "','"
+		String sql = "INSERT INTO inquiryinfo  (inquiryno, user_id, category, title, contents, file_path) VALUES (NULL,'"
+				+ Inquiries.getUser_id() + "','"
 				+ Inquiries.getCategory() + "','" + Inquiries.getTitle() + "','"
-				+ Inquiries.getContents() + "','" + Inquiries.getFile_path() + "')";
+				+ Inquiries.getContents() + "'," + File_path + ")";
 
 		try {
 			// DBに接続
@@ -203,7 +208,7 @@ public class InquiriesDAO {
 		}
 		return Inquiries;
 	}
-	
+
 	public int inquiriesCount() {
 
 		// 変数宣言
@@ -223,10 +228,10 @@ public class InquiriesDAO {
 			ResultSet rs = smt.executeQuery(sql);
 
 			// 検索結果をArrayListに格納
-			if(rs.next()==false) {
-				last_inquiryno=-1;
-			}else {
-			last_inquiryno = rs.getInt("inquiryno");
+			if (rs.next() == false) {
+				last_inquiryno = -1;
+			} else {
+				last_inquiryno = rs.getInt("inquiryno");
 			}
 
 		} catch (Exception e) {
@@ -247,7 +252,7 @@ public class InquiriesDAO {
 		}
 		return last_inquiryno;
 	}
-	
+
 	public ArrayList<Inquiries> selectUser(String userid) {
 
 		// 変数宣言
