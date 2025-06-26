@@ -22,6 +22,7 @@ public class InquiryServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		
 		commonMethod(request, response);
 	}
 	
@@ -33,16 +34,29 @@ public class InquiryServlet extends HttpServlet {
 		// エラー文と遷移先を格納する変数宣言
 		String error = "";
 		String cmd = "";
+		String from="";
+		int inquiryNo;
+		if(request.getParameter("inquiryNo")!=null) {
+			// お問い合わせIDを取得
+			inquiryNo = Integer.parseInt(request.getParameter("inquiryNo"));
+			//どこから来たかを判別するfromの値を取得（管理者側 or ユーザー側）
+			from = request.getParameter("from");
+
+			
+		}else{
+			// お問い合わせIDを取得
+			inquiryNo = Integer.parseInt(request.getAttribute("inquiryNo").toString());
+			//どこから来たかを判別するfromの値を取得（管理者側 or ユーザー側）
+			from = request.getAttribute("from").toString();
+		}
 		
-		// お問い合わせIDを取得
-		int inquiryNo = Integer.parseInt(request.getParameter("inquiryno"));
 		
-		//どこから来たかを判別するfromの値を取得（管理者側 or ユーザー側）
-		String from = request.getParameter("from");
 
 		try {
 			// addパラメータ取得
 			cmd = request.getParameter("cmd");
+			
+			
 
 			// addがaddだったらメッセージ追加を行う
 			if ( cmd != null && cmd.equals("insert")) {

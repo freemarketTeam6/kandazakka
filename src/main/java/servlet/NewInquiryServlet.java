@@ -29,6 +29,7 @@ public class NewInquiryServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String message = "";
+		error = "";
 		Inquiries inquiries = new Inquiries();
 		int inquiryno = 0;
 		try {
@@ -90,7 +91,8 @@ public class NewInquiryServlet extends HttpServlet {
 			}else {
 			inquiryno = last_inquiryno;
 			}
-
+			request.setAttribute("inquiryNo", inquiryno);
+			
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、お問い合わせ作成は行えませんでした。";
 			request.setAttribute("cmd", "logout");
@@ -101,8 +103,8 @@ public class NewInquiryServlet extends HttpServlet {
 
 		} finally {
 			if (error.equals("") && message.equals("")) {
-				request.setAttribute("inquiryno", inquiryno);
-				System.out.println(inquiryno);
+				request.setAttribute("inquiryNo", inquiryno);
+				request.setAttribute("from", "user");
 				request.getRequestDispatcher("/inquiry").forward(request, response);
 
 			} else if (!error.equals("")) {
@@ -124,7 +126,7 @@ public class NewInquiryServlet extends HttpServlet {
 		String filePath = "";
 		
 		//ファイル名を管理する変数
-		String fileName = "";
+		String fileName=null;
 		
 		GoodsDAO goodsDao = new GoodsDAO();
 
@@ -188,7 +190,7 @@ public class NewInquiryServlet extends HttpServlet {
 
 			//リクエストスコープにファイル名を設定
 		} else {
-			error = "ファイルがありません";
+			
 		}
 		return fileName;
 
