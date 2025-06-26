@@ -1,8 +1,9 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.*,bean.Inquiries"%>
+<%@page import="java.util.*,bean.Inquiries,util.MyFormat"%>
 
 <%
 ArrayList<Inquiries> inquiriesList = (ArrayList<Inquiries>) request.getAttribute("InquiriesList");
+MyFormat myFormat = new MyFormat();
 %>
 <html>
 <head>
@@ -33,7 +34,7 @@ ArrayList<Inquiries> inquiriesList = (ArrayList<Inquiries>) request.getAttribute
 		<tr>
 			<!-- DTOクラスを使用し一覧を表示 -->
 			<td style="text-align: center; width: 200px"><%=inquiries.getInquiryno()%></td>
-			<td style="text-align: center; width: 200px"><%=inquiries.getCategory()%></td>
+			<td style="text-align: center; width: 200px"><%=myFormat.categoryFormat(inquiries.getCategory())%></td>
 			<td style="text-align: center; width: 200px"><%=inquiries.getTitle()%></td>
 			<td style="text-align: center; width: 200px"><%=inquiries.getUser_id()%></td>
 
