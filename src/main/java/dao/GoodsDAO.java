@@ -293,7 +293,7 @@ public class GoodsDAO {
 		}
 		
 		//SQL文
-		String sql = "SELECT * FROM goodsinfo WHERE name LIKE '%" + keyword + "%' OR region = '" + region + "' OR category LIKE '%" + keyword + "%'";
+		String sql = "SELECT * FROM goodsinfo WHERE status = '0' AND (name LIKE '%" + keyword + "%' OR region = '" + region + "' OR category LIKE '%" + keyword + "%')";
 		
 		try {
 			
