@@ -67,6 +67,7 @@
 																				
 			</table>
 
+			<br><br>
 			<div class="submit">
 				<p style="text-align: center">
 					<input type="submit" value="登録" id="insertSubmit">
@@ -76,7 +77,7 @@
 		</form>
 		<p style="margin-top:50px"></p>
 		<p style="text-align: center">
-			<a href="<%= request.getContextPath() %>/view/top.jsp">トップ画面へ</a>
+			<a href="<%= request.getContextPath() %>/list">トップ画面へ</a>
 		</p>
 	</div>
 	<!-- 正規表現JavaScriptで追加できたら -->

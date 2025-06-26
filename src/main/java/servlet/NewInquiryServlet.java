@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 
 import bean.Inquiries;
 import bean.User;
-import dao.GoodsDAO;
 import dao.InquiriesDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -128,8 +127,6 @@ public class NewInquiryServlet extends HttpServlet {
 		//ファイル名を管理する変数
 		String fileName=null;
 		
-		GoodsDAO goodsDao = new GoodsDAO();
-
 		//ファイルサイズを元にファイルの有無を確認
 		if (filePart.getSize() != 0) {
 			
