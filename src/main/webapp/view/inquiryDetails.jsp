@@ -141,7 +141,7 @@ h1 {
 			
 			<%
 			// 管理者のユーザーID確定次第「9999」を変更 
-			if (messageList.get(i).getUserId().equals("9999")) {
+			if (messageList.get(i).getAuthority().equals("m")) {
 			%>
 			<div class="adminMessage">
 				<p class="message-content">

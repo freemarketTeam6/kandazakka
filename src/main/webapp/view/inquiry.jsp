@@ -143,8 +143,8 @@ h1 {
             if (messageList != null && !messageList.isEmpty()) {
                 for (int i = 0; i < messageList.size(); i++) {
         %>
-        		<!-- 管理者のユーザーID確定次第「admin」を変更 -->
-        		<% if( messageList.get(i).getUserId().equals("admin")){ %>
+        		<!-- 管理者権限ユーザーの発言の場合は、チャットの色変える -->
+        		<% if( messageList.get(i).getAuthority().equals("m")){ %>
         			<div class="adminMessage">
                         <p class="message-content"><strong><%= messageList.get(i).getUserId() %>:</strong> <%= messageList.get(i).getMessage() %></p>
                         <p class="message-timestamp"><em><%= messageList.get(i).getDate() %></em></p>
