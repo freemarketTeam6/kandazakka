@@ -6,7 +6,7 @@ Goods goods = (Goods) request.getAttribute("goods");
 //MyFormatクラスのオブジェクトを生成
 MyFormat myFormat = new MyFormat();
 //同じ商品を２個以上カートに入れようとしたとき用のメッセージ取得
-String msg = "correct";
+String msg = null;
 msg = (String) request.getAttribute("msg");
 %>
 <html>
@@ -26,11 +26,11 @@ msg = (String) request.getAttribute("msg");
 
 	<%
 	//カート内重複の場合は文言変える
-	if (msg.equals("correct")) {
+	if (msg == null) {
 	%>
 	<h1 style="text-align: center; color: #000000; background-color: #ccff99;">カート追加完了</h1>
 	<%
-	} else if(msg.equals(msg)){
+	} else {
 	%>
 	<h1 style="text-align: center; color: #000000; background-color: #ccff99;">カートに追加できません</h1>
 	<%
@@ -48,11 +48,11 @@ msg = (String) request.getAttribute("msg");
 
 			<%
 			//カート内重複の場合は文言変える
-			if (msg.equals("correct")) {
+			if (msg == null) {
 			%>
 			<td style="text-align: center; color: #000000; font-size: 30px"><strong>カートに追加しました。</strong></td>
 			<%
-			} else if(msg.equals(msg)){
+			} else {
 			%>
 			<td style="text-align: center; color: #000000; font-size: 30px"><strong>同じ商品が既にカート内に存在します。</strong></td>
 			<%

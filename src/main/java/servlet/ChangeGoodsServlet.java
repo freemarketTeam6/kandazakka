@@ -40,29 +40,27 @@ public class ChangeGoodsServlet extends HttpServlet {
 			String category = request.getParameter("category");
 			String region = request.getParameter("region");
 			String memo = request.getParameter("memo");
+			//変更前の商品情報の取得
 			int goodsid = Integer.parseInt(request.getParameter("goodsid"));
+			Goods oldGoods = goodsDao.selectGoodsByGoodsID(goodsid);
 
 			// 入力チェック
 			
-			if (goodsname.equals("")) {
-				error = "グッズの名前が未入力の為、商品情報変更できません。";
-				return;
+			if (goodsname==null||goodsname.equals("")) {
+				goodsname=oldGoods.getGoodsName();
 			}
 			if (price.equals("")) {
-				error = "グッズの価格が未入力の為、商品情報変更できません。";
-				return;
+				price=Integer.toString(oldGoods.getPrice());
 			}
+				
 			if (quantity.equals("")) {
-				error = "グッズの価格が未入力の為、商品情報変更できません。";
-				return;
+				quantity=Integer.toString(oldGoods.getQuantity());
 			}
 			if (category.equals("")) {
-				error = "グッズのカテゴリーが未入力の為、商品情報変更できません。";
-				return;
+				category=oldGoods.getCategory();
 			}
 			if (region.equals("選択")) {
-				error = "グッズの地域が未入力の為、商品情報変更できません。";
-				return;
+				region=oldGoods.getRegion();
 			}
 			
 			//ファイル取得用のimage情報を受け取る
@@ -75,7 +73,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 				filePath=imgpath;
 			}
 
-			// 新しい情報をbookに格納
+			// 新しい情報をgoodsに格納
 			Goods goods = new Goods();
 			goods.setGoodsName(goodsname);
 			goods.setImgPath(filePath);

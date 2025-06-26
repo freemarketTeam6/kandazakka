@@ -18,12 +18,14 @@ MyFormat myFormat = new MyFormat();
 	<div style="text-align: center">
 		<%@ include file="../common/userHeader.jsp"%>
 		<h1
-			style="text-align: center; color: #000000; background-color: #ccff99;">入金完了</h1>
+			style="text-align: center; color: #000000; background-color: #ccff99;">入金確認</h1>
 		<p style="margin-top: 100px"></p>
 
 
 
-		<p>購入商品情報を確認し、入金してください。</p>
+		<p><strong>購入商品情報を確認し、入金してください。</strong></p>
+		
+		
 
 		<%
 		//送られてきた商品IDを取得
@@ -37,7 +39,7 @@ MyFormat myFormat = new MyFormat();
 
 
 
-		<table style="margin: auto">
+		<table style="margin:auto;margin-top:50px;margin-bottom:50px;width:70%">
 			<tr>
 				<th style="background-color: #ccff99">写真</th>
 				<th style="background-color: #ccff99">商品名</th>
@@ -49,7 +51,7 @@ MyFormat myFormat = new MyFormat();
 			<tr>
 				<td><img
 					src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>"
-					alt="商品写真"></td>
+					alt="商品写真" style="text-align: center;"></td>
 				<td><%=goods.getGoodsName()%></td>
 				<td><%=goods.getQuantity()%></td>
 				<td><%=goods.getCategory()%></td>
