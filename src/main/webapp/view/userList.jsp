@@ -52,12 +52,12 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 			<td><%= userList.get(i).getEmail() %></td>
 			<td><%= userList.get(i).getTell() %></td>
 			<td>
-
+				<% if ( userList.get(i).getAuthority().equals("u")){ %>
 				<form action="<%=request.getContextPath() %>/delete" method="get">
-          <input type="hidden"
-						name="userid" value="<%=userList.get(i).getUserid() %>">
+         			 <input type="hidden" name="userid" value="<%=userList.get(i).getUserid() %>">
 					<input type="submit" value="削除"> 
 				</form>
+				<% } %>
 			</td>
 		</tr>
 		<%
@@ -65,7 +65,7 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 		%>
 		<% }else { %>
 		<p style="font-size: 24px; text-align: center">
-			<strong>商品未購入のため、購入履歴は表示できませんでした。</strong>
+			<strong>登録しているユーザーがいません！</strong>
 		</p>
 		<% } %>
 
