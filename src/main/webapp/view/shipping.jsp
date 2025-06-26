@@ -61,8 +61,9 @@ Goods goods = (Goods)request.getAttribute("goods");
 	<tr>
 	<td>
 	<br>
-	<form aciton="<%= request.getContextPath() %>/view/mypage.jsp">
+	<form action="<%= request.getContextPath() %>/mygoodsList">
 		<input type="submit" value="キャンセル">
+		<br>
 	</form>
 	</td>
 	</tr>
