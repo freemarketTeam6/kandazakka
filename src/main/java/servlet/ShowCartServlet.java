@@ -19,6 +19,7 @@ public class ShowCartServlet extends HttpServlet {
 		String cmd = "";
 		User user = null;
 		int total = 0;
+		boolean login = true;
 		// 商品リスト用のArrayListを作成
 		ArrayList<Goods> GoodsListInCart = new ArrayList<Goods>();
 
@@ -30,6 +31,7 @@ public class ShowCartServlet extends HttpServlet {
 			// ログインしていなかったらログインページに飛ばす
 			user = (User) session.getAttribute("user");
 			if (user == null) {
+				login = false;
 				request.getRequestDispatcher("/view/userLogin.jsp").forward(request, response);
 				return;
 			}
@@ -41,9 +43,7 @@ public class ShowCartServlet extends HttpServlet {
 				orderList.remove(Integer.parseInt(delno));
 			}
 
-
 			if (orderList != null) {
-				
 
 				for (int i = 0; i < orderList.size(); i++) {
 					Goods goods = orderList.get(i);
@@ -59,13 +59,15 @@ public class ShowCartServlet extends HttpServlet {
 			error = "DB接続エラーの為、カート状況は確認できません。";
 			cmd = "logout";
 		} finally {
-			if (error.equals("")) {
-				request.getRequestDispatcher("/view/showCart.jsp").forward(request, response);
-			} else {
-				// エラーなら
-				request.setAttribute("cmd", cmd);
-				request.setAttribute("error", error);
-				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
+			if (login == true) {
+				if (error.equals("")) {
+					request.getRequestDispatcher("/view/showCart.jsp").forward(request, response);
+				} else {
+					// エラーなら
+					request.setAttribute("cmd", cmd);
+					request.setAttribute("error", error);
+					request.getRequestDispatcher("/view/error.jsp").forward(request, response);
+				}
 			}
 		}
 	}

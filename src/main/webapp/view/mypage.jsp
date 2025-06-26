@@ -4,11 +4,21 @@
 <%
 //セッションスコープからのuser情報の取得
 User checkUser = (User)session.getAttribute("user");
+//userがNULL(＝未ログイン)だったらログインページに飛ばす&例外対策
 
-//userがNULL(＝未ログイン)だったらログインページに飛ばす
-if(checkUser==null){
+if (checkUser == null) {
+	checkUser = new User();
+	checkUser.setAddress("");
+	checkUser.setName("");
+	checkUser.setEmail("");
+	checkUser.setUserid("");
+	checkUser.setNamekana("");
+	checkUser.setNickname("");
+	checkUser.setTell("");
 	request.getRequestDispatcher("/view/userLogin.jsp").forward(request, response);
 }
+
+
 %>
 
 <html>
@@ -34,27 +44,27 @@ if(checkUser==null){
 		<br>
 			<tr>	
 				<th style="background-color: #ccff99; width: 100">名前</th>
-				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getName()%></td>
+				<td style="text-align:center; color:#000000; font-size:20px"><%=checkUser.getName()%></td>
 			</tr>	
 			<tr>	
 				<th style="background-color: #ccff99; width: 100">名前(カナ)</th>
-				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getNamekana()%></td>
+				<td style="text-align:center; color:#000000; font-size:20px"><%=checkUser.getNamekana()%></td>
 			</tr>
 			<tr>	
 				<th style="background-color: #ccff99; width: 100">ニックネーム</th>
-				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getNickname()%></td>
+				<td style="text-align:center; color:#000000; font-size:20px"><%=checkUser.getNickname()%></td>
 			</tr>
 			<tr>	
 				<th style="background-color: #ccff99; width: 100">住所</th>
-				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getAddress()%></td>
+				<td style="text-align:center; color:#000000; font-size:20px"><%=checkUser.getAddress()%></td>
 			</tr>
 			<tr>
 				<th style="background-color: #ccff99; width: 100">メールアドレス</th>
-				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getEmail()%></td>
+				<td style="text-align:center; color:#000000; font-size:20px"><%=checkUser.getEmail()%></td>
 			</tr>
 			<tr>
 				<th style="background-color: #ccff99; width: 100">電話番号</th>
-				<td style="text-align:center; color:#000000; font-size:20px"><%=user.getTell()%></td>
+				<td style="text-align:center; color:#000000; font-size:20px"><%=checkUser.getTell()%></td>
 			</tr>
 			
 		</table>
