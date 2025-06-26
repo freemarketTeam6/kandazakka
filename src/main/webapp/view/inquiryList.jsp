@@ -1,8 +1,9 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.*,bean.Inquiries,java.util.ArrayList"%>
+<%@page import="java.util.*,bean.Inquiries,java.util.ArrayList, util.MyFormat"%>
 
 <%
 ArrayList<Inquiries> inquiriesList = (ArrayList<Inquiries>) request.getAttribute("InquiriesList");
+MyFormat myFormat = new MyFormat();
 %>
 <html>
 <head>
@@ -83,7 +84,7 @@ margin-right:10%;
 		%>
 		<tr>
 			<td><%=No%></td>
-			<td><span><%=inquiries.getCategory()%></span></td>
+			<td><span><%=myFormat.categoryFormat(inquiries.getCategory())%></span></td>
 			<td><span><%=inquiries.getTitle()%></span></td>
 
 			<td>

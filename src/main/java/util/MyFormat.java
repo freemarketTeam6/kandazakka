@@ -3,9 +3,8 @@ package util;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-
 public class MyFormat {
-	
+
 	public String moneyFormat(int price) { //\xxx,xxxの型にフォーマット
 		String formatPrice = null;
 		NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.JAPAN);//日本の通貨の型
@@ -56,8 +55,8 @@ public class MyFormat {
 
 		} else if (status.equals("9")) {
 			formatStatus = "出品停止中";
-		
-		}else {
+
+		} else {
 			formatStatus = status;
 
 		}
@@ -71,27 +70,40 @@ public class MyFormat {
 
 		switch (category) {
 		case "0":
-			formatCategory = "注文について";
+			formatCategory = "取引に関する問題";
 			break;
 		case "1":
-			formatCategory = "アカウントについて";
+			formatCategory = "出品に関する質問";
 			break;
 		case "2":
-			formatCategory = "支払いについて";
+			formatCategory = "商品に関する質問";
 			break;
 		case "3":
-			formatCategory = "注文後トラブルについて";
+			formatCategory = "購入に関する質問";
 			break;
-
-		case "other":
+		case "4":
+			formatCategory = "配送に関する問題";
+			break;
+		case "5":
+			formatCategory = "アカウントに関する問題";
+			break;
+		case "6":
+			formatCategory = "支払い・返金について";
+			break;
+		case "7":
+			formatCategory = "違反報告・安全に関する問題";
+			break;
+		case "8":
+			formatCategory = "アプリの不具合・バグ報告";
+			break;
+		case "9":
 			formatCategory = "その他";
 			break;
-
 		}
 
 		return formatCategory;
 	}
-	
+
 	//region（出品地域）フォーマット
 	public String regionFormat(String region) {
 		String formatRegion = null;
@@ -124,13 +136,10 @@ public class MyFormat {
 		case "8":
 			formatRegion = "沖縄";
 			break;
-		
+
 		}
 
 		return formatRegion;
 	}
 
 }
-
-
-
