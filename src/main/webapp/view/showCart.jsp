@@ -49,16 +49,14 @@ int total = 0;
 }
 </style>
 
-
-
 	<%
 	if (orderList.size() != 0) {
 	%>
 
-	<table class="showCart" style="border: 1px;">
+	<table class="showCart" style="border: 1px;text-align:center">
 		<tr>
 			<th style="background-color: #00a7db; width: 80">商品画像</th>
-			<th style="background-color: #00a7db; width: 80">グッズID</th>
+<!-- 			<th style="background-color: #00a7db; width: 80">グッズID</th> -->
 			<th style="background-color: #00a7db; width: 80">出品者ID</th>
 			<th style="background-color: #00a7db; width: 80">商品名</th>
 			<th style="background-color: #00a7db; width: 80">金額</th>
@@ -79,7 +77,7 @@ int total = 0;
 				alt="商品写真"></td>
 			<td><%=orderList.get(i).getGoodsId()%></a></td>
 
-			<td><%=orderList.get(i).getSelluserId()%></td>
+<%-- 			<td><%=orderList.get(i).getSelluserId()%></td> --%>
 			<td><%=orderList.get(i).getGoodsName()%></td>
 			<td><%=myformat.moneyFormat(orderList.get(i).getPrice())%></td>
 			<td><%=orderList.get(i).getQuantity()%></td>
@@ -102,17 +100,19 @@ int total = 0;
 	</table>
 
 
+<br><br><br>
+
 	<form class="showCart-form"
 		action="<%=request.getContextPath()%>/buyConfirm">
 
 		<input type="submit" value="購入">
 	</form>
 
-	<tr>
-		<th colspan="3"
-			style="background-color: #00a7db; text-align: center; width: 200px">合計</th>
-		<td colspan="4"><%=myformat.moneyFormat(total)%></td>
-	</tr>
+<!-- 	<tr> -->
+<!-- 		<th colspan="3" -->
+<!-- 			style="background-color: #00a7db; text-align: center; width: 200px">合計</th> -->
+<%-- 		<td colspan="4"><%=myformat.moneyFormat(total)%></td> --%>
+<!-- 	</tr> -->
 
 	<%
 	} else {
