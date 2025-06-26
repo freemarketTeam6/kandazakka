@@ -8,7 +8,8 @@ Goods goods = (Goods)request.getAttribute("goods");
 <html>
 <head>
 <title>商品発送画面</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/view/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
 </head>
 <body>
 	<%@include file="../common/userHeader.jsp"%>
@@ -19,7 +20,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 	<p style="text-align: center;margin-top:50px;margin-bottom:30px"><strong>この商品を発送しますか？</strong></p>
 	
 	<table
-		style="width: 200; height: 150; margin: 0 auto; border-spacing: 0 10px">
+		class="shipping">
 		<tr>
 			<td style="background-color: #6666FF">写真</td>
 			<td><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" alt="商品写真"></td>
@@ -49,7 +50,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 	<tr>
 	<td>
 	<br>
-	<form action="<%= request.getContextPath() %>/shipping">
+	<form action="<%= request.getContextPath() %>/shipping" style="text-align: center">
 		<input type="submit" value="発送">
 		<input type="hidden" name="goodsid" value="<%= goods.getGoodsId() %>">
 		<input type="hidden" name="cmd" value="shipping">
@@ -61,7 +62,7 @@ Goods goods = (Goods)request.getAttribute("goods");
 	<tr>
 	<td>
 	<br>
-	<form action="<%= request.getContextPath() %>/mygoodsList">
+	<form action="<%= request.getContextPath() %>/mygoodsList" style="text-align: center">
 		<input type="submit" value="キャンセル">
 		<br>
 	</form>
