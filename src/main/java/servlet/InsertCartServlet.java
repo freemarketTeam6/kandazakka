@@ -1,4 +1,5 @@
 package servlet;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -32,10 +33,10 @@ public class InsertCartServlet extends HttpServlet {
 
 			// goodsIdを取得
 			String strgoodsId = request.getParameter("goodsId");
-			int goodsId=Integer.parseInt(strgoodsId);
+			int goodsId = Integer.parseInt(strgoodsId);
 			GoodsDAO goodsDao = new GoodsDAO();
 			// 一件検索メソッド
-			 Goods goods = goodsDao.selectGoodsByGoodsID(goodsId);
+			Goods goods = goodsDao.selectGoodsByGoodsID(goodsId);
 
 			// 注文情報を格納
 			goods.setGoodsId(goodsId);
@@ -47,38 +48,37 @@ public class InsertCartServlet extends HttpServlet {
 
 			// セッションからlist配列を取得
 			ArrayList<Goods> orderList = (ArrayList<Goods>) session.getAttribute("orderList");
-			//orderListがなかった場合は新たに作成
+			// orderListがなかった場合は新たに作成
 			if (orderList == null) {
 				orderList = new ArrayList<Goods>();
-				
-			}else {
-				
-			//カート内に既にする同じ商品を追加しようとしてた場合はinsertCartConfirm.jspに飛んでメッセージ出す
-			for(Goods orderGoods:orderList) {
-				if(goods.getGoodsId()==orderGoods.getGoodsId()) {
-					String msg = "この商品は既にカート内に存在します。";
-					request.setAttribute("msg", msg);
-					request.setAttribute("goods", goods);
-					request.getRequestDispatcher("/view/insertCartConfirm.jsp").forward(request, response);
-					return;
+
+			} else {
+
+				// カート内に既にする同じ商品を追加しようとしてた場合はinsertCartConfirm.jspに飛んでメッセージ出す
+				for (Goods orderGoods : orderList) {
+					if (goods.getGoodsId() == orderGoods.getGoodsId()) {
+						String msg = "この商品は既にカート内に存在します。";
+						request.setAttribute("msg", msg);
+						request.setAttribute("goods", goods);
+						request.getRequestDispatcher("/view/insertCartConfirm.jsp").forward(request, response);
+						return;
+					}
 				}
+
 			}
-				
-			}
-			
+
 			// orderListに加える
 			orderList.add(goods);
 
-			//カートに追加した商品をリクエストスコープに登録
+			// カートに追加した商品をリクエストスコープに登録
 			request.setAttribute("goods", goods);
-			
+
 			// カートをセッション保存
 			session.setAttribute("orderList", orderList);
-			
-			
+
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、カートに追加はできません。";
-			cmd="logout";
+			cmd = "logout";
 		} finally {
 			if (error.equals("")) {
 				request.getRequestDispatcher("/view/insertCartConfirm.jsp").forward(request, response);
