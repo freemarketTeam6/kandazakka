@@ -141,6 +141,8 @@ public class NewRegistration extends HttpServlet {
 					user.setPassword(password);
 				}
 				user.setAuthority("u");
+				break;
+				
 			}
 
 			if (error.equals("")) {
