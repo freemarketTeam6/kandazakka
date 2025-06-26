@@ -14,6 +14,10 @@ MyFormat myFormat = new MyFormat();
 	object-fit: contain;
 }
 
+.submit{
+	margin-top: 30px;
+}
+
 </style>
 <html>
 <head>
@@ -67,34 +71,40 @@ MyFormat myFormat = new MyFormat();
 				<td style="white-space: pre-line"><%=goods.getGoodsMemo()%></td>
 			</tr>
 		</table>
-
-		<p style="margin-top: 50px"></p>
 		
 		<!--  セッションのユーザーがnullだったら、カートに入れるボタンを押したときにログイン画面に飛ぶ -->
 		<% if ( user == null ){ %>
-		<div style="text-align: center">
+		<div style="text-align: center" class="submit">
 			<form action="<%=request.getContextPath()%>/login" method="POST">
 				<input type="submit" value="カートに入れる">
 				<input type="hidden" name="from" value="user">
 			</form>
-		</div>		
+		</div>
+		
+		<div style="text-align: center" class="submit">
+			<form action="<%=request.getContextPath()%>/login" method="POST">
+				<input type="submit" value="メッセージ">
+				<input type="hidden" name="from" value="user">
+			</form>
+		</div>			
 		<% } else if ( user != null && ! user.getUserid().equals(goods.getSelluserId())){ %>
 
-		<div style="text-align: center">
+		<div style="text-align: center" class="submit">
 			<form action="<%=request.getContextPath()%>/insertCart" method="get">
 				<input type="submit" value="カートに入れる">
 				<input type="hidden" name="goodsId" value="<%=goods.getGoodsId()%>">
 			</form>
 		</div>
 		
+		<div style="text-align: center" class="submit">
+			<form action="<%=request.getContextPath()%>/message>
+				<input type="submit" value="メッセージ">
+				<input type="hidden" name="goods_id" value="<%=goods.getGoodsId()%>">
+				<inpu type="hidden" name="cmd" value="list">
+			</form>
+		</div>				
+				
 		<% } %>
-		
-		<p style="margin-top: 25px"></p>
-
-		<!-- 未ログインの場合にログインページへ遷移する処理は「message.jsp」と「InsertCartServlet」でやる -->
-		<p style="text-align: center">
-			<a href="<%=request.getContextPath()%>/message?goods_id=<%=goods.getGoodsId()%>&cmd=list">メッセージ></a>
-		</p>
 
 	</div>
 	<p style="margin-top: 100px"></p>

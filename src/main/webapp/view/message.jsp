@@ -113,6 +113,12 @@ h1 {
     color: #999;
     font-size: 1.2em;
 }
+
+.messageTextarea{
+	height: 150px;
+	padding: 5px;
+}
+
     </style>
 </head>
 
@@ -123,7 +129,7 @@ h1 {
     <div class="container">
         <h1>取引メッセージ</h1>
         <form action="<%=request.getContextPath()%>/message" method="post" class="form">
-            <textarea name="message" placeholder="メッセージを入力してください..." required></textarea>
+            <textarea name="message" placeholder="メッセージを入力してください..." required class="messageTextarea"></textarea>
             <input type="submit" value="送信" id="submit">
             <input type="hidden" name="goods_id" value=<%= goods_id %>>
             <input type="hidden" name="cmd" value="insert">

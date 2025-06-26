@@ -20,9 +20,21 @@ public class SalesListServlet extends HttpServlet {
 		
 		GoodsDAO objGoodsDAO = new GoodsDAO();
 		
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
+				
 		try {
-			//ステータスが「３」以降の商品をDBからもってきて、salesGoodsListに格納
-			salesGoodsList = objGoodsDAO.selectGoodsByStatus("3");
+			
+			//検索されたかどうかを判断するif文
+			if( year == null && month == null) {
+			
+				//ステータスが「３」の商品をDBからもってきて、salesGoodsListに格納
+				salesGoodsList = objGoodsDAO.selectGoodsByStatus("3");			
+						
+			}else {
+				//ステータスが「３」かつ引数のyear,monthの条件を満たすgoodsの情報を取得する
+				salesGoodsList = objGoodsDAO.searchByYearOrMonth(year, month);
+			}
 			
 			//スコープに登録
 			request.setAttribute("salesGoodsList", salesGoodsList);
