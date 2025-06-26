@@ -38,7 +38,8 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 			<th style="background-color: #ffffa8; width: 200px">電話番号</th>
 			<th style="background-color: #ffffa8; width: 200px">削除</th>
 		</tr>
-    
+		
+    	<% if (  ! userList.isEmpty()){ %>
 		<%
 			for (int i = 0; i < userList.size(); i++) {
 			%>
@@ -51,17 +52,22 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 			<td><%= userList.get(i).getEmail() %></td>
 			<td><%= userList.get(i).getTell() %></td>
 			<td>
-
+				<% if ( userList.get(i).getAuthority().equals("u")){ %>
 				<form action="<%=request.getContextPath() %>/delete" method="get">
-          <input type="hidden"
-						name="userid" value="<%=userList.get(i).getUserid() %>">
+         			 <input type="hidden" name="userid" value="<%=userList.get(i).getUserid() %>">
 					<input type="submit" value="削除"> 
 				</form>
+				<% } %>
 			</td>
 		</tr>
 		<%
 			}
 		%>
+		<% }else { %>
+		<p style="font-size: 24px; text-align: center">
+			<strong>登録しているユーザーがいません！</strong>
+		</p>
+		<% } %>
 
 	</table>
 	<p style="margin-top: 100px"></p>
