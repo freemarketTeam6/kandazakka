@@ -140,6 +140,7 @@ h1 {
         <h2>Messages</h2>
         <div class="messages">
         <%
+        
         	UserDAO userDao = new UserDAO();
             if (messageList != null && !messageList.isEmpty()) {
                 for (int i = 0; i < messageList.size(); i++) {

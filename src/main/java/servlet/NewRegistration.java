@@ -142,6 +142,7 @@ public class NewRegistration extends HttpServlet {
 				}
 				user.setAuthority("u");
 				break;
+				
 			}
 
 			if (error.equals("")) {
