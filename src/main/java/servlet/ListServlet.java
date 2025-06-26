@@ -46,7 +46,9 @@ public class ListServlet extends HttpServlet {
 		}catch( Exception e) {
 			//リクエストスコープにエラー内容を渡す
 			String error = "DB接続エラーの為、一覧表示は行えませんでした。";
+			String cmd = "top";
 			request.setAttribute("error", error);
+			request.setAttribute("cmd", cmd);
 			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 		}
 		

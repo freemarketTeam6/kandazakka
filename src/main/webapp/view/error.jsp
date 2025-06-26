@@ -17,7 +17,9 @@ String error = (String)request.getAttribute("error");
 String cmd = (String)request.getAttribute("cmd");
 %>
 
-		<br> ●●エラー●● <br>
+		<div style="text-align:center">
+
+		<br> ●●エラー●● <br><br>
 		<%=error %>
 		<br>
 		<br>
@@ -26,18 +28,26 @@ String cmd = (String)request.getAttribute("cmd");
 
 
 		<%	if(cmd.equals("logout")){	%>
-		[<a href="<%=request.getContextPath()%>/view/top.jsp">TOP画面に戻る</a>]
+		[<a href="<%=request.getContextPath()%>/logout">TOP画面に戻る</a>]
 
 		<%	}else if(cmd.equals("top")){	%>
-		[<a href="<%=request.getContextPath()%>/view/top.jsp">TOP画面に戻る</a>]
+		[<a href="<%=request.getContextPath()%>/list">TOP画面に戻る</a>]
 
 		<%	}else if(cmd.equals("list")){	%>
 		[<a href="<%=request.getContextPath()%>/mygoodsList">出品商品一覧に戻る</a>]
 
 		<%	}else if(cmd.equals("mypage")){	%>
 		[<a href="<%=request.getContextPath()%>/view/mypage.jsp">マイページに戻る</a>]
+		
 		<%	}else if(cmd.equals("login")){	%>
 		[<a href="<%=request.getContextPath()%>/view/userLogin.jsp">ログイン画面に戻る</a>]
+		
+		<%	}else if(cmd.equals("newRegistration")){	%>
+		[<a href="<%=request.getContextPath()%>/view/newRegistration.jsp">新規登録画面に戻る</a>]
+		
+		
+		</div>
+		
 <%}%>
 
 	<%@include file="/common/userFooter.jsp"%>
