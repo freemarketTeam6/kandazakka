@@ -115,3 +115,37 @@ text-align: center;
 }
 
 /* ------------------------- */
+
+/* shipping*/
+
+.shipping{
+	margin: auto;
+	min-width: 300px;
+	width: 80%;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.shipping th {
+	background-color: #cccccc;
+	width: auto;
+	text-align: left;
+	padding-left: 2px;
+}
+
+.shipping td {
+	text-align: center;
+	padding-left: 2px;
+	width: auto;
+}
+
+.shipping img {
+	width: 100%;
+	height:100%;
+	max-height: 150px;
+	object-fit: contain;
+}
+
+
+/* ------------------------- */
