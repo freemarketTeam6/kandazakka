@@ -43,9 +43,6 @@ public class MyGoodsListServlet extends HttpServlet {
 		
 		//useridをもとに出品したGoodsオブジェクトのArrayListを取得
 		ArrayList<Goods> myGoodsList = new ArrayList<Goods>();
-		myGoodsList=goodsDaoObj.selectGoodsBySelluser(userid);
-		
-
 		
 		//パラメータの値によって商品のステータスを変える
 		if ( param != null && param.equals("cancel")) {
@@ -56,6 +53,8 @@ public class MyGoodsListServlet extends HttpServlet {
 			goodsDaoObj.updateStatus(goods_id, "0");
 		}
 		
+		//useridをもとに出品したGoodsオブジェクトのArrayListを取得
+		myGoodsList=goodsDaoObj.selectGoodsBySelluser(userid);
 		//リクエストスコープに出品一覧GoodsのArrayListを送る
 		request.setAttribute("myGoodsList", myGoodsList);	
 		
