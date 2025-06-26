@@ -50,9 +50,14 @@ public class BuyConfirmServlet extends HttpServlet {
 			String buyList="";
 			int total=0;
 			
-			//goodsinfoからカートデータ分だけ商品情報を呼び出す
+			//
 			for ( int i = 0; i < orderList.size(); i++ ) {
+				//購入済みステータスに変更する
 				Goods orderGoods =orderList.get(i);
+				int goodsID = orderList.get(i).getGoodsId();
+				objDao.updateStatus(goodsID, "1");
+				
+				//合計金額を設定する
 				buyList=buyList+"\n商品名"+orderGoods.getGoodsName()+"\t価格"+orderGoods.getPrice()+"円";
 				total += orderList.get(i).getPrice();
 			}

@@ -38,7 +38,8 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 			<th style="background-color: #ffffa8; width: 200px">電話番号</th>
 			<th style="background-color: #ffffa8; width: 200px">削除</th>
 		</tr>
-    
+		
+    	<% if (  ! userList.isEmpty()){ %>
 		<%
 			for (int i = 0; i < userList.size(); i++) {
 			%>
@@ -62,6 +63,11 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 		<%
 			}
 		%>
+		<% }else { %>
+		<p style="font-size: 24px; text-align: center">
+			<strong>商品未購入のため、購入履歴は表示できませんでした。</strong>
+		</p>
+		<% } %>
 
 	</table>
 	<p style="margin-top: 100px"></p>
