@@ -61,7 +61,7 @@ public class GoodsDetailServlet extends HttpServlet {
 				} else if(cmd.equals("update")){
 					request.getRequestDispatcher("/view/changeGoods.jsp").forward(request, response);
 				// エラーがなくcmdが上記以外なら「shipping.jsp」へフォワード
-				}else {
+				}else if ( cmd.equals("shipping")){
 					request.getRequestDispatcher("/view/shipping.jsp").forward(request, response);
 				}
 			} else {
