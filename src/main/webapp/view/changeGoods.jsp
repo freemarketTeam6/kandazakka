@@ -94,7 +94,6 @@ text-align: center;
 			<th>地域</th>
 			<td><%=format.regionFormat(goods.getRegion())%></td>
 			<td><select name="region">
-					<option value="select">選択</option>
 					<option value="0">北海道</option>
 					<option value="1">東北</option>
 					<option value="2">関東</option>
