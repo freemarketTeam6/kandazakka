@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="java.util.ArrayList, bean.Message, bean.User, dao.UserDAO"%>
+<%@ page import="java.util.ArrayList, bean.Message"%>
 
 <%
 ArrayList<Message> messageList = (ArrayList<Message>) request.getAttribute("messageList");
@@ -135,15 +135,13 @@ h1 {
 		<h2>Messages</h2>
 		<div class="messages">
 			<%
-			UserDAO userDao = new UserDAO();
 			if (messageList != null && !messageList.isEmpty()) {
 				for (int i = 0; i < messageList.size(); i++) {
-					
 			%>
 			
 			<%
 			// 管理者のユーザーID確定次第「9999」を変更 
-			if ( user.getAuthority().equals("m")) {
+			if (messageList.get(i).getAuthority().equals("m")) {
 			%>
 			<div class="adminMessage">
 				<p class="message-content">
