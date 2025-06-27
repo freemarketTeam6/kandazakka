@@ -31,7 +31,7 @@ Goods goods = goodsDao.selectGoodsByGoodsID(goodsId);
 
 
 
-		<p>入金が完了しました</p>
+		<p><strong>入金が完了しました</strong></p>
 
 		<br>
 
@@ -56,9 +56,12 @@ Goods goods = goodsDao.selectGoodsByGoodsID(goodsId);
 				<td><%=goods.getGoodsMemo()%></td>
 				<td><%=myFormat.moneyFormat(goods.getPrice())%></td>
 			<tr>
-				<td>商品発送までしばらくお待ちください</td>
+			<br><br>
+				<td></td>
 			</tr>
 		</table>
+		<br><br>
+		<strong>商品発送までしばらくお待ちください</strong>
 		<p style="margin-top: 100px"></p>
 		<br>
 		<p style="text-align: center">
