@@ -19,7 +19,7 @@ MyFormat myformat = new MyFormat();
 .mygoodsList tr th{
 	height: 35px;
 	font-size: 20px;
-	text-align: center;
+	text-align: cemter
 }
 
 .mygoodsList tr td{
@@ -97,8 +97,12 @@ MyFormat myformat = new MyFormat();
 			%>
 
 			<tr class="border">
-
-				<td id="imgBox"><img src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>" style="width:200px"alt="商品写真"></td>
+				<!-- 写真クリックすると商品詳細に飛ぶように修正 6/27 11:10 -->
+				<td id="imgBox">
+					<a href="<%=request.getContextPath()%>/goodsDetail?cmd=detail&goods_id=<%= goods.getGoodsId()%>">
+						<img src="<%=request.getContextPath()%>/file/images/<%=goods.getImgPath()%>" style="width:200px"alt="商品写真">
+					</a>	
+					</td>
 
 
 				<td id="goodsName"><%=goods.getGoodsName()%></td>
