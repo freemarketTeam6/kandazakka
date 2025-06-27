@@ -127,7 +127,7 @@ nav ul li a {
 									src="${pageContext.request.contextPath}/pic/mail.png" alt="ロゴ"
 									border="0"></a>
 								<li>
-									<p style="font-size: 15px">未ログイン</p> <%
+									<p style="font-size: 15px; white-space:nowrap">未ログイン</p> <%
 		}else{
 		%> <%= user.getNickname() %>
 
