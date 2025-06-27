@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.concurrent.TimeUnit;
 
 import bean.Goods;
 import dao.GoodsDAO;
@@ -68,6 +69,7 @@ public class ChangeGoodsServlet extends HttpServlet {
 
 			//ルート情報とファイルパスを管理する変数を初期化
 			String filePath=fileSave(filePart,imgpath);
+			TimeUnit.MILLISECONDS.sleep(3000);
 			
 			if(filePath.equals("")) {
 				filePath=imgpath;
@@ -92,6 +94,8 @@ public class ChangeGoodsServlet extends HttpServlet {
 			cmd = "logout";
 		} catch (NumberFormatException e) {
 			error = "価格と個数は数値を入力してください。";
+		}  catch (Exception e) {
+			error = "エラー："+e;
 		} finally {
 			if (error.equals("")) {
 				request.getRequestDispatcher("/view/changeGoodsConfirm.jsp").forward(request, response);
