@@ -13,7 +13,6 @@ Goods goods = (Goods)request.getAttribute("goods");
 </head>
 <body>
 	<%@include file="../common/userHeader.jsp"%>
-	<a href="<%=request.getContextPath()%>/view/mypage.jsp">マイページへ</a>
 	<h1 style="text-align: center;">発送</h1>
 	<hr size=5px color="black">
 	
@@ -22,27 +21,27 @@ Goods goods = (Goods)request.getAttribute("goods");
 	<table
 		class="shipping">
 		<tr>
-			<td style="background-color: #6666FF">写真</td>
+			<td style="background-color: #ccff99">写真</td>
 			<td><img src="<%=request.getContextPath() %>/file/images/<%= goods.getImgPath() %>" alt="商品写真"></td>
 		<tr>
-			<td style="background-color: #6666FF">商品名</td>
-			<td style="background-color: aqua;"><%=goods.getGoodsName()%></td>
+			<td style="background-color: #ccff99">商品名</td>
+			<td ><%=goods.getGoodsName()%></td>
 		</tr>
 		<tr>
-			<td style="background-color: #6666FF">個数</td>
-			<td style="background-color: aqua;"><%=goods.getQuantity()%></td>
+			<td style="background-color: #ccff99">個数</td>
+			<td ><%=goods.getQuantity()%></td>
 		</tr>
 		<tr>
-			<td style="background-color: #6666FF">種類</td>
-			<td style="background-color: aqua;"><%= goods.getCategory() %></td>
+			<td style="background-color: #ccff99">種類</td>
+			<td ><%= goods.getCategory() %></td>
 		</tr>
 		<tr>
-			<td style="background-color: #6666FF">備考</td>
-			<td style="background-color: aqua;"><%= goods.getGoodsMemo() %></td>
+			<td style="background-color: #ccff99">備考</td>
+			<td><%= goods.getGoodsMemo() %></td>
 		</tr>
 		<tr>
-			<td style="background-color: #6666FF">価格</td>
-			<td style="background-color: aqua;"><%= goods.getPrice() %></td>
+			<td style="background-color: #ccff99">価格</td>
+			<td ><%= goods.getPrice() %></td>
 		</tr>			
 	</table>
 	
