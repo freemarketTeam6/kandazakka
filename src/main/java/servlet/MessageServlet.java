@@ -56,7 +56,7 @@ public class MessageServlet extends HttpServlet {
 		
 		try {
 		
-		if ( cmd.equals("insert")) {
+		if ( cmd != null && cmd.equals("insert")) {
 			
 			//入力されたメッセージ内容を取得
 			String message = request.getParameter("message");
