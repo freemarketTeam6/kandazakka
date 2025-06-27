@@ -76,7 +76,7 @@ h1 {
     display: flex;
     float: right;
     flex-direction: column;
-    background: #00B900;
+    background: #4fe34f;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.15);
