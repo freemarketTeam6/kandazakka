@@ -19,6 +19,7 @@ MyFormat myformat = new MyFormat();
 .mygoodsList tr th{
 	height: 35px;
 	font-size: 20px;
+	text-align: center;
 }
 
 .mygoodsList tr td{
