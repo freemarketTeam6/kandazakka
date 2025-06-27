@@ -58,6 +58,11 @@ ArrayList<Goods> goodsList = (ArrayList<Goods>)request.getAttribute("goodsList")
     	position: relative;
     }
     
+    .img input[type="image"]{
+    	object-fit:cover;
+    }
+    
+    
     .priceOnImg{
     	position:  absolute;
     	bottom: 0;
