@@ -38,6 +38,7 @@ public class MessageServlet extends HttpServlet {
 		//エラー文を格納する変数宣言
 		String error ="";
 		
+		
 		//商品IDの取得
 		int  goods_id = Integer.parseInt(request.getParameter("goods_id"));
 		
