@@ -97,7 +97,7 @@ MyFormat myFormat = new MyFormat();
 		</div>
 		
 		<div style="text-align: center" class="submit">
-			<form action="<%=request.getContextPath()%>/message>
+			<form action="<%=request.getContextPath()%>/message" method="get">
 				<input type="submit" value="メッセージ">
 				<input type="hidden" name="goods_id" value="<%=goods.getGoodsId()%>">
 				<inpu type="hidden" name="cmd" value="list">
